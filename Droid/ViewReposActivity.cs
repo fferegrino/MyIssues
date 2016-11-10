@@ -14,13 +14,13 @@ using Xamarin.Auth;
 
 namespace MyIssues.Droid
 {
-	[Activity(Label = "Authorize")]
-	public class AuthorizeActivity : Activity
+	[Activity(Label = "Repositories")]
+	public class ViewReposActivity : Activity
 	{
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
-
+            var client = GitHubClient.Client();
 
 			
 		}
