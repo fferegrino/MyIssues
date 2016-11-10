@@ -8,7 +8,10 @@ using Android.Content;
 
 namespace MyIssues.Droid
 {
-    [Activity(Label = "MyIssues", MainLauncher = true, Icon = "@mipmap/icon")]
+    [Activity(Label = "MyIssues", 
+        MainLauncher = true, 
+        Theme = "@style/MyTheme",
+        Icon = "@mipmap/icon")]
     public class MainActivity : Activity
     {
         int count = 1;
