@@ -12,7 +12,7 @@ namespace MyIssues.Droid
         MainLauncher = true, 
         Theme = "@style/MyTheme",
         Icon = "@mipmap/icon")]
-    public class MainActivity : Activity
+    public class MainActivity : ActionBarActivity
     {
         int count = 1;
 
