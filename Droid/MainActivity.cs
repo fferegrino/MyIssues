@@ -5,6 +5,7 @@ using System;
 using Xamarin.Auth;
 using System.Linq;
 using Android.Content;
+using Android.Support.V7.App;
 
 namespace MyIssues.Droid
 {
