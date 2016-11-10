@@ -6,6 +6,7 @@ using Xamarin.Auth;
 using System.Linq;
 using Android.Content;
 using Android.Support.V7.App;
+using Toolbar = Android.Support.V7.Widget.Toolbar;
 
 namespace MyIssues.Droid
 {
@@ -13,16 +14,16 @@ namespace MyIssues.Droid
         MainLauncher = true, 
         Theme = "@style/MyTheme",
         Icon = "@mipmap/icon")]
-    public class MainActivity : ActionBarActivity
+	public class MainActivity : AppCompatActivity
     {
         int count = 1;
 
         protected override async void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
-            // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
+			var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
+			SetSupportActionBar(toolbar);
 
             // Get our button from the layout resource,
             // and attach an event to it
@@ -42,9 +43,7 @@ namespace MyIssues.Droid
             }
             else
             {
-                GitHubClient.Client(accessToken);
-                Intent intent = new Intent(this, typeof(ViewReposActivity));
-                StartActivity(intent);
+				NavigateToRepoSelection(accessToken);
             }
         }
 
@@ -65,10 +64,22 @@ namespace MyIssues.Droid
 
         void Authenticator_Completed(object sender, Xamarin.Auth.AuthenticatorCompletedEventArgs e)
         {
-            if (e.IsAuthenticated)
-                AccountStore.Create().Save(e.Account, "github");
+			if (e.IsAuthenticated)
+			{
+				AccountStore.Create().Save(e.Account, "github");
+				var aToken = e.Account.Properties["access_token"];
+				NavigateToRepoSelection(aToken);
+			}
         }
 
+
+		void NavigateToRepoSelection(string accessToken)
+		{
+
+            GitHubClient.Client(accessToken);
+			Intent intent = new Intent(this, typeof(ViewReposActivity));
+			StartActivity(intent);
+		}
     }
 }
 

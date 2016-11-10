@@ -12,18 +12,32 @@ using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
 using Xamarin.Auth;
+using Toolbar = Android.Support.V7.Widget.Toolbar;
 
 namespace MyIssues.Droid
 {
-	[Activity(Label = "Repositories")]
-	public class ViewReposActivity : ActionBarActivity
+	[Activity(Label = "Repositories", 
+        Theme = "@style/MyTheme")]
+	public class ViewReposActivity : AppCompatActivity
 	{
-		protected override void OnCreate(Bundle savedInstanceState)
+
+		ListView _reposListView;
+
+		GitHubClient _client;
+
+		protected override async void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
-            var client = GitHubClient.Client();
+            _client = GitHubClient.Client();
 
-			
+			SetContentView(Resource.Layout.repos_view);
+			var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
+			SetSupportActionBar(toolbar);
+
+
+
 		}
+
+
 	}
 }
