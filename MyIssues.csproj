@@ -31,6 +31,7 @@
     <Compile Include="GitHubClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Helpers\LanguageColors.cs" />
+    <Compile Include="Helpers\LabelColors.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Octokit, Version=0.23.0.0, Culture=neutral, processorArchitecture=MSIL">

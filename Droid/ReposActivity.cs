@@ -19,7 +19,7 @@ namespace MyIssues.Droid
 {
 	[Activity(Label = "Repositories", 
         Theme = "@style/MyTheme")]
-	public class ViewReposActivity : AppCompatActivity
+	public class ReposActivity : AppCompatActivity
 	{
 
 		ListView _reposListView;
@@ -31,7 +31,7 @@ namespace MyIssues.Droid
 			base.OnCreate(savedInstanceState);
             _client = GitHubClient.Client();
 
-			SetContentView(Resource.Layout.ReposView);
+			SetContentView(Resource.Layout.Repos);
 			var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
 			SetSupportActionBar(toolbar);
 
@@ -41,7 +41,7 @@ namespace MyIssues.Droid
 			var repos = await _client.GetRepositoriesForUser();
 			var reposArray = repos.ToList();
 
-			var adapter = new RepoAdapter(this, reposArray);
+			var adapter = new ReposAdapter(this, reposArray);
 			_reposListView.Adapter = (adapter);
 
 

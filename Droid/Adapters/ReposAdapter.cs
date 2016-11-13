@@ -15,13 +15,13 @@ using Java.Lang;
 
 namespace MyIssues.Droid.Adapters
 {
-	public class RepoAdapter : BaseAdapter
+	public class ReposAdapter : BaseAdapter
 	{
 		private Context _context;
 		private LayoutInflater _inflater;
 		private List<Octokit.Repository> _dataSource;
 
-		public RepoAdapter(Context context, List<Octokit.Repository> items)
+		public ReposAdapter(Context context, List<Octokit.Repository> items)
 		{
 			_context = context;
 			_dataSource = items;

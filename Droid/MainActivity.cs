@@ -77,7 +77,7 @@ namespace MyIssues.Droid
 		{
 
             GitHubClient.Client(accessToken);
-			Intent intent = new Intent(this, typeof(ViewReposActivity));
+			Intent intent = new Intent(this, typeof(IssuesActivity));
 			StartActivity(intent);
 		}
     }
