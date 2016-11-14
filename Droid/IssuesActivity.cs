@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -20,19 +20,33 @@ namespace MyIssues.Droid
 		Theme = "@style/MyTheme")]
 	public class IssuesActivity : Activity
 	{
-		ListViewCompat issuesListView;
+		RecyclerView _issuesListView;
+		RecyclerView.LayoutManager _layoutManager;
 
 		protected override async void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
 			SetContentView(Resource.Layout.Issues);
 
+
+			_issuesListView = FindViewById<RecyclerView>(Resource.Id.issuesListView);
+			_layoutManager = new LinearLayoutManager(this);
+			_issuesListView.SetLayoutManager(_layoutManager);
+
+
+			await ShowLabels();
+		}
+
+		private async Task ShowLabels()
+		{
 			var issues = await GitHubClient.Client().GetIssues();
+			var adapter = new IssuesAdapter(issues.ToList());
 
-			issuesListView = FindViewById<ListViewCompat>(Resource.Id.issuesListView);
-
-			var adapter = new IssuesAdapter(this, issues.ToList());
-			issuesListView.Adapter = adapter;
+			adapter.OnIssueSelected += (selected) => {
+				Intent intent = new Intent(this, typeof(IssueActivity));
+				StartActivity(intent);
+			};
+			_issuesListView.SetAdapter(adapter);
 		}
 	}
 }

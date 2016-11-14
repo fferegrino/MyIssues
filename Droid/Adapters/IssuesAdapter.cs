@@ -9,77 +9,110 @@ using Android.Content;
 using Android.Graphics;
 using Android.OS;
 using Android.Runtime;
+using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
 using Java.Lang;
+using Octokit;
 
 namespace MyIssues.Droid.Adapters
 {
-	public class IssuesAdapter : BaseAdapter
-	{
-		private Context _context;
-		private LayoutInflater _inflater;
-		private List<Octokit.Issue> _dataSource;
 
-		public IssuesAdapter(Context context, List<Octokit.Issue> items)
+	public delegate void SelectedIssue(Issue selected);
+
+	public class IssuesAdapter : RecyclerView.Adapter
+	{
+		private List<Octokit.Issue> _items;
+		public event SelectedIssue OnIssueSelected;
+
+		public IssuesAdapter(List<Octokit.Issue> items)
 		{
-			_context = context;
-			_dataSource = items;
-			_inflater =  (LayoutInflater)_context.GetSystemService(Context.LayoutInflaterService);
+			_items = items;
 		}
 
-		public override int Count
+		public override int ItemCount
 		{
 			get
 			{
-				return _dataSource.Count();
+				return _items.Count;
 			}
 		}
 
-		public override Java.Lang.Object GetItem(int position)
+		public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
 		{
-			//return _dataSource[position];
-			return  null ;
-			}
+			var h = holder as IssueViewHolder;
 
-		public override long GetItemId(int position)
-		{
-			return position;
-		}
-
-		public override View GetView(int position, View convertView, ViewGroup parent)
-		{
-			View rowView = _inflater.Inflate(Resource.Layout.ListItemIssue, parent, false);
-			var issue = _dataSource[position];
-			var issueListTitle = rowView.FindViewById<TextView>(Resource.Id.issueListTitle);
-			issueListTitle.Text = issue.Title;
-
-			var labelColors = new View[]
+			var issue = _items[position];
+			h.IssueListTitle.Text = issue.Title;
+			var milestone = issue.Milestone?.Title;
+			if (System.String.IsNullOrWhiteSpace(milestone))
 			{
-				rowView.FindViewById(Resource.Id.issueColorLabel1),
-				rowView.FindViewById(Resource.Id.issueColorLabel2),
-				rowView.FindViewById(Resource.Id.issueColorLabel3),
-				rowView.FindViewById(Resource.Id.issueColorLabel4),
-				rowView.FindViewById(Resource.Id.issueColorLabel5)
-			};
+				h.IssueListMilestone.Visibility = ViewStates.Gone;
+			}
+			else
+			{
+				h.IssueListMilestone.Visibility = ViewStates.Visible;
+				h.IssueListMilestone.Text = milestone;
+			}
 
-			for (int i = 0; i < issue.Labels.Count && i < labelColors.Length; i++)
+			for (int i = 0; i < issue.Labels.Count && i < h.LabelColorViews.Length; i++)
 			{
 				var c = GitHubClient.LabelColors[issue.Labels[i].Name];
-				labelColors[i].SetBackgroundColor(Color.Argb(255, c[0], c[1], c[2]));
+				h.LabelColorViews[i].SetBackgroundColor(Color.Argb(255, c[0], c[1], c[2]));
 			}
-			//var titleTextView = rowView.FindViewById<TextView>(Resource.Id.RepoListTitle);
-			//var descriptionTextView = rowView.FindViewById<TextView>(Resource.Id.RepoListDescription);
-			//var languageTextView = rowView.FindViewById<TextView>(Resource.Id.RepoListLanguage);
-			//var repoColor = rowView.FindViewById(Resource.Id.RepoListColor);
 
-			//titleTextView.Text = _dataSource[position].Name;
-			//descriptionTextView.Text = _dataSource[position].Description;
-			//languageTextView.Text = _dataSource[position].Language;
-			//var color = Helpers.GetLanguageColor(_dataSource[position].Language);
-			//repoColor.SetBackgroundColor(Color.Argb(255, color[0], color[1], color[2]));
+			h.Bind(issue, OnIssueSelected);
+		}
 
-			return rowView;
+		public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
+		{
+			// Inflate the CardView for the photo:
+			View itemView = LayoutInflater.From(parent.Context).
+						Inflate(Resource.Layout.IssueCardView, parent, false);
+
+			// Create a ViewHolder to hold view references inside the CardView:
+			IssueViewHolder vh = new IssueViewHolder(itemView);
+			return vh;
 		}
 	}
+
+
+
+	public class IssueViewHolder : RecyclerView.ViewHolder
+	{
+		public View[] LabelColorViews { get; private set; }
+		public TextView IssueListTitle { get; private set; }
+		public TextView IssueListMilestone { get; private set; }
+
+		public IssueViewHolder(View itemView) : base(itemView)
+		{
+			IssueListTitle = itemView.FindViewById<TextView>(Resource.Id.issueListTitle);
+			IssueListMilestone = itemView.FindViewById<TextView>(Resource.Id.issueListMilestone);
+			LabelColorViews = new View[]
+			{
+				itemView.FindViewById(Resource.Id.issueColorLabel1),
+				itemView.FindViewById(Resource.Id.issueColorLabel2),
+				itemView.FindViewById(Resource.Id.issueColorLabel3),
+				itemView.FindViewById(Resource.Id.issueColorLabel4),
+				itemView.FindViewById(Resource.Id.issueColorLabel5)
+			};
+
+			itemView.Click += ItemView_Click;
+		}
+
+		Issue _boundIssue;
+		SelectedIssue _l;
+		public void Bind( Issue item,  SelectedIssue listener)
+		{
+			_boundIssue = item;
+			_l = listener;
+        }
+
+		void ItemView_Click(object sender, EventArgs e)
+		{
+			_l(_boundIssue);
+		}
+	}
+
 }
+
