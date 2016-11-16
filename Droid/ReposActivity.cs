@@ -17,8 +17,11 @@ using Toolbar = Android.Support.V7.Widget.Toolbar;
 
 namespace MyIssues.Droid
 {
-	[Activity(Label = "Repositories", 
-        Theme = "@style/MyTheme")]
+	[Activity(Label = "Repositories",
+		Theme = "@style/MyTheme")]
+	[IntentFilter(
+		actions: new string[] { "android.intent.action.SEARCH" })]
+	[MetaData("android.app.searchable", Resource = "@xml/searchable")]
 	public class ReposActivity : AppCompatActivity
 	{
 
@@ -46,6 +49,8 @@ namespace MyIssues.Droid
 
             _reposListView.ItemClick += _reposListView_ItemClick;
 
+			HandleIntent(Intent);
+
 		}
 
         private void _reposListView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
@@ -56,5 +61,36 @@ namespace MyIssues.Droid
             SetResult(Result.Ok, returnIntent);
             this.Finish();
         }
+
+		public override bool OnCreateOptionsMenu(IMenu menu)
+		{
+			MenuInflater.Inflate(Resource.Menu.SearchMenu, menu);
+
+			// Associate searchable configuration with the SearchView
+			SearchManager searchManager =
+				(SearchManager)GetSystemService(Context.SearchService);
+			SearchView searchView =
+				(SearchView) menu.FindItem(Resource.Id.SearchRepoButton).ActionView;
+			searchView.SetSearchableInfo(
+				searchManager.GetSearchableInfo(ComponentName));
+
+			return true;
+		}
+
+		protected override void OnNewIntent(Intent intent)
+		{
+			HandleIntent(intent);
+		}
+
+		private void HandleIntent(Intent intent)
+		{
+
+			if (Intent.ActionSearch.Equals(intent.Action))
+			{
+				String query = intent.GetStringExtra(SearchManager.Query);
+				//use the query to search your data somehow
+				System.Diagnostics.Debug.WriteLine("Search " + query);
+			}
+		}
     }
 }

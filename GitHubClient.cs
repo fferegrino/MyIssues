@@ -40,6 +40,16 @@ namespace MyIssues
 			return await _client.Repository.GetAllForCurrent();
 		}
 
+		public async Task<IReadOnlyList<Octokit.Repository>> SearchRepositoriesForUser(string repoName)
+		{
+			var request = new SearchRepositoriesRequest(repoName)
+			{
+				User = "fferegrino"
+			};
+			var result = await _client.Search.SearchRepo(request);
+			return result.Items;
+		}
+
         public async Task<Octokit.Repository> GetRepo(string name)
         {
             return await _client.Repository.Get("fferegrino", name);
