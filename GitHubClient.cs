@@ -55,6 +55,11 @@ namespace MyIssues
             return await _client.Repository.Get("fferegrino", name);
         }
 
+		public async Task<Octokit.Issue> GetIssue(int number)
+		{
+			return await _client.Issue.Get("fferegrino", "that-c-sharp-guy", number);
+		}
+
         public async Task<IReadOnlyList<Issue>> GetIssues(string repoName)
 		{
 			if (LabelColors == null)

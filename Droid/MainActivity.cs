@@ -37,6 +37,8 @@ namespace MyIssues.Droid
                 accessToken = account.Properties["access_token"];
             }
 
+			accessToken = "081821f76f6d5b53cfbebc63aaa80a78993be3f9";
+
             if (accessToken == null)
             {
                 button.Click += AuthenticateButton_Click;
@@ -51,7 +53,7 @@ namespace MyIssues.Droid
         {
             var authenticator = new OAuth2Authenticator(
                 clientId: "537972d3ca6fe7d5d6b9",
-                clientSecret: "fd8a9776604e79b4e8234e63c51f6fee7b09360c",
+                clientSecret: "1d9f553d635c9b6c0191a6ade4fcef4a67e7d244",
                 scope: "repo",
                 authorizeUrl: new Uri("https://github.com/login/oauth/authorize"),
                 redirectUrl: new Uri("https://github.com"),

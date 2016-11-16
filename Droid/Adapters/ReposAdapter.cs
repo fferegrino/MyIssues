@@ -38,7 +38,6 @@ namespace MyIssues.Droid.Adapters
 
 		public override Java.Lang.Object GetItem(int position)
 		{
-			//return _dataSource[position];
 			return  null ;
 			}
 

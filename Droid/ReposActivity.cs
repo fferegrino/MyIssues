@@ -8,6 +8,8 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Support.V4.App;
+using Android.Support.V4.View;
 using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
@@ -19,9 +21,8 @@ namespace MyIssues.Droid
 {
 	[Activity(Label = "Repositories",
 		Theme = "@style/MyTheme")]
-	[IntentFilter(
-		actions: new string[] { "android.intent.action.SEARCH" })]
-	[MetaData("android.app.searchable", Resource = "@xml/searchable")]
+	//[IntentFilter( actions: new string[] { Intent.ActionSearch })]
+	//[MetaData("android.app.searchable", Resource = "@xml/searchable")]
 	public class ReposActivity : AppCompatActivity
 	{
 
@@ -32,7 +33,7 @@ namespace MyIssues.Droid
 		protected override async void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
-            _client = GitHubClient.Client();
+            _client = GitHubClient.Client("234234234234");
 
 			SetContentView(Resource.Layout.Repos);
 			var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
@@ -66,15 +67,18 @@ namespace MyIssues.Droid
 		{
 			MenuInflater.Inflate(Resource.Menu.SearchMenu, menu);
 
-			// Associate searchable configuration with the SearchView
+			//// Associate searchable configuration with the SearchView
 			SearchManager searchManager =
 				(SearchManager)GetSystemService(Context.SearchService);
-			SearchView searchView =
-				(SearchView) menu.FindItem(Resource.Id.SearchRepoButton).ActionView;
-			searchView.SetSearchableInfo(
-				searchManager.GetSearchableInfo(ComponentName));
-
-			return true;
+			var item = menu.FindItem(Resource.Id.menu_search);
+			var view1 = item.ActionView;
+			var view =  MenuItemCompat.GetActionView(item);
+			var searchView = view.JavaCast<Android.Widget.SearchView>();
+			System.Diagnostics.Debug.WriteLine("ActionView " + (view1 == null ? "null" : "no"));
+			System.Diagnostics.Debug.WriteLine("GetActionView " + (view == null ? "null" : "no"));
+			//searchView.SetSearchableInfo(
+			//	searchManager.GetSearchableInfo(ComponentName));
+						return true;
 		}
 
 		protected override void OnNewIntent(Intent intent)
@@ -84,7 +88,6 @@ namespace MyIssues.Droid
 
 		private void HandleIntent(Intent intent)
 		{
-
 			if (Intent.ActionSearch.Equals(intent.Action))
 			{
 				String query = intent.GetStringExtra(SearchManager.Query);

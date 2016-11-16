@@ -3,13 +3,9 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
-        android:text="Large Text"
-        android:textAppearance="@android:style/TextAppearance.Material.Display2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/repoNameTextVie"
-        android:gravity="center" />
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
     <android.support.v7.widget.RecyclerView
         android:minWidth="25px"
         android:minHeight="25px"

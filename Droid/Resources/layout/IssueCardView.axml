@@ -30,6 +30,7 @@
             <TextView
                 android:id="@+id/issueListTitle"
                 android:layout_width="match_parent"
+					android:ellipsize="marquee"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
@@ -41,7 +42,7 @@
                 android:textColor="#000000"
                 android:layout_below="@id/issueListMilestone"
                 android:textSize="22sp"
-                tools:text="Detail"
+                tools:text="Really long text, shoudl wrap around?"
                 android:paddingBottom="5dp" />
             <LinearLayout
                 android:layout_width="match_parent"

@@ -1,3 +1,22 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:id="@+id/IssueStatusView" />
+    <TextView
+        android:text="Medium Text"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/IssueBodyTextView"
+        tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam imperdiet posuere gravida. Morbi quis varius leo, eget dignissim est. Vestibulum volutpat urna ac enim sodales, id placerat sapien bibendum. Suspendisse blandit volutpat nulla sed suscipit. Phasellus pharetra ipsum purus, id consectetur risus posuere quis. Aliquam erat volutpat. Suspendisse purus massa."
+        android:layout_margin="5dp" />
 </LinearLayout>

@@ -8,6 +8,7 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Support.V7.App;
 using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
@@ -18,7 +19,7 @@ namespace MyIssues.Droid
 
     [Activity(Label = "Issues",
         Theme = "@style/MyTheme")]
-    public class IssuesActivity : Activity
+    public class IssuesActivity : AppCompatActivity
     {
         const int SelectRepoRequestCode = 1;
         RecyclerView _issuesListView;
@@ -30,6 +31,10 @@ namespace MyIssues.Droid
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.Issues);
+			var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
+			SetSupportActionBar(toolbar);
+
+
             _client = GitHubClient.Client();
 
 
@@ -38,7 +43,7 @@ namespace MyIssues.Droid
             _issuesListView.SetLayoutManager(_layoutManager);
 
 
-            string repo = null;
+            string repo = "that-c-sharp-guy";
             if (repo == null)
             {
                 var i = new Intent(this, typeof(ReposActivity));
@@ -52,7 +57,10 @@ namespace MyIssues.Droid
 
         private async Task LoadRepo(string repo)
         {
+			
             _repo = await _client.GetRepo(repo);
+
+			Title = _repo.Name;
             var issues = await _client.GetIssues(repo);
 
             var adapter = new IssuesAdapter(issues.ToList());
@@ -60,6 +68,9 @@ namespace MyIssues.Droid
             adapter.OnIssueSelected += (selected) =>
             {
                 Intent intent = new Intent(this, typeof(IssueActivity));
+				intent.PutExtra("id", selected.Id);
+				intent.PutExtra("number", selected.Number);
+				intent.PutExtra("title", selected.Title);
                 StartActivity(intent);
             };
             _issuesListView.SetAdapter(adapter);
