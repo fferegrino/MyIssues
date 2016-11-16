@@ -40,13 +40,18 @@ namespace MyIssues
 			return await _client.Repository.GetAllForCurrent();
 		}
 
-		public async Task<IReadOnlyList<Issue>> GetIssues()
+        public async Task<Octokit.Repository> GetRepo(string name)
+        {
+            return await _client.Repository.Get("fferegrino", name);
+        }
+
+        public async Task<IReadOnlyList<Issue>> GetIssues(string repoName)
 		{
 			if (LabelColors == null)
 			{
 				await GetLabels();
 			}
-			return await _client.Issue.GetAllForRepository("fferegrino", "that-c-sharp-guy");
+			return await _client.Issue.GetAllForRepository("fferegrino", repoName);
 		}
 
 		public static Dictionary<string, int[]> LabelColors;

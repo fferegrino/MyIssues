@@ -16,37 +16,66 @@ using MyIssues.Droid.Adapters;
 namespace MyIssues.Droid
 {
 
-	[Activity(Label = "Issues",
-		Theme = "@style/MyTheme")]
-	public class IssuesActivity : Activity
-	{
-		RecyclerView _issuesListView;
-		RecyclerView.LayoutManager _layoutManager;
+    [Activity(Label = "Issues",
+        Theme = "@style/MyTheme")]
+    public class IssuesActivity : Activity
+    {
+        const int SelectRepoRequestCode = 1;
+        RecyclerView _issuesListView;
+        RecyclerView.LayoutManager _layoutManager;
+        GitHubClient _client;
+        Octokit.Repository _repo;
 
-		protected override async void OnCreate(Bundle savedInstanceState)
-		{
-			base.OnCreate(savedInstanceState);
-			SetContentView(Resource.Layout.Issues);
+        protected override async void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+            SetContentView(Resource.Layout.Issues);
+            _client = GitHubClient.Client();
 
 
-			_issuesListView = FindViewById<RecyclerView>(Resource.Id.issuesListView);
-			_layoutManager = new LinearLayoutManager(this);
-			_issuesListView.SetLayoutManager(_layoutManager);
+            _issuesListView = FindViewById<RecyclerView>(Resource.Id.issuesListView);
+            _layoutManager = new LinearLayoutManager(this);
+            _issuesListView.SetLayoutManager(_layoutManager);
 
 
-			await ShowLabels();
-		}
+            string repo = null;
+            if (repo == null)
+            {
+                var i = new Intent(this, typeof(ReposActivity));
+                StartActivityForResult(i, SelectRepoRequestCode);
+            }
+            else
+            {
+                await LoadRepo(repo);
+            }
+        }
 
-		private async Task ShowLabels()
-		{
-			var issues = await GitHubClient.Client().GetIssues();
-			var adapter = new IssuesAdapter(issues.ToList());
+        private async Task LoadRepo(string repo)
+        {
+            _repo = await _client.GetRepo(repo);
+            var issues = await _client.GetIssues(repo);
 
-			adapter.OnIssueSelected += (selected) => {
-				Intent intent = new Intent(this, typeof(IssueActivity));
-				StartActivity(intent);
-			};
-			_issuesListView.SetAdapter(adapter);
-		}
-	}
+            var adapter = new IssuesAdapter(issues.ToList());
+
+            adapter.OnIssueSelected += (selected) =>
+            {
+                Intent intent = new Intent(this, typeof(IssueActivity));
+                StartActivity(intent);
+            };
+            _issuesListView.SetAdapter(adapter);
+        }
+
+        protected override async void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
+        {
+            if (requestCode == SelectRepoRequestCode)
+            {
+                var repoName = data.GetStringExtra("repoName");
+                await LoadRepo(repoName);
+            }
+            else
+            {
+                base.OnActivityResult(requestCode, resultCode, data);
+            }
+        }
+    }
 }

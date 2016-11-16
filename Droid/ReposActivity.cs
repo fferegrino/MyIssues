@@ -23,8 +23,8 @@ namespace MyIssues.Droid
 	{
 
 		ListView _reposListView;
-
 		GitHubClient _client;
+       List< Octokit.Repository> repos;
 
 		protected override async void OnCreate(Bundle savedInstanceState)
 		{
@@ -38,15 +38,23 @@ namespace MyIssues.Droid
 
 			_reposListView = FindViewById<ListView>(Resource.Id.reposListView);
 
-			var repos = await _client.GetRepositoriesForUser();
-			var reposArray = repos.ToList();
+			var repos1 = await _client.GetRepositoriesForUser();
+			repos = repos1.ToList();
 
-			var adapter = new ReposAdapter(this, reposArray);
+			var adapter = new ReposAdapter(this, repos);
 			_reposListView.Adapter = (adapter);
 
+            _reposListView.ItemClick += _reposListView_ItemClick;
 
 		}
 
-
-	}
+        private void _reposListView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        {
+            
+            Intent returnIntent = new Intent();
+            returnIntent.PutExtra("repoName", repos[e.Position].Name);
+            SetResult(Result.Ok, returnIntent);
+            this.Finish();
+        }
+    }
 }
