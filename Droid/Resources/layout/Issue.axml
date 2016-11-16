@@ -11,6 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="10dp"
         android:id="@+id/IssueStatusView" />
+
+    <android.support.v7.widget.RecyclerView
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/LabelsRecyclerView" />
     <TextView
         android:text="Medium Text"
         android:textAppearance="?android:attr/textAppearanceMedium"

@@ -9,8 +9,10 @@ using Android.Content;
 using Android.OS;
 using Android.Runtime;
 using Android.Support.V7.App;
+using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
+using MyIssues.Droid.Adapters;
 
 namespace MyIssues.Droid
 {
@@ -54,6 +56,15 @@ namespace MyIssues.Droid
 			issueStatusView.SetBackgroundColor(_issue.State == Octokit.ItemState.Open ?
 											   Android.Graphics.Color.Green :
 											   Android.Graphics.Color.Red);
+
+
+			var _layoutManager = new LinearLayoutManager(this,LinearLayoutManager.Horizontal,false);
+
+			var labelsRecyclerView = FindViewById<RecyclerView>(Resource.Id.LabelsRecyclerView);
+			labelsRecyclerView.SetLayoutManager(_layoutManager);
+
+			var adapter = new LabelsAdapter(_issue.Labels.ToList());
+			labelsRecyclerView.SetAdapter(adapter);
 
 			System.Diagnostics.Debug.WriteLine("Comments : " + _issue.CommentsUrl);
 		}
