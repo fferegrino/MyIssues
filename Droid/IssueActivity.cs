@@ -12,6 +12,7 @@ using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
 using MyIssues.Droid.Adapters;
+using Humanizer;
 
 namespace MyIssues.Droid
 {
@@ -62,7 +63,7 @@ namespace MyIssues.Droid
 			                                       Resources.GetColor(Resource.Color.open_issue));
 
 			var issueCreatedAtTextView = FindViewById<TextView>(Resource.Id.IssueCreatedAtTextView);
-			issueCreatedAtTextView.Text = _issue.CreatedAt.ToString();
+			issueCreatedAtTextView.Text = _issue.CreatedAt.Humanize(DateTimeOffset.Now);
 
 			var _layoutManager = new LinearLayoutManager(this,LinearLayoutManager.Horizontal,false);
 
