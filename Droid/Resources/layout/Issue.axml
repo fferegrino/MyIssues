@@ -11,12 +11,11 @@
         android:layout_width="match_parent"
         android:layout_height="10dp"
         android:id="@+id/IssueStatusView" />
-
     <android.support.v7.widget.RecyclerView
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/LabelsRecyclerView" />
     <TextView
         android:text="Medium Text"
@@ -26,4 +25,8 @@
         android:id="@+id/IssueBodyTextView"
         tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam imperdiet posuere gravida. Morbi quis varius leo, eget dignissim est. Vestibulum volutpat urna ac enim sodales, id placerat sapien bibendum. Suspendisse blandit volutpat nulla sed suscipit. Phasellus pharetra ipsum purus, id consectetur risus posuere quis. Aliquam erat volutpat. Suspendisse purus massa."
         android:layout_margin="5dp" />
+  <android.support.v7.widget.RecyclerView
+        android:id="@+id/IssueCommentsListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>

@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -41,7 +40,7 @@ namespace MyIssues.Droid
 			_client = GitHubClient.Client();
 			await LoadIssue(number);
 
-
+            await LoadIssueComments(number);
 
 			// Create your application here
 		}
@@ -66,7 +65,25 @@ namespace MyIssues.Droid
 			var adapter = new LabelsAdapter(_issue.Labels.ToList());
 			labelsRecyclerView.SetAdapter(adapter);
 
-			System.Diagnostics.Debug.WriteLine("Comments : " + _issue.CommentsUrl);
-		}
-	}
+            //System.Diagnostics.Debug.WriteLine("Comments : " + _issue.CommentsUrl);
+        }
+
+        async Task LoadIssueComments(int number)
+        {
+            var comments = (await _client.GetIssueComments(number)).ToList();
+
+
+
+            var _layoutManager = new LinearLayoutManager(this);
+            var adapter = new IssueCommentsAdapter(comments);
+
+            var issueCommentsListView = FindViewById<RecyclerView>(Resource.Id.IssueCommentsListView);
+
+
+            issueCommentsListView.SetLayoutManager(_layoutManager);
+            issueCommentsListView.SetAdapter(adapter);
+
+            //System.Diagnostics.Debug.WriteLine("Comments : " + _issue.CommentsUrl);
+        }
+    }
 }
