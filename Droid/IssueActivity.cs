@@ -35,7 +35,7 @@ namespace MyIssues.Droid
 			var id = Intent.GetIntExtra("id", -1); 
 			var number = Intent.GetIntExtra("number", -1);
 
-			Title = title;
+			Title = $"Issue #{number}";
 
 			_client = GitHubClient.Client();
 			await LoadIssue(number);
@@ -51,11 +51,18 @@ namespace MyIssues.Droid
 			var issueBodyTextView = FindViewById<TextView>(Resource.Id.IssueBodyTextView);
 			issueBodyTextView.Text = _issue.Body;
 
-			var issueStatusView = FindViewById(Resource.Id.IssueStatusView);
-			issueStatusView.SetBackgroundColor(_issue.State == Octokit.ItemState.Open ?
-											   Android.Graphics.Color.Green :
-											   Android.Graphics.Color.Red);
+			var issueTitleTextView = FindViewById<TextView>(Resource.Id.IssueTitle);
+			issueTitleTextView.Text = _issue.Title;
 
+			var issueStatusTextView = FindViewById<TextView>(Resource.Id.IssueStatusTextView);
+			issueStatusTextView.Text = _issue.State.ToString();
+
+			issueStatusTextView.SetBackgroundColor(_issue.State == Octokit.ItemState.Closed ? 
+			                                       Resources.GetColor(Resource.Color.closed_issue) : 
+			                                       Resources.GetColor(Resource.Color.open_issue));
+
+			var issueCreatedAtTextView = FindViewById<TextView>(Resource.Id.IssueCreatedAtTextView);
+			issueCreatedAtTextView.Text = _issue.CreatedAt.ToString();
 
 			var _layoutManager = new LinearLayoutManager(this,LinearLayoutManager.Horizontal,false);
 

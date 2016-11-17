@@ -7,25 +7,57 @@
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar" />
-    <View
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:id="@+id/IssueStatusView" />
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="Large Text"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/IssueTitle"
+            android:layout_margin="3dp" />
+        <TextView
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/IssueBodyTextView"
+            tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam imperdiet posuere gravida. Morbi quis varius leo, eget dignissim est. Vestibulum volutpat urna ac enim sodales, id placerat sapien bibendum. Suspendisse blandit volutpat nulla sed suscipit. Phasellus pharetra ipsum purus, id consectetur risus posuere quis. Aliquam erat volutpat. Suspendisse purus massa."
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/IssueTitle"
+            android:layout_margin="3dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:padding="0dp"
+            android:layout_below="@id/IssueBodyTextView"
+            android:background="#ffe0e0e0">
+            <TextView
+                android:text="Small Text"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/IssueCreatedAtTextView"
+                android:padding="4dp" />
+            <TextView
+                android:text="Small Text"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/IssueStatusTextView"
+                android:padding="4dp" />
+        </LinearLayout>
+    </RelativeLayout>
     <android.support.v7.widget.RecyclerView
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/LabelsRecyclerView" />
-    <TextView
-        android:text="Medium Text"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/IssueBodyTextView"
-        tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam imperdiet posuere gravida. Morbi quis varius leo, eget dignissim est. Vestibulum volutpat urna ac enim sodales, id placerat sapien bibendum. Suspendisse blandit volutpat nulla sed suscipit. Phasellus pharetra ipsum purus, id consectetur risus posuere quis. Aliquam erat volutpat. Suspendisse purus massa."
-        android:layout_margin="5dp" />
-  <android.support.v7.widget.RecyclerView
+        android:id="@+id/LabelsRecyclerView"
+        android:background="#ffffffff" />
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/IssueCommentsListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

@@ -40,8 +40,9 @@ namespace MyIssues.Droid.Adapters
 			var h = holder as IssueCommentViewHolder;
 
 			var issue = _items[position];
-            h.IssueCommentAuthor.Text = issue.User.Name;
+            h.IssueCommentAuthor.Text = issue.User.Login;
             h.IssueCommentBody.Text = issue.Body;
+			h.IssueCommentDate.Text = issue.CreatedAt.ToString();
             //h.Bind(issue, OnIssueSelected);
         }
 
@@ -63,11 +64,13 @@ namespace MyIssues.Droid.Adapters
 	{
 		public TextView IssueCommentAuthor { get; private set; }
 		public TextView IssueCommentBody { get; private set; }
+		public TextView IssueCommentDate { get; private set; }
 
 		public IssueCommentViewHolder(View itemView) : base(itemView)
 		{
             IssueCommentAuthor = itemView.FindViewById<TextView>(Resource.Id.IssueCommentAuthor);
             IssueCommentBody = itemView.FindViewById<TextView>(Resource.Id.IssueCommentBody);
+			IssueCommentDate = itemView.FindViewById<TextView>(Resource.Id.IssueCommentDate);
 		}
 
 		Issue _boundIssue;

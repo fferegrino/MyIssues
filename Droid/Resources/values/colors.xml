@@ -4,4 +4,6 @@
   <color name="primaryDark">#1976D2</color>
   <color name="accent">#007acc</color>
   <color name="window_background">#EEEEF2</color>
+	<color name="open_issue">#6cc644</color>
+	<color name="closed_issue">#bd2c00</color>
 </resources>

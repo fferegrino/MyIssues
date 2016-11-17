@@ -127,6 +127,7 @@
     <Compile Include="IssueActivity.cs" />
     <Compile Include="ReposActivity.cs" />
     <Compile Include="Adapters\LabelsAdapter.cs" />
+    <Compile Include="Adapters\IssueCommentsAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -148,6 +149,7 @@
     <AndroidResource Include="Resources\menu\SearchMenu.xml" />
     <AndroidResource Include="Resources\xml\searchable.xml" />
     <AndroidResource Include="Resources\layout\LabelCardView.axml" />
+    <AndroidResource Include="Resources\layout\IssueCommentView.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml" />
