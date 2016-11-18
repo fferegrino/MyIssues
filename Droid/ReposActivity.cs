@@ -33,7 +33,7 @@ namespace MyIssues.Droid
 		protected override async void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
-            _client = GitHubClient.Client("234234234234");
+            _client = GitHubClient.Client();
 
 			SetContentView(Resource.Layout.Repos);
 			var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);

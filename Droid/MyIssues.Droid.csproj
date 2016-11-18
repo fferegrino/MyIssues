@@ -131,6 +131,7 @@
     <Compile Include="ReposActivity.cs" />
     <Compile Include="Adapters\LabelsAdapter.cs" />
     <Compile Include="Adapters\IssueCommentsAdapter.cs" />
+    <Compile Include="Controls\RecyclerViewEmptySupport.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -153,6 +154,7 @@
     <AndroidResource Include="Resources\xml\searchable.xml" />
     <AndroidResource Include="Resources\layout\LabelCardView.axml" />
     <AndroidResource Include="Resources\layout\IssueCommentView.axml" />
+    <AndroidResource Include="Resources\menu\IssuesMenu.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml" />
@@ -177,6 +179,7 @@
     <Folder Include="Adapters\" />
     <Folder Include="Resources\menu\" />
     <Folder Include="Resources\xml\" />
+    <Folder Include="Controls\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

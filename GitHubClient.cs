@@ -20,6 +20,8 @@ namespace MyIssues
         }
 
         string _accessToken;
+		string currentUser = "jamesmontemagno";
+		string currentRepo = "SettingsPlugin";
         Octokit.GitHubClient _client;
 
         private GitHubClient(string accessToken)
@@ -37,14 +39,14 @@ namespace MyIssues
 
         public async Task<IReadOnlyList<Octokit.Repository>> GetRepositoriesForUser()
         {
-            return await _client.Repository.GetAllForCurrent();
+			return await _client.Repository.GetAllForUser(currentUser);
         }
 
         public async Task<IReadOnlyList<Octokit.Repository>> SearchRepositoriesForUser(string repoName)
         {
             var request = new SearchRepositoriesRequest(repoName)
             {
-                User = "fferegrino"
+                User = currentUser
             };
             var result = await _client.Search.SearchRepo(request);
             return result.Items;
@@ -52,19 +54,19 @@ namespace MyIssues
 
         public async Task<Octokit.Repository> GetRepo(string name)
         {
-            return await _client.Repository.Get("fferegrino", name);
+            return await _client.Repository.Get(currentUser, name);
         }
 
         public async Task<Octokit.Issue> GetIssue(int number)
         {
 
-            return await _client.Issue.Get("fferegrino", "that-c-sharp-guy", number);
+            return await _client.Issue.Get(currentUser, currentRepo, number);
         }
 
         public async Task<IReadOnlyList<Octokit.IssueComment>> GetIssueComments(int number)
         {
 
-            return await _client.Issue.Comment.GetAllForIssue("fferegrino", "that-c-sharp-guy", number);
+            return await _client.Issue.Comment.GetAllForIssue(currentUser, currentRepo, number);
         }
 
         public async Task<IReadOnlyList<Issue>> GetIssues(string repoName)
@@ -73,14 +75,14 @@ namespace MyIssues
             {
                 await GetLabels();
             }
-            return await _client.Issue.GetAllForRepository("fferegrino", repoName);
+            return await _client.Issue.GetAllForRepository(currentUser, repoName);
         }
 
         public static Dictionary<string, int[]> LabelColors;
         public async Task GetLabels()
         {
             LabelColors = new Dictionary<string, int[]>();
-            var labels = await _client.Issue.Labels.GetAllForRepository("fferegrino", "that-c-sharp-guy");
+            var labels = await _client.Issue.Labels.GetAllForRepository(currentUser, currentRepo);
             var lbls = labels.Select(l => new { l.Name, Color = GetColor(l.Color) });
             foreach (var ll in lbls)
             {

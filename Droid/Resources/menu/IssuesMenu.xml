@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<menu 
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:app="http://schemas.android.com/tools"
+		xmlns:appcompat="http://schemas.android.com/apk/com.thatchsarpguy.myissues">
+
+	    <item
+        android:id="@+id/SwitchRepoMenu"
+        android:title="@string/SwitchRepoText"
+        android:orderInCategory="100"
+        app:showAsAction="never"/>
+</menu>

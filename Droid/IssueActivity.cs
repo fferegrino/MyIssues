@@ -50,7 +50,15 @@ namespace MyIssues.Droid
 		{
 			_issue = await _client.GetIssue(number);
 			var issueBodyTextView = FindViewById<TextView>(Resource.Id.IssueBodyTextView);
-			issueBodyTextView.Text = _issue.Body;
+			if (String.IsNullOrEmpty(_issue.Body))
+			{
+				issueBodyTextView.Visibility = ViewStates.Gone;
+			}
+			else 
+			{
+				issueBodyTextView.Visibility = ViewStates.Visible;
+				issueBodyTextView.Text = _issue.Body;
+			}
 
 			var issueTitleTextView = FindViewById<TextView>(Resource.Id.IssueTitle);
 			issueTitleTextView.Text = _issue.Title;

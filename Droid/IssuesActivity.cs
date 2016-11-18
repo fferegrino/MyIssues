@@ -13,6 +13,7 @@ using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
 using MyIssues.Droid.Adapters;
+using MyIssues.Droid.Controls;
 
 namespace MyIssues.Droid
 {
@@ -22,7 +23,7 @@ namespace MyIssues.Droid
     public class IssuesActivity : AppCompatActivity
     {
         const int SelectRepoRequestCode = 1;
-        RecyclerView _issuesListView;
+		MyIssues.Droid.Controls.RecyclerViewEmptySupport _issuesListView;
         RecyclerView.LayoutManager _layoutManager;
         GitHubClient _client;
         Octokit.Repository _repo;
@@ -38,16 +39,17 @@ namespace MyIssues.Droid
             _client = GitHubClient.Client();
 
 
-            _issuesListView = FindViewById<RecyclerView>(Resource.Id.issuesListView);
+            _issuesListView = FindViewById<RecyclerViewEmptySupport>(Resource.Id.issuesListView);
+			var view = FindViewById(Resource.Id.list_empty);
+			_issuesListView.EmptyView = view;
             _layoutManager = new LinearLayoutManager(this);
             _issuesListView.SetLayoutManager(_layoutManager);
 
 
-            string repo = "that-c-sharp-guy";
+            string repo = null;
             if (repo == null)
             {
-                var i = new Intent(this, typeof(ReposActivity));
-                StartActivityForResult(i, SelectRepoRequestCode);
+				OpenRepoSelector();
             }
             else
             {
@@ -76,6 +78,13 @@ namespace MyIssues.Droid
             _issuesListView.SetAdapter(adapter);
         }
 
+		void OpenRepoSelector()
+		{
+
+            var i = new Intent(this, typeof(ReposActivity));
+			StartActivityForResult(i, SelectRepoRequestCode);
+		}
+
         protected override async void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
         {
             if (requestCode == SelectRepoRequestCode)
@@ -88,5 +97,25 @@ namespace MyIssues.Droid
                 base.OnActivityResult(requestCode, resultCode, data);
             }
         }
+
+		public override bool OnCreateOptionsMenu(IMenu menu)
+		{
+
+			MenuInflater.Inflate(Resource.Menu.IssuesMenu, menu);
+			return true;
+		}
+
+		public override bool OnOptionsItemSelected(IMenuItem item)
+		{
+			switch (item.ItemId)
+			{
+				case Resource.Id.SwitchRepoMenu:
+					OpenRepoSelector();
+					break;
+				default:
+					return base.OnOptionsItemSelected(item);
+			}
+			return true;
+		}
     }
 }
