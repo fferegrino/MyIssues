@@ -13,6 +13,8 @@ using Android.Views;
 using Android.Widget;
 using MyIssues.Droid.Adapters;
 using Humanizer;
+using MyIssues.DataAccess;
+using Android.Support.Design.Widget;
 
 namespace MyIssues.Droid
 {
@@ -21,7 +23,7 @@ namespace MyIssues.Droid
 	public class IssueActivity : AppCompatActivity
 	{
 
-        GitHubClient _client;
+        Storage _storage;
 		Octokit.Issue _issue;
 
 		protected override async void OnCreate(Bundle savedInstanceState)
@@ -29,16 +31,21 @@ namespace MyIssues.Droid
 			base.OnCreate(savedInstanceState);
 
 			SetContentView(Resource.Layout.Issue);
-			var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
-			SetSupportActionBar(toolbar);
+            var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
+            SetSupportActionBar(toolbar);
 
-			var title = Intent.GetStringExtra("title");
+            var title = Intent.GetStringExtra("title");
 			var id = Intent.GetIntExtra("id", -1); 
 			var number = Intent.GetIntExtra("number", -1);
 
 			Title = $"Issue #{number}";
 
-			_client = GitHubClient.Client();
+
+            //CollapsingToolbarLayout collapsingToolbar =
+            //        (CollapsingToolbarLayout)FindViewById(Resource.Id.collapsing_toolbar);
+
+
+            _storage = Storage.GetInstance();
 			await LoadIssue(number);
 
             await LoadIssueComments(number);
@@ -48,18 +55,18 @@ namespace MyIssues.Droid
 
 		async Task LoadIssue(int number)
 		{
-			_issue = await _client.GetIssue(number);
+            _issue = await _storage.GetIssue(number);
             var issueBodyTextView = FindViewById<TextView>(Resource.Id.IssueBodyTextView);
             var viewMoreIssueButton = FindViewById<Button>(Resource.Id.ViewMoreIssueButton);
             if (String.IsNullOrEmpty(_issue.Body))
-			{
-				issueBodyTextView.Visibility = ViewStates.Gone;
-			}
-			else 
-			{
-				issueBodyTextView.Visibility = ViewStates.Visible;
+            {
+                issueBodyTextView.Visibility = ViewStates.Gone;
+            }
+            else
+            {
+                issueBodyTextView.Visibility = ViewStates.Visible;
                 const int bodyLength = 50;
-                if(_issue.Body.Length > bodyLength)
+                if (_issue.Body.Length > bodyLength)
                 {
                     issueBodyTextView.Text = _issue.Body.Truncate(bodyLength, Truncator.FixedNumberOfWords);
                     viewMoreIssueButton.Visibility = ViewStates.Visible;
@@ -70,28 +77,28 @@ namespace MyIssues.Droid
                     issueBodyTextView.Text = _issue.Body;
                     viewMoreIssueButton.Visibility = ViewStates.Gone;
                 }
-			}
+            }
 
-			var issueTitleTextView = FindViewById<TextView>(Resource.Id.IssueTitle);
-			issueTitleTextView.Text = _issue.Title;
+            var issueTitleTextView = FindViewById<TextView>(Resource.Id.IssueTitle);
+            issueTitleTextView.Text = _issue.Title;
 
-			var issueStatusTextView = FindViewById<TextView>(Resource.Id.IssueStatusTextView);
-			issueStatusTextView.Text = _issue.State.ToString();
+            var issueStatusTextView = FindViewById<TextView>(Resource.Id.IssueStatusTextView);
+            issueStatusTextView.Text = _issue.State.ToString();
 
-			issueStatusTextView.SetBackgroundColor(_issue.State == Octokit.ItemState.Closed ? 
-			                                       Resources.GetColor(Resource.Color.closed_issue) : 
-			                                       Resources.GetColor(Resource.Color.open_issue));
+            issueStatusTextView.SetBackgroundColor(_issue.State == Octokit.ItemState.Closed ?
+                                                   Resources.GetColor(Resource.Color.closed_issue) :
+                                                   Resources.GetColor(Resource.Color.open_issue));
 
-			var issueCreatedAtTextView = FindViewById<TextView>(Resource.Id.IssueCreatedAtTextView);
-			issueCreatedAtTextView.Text = _issue.CreatedAt.Humanize(DateTimeOffset.Now);
+            var issueCreatedAtTextView = FindViewById<TextView>(Resource.Id.IssueCreatedAtTextView);
+            issueCreatedAtTextView.Text = _issue.CreatedAt.Humanize(DateTimeOffset.Now);
 
-			var _layoutManager = new LinearLayoutManager(this,LinearLayoutManager.Horizontal,false);
+            var _layoutManager = new LinearLayoutManager(this, LinearLayoutManager.Horizontal, false);
 
-			var labelsRecyclerView = FindViewById<RecyclerView>(Resource.Id.LabelsRecyclerView);
-			labelsRecyclerView.SetLayoutManager(_layoutManager);
+            var labelsRecyclerView = FindViewById<RecyclerView>(Resource.Id.LabelsRecyclerView);
+            labelsRecyclerView.SetLayoutManager(_layoutManager);
 
-			var adapter = new LabelsAdapter(_issue.Labels.ToList());
-			labelsRecyclerView.SetAdapter(adapter);
+            var adapter = new LabelsAdapter(_issue.Labels.ToList());
+            labelsRecyclerView.SetAdapter(adapter);
 
             //System.Diagnostics.Debug.WriteLine("Comments : " + _issue.CommentsUrl);
         }
@@ -126,7 +133,7 @@ namespace MyIssues.Droid
 
         async Task LoadIssueComments(int number)
         {
-            var comments = (await _client.GetIssueComments(number)).ToList();
+            var comments = (await _storage.GetIssueComments(number)).ToList();
 
 
 

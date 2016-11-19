@@ -14,6 +14,7 @@ using Android.Views;
 using Android.Widget;
 using Java.Lang;
 using Octokit;
+using MyIssues.DataAccess;
 
 namespace MyIssues.Droid.Adapters
 {
@@ -57,7 +58,7 @@ namespace MyIssues.Droid.Adapters
 
 			for (int i = 0; i < issue.Labels.Count && i < h.LabelColorViews.Length; i++)
 			{
-				var c = GitHubClient.LabelColors[issue.Labels[i].Name];
+				var c = Storage.LabelColors[issue.Labels[i].Name];
 				h.LabelColorViews[i].SetBackgroundColor(Color.Argb(255, c[0], c[1], c[2]));
 			}
 

@@ -16,6 +16,7 @@ using Android.Widget;
 using MyIssues.Droid.Adapters;
 using Xamarin.Auth;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
+using MyIssues.DataAccess;
 
 namespace MyIssues.Droid
 {
@@ -27,13 +28,13 @@ namespace MyIssues.Droid
 	{
 
 		ListView _reposListView;
-		GitHubClient _client;
+		Storage _storage;
        List< Octokit.Repository> repos;
 
 		protected override async void OnCreate(Bundle savedInstanceState)
 		{
-			base.OnCreate(savedInstanceState);
-            _client = GitHubClient.Client();
+            base.OnCreate(savedInstanceState);
+            _storage = Storage.GetInstance();
 
 			SetContentView(Resource.Layout.Repos);
 			var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
@@ -42,7 +43,7 @@ namespace MyIssues.Droid
 
 			_reposListView = FindViewById<ListView>(Resource.Id.reposListView);
 
-			var repos1 = await _client.GetRepositoriesForUser();
+			var repos1 = await _storage.GetRepositoriesForUser();
 			repos = repos1.ToList();
 
 			var adapter = new ReposAdapter(this, repos);
