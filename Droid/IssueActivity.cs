@@ -49,15 +49,27 @@ namespace MyIssues.Droid
 		async Task LoadIssue(int number)
 		{
 			_issue = await _client.GetIssue(number);
-			var issueBodyTextView = FindViewById<TextView>(Resource.Id.IssueBodyTextView);
-			if (String.IsNullOrEmpty(_issue.Body))
+            var issueBodyTextView = FindViewById<TextView>(Resource.Id.IssueBodyTextView);
+            var viewMoreIssueButton = FindViewById<Button>(Resource.Id.ViewMoreIssueButton);
+            if (String.IsNullOrEmpty(_issue.Body))
 			{
 				issueBodyTextView.Visibility = ViewStates.Gone;
 			}
 			else 
 			{
 				issueBodyTextView.Visibility = ViewStates.Visible;
-				issueBodyTextView.Text = _issue.Body;
+                const int bodyLength = 50;
+                if(_issue.Body.Length > bodyLength)
+                {
+                    issueBodyTextView.Text = _issue.Body.Truncate(bodyLength, Truncator.FixedNumberOfWords);
+                    viewMoreIssueButton.Visibility = ViewStates.Visible;
+                    viewMoreIssueButton.Click += ViewMoreIssueButton_Click;
+                }
+                else
+                {
+                    issueBodyTextView.Text = _issue.Body;
+                    viewMoreIssueButton.Visibility = ViewStates.Gone;
+                }
 			}
 
 			var issueTitleTextView = FindViewById<TextView>(Resource.Id.IssueTitle);
@@ -82,6 +94,34 @@ namespace MyIssues.Droid
 			labelsRecyclerView.SetAdapter(adapter);
 
             //System.Diagnostics.Debug.WriteLine("Comments : " + _issue.CommentsUrl);
+        }
+
+        private void ViewMoreIssueButton_Click(object sender, EventArgs e)
+        {
+
+            View popupView = LayoutInflater.Inflate(Resource.Layout.MarkdownExtendedCardView, null);
+
+            PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.MatchParent);
+
+
+    // If the PopupWindow should be focusable
+    popupWindow.Focusable = (true);
+            popupWindow.SetBackgroundDrawable(new Android.Graphics.Drawables.ColorDrawable(Android.Graphics.Color.Transparent));
+
+            var fullMarkdownTextView = popupView.FindViewById<TextView>(Resource.Id.FullMarkdownTextView);
+            fullMarkdownTextView.Text = _issue.Body;
+            
+
+            int[] location = new int[2];
+
+            // Get the View's(the one that was clicked in the Fragment) location
+            var anchorView = sender as Button;
+            anchorView.GetLocationOnScreen(location);
+
+            // Using location, the PopupWindow will be displayed right under anchorView
+            popupWindow.ShowAtLocation(anchorView,GravityFlags.NoGravity,
+                                            0, 0);
+
         }
 
         async Task LoadIssueComments(int number)

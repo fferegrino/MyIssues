@@ -20,8 +20,8 @@ namespace MyIssues
         }
 
         string _accessToken;
-		string currentUser = "jamesmontemagno";
-		string currentRepo = "SettingsPlugin";
+		string currentUser = "fferegrino";
+		string currentRepo = "that-c-sharp-guy";
         Octokit.GitHubClient _client;
 
         private GitHubClient(string accessToken)

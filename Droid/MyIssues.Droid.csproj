@@ -8,14 +8,14 @@
     <OutputType>Library</OutputType>
     <RootNamespace>MyIssues.Droid</RootNamespace>
     <AssemblyName>MyIssues.Droid</AssemblyName>
-    <TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
+    <AndroidUseLatestPlatformSdk>False</AndroidUseLatestPlatformSdk>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
@@ -148,13 +148,21 @@
     <AndroidResource Include="Resources\layout\Repos.axml" />
     <AndroidResource Include="Resources\layout\ListItemRepo.axml" />
     <AndroidResource Include="Resources\layout\Issues.axml" />
-    <AndroidResource Include="Resources\layout\IssueCardView.axml" />
+    <AndroidResource Include="Resources\layout\IssueCardView.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <AndroidResource Include="Resources\layout\Issue.axml" />
     <AndroidResource Include="Resources\menu\SearchMenu.xml" />
     <AndroidResource Include="Resources\xml\searchable.xml" />
     <AndroidResource Include="Resources\layout\LabelCardView.axml" />
     <AndroidResource Include="Resources\layout\IssueCommentView.axml" />
     <AndroidResource Include="Resources\menu\IssuesMenu.xml" />
+    <AndroidResource Include="Resources\layout\EmptyListView.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\MarkdownExtendedCardView.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml" />
@@ -175,12 +183,7 @@
   <ItemGroup>
     <AndroidResource Include="Resources\values-v21\style.xml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Adapters\" />
-    <Folder Include="Resources\menu\" />
-    <Folder Include="Resources\xml\" />
-    <Folder Include="Controls\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

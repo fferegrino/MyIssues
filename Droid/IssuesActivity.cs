@@ -40,13 +40,14 @@ namespace MyIssues.Droid
 
 
             _issuesListView = FindViewById<RecyclerViewEmptySupport>(Resource.Id.issuesListView);
-			var view = FindViewById(Resource.Id.list_empty);
-			_issuesListView.EmptyView = view;
+
+            var view = FindViewById(Resource.Id.EmptyListView);
+            _issuesListView.EmptyView = view;
             _layoutManager = new LinearLayoutManager(this);
             _issuesListView.SetLayoutManager(_layoutManager);
 
 
-            string repo = null;
+            string repo = "that-c-sharp-guy";
             if (repo == null)
             {
 				OpenRepoSelector();
