@@ -15,7 +15,7 @@
     <TextView
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:text="No hay elementos para mostrar"
-        style="@style/Base.TextAppearance.AppCompat.Headline"
+        android:text="@string/emptyListText"
+        style="@style/SecondaryText"
         android:gravity="center" />
 </LinearLayout>

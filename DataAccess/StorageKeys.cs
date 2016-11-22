@@ -12,6 +12,7 @@ namespace MyIssues.DataAccess
         public const string Issues = "Issues";
         public const string Login = "Login";
         public const string WorkingRepo = "WorkingRepo";
+        public const string Repositories = "Repos";
         public const string Token = "Token";
     }
 }

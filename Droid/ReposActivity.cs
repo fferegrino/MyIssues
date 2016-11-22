@@ -29,7 +29,7 @@ namespace MyIssues.Droid
 
 		ListView _reposListView;
 		Storage _storage;
-       List< Octokit.Repository> repos;
+       List< Models.Repository> repos;
 
 		protected override async void OnCreate(Bundle savedInstanceState)
 		{
@@ -60,6 +60,7 @@ namespace MyIssues.Droid
             
             Intent returnIntent = new Intent();
             returnIntent.PutExtra("repoName", repos[e.Position].Name);
+            returnIntent.PutExtra("repoId", repos[e.Position].Id);
             SetResult(Result.Ok, returnIntent);
             this.Finish();
         }

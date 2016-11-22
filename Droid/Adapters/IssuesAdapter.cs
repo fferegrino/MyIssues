@@ -19,19 +19,26 @@ using MyIssues.DataAccess;
 namespace MyIssues.Droid.Adapters
 {
 
-	public delegate void SelectedIssue(Issue selected);
+	public delegate void SelectedIssue(Models.Issue selected);
 
 	public class IssuesAdapter : RecyclerView.Adapter
 	{
-		private List<Octokit.Issue> _items;
+		private List<Models.Issue> _items;
 		public event SelectedIssue OnIssueSelected;
 
-		public IssuesAdapter(List<Octokit.Issue> items)
+		public IssuesAdapter(List<Models.Issue> items)
 		{
 			_items = items;
 		}
 
-		public override int ItemCount
+        public void Update(List<Models.Issue> issues)
+        {
+            _items.Clear();
+            _items.AddRange(issues);
+            NotifyDataSetChanged();
+        }
+
+        public override int ItemCount
 		{
 			get
 			{
@@ -45,7 +52,7 @@ namespace MyIssues.Droid.Adapters
 
 			var issue = _items[position];
 			h.IssueListTitle.Text = issue.Title;
-			var milestone = issue.Milestone?.Title;
+			var milestone = issue.Milestone;
 			if (System.String.IsNullOrWhiteSpace(milestone))
 			{
 				h.IssueListMilestone.Visibility = ViewStates.Gone;
@@ -56,10 +63,17 @@ namespace MyIssues.Droid.Adapters
 				h.IssueListMilestone.Text = milestone;
 			}
 
-			for (int i = 0; i < issue.Labels.Count && i < h.LabelColorViews.Length; i++)
+			for (int i = 0; i < issue.Labels?.Count && i < h.LabelColorViews.Length; i++)
 			{
-				var c = Storage.LabelColors[issue.Labels[i].Name];
-				h.LabelColorViews[i].SetBackgroundColor(Color.Argb(255, c[0], c[1], c[2]));
+                int[] c;
+                if(Storage.LabelColors.TryGetValue(issue.Labels[i].Name, out c))
+                {
+                    h.LabelColorViews[i].SetBackgroundColor(Color.Argb(255, c[0], c[1], c[2]));
+                }
+                else
+                {
+                    h.LabelColorViews[i].SetBackgroundColor(Color.LightGray);
+                }
 			}
 
 			h.Bind(issue, OnIssueSelected);
@@ -101,9 +115,9 @@ namespace MyIssues.Droid.Adapters
 			itemView.Click += ItemView_Click;
 		}
 
-		Issue _boundIssue;
+        Models.Issue _boundIssue;
 		SelectedIssue _l;
-		public void Bind( Issue item,  SelectedIssue listener)
+		public void Bind(Models.Issue item,  SelectedIssue listener)
 		{
 			_boundIssue = item;
 			_l = listener;

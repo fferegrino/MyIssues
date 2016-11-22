@@ -16,16 +16,18 @@ using MyIssues.Droid.Adapters;
 using MyIssues.Droid.Controls;
 using MyIssues.DataAccess;
 using Android.Support.Design.Widget;
+using Android.Support.V4.Widget;
 
 namespace MyIssues.Droid
 {
 
     [Activity(Label = "Issues",
         Theme = "@style/MyTheme")]
-    public class IssuesActivity : AppCompatActivity
+    public class IssuesActivity : AppCompatActivity, SwipeRefreshLayout.IOnRefreshListener
     {
         const int SelectRepoRequestCode = 1;
         MyIssues.Droid.Controls.RecyclerViewEmptySupport _issuesListView;
+        SwipeRefreshLayout _refreshLayout;
         RecyclerView.LayoutManager _layoutManager;
         Storage _storage;
         Octokit.Repository _repo;
@@ -37,7 +39,9 @@ namespace MyIssues.Droid
             var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
             SetSupportActionBar(toolbar);
 
+            _refreshLayout = FindViewById<SwipeRefreshLayout>(Resource.Id.SwipeIssuesContainer);
 
+            _refreshLayout.SetOnRefreshListener(this);
             _storage = Storage.GetInstance();
 
 
@@ -50,8 +54,8 @@ namespace MyIssues.Droid
 
 
 
-            string repo = "that-c-sharp-guy";// await _storage.GetWorkingRepo();
-            if (repo == null)
+            long repo = await _storage.GetWorkingRepo();
+            if (repo == 0)
             {
                 OpenRepoSelector();
             }
@@ -61,24 +65,24 @@ namespace MyIssues.Droid
             }
         }
 
-        private async Task LoadRepo(string repo)
+        private async Task LoadRepo(long repoId)
         {
             try
             {
-                await _storage.SetWorkingRepo(repo);
+                await _storage.SetWorkingRepo(repoId);
             }
-            catch
+            catch(Exception e)
             {
                 OpenRepoSelector();
                 return;
             }
-            _repo = await _storage.GetRepo(repo);
+            _repo = await _storage.GetRepo(repoId);
 
             Title = _repo.Name;
-            var issues = await _storage.GetIssues();
+            _storage.GetIssues(UpdateIssues);
 
-            var adapter = new IssuesAdapter(issues.ToList());
 
+            var adapter = new IssuesAdapter(new List<Models.Issue>());
             adapter.OnIssueSelected += (selected) =>
             {
                 Intent intent = new Intent(this, typeof(IssueActivity));
@@ -90,6 +94,19 @@ namespace MyIssues.Droid
             _issuesListView.SetAdapter(adapter);
         }
 
+        private Handler updateHandler;
+        void UpdateIssues(List<Models.Issue> issues)
+        {
+            using (var h = new Handler(Looper.MainLooper))
+                h.Post(() =>
+                {
+                    (_issuesListView.GetAdapter() as IssuesAdapter).Update(issues);
+                    _refreshLayout.Refreshing = false;
+                });
+            System.Diagnostics.Debug.WriteLine("Updated: " + issues.Count);
+
+        }
+
         void OpenRepoSelector()
         {
             var i = new Intent(this, typeof(ReposActivity));
@@ -98,10 +115,11 @@ namespace MyIssues.Droid
 
         protected override async void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
         {
-            if (requestCode == SelectRepoRequestCode)
+            if (requestCode == SelectRepoRequestCode && resultCode == Result.Ok)
             {
                 var repoName = data.GetStringExtra("repoName");
-                await LoadRepo(repoName);
+                var repoId = data.GetLongExtra("repoId", 0);
+                await LoadRepo(repoId);
             }
             else
             {
@@ -127,6 +145,12 @@ namespace MyIssues.Droid
                     return base.OnOptionsItemSelected(item);
             }
             return true;
+        }
+
+        public async void OnRefresh()
+        {
+            _refreshLayout.Refreshing = true;
+             _storage.GetIssues(UpdateIssues);
         }
     }
 }

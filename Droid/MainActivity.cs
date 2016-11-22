@@ -13,6 +13,7 @@ namespace MyIssues.Droid
     [Activity(Label = "MyIssues",
         MainLauncher = true,
         Theme = "@style/MyTheme",
+        NoHistory = true,
         Icon = "@mipmap/icon")]
     public class MainActivity : AppCompatActivity
     {
@@ -31,9 +32,9 @@ namespace MyIssues.Droid
 
             // Get our button from the layout resource,
             // and attach an event to it
-            Button button = FindViewById<Button>(Resource.Id.myButton);
+            Button button = FindViewById<Button>(Resource.Id.SetAccessTokenButton);
 
-            var accessToken = "081821f76f6d5b53cfbebc63aaa80a78993be3f9";
+            string accessToken =  "081821f76f6d5b53cfbebc63aaa80a78993be3f9";
 
             if (accessToken == null)
             {

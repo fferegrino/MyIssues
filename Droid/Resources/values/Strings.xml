@@ -1,6 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="hello">Hello World, Click Me!</string>
-  <string name="app_name">MyIssues.Droid</string>
-  <string name="SwitchRepoText">Cambia repo</string>
+    <string name="hello">Hello World, Click Me!</string>
+    <string name="app_name">MyIssues.Droid</string>
+    <string name="SwitchRepoText">Switch repo</string>
+    <string name="viewMore">View more...</string>
+    <string name="emptyListText">No hay elementos para mostrar</string>
+    <string name="set_your_access_token">Set your access token</string>
+    <string name="set_access_token">Establecer token</string>
+
+
 </resources>

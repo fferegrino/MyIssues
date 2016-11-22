@@ -1,102 +1,98 @@
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
- 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbarLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" >
-
-	<android.support.v7.widget.Toolbar
-		android:layout_height="?attr/actionBarSize"
-		android:layout_width="match_parent"
-		android:minHeight="?attr/actionBarSize"
-		android:background="?attr/colorPrimary"
-		app:layout_scrollFlags="scroll|enterAlways"
-		android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-		app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-
-
-	
-            <RelativeLayout
+        android:layout_height="wrap_content">
+		
+		<android.support.v7.widget.Toolbar
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="?attr/colorPrimary"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+<!--
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar"
+            app:layout_scrollFlags="scroll|snap" />
+			-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            app:layout_scrollFlags="scroll|snap"
+            android:padding="0dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/IssueTitle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/IssueTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="3dp"
-                    android:text="Large Text"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
-
-                <TextView
-                    android:id="@+id/IssueBodyTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/IssueTitle"
-                    android:layout_margin="3dp"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam imperdiet posuere gravida. Morbi quis varius leo, eget dignissim est. Vestibulum volutpat urna ac enim sodales, id placerat sapien bibendum. Suspendisse blandit volutpat nulla sed suscipit. Phasellus pharetra ipsum purus, id consectetur risus posuere quis. Aliquam erat volutpat. Suspendisse purus massa." />
-
-                <Button
-                    android:id="@+id/ViewMoreIssueButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/IssueBodyTextView"
-                    android:gravity="center_vertical|right"
-                    android:text="View more..." />
-            </RelativeLayout>
-	
-     <android.support.v7.widget.RecyclerView
-        android:id="@+id/LabelsRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-		app:layout_scrollFlags="scroll|enterAlways"
-        android:background="#ffffffff"
-        android:minHeight="25dp"
-        android:minWidth="25dp"/>
-
+                android:layout_height="wrap_content"
+                android:text="Large Text"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:typeface="sans"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp" />
+            <TextView
+                android:id="@+id/IssueBodyTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam imperdiet posuere gravida. Morbi quis varius leo, eget dignissim est. Vestibulum volutpat urna ac enim sodales, id placerat sapien bibendum. Suspendisse blandit volutpat nulla sed suscipit. Phasellus pharetra ipsum purus, id consectetur risus posuere quis. Aliquam erat volutpat. Suspendisse purus massa."
+                android:maxLines="5"
+                android:textColor="#000000"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp" />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/LabelsRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#0e000000"
+                android:minHeight="25dp"
+                android:minWidth="25dp" />
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#ffe0e0e0"
             android:orientation="horizontal"
             android:padding="0dp">
-
             <TextView
                 android:id="@+id/IssueCreatedAtTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="5"
                 android:padding="4dp"
                 android:text="Small Text"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
-
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#000000"
+                android:background="#15000000" />
             <TextView
                 android:id="@+id/IssueStatusTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@color/open_issue"
+                android:layout_weight="2"
+                android:background="@color/openIssue"
                 android:padding="4dp"
                 android:text="Small Text"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#ffffffff"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:gravity="right" />
         </LinearLayout>
-
-
     </android.support.design.widget.AppBarLayout>
- 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/IssueCommentsListView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" 
+        android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
- 
 </android.support.design.widget.CoordinatorLayout>

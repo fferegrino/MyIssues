@@ -57,7 +57,6 @@ namespace MyIssues.Droid
 		{
             _issue = await _storage.GetIssue(number);
             var issueBodyTextView = FindViewById<TextView>(Resource.Id.IssueBodyTextView);
-            var viewMoreIssueButton = FindViewById<Button>(Resource.Id.ViewMoreIssueButton);
             if (String.IsNullOrEmpty(_issue.Body))
             {
                 issueBodyTextView.Visibility = ViewStates.Gone;
@@ -65,18 +64,9 @@ namespace MyIssues.Droid
             else
             {
                 issueBodyTextView.Visibility = ViewStates.Visible;
+                issueBodyTextView.Click += ViewMoreIssueButton_Click;
                 const int bodyLength = 50;
-                if (_issue.Body.Length > bodyLength)
-                {
-                    issueBodyTextView.Text = _issue.Body.Truncate(bodyLength, Truncator.FixedNumberOfWords);
-                    viewMoreIssueButton.Visibility = ViewStates.Visible;
-                    viewMoreIssueButton.Click += ViewMoreIssueButton_Click;
-                }
-                else
-                {
-                    issueBodyTextView.Text = _issue.Body;
-                    viewMoreIssueButton.Visibility = ViewStates.Gone;
-                }
+                issueBodyTextView.Text = _issue.Body.Truncate(bodyLength, Truncator.FixedNumberOfWords);
             }
 
             var issueTitleTextView = FindViewById<TextView>(Resource.Id.IssueTitle);
@@ -86,8 +76,8 @@ namespace MyIssues.Droid
             issueStatusTextView.Text = _issue.State.ToString();
 
             issueStatusTextView.SetBackgroundColor(_issue.State == Octokit.ItemState.Closed ?
-                                                   Resources.GetColor(Resource.Color.closed_issue) :
-                                                   Resources.GetColor(Resource.Color.open_issue));
+                                                   Resources.GetColor(Resource.Color.closedIssue) :
+                                                   Resources.GetColor(Resource.Color.openIssue));
 
             var issueCreatedAtTextView = FindViewById<TextView>(Resource.Id.IssueCreatedAtTextView);
             issueCreatedAtTextView.Text = _issue.CreatedAt.Humanize(DateTimeOffset.Now);
@@ -122,7 +112,7 @@ namespace MyIssues.Droid
             int[] location = new int[2];
 
             // Get the View's(the one that was clicked in the Fragment) location
-            var anchorView = sender as Button;
+            var anchorView = sender as TextView;
             anchorView.GetLocationOnScreen(location);
 
             // Using location, the PopupWindow will be displayed right under anchorView

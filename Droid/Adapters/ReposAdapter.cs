@@ -19,9 +19,9 @@ namespace MyIssues.Droid.Adapters
 	{
 		private Context _context;
 		private LayoutInflater _inflater;
-		private List<Octokit.Repository> _dataSource;
+		private List<Models.Repository> _dataSource;
 
-		public ReposAdapter(Context context, List<Octokit.Repository> items)
+		public ReposAdapter(Context context, List<Models.Repository> items)
 		{
 			_context = context;
 			_dataSource = items;

@@ -1,9 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <resources>
-  <color name="primary">#1E1E1E</color>
+  <color name="primary">#3297fa</color>
   <color name="primaryDark">#1976D2</color>
   <color name="accent">#007acc</color>
-  <color name="window_background">#EEEEF2</color>
-	<color name="open_issue">#6cc644</color>
-	<color name="closed_issue">#bd2c00</color>
+  <color name="windowBackground">#EEEEF2</color>
+  <color name="windowBackgroundDark">#e4e4f2</color>
+  <color name="mainTextColor">#000000</color>
+  <color name="secondaryTextColor">#181818</color>
+  <color name="openIssue">#6cc644</color>
+  <color name="closedIssue">#bd2c00</color>
 </resources>

@@ -16,7 +16,7 @@ namespace MyIssues.DataAccess
         {
             try
             {
-                return await BlobCache.LocalMachine.GetObject<string>(Token);
+                return await BlobCache.Secure.GetObject<string>(Token);
             }
             catch
             {
@@ -26,7 +26,7 @@ namespace MyIssues.DataAccess
 
         public async Task SaveToken(string token)
         {
-            await BlobCache.LocalMachine.InsertObject<string>(Token,token);
+            await BlobCache.Secure.InsertObject<string>(Token,token);
         }
 
         public async Task<string> GetCurrentLogin()
@@ -46,21 +46,21 @@ namespace MyIssues.DataAccess
             await BlobCache.LocalMachine.InsertObject<string>(Login, login);
         }
 
-        public async Task<string> GetWorkingRepo()
+        public async Task<long> GetWorkingRepo()
         {
             try
             {
-                return await BlobCache.LocalMachine.GetObject<string>(WorkingRepo);
+                return await BlobCache.LocalMachine.GetObject<long>(WorkingRepo);
             }
             catch
             {
-                return null;
+                return 0;
             }
         }
 
-        public async Task SaveWorkingRepo(string repo)
+        public async Task SaveWorkingRepo(long repoId)
         {
-            await BlobCache.LocalMachine.InsertObject<string>(WorkingRepo, repo);
+            await BlobCache.LocalMachine.InsertObject<long>(WorkingRepo, repoId);
         }
     }
 }
