@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/imageButton"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/abc_ratingbar_indicator_material"/>
+            android:src="@drawable/question"/>
 
     </LinearLayout>
 

@@ -31,13 +31,7 @@
     <AndroidLinkMode>None</AndroidLinkMode>
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
     <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
-    <BundleAssemblies>False</BundleAssemblies>
-    <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
     <Debugger>Xamarin</Debugger>
-    <AotAssemblies>False</AotAssemblies>
-    <EnableLLVM>False</EnableLLVM>
-    <AndroidEnableMultiDex>False</AndroidEnableMultiDex>
-    <EnableProguard>False</EnableProguard>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -240,6 +234,14 @@
     <AndroidResource Include="Resources\layout\MarkdownExtendedCardView.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\github.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\question.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\github.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\question.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\github.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\question.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\github.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\question.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml" />
