@@ -23,7 +23,7 @@ namespace MyIssues.Droid.Adapters
     public class LabelsAdapter : RecyclerView.Adapter
     {
         private List<Octokit.Label> _items;
-        public event SelectedIssue OnIssueSelected;
+        public event IssueSelected OnIssueSelected;
 
         public LabelsAdapter(List<Octokit.Label> items)
         {

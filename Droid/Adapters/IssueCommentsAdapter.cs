@@ -17,12 +17,14 @@ using Octokit;
 
 namespace MyIssues.Droid.Adapters
 {
-	public class IssueCommentsAdapter : RecyclerView.Adapter
-	{
-		private List<Octokit.IssueComment> _items;
-		public event SelectedIssue OnIssueSelected;
+    public delegate void IssueCommentSelected(Models.IssueComment selected);
 
-		public IssueCommentsAdapter(List<Octokit.IssueComment> items)
+    public class IssueCommentsAdapter : RecyclerView.Adapter
+	{
+		private List<Models.IssueComment> _items;
+        public event IssueCommentSelected OnIssueCommentSelected;
+
+        public IssueCommentsAdapter(List<Models.IssueComment> items)
 		{
 			_items = items;
 		}
@@ -39,11 +41,12 @@ namespace MyIssues.Droid.Adapters
 		{
 			var h = holder as IssueCommentViewHolder;
 
-			var issue = _items[position];
-            h.IssueCommentAuthor.Text = issue.User.Login;
-            h.IssueCommentBody.Text = issue.Body;
-			h.IssueCommentDate.Text = issue.CreatedAt.ToString();
-            //h.Bind(issue, OnIssueSelected);
+			var issueComment = _items[position];
+            h.IssueCommentAuthor.Text = issueComment.Author;
+            h.IssueCommentBody.Text = issueComment.Body;
+			h.IssueCommentDate.Text = issueComment.CreatedAt.ToString();
+
+            h.Bind(issueComment, OnIssueCommentSelected);
         }
 
 		public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
@@ -71,20 +74,24 @@ namespace MyIssues.Droid.Adapters
             IssueCommentAuthor = itemView.FindViewById<TextView>(Resource.Id.IssueCommentAuthor);
             IssueCommentBody = itemView.FindViewById<TextView>(Resource.Id.IssueCommentBody);
 			IssueCommentDate = itemView.FindViewById<TextView>(Resource.Id.IssueCommentDate);
-		}
 
-		Issue _boundIssue;
-		SelectedIssue _l;
-		public void Bind( Issue item,  SelectedIssue listener)
-		{
-			_boundIssue = item;
-			_l = listener;
+            itemView.Click += ItemView_Click;
         }
 
-		void ItemView_Click(object sender, EventArgs e)
-		{
-		}
-	}
+        Models.IssueComment _boundIssue;
+        IssueCommentSelected _l;
+
+        void ItemView_Click(object sender, EventArgs e)
+        {
+            _l(_boundIssue);
+        }
+
+        public void Bind(Models.IssueComment item, IssueCommentSelected listener)
+        {
+            _boundIssue = item;
+            _l = listener;
+        }
+    }
 
 }
 

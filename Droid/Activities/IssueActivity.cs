@@ -18,43 +18,38 @@ using Android.Support.Design.Widget;
 
 namespace MyIssues.Droid
 {
-	[Activity(Label = "Issue",
-		Theme = "@style/MyTheme")]
-	public class IssueActivity : AppCompatActivity
-	{
+    [Activity(Label = "Issue",
+        Theme = "@style/MyTheme")]
+    public class IssueActivity : AppCompatActivity
+    {
 
         Storage _storage;
-		Octokit.Issue _issue;
+        Octokit.Issue _issue;
 
-		protected override async void OnCreate(Bundle savedInstanceState)
-		{
-			base.OnCreate(savedInstanceState);
+        protected override async void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
 
-			SetContentView(Resource.Layout.Issue);
+            SetContentView(Resource.Layout.Issue);
             var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
             SetSupportActionBar(toolbar);
 
             var title = Intent.GetStringExtra("title");
-			var id = Intent.GetIntExtra("id", -1); 
-			var number = Intent.GetIntExtra("number", -1);
+            var id = Intent.GetIntExtra("id", -1);
+            var number = Intent.GetIntExtra("number", -1);
 
-			Title = $"Issue #{number}";
-
-
-            //CollapsingToolbarLayout collapsingToolbar =
-            //        (CollapsingToolbarLayout)FindViewById(Resource.Id.collapsing_toolbar);
-
+            Title = $"Issue #{number}";
 
             _storage = Storage.GetInstance();
-			await LoadIssue(number);
+            await LoadIssue(number);
 
             await LoadIssueComments(number);
 
-			// Create your application here
-		}
+            // Create your application here
+        }
 
-		async Task LoadIssue(int number)
-		{
+        async Task LoadIssue(int number)
+        {
             _issue = await _storage.GetIssue(number);
             var issueBodyTextView = FindViewById<TextView>(Resource.Id.IssueBodyTextView);
             if (String.IsNullOrEmpty(_issue.Body))
@@ -95,30 +90,7 @@ namespace MyIssues.Droid
 
         private void ViewMoreIssueButton_Click(object sender, EventArgs e)
         {
-
-            View popupView = LayoutInflater.Inflate(Resource.Layout.MarkdownExtendedCardView, null);
-
-            PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.MatchParent);
-
-
-    // If the PopupWindow should be focusable
-    popupWindow.Focusable = (true);
-            popupWindow.SetBackgroundDrawable(new Android.Graphics.Drawables.ColorDrawable(Android.Graphics.Color.Transparent));
-
-            var fullMarkdownTextView = popupView.FindViewById<TextView>(Resource.Id.FullMarkdownTextView);
-            fullMarkdownTextView.Text = _issue.Body;
-            
-
-            int[] location = new int[2];
-
-            // Get the View's(the one that was clicked in the Fragment) location
-            var anchorView = sender as TextView;
-            anchorView.GetLocationOnScreen(location);
-
-            // Using location, the PopupWindow will be displayed right under anchorView
-            popupWindow.ShowAtLocation(anchorView,GravityFlags.NoGravity,
-                                            0, 0);
-
+            ShowPopup(_issue.Body, "");
         }
 
         async Task LoadIssueComments(int number)
@@ -129,6 +101,7 @@ namespace MyIssues.Droid
 
             var _layoutManager = new LinearLayoutManager(this);
             var adapter = new IssueCommentsAdapter(comments);
+            adapter.OnIssueCommentSelected += Adapter_OnIssueCommentSelected;
 
             var issueCommentsListView = FindViewById<RecyclerView>(Resource.Id.IssueCommentsListView);
 
@@ -137,6 +110,31 @@ namespace MyIssues.Droid
             issueCommentsListView.SetAdapter(adapter);
 
             //System.Diagnostics.Debug.WriteLine("Comments : " + _issue.CommentsUrl);
+        }
+
+        private void Adapter_OnIssueCommentSelected(Models.IssueComment selected)
+        {
+            ShowPopup(selected.Body, "");
+        }
+
+        public void ShowPopup(string content, string title)
+        {
+
+            View popupView = LayoutInflater.Inflate(Resource.Layout.MarkdownExtendedCardView, null);
+
+            PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.MatchParent);
+
+            // If the PopupWindow should be focusable
+            popupWindow.Focusable = (true);
+            popupWindow.SetBackgroundDrawable(new Android.Graphics.Drawables.ColorDrawable(Android.Graphics.Color.Transparent));
+
+            var fullMarkdownTextView = popupView.FindViewById<TextView>(Resource.Id.FullMarkdownTextView);
+            fullMarkdownTextView.Text = content;
+
+            // Using location, the PopupWindow will be displayed right under anchorView
+            popupWindow.ShowAtLocation(Window.DecorView, GravityFlags.NoGravity,
+                                            0, 0);
+
         }
     }
 }
