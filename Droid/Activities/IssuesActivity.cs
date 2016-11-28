@@ -85,7 +85,7 @@ namespace MyIssues.Droid
             var adapter = new IssuesAdapter(new List<Models.Issue>());
             adapter.OnIssueSelected += (selected) =>
             {
-                Intent intent = new Intent(this, typeof(IssueActivity));
+                Intent intent = new Intent(this, typeof(IssueMainActivity));
                 intent.PutExtra("id", selected.Id);
                 intent.PutExtra("number", selected.Number);
                 intent.PutExtra("title", selected.Title);
