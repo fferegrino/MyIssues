@@ -234,14 +234,31 @@
     <AndroidResource Include="Resources\layout\MarkdownExtendedCardView.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\drawable-mdpi\github.png" />
     <AndroidResource Include="Resources\drawable-mdpi\question.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\github.png" />
     <AndroidResource Include="Resources\drawable-hdpi\question.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\github.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\question.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\github.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\question.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\empty_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\info.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\new_issue.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\reply.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\empty_icon.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\info.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\new_issue.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\reply.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\empty_icon.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\info.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\new_issue.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\reply.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\empty_icon.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\info.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\new_issue.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\reply.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\empty_icon.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\info.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\new_issue.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\question.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\reply.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml" />
