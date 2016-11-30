@@ -14,5 +14,6 @@ namespace MyIssues.DataAccess
         public const string WorkingRepo = "WorkingRepo";
         public const string Repositories = "Repos";
         public const string Token = "Token";
+        public const string IssueComments = "IssueComments";
     }
 }

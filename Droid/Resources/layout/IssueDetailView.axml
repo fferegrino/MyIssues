@@ -5,23 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/IssueCoordinatorLayout">
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appbarLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|snap"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+	
+  <ScrollView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      app:layout_behavior="@string/appbar_scrolling_view_behavior">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#ffffff"
-            app:layout_scrollFlags="scroll|snap"
             android:padding="0dp"
             android:orientation="vertical">
             <TextView
@@ -37,24 +29,7 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:paddingTop="5dp" />
-            <TextView
-                android:id="@+id/IssueBodyTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam imperdiet posuere gravida. Morbi quis varius leo, eget dignissim est. Vestibulum volutpat urna ac enim sodales, id placerat sapien bibendum. Suspendisse blandit volutpat nulla sed suscipit. Phasellus pharetra ipsum purus, id consectetur risus posuere quis. Aliquam erat volutpat. Suspendisse purus massa."
-                android:maxLines="5"
-                android:textColor="#000000"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp" />
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/LabelsRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#0e000000"
-                android:minHeight="25dp"
-                android:minWidth="25dp" />
-        </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -84,18 +59,23 @@
                 android:textStyle="bold"
                 android:gravity="right" />
         </LinearLayout>
-    </android.support.design.widget.AppBarLayout>
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/IssueCommentsListView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:clickable="true"
-        app:layout_anchor="@id/IssueCommentsListView"
-        app:layout_anchorGravity="bottom|right|end" />
+		
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/LabelsRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#0e000000"
+                android:minHeight="25dp"
+                android:minWidth="25dp" />
+			<MyIssues.Droid.Controls.MarkdownView
+                android:id="@+id/IssueBodyTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="5dp" />
+
+        </LinearLayout>
+    </ScrollView>
 </android.support.design.widget.CoordinatorLayout>

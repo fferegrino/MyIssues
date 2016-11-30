@@ -19,12 +19,12 @@ using MyIssues.DataAccess;
 namespace MyIssues.Droid.Adapters
 {
 
-	public delegate void SelectedIssue(Models.Issue selected);
+	public delegate void IssueSelected(Models.Issue selected);
 
 	public class IssuesAdapter : RecyclerView.Adapter
 	{
 		private List<Models.Issue> _items;
-		public event SelectedIssue OnIssueSelected;
+		public event IssueSelected OnIssueSelected;
 
 		public IssuesAdapter(List<Models.Issue> items)
 		{
@@ -116,8 +116,8 @@ namespace MyIssues.Droid.Adapters
 		}
 
         Models.Issue _boundIssue;
-		SelectedIssue _l;
-		public void Bind(Models.Issue item,  SelectedIssue listener)
+		IssueSelected _l;
+		public void Bind(Models.Issue item,  IssueSelected listener)
 		{
 			_boundIssue = item;
 			_l = listener;

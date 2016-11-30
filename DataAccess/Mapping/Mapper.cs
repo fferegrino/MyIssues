@@ -23,6 +23,29 @@ namespace MyIssues.DataAccess.Mapping
             return l;
         }
 
+        public static MyIssues.Models.Repository Map(this Octokit.Repository repo)
+        {
+            var l = new Models.Repository
+            {
+                CreatedAt = repo.CreatedAt,
+                Description = repo.Description,
+                FullName = repo.FullName,
+                HasIssues = repo.HasIssues,
+                Homepage = repo.Homepage,
+                Id = repo.Id,
+                Language = repo.Language,
+                Name = repo.Name,
+                OpenIssuesCount = repo.OpenIssuesCount,
+                Owner = repo.Owner.Login,
+                IsPrivate = repo.Private,
+                PushedAt = repo.PushedAt,
+                StargazersCount = repo.StargazersCount,
+                UpdatedAt = repo.UpdatedAt,
+                Url = repo.Url
+            };
+            return l;
+        }
+
         public static MyIssues.Models.Issue Map(this Octokit.Issue issue)
         {
             var i = new Models.Issue
@@ -46,6 +69,21 @@ namespace MyIssues.DataAccess.Mapping
             return i;
         }
 
+
+
+        public static MyIssues.Models.IssueComment Map(this Octokit.IssueComment issue)
+        {
+            var i = new Models.IssueComment
+            {
+                Author = issue.User.Login,
+                Body = issue.Body,
+                CreatedAt = issue.CreatedAt,
+                Id = issue.Id,
+            };
+            i.FillReactions(issue.Reactions);
+            return i;
+        }
+
         private static void FillReactions(this Models.IssueComment comment, Octokit.ReactionSummary reactions)
         {
             if(reactions != null)
@@ -61,27 +99,5 @@ namespace MyIssues.DataAccess.Mapping
         }
 
 
-        public static MyIssues.Models.Repository Map(this Octokit.Repository repo)
-        {
-            var l = new Models.Repository
-            {
-                CreatedAt = repo.CreatedAt,
-                Description = repo.Description,
-                FullName = repo.FullName,
-                HasIssues = repo.HasIssues,
-                Homepage = repo.Homepage,
-                Id = repo.Id,
-                Language = repo.Language,
-                Name = repo.Name,
-                OpenIssuesCount = repo.OpenIssuesCount,
-                Owner = repo.Owner.Login,
-                IsPrivate = repo.Private,
-                PushedAt = repo.PushedAt,
-                StargazersCount = repo.StargazersCount,
-                UpdatedAt = repo.UpdatedAt,
-                Url = repo.Url
-            };
-            return l;
-        }
     }
 }
