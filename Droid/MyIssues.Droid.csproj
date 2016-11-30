@@ -201,6 +201,7 @@
     <Compile Include="Activities\ReposActivity.cs" />
     <Compile Include="AkavacheSqliteLinkerOverride.cs" />
     <Compile Include="Controls\MarkdownView.cs" />
+    <Compile Include="Controls\ScrollAwareFabBehavior.cs" />
     <Compile Include="Fragments\IssueCommentsFragment.cs" />
     <Compile Include="Fragments\IssueDetailFragment.cs" />
     <Compile Include="Fragments\PagerAdapter.cs" />

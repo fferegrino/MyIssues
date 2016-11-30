@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using Android.Support.V7.Widget;
 using Humanizer;
 using MyIssues.Droid.Adapters;
+using MyIssues.Droid.Controls;
 
 namespace MyIssues.Droid.Fragments
 {
@@ -22,9 +23,8 @@ namespace MyIssues.Droid.Fragments
     {
         Storage _storage;
         Octokit.Issue _issue;
-
-        TextView _issueBodyTextView,
-            _issueTitleTextView,
+        MarkdownView _issueBodyTextView;
+        TextView  _issueTitleTextView,
             _issueStatusTextView,
             _issueCreatedAtTextView;
         RecyclerView _labelsRecyclerView;
@@ -47,7 +47,7 @@ namespace MyIssues.Droid.Fragments
         {
             var view = inflater.Inflate(Resource.Layout.IssueDetailView, container, false);
 
-            _issueBodyTextView = view.FindViewById<TextView>(Resource.Id.IssueBodyTextView);
+            _issueBodyTextView = view.FindViewById<MarkdownView>(Resource.Id.IssueBodyTextView);
             _issueTitleTextView = view.FindViewById<TextView>(Resource.Id.IssueTitle);
             _issueStatusTextView = view.FindViewById<TextView>(Resource.Id.IssueStatusTextView);
             _issueCreatedAtTextView = view.FindViewById<TextView>(Resource.Id.IssueCreatedAtTextView);
@@ -68,6 +68,7 @@ namespace MyIssues.Droid.Fragments
             else
             {
                 _issueBodyTextView.Visibility = ViewStates.Visible;
+                _issueBodyTextView.LoadMarkdown(_issue.Body, "file:///android_asset/github-markdown.css");
             }
 
             _issueTitleTextView.Text = _issue.Title;
