@@ -246,12 +246,12 @@
     <AndroidResource Include="Resources\menu\SearchMenu.xml" />
     <AndroidResource Include="Resources\xml\searchable.xml" />
     <AndroidResource Include="Resources\layout\LabelCardView.xml" />
-    <AndroidResource Include="Resources\layout\IssueCommentView.axml" />
+    <AndroidResource Include="Resources\layout\IssueCommentView.xml" />
     <AndroidResource Include="Resources\menu\IssuesMenu.xml" />
     <AndroidResource Include="Resources\layout\EmptyListView.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\MarkdownExtendedCardView.axml">
+    <AndroidResource Include="Resources\layout\MarkdownExtendedCardView.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\drawable-mdpi\question.png" />

@@ -36,8 +36,19 @@
                 android:layout_alignParentEnd="true"
                 android:src="@android:drawable/ic_menu_close_clear_cancel"
                 android:background="@color/windowBackgroundDark" />
-            <TextView
-                android:id="@+id/FullMarkdownTextView"
+
+
+          <MyIssues.Droid.Controls.MarkdownView
+                android:id="@+id/FullMarkdownView"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+                android:layout_below="@+id/MarkdownTitleTextView"
+              android:layout_centerVertical="true"
+              android:layout_marginStart="4dp"
+              android:layout_marginEnd="4dp"
+              android:layout_marginBottom="5dp" />
+            <!-- <TextView
+                android:id="@+id/FullMarkdownView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
@@ -49,7 +60,7 @@
                 android:paddingBottom="2dp"
                 android:lines="9999999"
                 android:linksClickable="false"
-                android:singleLine="false" />
+                android:singleLine="false" /> -->
         </RelativeLayout>
     </android.support.v7.widget.CardView>
 </LinearLayout>

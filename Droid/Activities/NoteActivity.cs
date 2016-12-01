@@ -18,6 +18,9 @@ using MyIssues.Droid.Util;
 using Android.Graphics;
 using Android.Widget;
 using ICharSequence = Java.Lang.ICharSequence;
+using MyIssues.Droid.Controls;
+using Android.Util;
+using Android.Views.InputMethods;
 
 namespace MyIssues.Droid.Activities
 {
@@ -25,9 +28,9 @@ namespace MyIssues.Droid.Activities
         Theme = "@style/MyTheme")]
     public class NoteActivity : ActionBarActivity
     {
+        public const string Tag = nameof(NoteActivity);
 
         const string EMPTY_STRING = "";
-        private File note;
         private Context context;
 
         private EditText noteTitle;
@@ -35,24 +38,7 @@ namespace MyIssues.Droid.Activities
         private ScrollView scrollView;
 
         private ViewGroup keyboardBarView;
-        private string tarGetDirectory;
         private bool isPreviewIncoming = false;
-
-        public NoteActivity()
-        {
-        }
-
-        public NoteActivity(Context context)
-        {
-            this.context = context;
-            this.note = null;
-        }
-
-        public NoteActivity(Context context, File note)
-        {
-            this.context = context;
-            this.note = note;
-        }
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -73,61 +59,13 @@ namespace MyIssues.Droid.Activities
             keyboardBarView = (ViewGroup)FindViewById(Resource.Id.keyboard_bar);
 
             Intent receivingIntent = Intent;
-            //tarGetDirectory = receivingIntent.GetStringExtra(Constants.TARGET_DIR);
+            int issueNumber = receivingIntent.GetIntExtra(Constants.IssueNumber, 0);
 
-            var intentAction = receivingIntent.Action;
-            var type = receivingIntent.Type;
-
-            if (Intent.ActionSend.Equals(intentAction) && type != null)
+            if (issueNumber != 0)
             {
-                //OpenFromSendAction(receivingIntent);
+                noteTitle.Enabled = false;
+                noteTitle.Text = String.Format("Respuesta a #{0}", issueNumber);
             }
-            else if (Intent.ActionEdit.Equals(intentAction) && type != null)
-            {
-                //OpenFromEditAction(receivingIntent);
-            }
-            else
-            {
-                //note = (File)GetIntent().GetSerializableExtra(Constants.NOTE_KEY);
-
-            }
-
-            if (note != null)
-            {
-                //content.Text = ReadNote();
-                //noteTitle.SetText(note.Name.Replace("((?i)\\.md$)", ""));
-            }
-        }
-
-
-        private string ReadNote()
-        {
-            //Java.Net.URI oldUri = note.ToURI();
-            //return WriteilySingleton.GetInstance().readFileUri(Uri.parse(oldUri.ToString()), this);
-            throw new NotImplementedException();
-        }
-        private void openFromSendAction(Intent receivingIntent)
-        {
-            //Uri fileUri = receivingIntent.GetParcelableExtra(Intent.EXTRA_STREAM);
-            //readFileUriFromIntent(fileUri);
-            throw new NotImplementedException();
-        }
-
-        private void openFromEditAction(Intent receivingIntent)
-        {
-            //Uri fileUri = receivingIntent.GetData();
-            //readFileUriFromIntent(fileUri);
-            throw new NotImplementedException();
-        }
-
-        private void readFileUriFromIntent(Uri fileUri)
-        {
-            //if (fileUri != null)
-            //{
-            //    note = WriteilySingleton.GetInstance().GetFileFromUri(fileUri);
-            //    content.SetText(WriteilySingleton.GetInstance().readFileUri(fileUri, this));
-            //}
-            throw new NotImplementedException();
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -144,15 +82,25 @@ namespace MyIssues.Droid.Activities
                     base.OnBackPressed();
                     OverridePendingTransition(Resource.Animation.anim_slide_out_right, Resource.Animation.anim_slide_in_right);
                     return true;
-                //case R.id.action_share:
-                //    shareNote();
-                //    return true;
+                case Resource.Id.action_comment:
+                    Publish(Content.Text, noteTitle.Text);
+                    return true;
                 case Resource.Id.action_preview:
-                    PreviewNote();
+                    InputMethodManager imm = (InputMethodManager)GetSystemService(Context.InputMethodService);
+                    imm.HideSoftInputFromWindow(Content.WindowToken, 0);
+                    ShowPopup(Content.Text, noteTitle.Text);
                     return true;
                 default:
                     return base.OnOptionsItemSelected(item);
             }
+        }
+
+        private void Publish(string text1, string text2)
+        {
+            Intent returnIntent = new Intent();
+            returnIntent.PutExtra(Constants.CommentSuccessful,true);
+            SetResult(Result.Ok, returnIntent);
+            Finish();
         }
 
         public override void OnBackPressed()
@@ -316,20 +264,6 @@ namespace MyIssues.Droid.Activities
             throw new NotImplementedException();
         }
 
-        private void ShareNote()
-        {
-            //saveNote();
-
-            //String shareContent = content.GetText().toString();
-
-            //Intent shareIntent = new Intent();
-            //shareIntent.SetAction(Intent.ACTION_SEND);
-            //shareIntent.putExtra(Intent.EXTRA_TEXT, shareContent);
-            //shareIntent.SetType("text/plain");
-            //startActivity(Intent.createChooser(shareIntent, Resources.GetText(Resource.String.share_string)));
-            throw new NotImplementedException();
-        }
-
         private void SaveNote()
         {
             //try
@@ -359,50 +293,29 @@ namespace MyIssues.Droid.Activities
             //{
             //    e.printStackTrace();
             //}
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
-        private void UpdateWidgets()
+        public void ShowPopup(string content, string title)
         {
-            //AppWidGetManager appWidGetManager = AppWidGetManager.GetInstance(context);
-            //int appWidGetIds[] = appWidGetManager.GetAppWidGetIds(
-            //        new ComponentName(context, WriteilyWidGetProvider.class));
-            //appWidGetManager.notifyAppWidGetViewDataChanged(appWidGetIds, R.id.widGet_notes_list);
-            throw new NotImplementedException();
+            View popupView = LayoutInflater.Inflate(Resource.Layout.MarkdownExtendedCardView, null);
+
+            PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.MatchParent);
+
+            // If the PopupWindow should be focusable
+            popupWindow.Focusable = (true);
+            popupWindow.SetBackgroundDrawable(new Android.Graphics.Drawables.ColorDrawable(Android.Graphics.Color.Transparent));
+
+            var fullMarkdownTextView = popupView.FindViewById<MarkdownView>(Resource.Id.FullMarkdownView);
+            fullMarkdownTextView.LoadMarkdown(content, "file:///android_asset/github-markdown.css");
+
+            // Using location, the PopupWindow will be displayed right under anchorView
+            popupWindow.ShowAtLocation(Window.DecorView, GravityFlags.NoGravity,
+                                            0, 0);
+
         }
 
-        private string normalizeFilename(String content, String title)
-        {
-            //String filename = title;
-            //if (filename.length() == 0)
-            //{
-            //    if (content.length() == 0)
-            //    {
-            //        return null;
-            //    }
-            //    else
-            //    {
-            //        if (content.length() < Constants.MAX_TITLE_LENGTH)
-            //        {
-            //            filename = content.substring(0, content.length());
-            //        }
-            //        else
-            //        {
-            //            filename = content.substring(0, Constants.MAX_TITLE_LENGTH);
-            //        }
-            //    }
-            //}
-            //filename = filename.replaceAll("[\\\\/:\"*?<>|]+", "").trim();
-
-            //if (filename.isEmpty())
-            //{
-            //    filename = "Writeily - " + String.valueOf(UUID.randomUUID().GetMostSignificantBits()).substring(0, 6);
-            //}
-            //return filename;
-            throw new NotImplementedException();
-        }
     }
-
 
     class KeyboardBarListener : Java.Lang.Object, View.IOnClickListener
     {
@@ -416,7 +329,16 @@ namespace MyIssues.Droid.Activities
         public void OnClick(View v)
         {
             var shortcut = ((TextView)v).Text;
+            var selectionStart = _editor.Content.SelectionStart;
             _editor.Content.Text = _editor.Content.Text.Insert(_editor.Content.SelectionStart, shortcut);
+            try
+            {
+                _editor.Content.SetSelection(selectionStart + shortcut.Length);
+            }
+            catch (Java.Lang.IndexOutOfBoundsException ex)
+            {
+                Log.Error(NoteActivity.Tag, $"Error trying to reset selection");
+            }
         }
     }
 
@@ -439,13 +361,28 @@ namespace MyIssues.Droid.Activities
                 var before = _editor.Content.Text.Substring(0, _editor.Content.SelectionStart);
                 var after = _editor.Content.Text.Substring(_editor.Content.SelectionEnd);
 
-                _editor.Content.Text = before+ shortcut[0] + selected + shortcut[1] + after;
+                _editor.Content.Text = before + shortcut[0] + selected + shortcut[1] + after;
+                try
+                {
+                    _editor.Content.SetSelection(before.Length + shortcut.Length + selected.Length);
+                }
+                catch (Java.Lang.IndexOutOfBoundsException ex)
+                {
+                    Log.Error(NoteActivity.Tag, $"Error trying to reset selection");
+                }
             }
             else
             {
                 var prevSelectionStart = _editor.Content.SelectionStart;
                 _editor.Content.Text = _editor.Content.Text.Insert(_editor.Content.SelectionStart, shortcut);
-                _editor.Content.SetSelection(prevSelectionStart - 1);
+                try
+                {
+                    _editor.Content.SetSelection(prevSelectionStart + shortcut.Length - 1);
+                }
+                catch (Java.Lang.IndexOutOfBoundsException ex)
+                {
+                    Log.Error(NoteActivity.Tag, $"Error trying to reset selection");
+                }
             }
         }
     }
