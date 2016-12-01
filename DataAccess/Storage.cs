@@ -29,13 +29,21 @@ namespace MyIssues.DataAccess
             return _instance ?? (_instance = new Storage());
         }
 
-        public async Task SetClient(Octokit.GitHubClient client)
+        public async Task<bool> SetClient(Octokit.GitHubClient client)
         {
             _client = client;
 
-            var user = await _client.User.Current();
-            _user = user.Login;
-            await SaveCurrentLogin(_user);
+            try
+            {
+                var user = await _client.User.Current();
+                _user = user.Login;
+                await SaveCurrentLogin(_user);
+                return true;
+            }
+            catch
+            {
+            }
+            return false;
         }
 
         public async Task SetWorkingRepo(long repoId)
