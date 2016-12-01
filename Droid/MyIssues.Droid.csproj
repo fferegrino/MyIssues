@@ -198,8 +198,18 @@
     <Compile Include="Activities\IssueMainActivity.cs" />
     <Compile Include="Activities\IssuesActivity.cs" />
     <Compile Include="Activities\MainActivity.cs" />
+    <Compile Include="Activities\NoteActivity.cs" />
     <Compile Include="Activities\ReposActivity.cs" />
     <Compile Include="AkavacheSqliteLinkerOverride.cs" />
+    <Compile Include="Controls\Editor\HeaderSpanCreator.cs" />
+    <Compile Include="Controls\Editor\Highlighter.cs" />
+    <Compile Include="Controls\Editor\IHighlighterColors.cs" />
+    <Compile Include="Controls\Editor\HighlighterPattern.cs" />
+    <Compile Include="Controls\Editor\HighlightingEditor.cs" />
+    <Compile Include="Controls\Editor\IndentationFilter.cs" />
+    <Compile Include="Controls\Editor\MyHighlighterColorsNeutral.cs" />
+    <Compile Include="Controls\Editor\SpanCreator.cs" />
+    <Compile Include="Controls\Editor\UpdateRunnable.cs" />
     <Compile Include="Controls\MarkdownView.cs" />
     <Compile Include="Controls\ScrollAwareFabBehavior.cs" />
     <Compile Include="Fragments\IssueCommentsFragment.cs" />
@@ -212,6 +222,7 @@
     <Compile Include="Adapters\LabelsAdapter.cs" />
     <Compile Include="Adapters\IssueCommentsAdapter.cs" />
     <Compile Include="Controls\RecyclerViewEmptySupport.cs" />
+    <Compile Include="Util\Constants.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -234,10 +245,10 @@
     <AndroidResource Include="Resources\layout\IssueDetailView.axml" />
     <AndroidResource Include="Resources\menu\SearchMenu.xml" />
     <AndroidResource Include="Resources\xml\searchable.xml" />
-    <AndroidResource Include="Resources\layout\LabelCardView.axml" />
+    <AndroidResource Include="Resources\layout\LabelCardView.xml" />
     <AndroidResource Include="Resources\layout\IssueCommentView.axml" />
     <AndroidResource Include="Resources\menu\IssuesMenu.xml" />
-    <AndroidResource Include="Resources\layout\EmptyListView.axml">
+    <AndroidResource Include="Resources\layout\EmptyListView.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\MarkdownExtendedCardView.axml">
@@ -268,13 +279,19 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\new_issue.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\question.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\reply.png" />
-    <AndroidResource Include="Resources\layout\IssueComments.axml" />
+    <AndroidResource Include="Resources\layout\IssueComments.xml" />
     <AndroidResource Include="Resources\layout\IssueMain.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\Note.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\NoteToolbar.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\Main.axml" />
+    <AndroidResource Include="Resources\layout\Main.xml" />
     <AndroidResource Include="Resources\values\strings.xml" />
     <AndroidResource Include="Resources\mipmap-hdpi\Icon.png" />
     <AndroidResource Include="Resources\mipmap-mdpi\Icon.png" />
@@ -294,7 +311,45 @@
   <ItemGroup>
     <AndroidResource Include="Resources\values-v21\style.xml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\dimens.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\note_cursor_drawable.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\donottranslate.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\menu\note_menu.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\anim\anim_no_change.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\anim\anim_slide_in_left.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\anim\anim_slide_in_right.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\anim\anim_slide_in_up.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\anim\anim_slide_out_down.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\anim\anim_slide_out_left.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\anim\anim_slide_out_right.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\keyboard_shortcut.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\keyboard_shortcut_button.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
