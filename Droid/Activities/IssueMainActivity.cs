@@ -61,7 +61,7 @@ namespace MyIssues.Droid
                     break;
                 case 1: // Comments
                     var a = _pagerAdapter.GetItem(e.Tab.Position) as IssueCommentsFragment;
-                    bool commentsLoaded  = await a.LoadIssueComments();
+                    a.LoadIssueComments();
                     break;
                 default:
                     throw new Exception("Unknown tab");

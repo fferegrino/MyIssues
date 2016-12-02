@@ -70,6 +70,7 @@ namespace MyIssues.Droid.Activities
                 noteTitle.Enabled = false;
                 noteTitle.Text = String.Format("Respuesta a #{0}", issueNumber);
             }
+            Content.RequestFocus();
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)

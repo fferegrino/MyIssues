@@ -7,10 +7,14 @@ using MyIssues.Droid.Adapters;
 using System.Linq;
 using Android.Support.Design.Widget;
 using MyIssues.Droid.Activities;
+using System.Reactive.Linq;
+using System;
 using Android.Content;
 using MyIssues.Droid.Util;
 using Android.Widget;
 using Android.App;
+using MyIssues.Models;
+using System.Collections.Generic;
 
 namespace MyIssues.Droid.Fragments
 {
@@ -56,11 +60,12 @@ namespace MyIssues.Droid.Fragments
             StartActivityForResult(intent, Constants.PublishCommentRequestCode);
         }
 
-        public override void OnActivityResult(int requestCode, int resultCode, Intent data)
+        public override async void OnActivityResult(int requestCode, int resultCode, Intent data)
         {
             if (requestCode == Constants.PublishCommentRequestCode && resultCode == (int)Result.Ok)
             {
-                Toast.MakeText(this.Context, "Comentario publicado", ToastLength.Long).Show();
+                _commentsLoaded = false;
+                LoadIssueComments();
             }
             else
             {
@@ -69,18 +74,24 @@ namespace MyIssues.Droid.Fragments
         }
 
         bool _commentsLoaded = false;
-        public async Task<bool> LoadIssueComments()
+
+
+        void ResetComments(IReadOnlyList<IssueComment> comments)
         {
-            if (!_commentsLoaded)
-            {
-                var comments = (await _storage.GetIssueComments(_issueNumber)).ToList();
-                var adapter = new IssueCommentsAdapter(comments);
-                commentsView.SetAdapter(adapter);
-                _commentsLoaded = true;
-                return true;
-            }
-            return false;
+            var adapter = new IssueCommentsAdapter(comments.ToList());
+            commentsView.SetAdapter(adapter);
+
         }
+        public void LoadIssueComments()
+        {
+            var loadComments = _storage.GetIssueComments(_issueNumber);
+            loadComments.Subscribe(ResetComments, onCompleted: () =>
+            {
+                Toast.MakeText(this.Context, "Comentarios cargados", ToastLength.Long).Show();
+            });
+
+        }
+
 
     }
 }

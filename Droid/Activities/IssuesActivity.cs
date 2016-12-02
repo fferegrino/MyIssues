@@ -12,6 +12,7 @@ using Android.Support.V7.App;
 using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
+using System.Reactive.Linq;
 using MyIssues.Droid.Adapters;
 using MyIssues.Droid.Controls;
 using MyIssues.DataAccess;

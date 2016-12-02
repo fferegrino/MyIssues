@@ -125,15 +125,15 @@ namespace MyIssues.DataAccess
             return await _client.Repository.Get(repoId);
         }
 
-        public async Task<IReadOnlyList<Models.IssueComment>> GetIssueComments(int number)
+        public IObservable<IReadOnlyList<Models.IssueComment>> GetIssueComments(int number)
         {
             Func<Task<List<Models.IssueComment>>> fetchFunc = async () =>
             {
                 var a = await _client.Issue.Comment.GetAllForIssue(_repoId, number);
                 return a.Select(obj => obj.Map()).ToList();
             };
-            return await BlobCache.LocalMachine.
-                GetOrFetchObject(_repoId + IssueComments +number, fetchFunc, DateTimeOffset.Now.AddDays(3));
+            return BlobCache.LocalMachine.
+                GetAndFetchLatest(_repoId + IssueComments +number, fetchFunc);
 
         }
 
