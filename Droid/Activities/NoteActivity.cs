@@ -21,6 +21,9 @@ using ICharSequence = Java.Lang.ICharSequence;
 using MyIssues.Droid.Controls;
 using Android.Util;
 using Android.Views.InputMethods;
+using MyIssues.DataAccess;
+using System.Threading.Tasks;
+using MyIssues.Util;
 
 namespace MyIssues.Droid.Activities
 {
@@ -38,6 +41,7 @@ namespace MyIssues.Droid.Activities
         private ScrollView scrollView;
 
         private ViewGroup keyboardBarView;
+        private int issueNumber;
         private bool isPreviewIncoming = false;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -59,7 +63,7 @@ namespace MyIssues.Droid.Activities
             keyboardBarView = (ViewGroup)FindViewById(Resource.Id.keyboard_bar);
 
             Intent receivingIntent = Intent;
-            int issueNumber = receivingIntent.GetIntExtra(Constants.IssueNumber, 0);
+            issueNumber = receivingIntent.GetIntExtra(Constants.IssueNumber, 0);
 
             if (issueNumber != 0)
             {
@@ -83,7 +87,15 @@ namespace MyIssues.Droid.Activities
                     OverridePendingTransition(Resource.Animation.anim_slide_out_right, Resource.Animation.anim_slide_in_right);
                     return true;
                 case Resource.Id.action_comment:
-                    Publish(Content.Text, noteTitle.Text);
+                    var published = AsyncHelpers.RunSync<bool>(() => Publish(Content.Text, noteTitle.Text)); ;
+                    if (published)
+                    {
+                        Intent returnIntent = new Intent();
+                        returnIntent.PutExtra(Constants.CommentSuccessful, true);
+                        SetResult(Result.Ok, returnIntent);
+                        Finish();
+                    }
+
                     return true;
                 case Resource.Id.action_preview:
                     InputMethodManager imm = (InputMethodManager)GetSystemService(Context.InputMethodService);
@@ -95,12 +107,9 @@ namespace MyIssues.Droid.Activities
             }
         }
 
-        private void Publish(string text1, string text2)
+        private async Task<bool> Publish(string text1, string text2)
         {
-            Intent returnIntent = new Intent();
-            returnIntent.PutExtra(Constants.CommentSuccessful,true);
-            SetResult(Result.Ok, returnIntent);
-            Finish();
+            return await Storage.GetInstance().SendComment(issueNumber, text1);
         }
 
         public override void OnBackPressed()

@@ -134,7 +134,13 @@ namespace MyIssues.DataAccess
             };
             return await BlobCache.LocalMachine.
                 GetOrFetchObject(_repoId + IssueComments +number, fetchFunc, DateTimeOffset.Now.AddDays(3));
-            
+
+        }
+
+        public async Task<bool> SendComment(int number, string body)
+        {
+            var ic = await _client.Issue.Comment.Create(_repoId, number, body);
+            return true;
         }
     }
 }
