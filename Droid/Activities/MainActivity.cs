@@ -18,7 +18,7 @@ namespace MyIssues.Droid
         MainLauncher = true,
         Theme = "@style/MyTheme",
         NoHistory = true,
-        Icon = "@mipmap/icon")]
+        Icon = "@drawable/icon")]
     public class MainActivity : AppCompatActivity
     {
         ImageButton _learnMoreButton;
