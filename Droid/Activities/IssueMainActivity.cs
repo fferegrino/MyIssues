@@ -66,6 +66,7 @@ namespace MyIssues.Droid
                 default:
                     throw new Exception("Unknown tab");
             }
+            _viewPager.CurrentItem = e.Tab.Position;
         }
 
 
