@@ -65,6 +65,12 @@ namespace MyIssues.Droid
                 "Please wait", true);
             var cliente = GitHubClientFactory.CreateClient(accessToken);
             var authed = await _storage.SetClient(cliente);
+
+			if (authed)
+			{
+				await _storage.SaveToken(accessToken);
+			}
+
             progress.Dismiss();
             return authed;
         }
