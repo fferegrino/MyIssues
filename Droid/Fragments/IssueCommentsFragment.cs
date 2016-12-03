@@ -15,13 +15,14 @@ using Android.Widget;
 using Android.App;
 using MyIssues.Models;
 using System.Collections.Generic;
+using MyIssues.Droid.Controls;
 
 namespace MyIssues.Droid.Fragments
 {
     public class IssueCommentsFragment : Android.Support.V4.App.Fragment
     {
         Storage _storage;
-        RecyclerView commentsView;
+        RecyclerViewEmptySupport commentsView;
         FloatingActionButton _replyButton;
 
         int _issueNumber;
@@ -46,7 +47,11 @@ namespace MyIssues.Droid.Fragments
             _replyButton = view.FindViewById<FloatingActionButton>(Resource.Id.ReplyButton);
             _replyButton.Click += ReplyButton_Click;
 
-            commentsView = view.FindViewById<RecyclerView>(Resource.Id.IssueCommentsListView);
+            commentsView = view.FindViewById<RecyclerViewEmptySupport>(Resource.Id.IssueCommentsListView);
+
+            var emptyView = view.FindViewById(Resource.Id.EmptyListView);
+            commentsView.EmptyView = emptyView;
+
             var _layoutManager = new LinearLayoutManager(this.Context);
             commentsView.SetLayoutManager(_layoutManager);
 
