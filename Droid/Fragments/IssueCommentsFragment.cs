@@ -60,12 +60,12 @@ namespace MyIssues.Droid.Fragments
             StartActivityForResult(intent, Constants.PublishCommentRequestCode);
         }
 
-        public override async void OnActivityResult(int requestCode, int resultCode, Intent data)
+        public override void OnActivityResult(int requestCode, int resultCode, Intent data)
         {
-            if (requestCode == Constants.PublishCommentRequestCode && resultCode == (int)Result.Ok)
+            if (requestCode == Constants.PublishCommentRequestCode)
             {
-                _commentsLoaded = false;
-                LoadIssueComments();
+                if (resultCode == (int)Result.Ok)
+                    LoadIssueComments();
             }
             else
             {
@@ -73,25 +73,45 @@ namespace MyIssues.Droid.Fragments
             }
         }
 
-        bool _commentsLoaded = false;
 
 
+        //bool cachedComments = true;
         void ResetComments(IReadOnlyList<IssueComment> comments)
         {
+            //System.Diagnostics.Debug.WriteLine($"LoadIssueComments {cachedComments}");
+            //if (cachedComments)
+            //{
+            //    cachedComments = false;
+            //    return;
+            //}
+
             var adapter = new IssueCommentsAdapter(comments.ToList());
-            commentsView.SetAdapter(adapter);
+            using (var h = new Handler(Looper.MainLooper))
+                h.Post(() =>
+                {
+                    UiExtensions.RunOnUi(() =>
+                    {
+                        commentsView.SetAdapter(adapter);
+                    });
+                });
 
         }
+
         public void LoadIssueComments()
         {
             var loadComments = _storage.GetIssueComments(_issueNumber);
-            loadComments.Subscribe(ResetComments, onCompleted: () =>
+
+            Action onCompleted = null;
+#if DEBUG
+            onCompleted = () =>
             {
-                Toast.MakeText(this.Context, "Comentarios cargados", ToastLength.Long).Show();
-            });
-
+                UiExtensions.RunOnUi(() =>
+                {
+                    Toast.MakeText(this.Context, "Comentarios cargados", ToastLength.Long).Show();
+                });
+            };
+#endif
+            loadComments.Subscribe(ResetComments, onCompleted: onCompleted);
         }
-
-
     }
 }
