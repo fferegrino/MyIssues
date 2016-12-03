@@ -51,17 +51,42 @@ namespace MyIssues.Droid
             tabLayout.TabSelected += TabLayout_TabSelected;
         }
 
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.IssueMenu, menu);
+            return true;
+        }
 
-        
-        private async void TabLayout_TabSelected(object sender, TabLayout.TabSelectedEventArgs e)
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.ItemId)
+            {
+                case Resource.Id.RefreshIssue:
+                    var a = _pagerAdapter.GetItem(1) as IssueCommentsFragment;
+                    a.LoadIssueComments();
+                    break;
+                default:
+                    return base.OnOptionsItemSelected(item);
+            }
+            return true;
+        }
+
+        bool loadedInfo = false;
+
+        private void TabLayout_TabSelected(object sender, TabLayout.TabSelectedEventArgs e)
         {
             switch(e.Tab.Position)
             {
                 case 0: // Details
                     break;
                 case 1: // Comments
+
+                    if (loadedInfo == true) break;
+                    loadedInfo = true;
                     var a = _pagerAdapter.GetItem(e.Tab.Position) as IssueCommentsFragment;
+
                     a.LoadIssueComments();
+
                     break;
                 default:
                     throw new Exception("Unknown tab");
