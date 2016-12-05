@@ -40,8 +40,9 @@ namespace MyIssues.DataAccess
                 await SaveCurrentLogin(_user);
                 return true;
             }
-            catch
+            catch(Exception e)
             {
+                System.Diagnostics.Debug.WriteLine(e.Message);
             }
             return false;
         }

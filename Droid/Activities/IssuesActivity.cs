@@ -18,6 +18,7 @@ using MyIssues.Droid.Controls;
 using MyIssues.DataAccess;
 using Android.Support.Design.Widget;
 using Android.Support.V4.Widget;
+using MyIssues.Droid.Activities;
 
 namespace MyIssues.Droid
 {
@@ -139,6 +140,10 @@ namespace MyIssues.Droid
         {
             switch (item.ItemId)
             {
+                case Resource.Id.ViewAboutMenu:
+                    var i = new Intent(this, typeof(SettingsActivity));
+                    StartActivity(i);
+                    break;
                 case Resource.Id.SwitchRepoMenu:
                     OpenRepoSelector();
                     break;
