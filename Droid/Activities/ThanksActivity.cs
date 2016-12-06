@@ -12,14 +12,27 @@ using Android.Widget;
 using Android.Preferences;
 using MyIssues.Droid.Fragments;
 using Android.Support.V7.App;
+using MyIssues.Droid.Controls;
 
 namespace MyIssues.Droid.Activities
 {
-    [Activity(Label = "SettingsActivity",
-        Name = "MyIssues.Droid.Activities.ThanksActivity",
+	
+    [Activity(Label = "ThanksActivity",
+        //Name = "myissues.droid.activities.ThanksActivity",
         Theme = "@style/MyTheme")]
     public class ThanksActivity : AppCompatActivity
     {
         
+	MarkdownView _thanksMarkdown;
+
+		protected override void OnCreate(Bundle savedInstanceState)
+		{
+			base.OnCreate(savedInstanceState);
+
+			SetContentView(Resource.Layout.Thanks);
+
+			_thanksMarkdown = FindViewById<MarkdownView>(Resource.Id.ThanksMarkdown);
+			_thanksMarkdown.LoadMarkdown("# Hola", "file:///android_asset/github-markdown.css");
+		}
     }
 }

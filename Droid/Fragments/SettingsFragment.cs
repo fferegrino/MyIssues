@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.Support.V7.Preferences;
+using MyIssues.Droid.Activities;
 
 namespace MyIssues.Droid.Fragments
 {
@@ -20,6 +21,12 @@ namespace MyIssues.Droid.Fragments
         {
             
             AddPreferencesFromResource(Resource.Xml.Preferences);
+
+			var aboutPreference = FindPreference("about");
+			aboutPreference.PreferenceClick += (sender, e) => {
+				var i = new Intent(this.Context, typeof(ThanksActivity));
+				StartActivity(i);
+			};
         }
     }
 }

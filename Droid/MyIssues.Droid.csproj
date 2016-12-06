@@ -160,6 +160,9 @@
     <Reference Include="Xamarin.Android.Support.v7.CardView">
       <HintPath>..\packages\Xamarin.Android.Support.v7.CardView.24.2.1\lib\MonoAndroid70\Xamarin.Android.Support.v7.CardView.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.Android.Support.v7.Preference">
+      <HintPath>..\packages\Xamarin.Android.Support.v7.Preference.24.2.1\lib\MonoAndroid70\Xamarin.Android.Support.v7.Preference.dll</HintPath>
+    </Reference>
     <Reference Include="PInvoke.Windows.Core">
       <HintPath>..\packages\PInvoke.Windows.Core.0.3.152\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\PInvoke.Windows.Core.dll</HintPath>
     </Reference>
@@ -224,6 +227,9 @@
     <Compile Include="Controls\RecyclerViewEmptySupport.cs" />
     <Compile Include="Util\Constants.cs" />
     <Compile Include="Util\UiExtensions.cs" />
+    <Compile Include="Activities\SettingsActivity.cs" />
+    <Compile Include="Fragments\SettingsFragment.cs" />
+    <Compile Include="Activities\ThanksActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -290,6 +296,9 @@
     <AndroidResource Include="Resources\layout\NoteToolbar.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\menu\IssueMenu.xml" />
+    <AndroidResource Include="Resources\xml\Preferences.xml" />
+    <AndroidResource Include="Resources\layout\Thanks.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.xml" />
@@ -308,6 +317,7 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\github-markdown.css" />
+    <AndroidAsset Include="Assets\thanks.md" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values-v21\style.xml" />
