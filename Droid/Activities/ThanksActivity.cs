@@ -32,7 +32,9 @@ namespace MyIssues.Droid.Activities
 			SetContentView(Resource.Layout.Thanks);
 
 			_thanksMarkdown = FindViewById<MarkdownView>(Resource.Id.ThanksMarkdown);
-			_thanksMarkdown.LoadMarkdown("# Hola", "file:///android_asset/github-markdown.css");
+			_thanksMarkdown.LoadMarkdownFile(
+				"file:///android_asset/thanks.md", 
+				"file:///android_asset/github-markdown.css");
 		}
     }
 }

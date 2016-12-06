@@ -86,7 +86,7 @@ namespace MyIssues.Droid.Controls
 				try
 				{
 					BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(input));
-					StringBuilder content = new StringBuilder((int)input.Length);
+					StringBuilder content = new StringBuilder();
 					String line;
 					while ((line = bufferedReader.ReadLine()) != null)
 					{
@@ -128,7 +128,7 @@ namespace MyIssues.Droid.Controls
 					else if (URLUtil.IsAssetUrl(url))
 					{
 						markdown = _parent.ReadFileFromAsset(url.Substring("file:///android_asset/".Length ));
-						throw new NotImplementedException();
+						//throw new NotImplementedException();
 					}
 					else {
 						throw new ArgumentException("The URL string provided is not a network URL or Asset URL.", nameof(url));
