@@ -14,6 +14,7 @@ using Android.Views;
 using Android.Widget;
 using Java.Lang;
 using Octokit;
+using Humanizer;
 using MyIssues.Droid.Controls;
 
 namespace MyIssues.Droid.Adapters
@@ -45,8 +46,7 @@ namespace MyIssues.Droid.Adapters
             var issueComment = _items[position];
             h.IssueCommentAuthor.Text = issueComment.Author;
             h.IssueCommentBody.LoadMarkdown(issueComment.Body, "file:///android_asset/github-markdown.css");
-            h.IssueCommentDate.Text = issueComment.CreatedAt.ToString();
-
+			h.IssueCommentDate.Text = issueComment.CreatedAt.Humanize(DateTimeOffset.Now);
             h.Bind(issueComment, OnIssueCommentSelected);
         }
 
