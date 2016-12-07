@@ -16,6 +16,7 @@ using Android.Widget;
 using MyIssues.Droid.Adapters;
 using Xamarin.Auth;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
+//using SearchView = Android.Support.V7.Widget.SearchView;
 using MyIssues.DataAccess;
 
 namespace MyIssues.Droid
@@ -24,10 +25,11 @@ namespace MyIssues.Droid
 		Theme = "@style/MyTheme")]
 	//[IntentFilter( actions: new string[] { Intent.ActionSearch })]
 	//[MetaData("android.app.searchable", Resource = "@xml/searchable")]
-	public class ReposActivity : AppCompatActivity
+	public class ReposActivity : ActionBarActivity
 	{
 
 		ListView _reposListView;
+		SearchView _searchView;
 		Storage _storage;
        List< Models.Repository> repos;
 
@@ -49,7 +51,7 @@ namespace MyIssues.Droid
 			var adapter = new ReposAdapter(this, repos);
 			_reposListView.Adapter = (adapter);
 
-            _reposListView.ItemClick += _reposListView_ItemClick;
+            //_reposListView.ItemClick += _reposListView_ItemClick;
 
 			HandleIntent(Intent);
 
@@ -70,16 +72,23 @@ namespace MyIssues.Droid
 			MenuInflater.Inflate(Resource.Menu.SearchMenu, menu);
 
 			//// Associate searchable configuration with the SearchView
-			SearchManager searchManager =
-				(SearchManager)GetSystemService(Context.SearchService);
-			var item = menu.FindItem(Resource.Id.menu_search);
-			var view1 = item.ActionView;
-			var view =  MenuItemCompat.GetActionView(item);
-			var searchView = view.JavaCast<Android.Widget.SearchView>();
-			System.Diagnostics.Debug.WriteLine("ActionView " + (view1 == null ? "null" : "no"));
-			System.Diagnostics.Debug.WriteLine("GetActionView " + (view == null ? "null" : "no"));
-			//searchView.SetSearchableInfo(
-			//	searchManager.GetSearchableInfo(ComponentName));
+			var item = menu.FindItem(Resource.Id.action_search);
+			//var searchView = MenuItemCompat.GetActionView(item);
+			//var a = item.ActionView;
+							   _searchView = new SearchView(this);
+			MenuItemCompat.SetActionView(item, _searchView);
+			//item.SetActionView(_searchView);
+
+			_searchView.QueryTextChange += (sender, e) => {
+				System.Diagnostics.Debug.WriteLine(e.NewText);;
+			};
+
+			_searchView.QueryTextSubmit += (sender, e) =>
+			{
+				System.Diagnostics.Debug.WriteLine(e.Query);
+				e.Handled = true;
+			};
+
 						return true;
 		}
 
