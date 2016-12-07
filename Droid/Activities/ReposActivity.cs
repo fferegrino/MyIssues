@@ -31,7 +31,9 @@ namespace MyIssues.Droid
 		ListView _reposListView;
 		SearchView _searchView;
 		Storage _storage;
-       List< Models.Repository> repos;
+		List<Models.Repository> repos;
+		ReposAdapter _adapter;
+
 
 		protected override async void OnCreate(Bundle savedInstanceState)
 		{
@@ -44,16 +46,15 @@ namespace MyIssues.Droid
 
 
 			_reposListView = FindViewById<ListView>(Resource.Id.reposListView);
-
 			var repos1 = await _storage.GetRepositoriesForUser();
 			repos = repos1.ToList();
 
-			var adapter = new ReposAdapter(this, repos);
-			_reposListView.Adapter = (adapter);
+			 _adapter = new ReposAdapter(this, repos);
+			_reposListView.Adapter = (_adapter);
+			_reposListView.ItemClick += _reposListView_ItemClick;
 
-            //_reposListView.ItemClick += _reposListView_ItemClick;
 
-			HandleIntent(Intent);
+
 
 		}
 
@@ -80,12 +81,13 @@ namespace MyIssues.Droid
 			//item.SetActionView(_searchView);
 
 			_searchView.QueryTextChange += (sender, e) => {
-				System.Diagnostics.Debug.WriteLine(e.NewText);;
+				_adapter.Filter.InvokeFilter(e.NewText);
 			};
 
 			_searchView.QueryTextSubmit += (sender, e) =>
 			{
 				System.Diagnostics.Debug.WriteLine(e.Query);
+
 				e.Handled = true;
 			};
 

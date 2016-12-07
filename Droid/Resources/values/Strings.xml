@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="hello">Hello World, Click Me!</string>
-  <string name="app_name">MyIssues.Droid</string>
-  <string name="SwitchRepoText">Switch repo</string>
+  <string name="app_name">MyIssues</string>
+  <string name="SwitchRepoText">Select repo</string>
   <string name="viewMore">View more...</string>
-  <string name="emptyListText">No hay elementos para mostrar</string>
+  <string name="emptyListText">No elements</string>
   <string name="set_your_access_token">Set your access token</string>
-  <string name="set_access_token">Establecer token</string>
+  <string name="set_access_token">Set token</string>
   <string name="question_mark_image_description">Question mark</string>
   <string name="view_token">View token</string>
 
@@ -134,4 +134,12 @@
   <string name="tap_website">Tap to visit website</string>
   <string name="tap_github">Tap to visit profile on GitHub</string>
   <string name="pref_root_directory_title">Select storage folder</string>
+
+	<string-array name="repo_kind">
+        <item>All</item>
+        <item>Owner</item>
+        <item>Member</item>
+        <item>Public</item>
+        <item>Private</item>
+    </string-array>
 </resources>
