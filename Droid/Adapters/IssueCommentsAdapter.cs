@@ -47,7 +47,7 @@ namespace MyIssues.Droid.Adapters
             h.IssueCommentAuthor.Text = issueComment.Author;
             h.IssueCommentBody.LoadMarkdown(issueComment.Body, "file:///android_asset/github-markdown.css");
 			h.IssueCommentDate.Text = issueComment.CreatedAt.Humanize(DateTimeOffset.Now);
-            h.Bind(issueComment, OnIssueCommentSelected);
+            //h.Bind(issueComment, OnIssueCommentSelected);
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
