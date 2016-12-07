@@ -13,6 +13,7 @@
   <string name="view_token">View token</string>
 	<string name="Authenticating">Authenticating</string>
 	<string name="PleaseWait">Please wait</string>
+	<string name="ReposKindLabel">Search in</string>
 
 
   <string name="action_settings">Settings</string>

@@ -31,6 +31,7 @@ namespace MyIssues.Droid
 		ListView _reposListView;
 		SearchView _searchView;
 		Storage _storage;
+		Spinner _repoKindSelector;
 		List<Models.Repository> repos;
 		ReposAdapter _adapter;
 
@@ -53,7 +54,13 @@ namespace MyIssues.Droid
 			_reposListView.Adapter = (_adapter);
 			_reposListView.ItemClick += _reposListView_ItemClick;
 
-
+			_repoKindSelector = FindViewById<Spinner>(Resource.Id.RepoKindSelector);
+			var repoKindAdapter = ArrayAdapter.CreateFromResource(this,
+			                                                      Resource.Array.repo_kind, Android.Resource.Layout.SimpleSpinnerItem);
+			// Specify the layout to use when the list of choices appears
+			repoKindAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerItem);
+			// Apply the adapter to the spinner
+			_repoKindSelector.Adapter = (repoKindAdapter);
 
 
 		}
@@ -62,8 +69,9 @@ namespace MyIssues.Droid
         {
             
             Intent returnIntent = new Intent();
-            returnIntent.PutExtra("repoName", repos[e.Position].Name);
-            returnIntent.PutExtra("repoId", repos[e.Position].Id);
+			var repo = _adapter[e.Position];
+			returnIntent.PutExtra("repoName", repo.Name);
+            returnIntent.PutExtra("repoId", repo.Id);
             SetResult(Result.Ok, returnIntent);
             this.Finish();
         }
@@ -84,12 +92,13 @@ namespace MyIssues.Droid
 				_adapter.Filter.InvokeFilter(e.NewText);
 			};
 
-			//_searchView.QueryTextSubmit += (sender, e) =>
-			//{
-			//	System.Diagnostics.Debug.WriteLine(e.Query);
+			_searchView.QueryTextSubmit += async (sender, e) =>
+			{
+				var searchResult = await _storage.SearchRepositories(e.Query);
+				_adapter.Replace(searchResult);
 
-			//	e.Handled = true;
-			//};
+				e.Handled = true;
+			};
 
 						return true;
 		}

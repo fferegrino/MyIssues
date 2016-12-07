@@ -104,6 +104,17 @@ namespace MyIssues.DataAccess
 
         #endregion
 
+        public async Task<List<Models.Repository>> SearchRepositories(string term)
+		{
+
+			var request = new Octokit.SearchRepositoriesRequest(term);
+			request.PerPage = 30;
+
+			var result = await _client.Search.SearchRepo(request);
+
+			return result.Items.Select(repo => repo.Map()).ToList();
+		}
+
         public async Task<List<Models.Repository>> GetRepositoriesForUser()
         {
             var repositoryRequest = new Octokit.RepositoryRequest

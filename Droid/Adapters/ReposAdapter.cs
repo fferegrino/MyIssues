@@ -23,6 +23,11 @@ namespace MyIssues.Droid.Adapters
 		internal List<Models.Repository> _originalData;
 		internal List<Models.Repository> _dataSource;
 
+		public ReposAdapter(Context context) : this(context, new List<Models.Repository>())
+		{
+
+		}
+
 		public ReposAdapter(Context context, List<Models.Repository> items)
 		{
 			_context = context;
@@ -30,7 +35,7 @@ namespace MyIssues.Droid.Adapters
 			_inflater =  (LayoutInflater)_context.GetSystemService(Context.LayoutInflaterService);
 
 
-			Filter = new MyFilter(this);
+			Filter = new ByNameFilter(this);
 		}
 
 		public override int Count
@@ -39,6 +44,11 @@ namespace MyIssues.Droid.Adapters
 			{
 				return _dataSource.Count();
 			}
+		}
+
+		public Models.Repository this[int i] 
+		{
+			get { return _dataSource[i]; }
 		}
 
 		public Filter Filter
@@ -54,6 +64,16 @@ namespace MyIssues.Droid.Adapters
 		public override long GetItemId(int position)
 		{
 			return position;
+		}
+
+		public void Replace(List<Models.Repository> newRepos)
+		{
+			if (_originalData == null)
+				_originalData = _dataSource;
+
+			_dataSource.Clear();
+			_dataSource.AddRange(newRepos);
+			NotifyDataSetChanged();
 		}
 
 		public override View GetView(int position, View convertView, ViewGroup parent)
@@ -76,11 +96,11 @@ namespace MyIssues.Droid.Adapters
 		}
 	}
 
-	public class MyFilter : Filter
+	public class ByNameFilter : Filter
 	{
 
 		ReposAdapter _parent;
-		public MyFilter(ReposAdapter parent)
+		public ByNameFilter(ReposAdapter parent)
 		{
 			_parent = parent;
 		}
