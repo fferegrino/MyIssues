@@ -84,29 +84,16 @@ namespace MyIssues.Droid
 				_adapter.Filter.InvokeFilter(e.NewText);
 			};
 
-			_searchView.QueryTextSubmit += (sender, e) =>
-			{
-				System.Diagnostics.Debug.WriteLine(e.Query);
+			//_searchView.QueryTextSubmit += (sender, e) =>
+			//{
+			//	System.Diagnostics.Debug.WriteLine(e.Query);
 
-				e.Handled = true;
-			};
+			//	e.Handled = true;
+			//};
 
 						return true;
 		}
 
-		protected override void OnNewIntent(Intent intent)
-		{
-			HandleIntent(intent);
-		}
 
-		private void HandleIntent(Intent intent)
-		{
-			if (Intent.ActionSearch.Equals(intent.Action))
-			{
-				String query = intent.GetStringExtra(SearchManager.Query);
-				//use the query to search your data somehow
-				System.Diagnostics.Debug.WriteLine("Search " + query);
-			}
-		}
     }
 }

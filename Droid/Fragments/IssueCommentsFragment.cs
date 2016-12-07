@@ -106,17 +106,19 @@ namespace MyIssues.Droid.Fragments
         {
             var loadComments = _storage.GetIssueComments(_issueNumber);
 
-            Action onCompleted = null;
 #if DEBUG
-            onCompleted = () =>
+
+            Action onCompleted = () =>
             {
                 UiExtensions.RunOnUi(() =>
                 {
                     Toast.MakeText(this.Context, "Comentarios cargados", ToastLength.Long).Show();
                 });
             };
-#endif
             loadComments.Subscribe(ResetComments, onCompleted: onCompleted);
+			#else
+            loadComments.Subscribe(ResetComments);
+#endif
         }
     }
 }

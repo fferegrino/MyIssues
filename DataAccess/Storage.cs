@@ -12,6 +12,7 @@ namespace MyIssues.DataAccess
 {
     public partial class Storage
     {
+
         public static void Init()
         {
             BlobCache.ApplicationName = "MyIssues";
@@ -30,8 +31,7 @@ namespace MyIssues.DataAccess
         }
 
         public async Task<bool> SetClient(Octokit.GitHubClient client)
-        {
-            _client = client;
+        {            _client = client;
 
             try
             {

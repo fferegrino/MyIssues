@@ -6,7 +6,7 @@
 
 	    <item
         android:id="@+id/RefreshIssue"
-        android:title="@string/SwitchRepoText"
+        android:title="@string/ReloadText"
         android:icon="@drawable/preview"
         android:orderInCategory="100"
 android:showAsAction="always"/>

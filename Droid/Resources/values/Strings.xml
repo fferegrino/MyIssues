@@ -3,12 +3,16 @@
   <string name="hello">Hello World, Click Me!</string>
   <string name="app_name">MyIssues</string>
   <string name="SwitchRepoText">Select repo</string>
+  <string name="AboutText">About</string>
+  <string name="ReloadText">Reload</string>
   <string name="viewMore">View more...</string>
   <string name="emptyListText">No elements</string>
   <string name="set_your_access_token">Set your access token</string>
   <string name="set_access_token">Set token</string>
   <string name="question_mark_image_description">Question mark</string>
   <string name="view_token">View token</string>
+	<string name="Authenticating">Authenticating</string>
+	<string name="PleaseWait">Please wait</string>
 
 
   <string name="action_settings">Settings</string>

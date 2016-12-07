@@ -11,6 +11,7 @@ using Android.Text.Method;
 using MyIssues.DataAccess;
 using System.Threading.Tasks;
 using MyIssues.Droid.Activities;
+using Android.Util;
 
 namespace MyIssues.Droid
 {
@@ -21,6 +22,9 @@ namespace MyIssues.Droid
         Icon = "@drawable/icon")]
     public class MainActivity : AppCompatActivity
     {
+
+		const string Tag = nameof(MainActivity);
+
         ImageButton _learnMoreButton;
         Button _setAccessTokenButton;
         EditText _accessTokenEditText;
@@ -35,13 +39,11 @@ namespace MyIssues.Droid
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.Main);
 
-            // Get our button from the layout resource,
-            // and attach an event to it
             _learnMoreButton = FindViewById<ImageButton>(Resource.Id.LearnMoreButton);
             _accessTokenEditText = FindViewById<EditText>(Resource.Id.AccessTokenEditText);
             _setAccessTokenButton = FindViewById<Button>(Resource.Id.SetAccessTokenButton);
 
-			string accessToken = await _storage.GetToken() ?? "081821f76f6d5b53cfbebc63aaa80a78993be3f9";
+			string accessToken = await _storage.GetToken();
             _accessTokenEditText.Text = accessToken;
             if (accessToken != null && await Authenticate(accessToken))
             {
@@ -51,7 +53,7 @@ namespace MyIssues.Droid
 
 			_learnMoreButton.Click += (sender, e) =>
 			{
-				var browserIntent = new Intent(Intent.ActionView, Android.Net.Uri.Parse("http://thatcsharpguy.com"));
+				var browserIntent = new Intent(Intent.ActionView, Android.Net.Uri.Parse("http://thatcsharpguy.com/apps/myissues#personal-access-token"));
 				StartActivity(browserIntent);
 			};
         }
@@ -67,8 +69,8 @@ namespace MyIssues.Droid
         async Task<bool> Authenticate(string accessToken)
         {
             ProgressDialog progress;
-            progress = ProgressDialog.Show(this, "Authenticating",
-                "Please wait", true);
+			progress = ProgressDialog.Show(this,Resources.GetString(Resource.String.Authenticating),
+			                               Resources.GetString(Resource.String.PleaseWait), true);
             var cliente = GitHubClientFactory.CreateClient(accessToken);
             var authed = await _storage.SetClient(cliente);
 

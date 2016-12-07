@@ -56,7 +56,7 @@ namespace MyIssues.Droid
 
 
 
-            long repo = 38643364; //await _storage.GetWorkingRepo();
+            long repo = await _storage.GetWorkingRepo();
             if (repo == 0)
             {
                 OpenRepoSelector();
