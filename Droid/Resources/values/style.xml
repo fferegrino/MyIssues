@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
   <style name="MyTheme" parent="MyTheme.Base">
   </style>
@@ -14,12 +14,10 @@
     <item name="windowActionModeOverlay">true</item>
     <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
   </style>
-
-  <style name="PrimaryText" >
+  <style name="PrimaryText">
     <item name="android:textColor">@color/mainTextColor</item>
   </style>
-
-  <style name="SecondaryText" >
+  <style name="SecondaryText">
     <item name="android:textColor">@color/secondaryTextColor</item>
   </style>
 </resources>

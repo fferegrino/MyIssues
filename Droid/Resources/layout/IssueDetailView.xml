@@ -1,81 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/IssueCoordinatorLayout">
-	
-  <ScrollView
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      app:layout_behavior="@string/appbar_scrolling_view_behavior">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#ffffff"
-            android:padding="0dp"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/IssueTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Large Text"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="#000000"
-                android:textStyle="bold"
-                android:typeface="sans"
-                android:paddingBottom="5dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="5dp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#ffe0e0e0"
-            android:orientation="horizontal"
-            android:padding="0dp">
-            <TextView
-                android:id="@+id/IssueCreatedAtTextView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="5"
-                android:padding="4dp"
-                android:text="Small Text"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="#000000"
-                android:background="#15000000" />
-            <TextView
-                android:id="@+id/IssueStatusTextView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:background="@color/openIssue"
-                android:padding="4dp"
-                android:text="Small Text"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="#ffffffff"
-                android:textStyle="bold"
-                android:gravity="right" />
-        </LinearLayout>
-		
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/LabelsRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#0e000000"
-                android:minHeight="25dp"
-                android:minWidth="25dp" />
-			<myissues.droid.controls.MarkdownView
-                android:id="@+id/IssueBodyTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="4dp"
-                android:layout_marginBottom="5dp" />
-
-        </LinearLayout>
-    </ScrollView>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent" android:id="@+id/IssueCoordinatorLayout">
+  <ScrollView android:layout_width="match_parent" android:layout_height="match_parent" app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="#ffffff" android:padding="0dp" android:orientation="vertical">
+      <TextView android:id="@+id/IssueTitle" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Large Text" android:textAppearance="?android:attr/textAppearanceLarge" android:textColor="#000000" android:textStyle="bold" android:typeface="sans" android:paddingBottom="5dp" android:paddingLeft="10dp" android:paddingRight="10dp" android:paddingTop="5dp" />
+      <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="#ffe0e0e0" android:orientation="horizontal" android:padding="0dp">
+        <TextView android:id="@+id/IssueCreatedAtTextView" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="5" android:padding="4dp" android:text="Small Text" android:textAppearance="?android:attr/textAppearanceSmall" android:textColor="#000000" android:background="#15000000" />
+        <TextView android:id="@+id/IssueStatusTextView" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="2" android:background="@color/openIssue" android:padding="4dp" android:text="Small Text" android:textAppearance="?android:attr/textAppearanceSmall" android:textColor="#ffffffff" android:textStyle="bold" android:gravity="right" />
+      </LinearLayout>
+      <android.support.v7.widget.RecyclerView android:id="@+id/LabelsRecyclerView" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="#0e000000" android:minHeight="25dp" android:minWidth="25dp" />
+      <myissues.droid.controls.MarkdownView android:id="@+id/IssueBodyTextView" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginStart="4dp" android:layout_marginEnd="4dp" android:layout_marginBottom="5dp" />
+    </LinearLayout>
+  </ScrollView>
 </android.support.design.widget.CoordinatorLayout>

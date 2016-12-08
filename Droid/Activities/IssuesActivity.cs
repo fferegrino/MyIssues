@@ -39,7 +39,7 @@ namespace MyIssues.Droid
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.Issues);
-            var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
+            var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.Toolbar);
             SetSupportActionBar(toolbar);
 
             _refreshLayout = FindViewById<SwipeRefreshLayout>(Resource.Id.SwipeIssuesContainer);
@@ -48,10 +48,10 @@ namespace MyIssues.Droid
             _storage = Storage.GetInstance();
 
 
-            _issuesListView = FindViewById<RecyclerViewEmptySupport>(Resource.Id.issuesListView);
+            _issuesListView = FindViewById<RecyclerViewEmptySupport>(Resource.Id.IssuesListView);
 
 
-			progress_horizontal = FindViewById<ProgressBar>(Resource.Id.progress_horizontal);
+			progress_horizontal = FindViewById<ProgressBar>(Resource.Id.ProgressHorizontal);
 
             var view = FindViewById(Resource.Id.EmptyListView);
             _issuesListView.EmptyView = view;

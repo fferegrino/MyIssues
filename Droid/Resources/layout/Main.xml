@@ -1,59 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/windowBackground">
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center_horizontal"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/linear"
-        android:layout_marginTop="60dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-            android:layout_gravity="center_vertical"
-            android:text="@string/set_your_access_token"
-            android:id="@+id/lbl1"
-            android:textColor="@color/secondaryTextColor"
-            android:layout_marginRight="10dp"
-            android:textSize="25sp" />
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/LearnMoreButton"
-            android:src="@drawable/question"
-            android:tintMode="src_over"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/question_mark_image_description" />
-    </LinearLayout>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/AccessTokenEditText"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="10dp"
-        android:layout_alignParentStart="true"
-        android:inputType="textMultiLine"
-        tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-        android:gravity="center_horizontal"
-        android:letterSpacing="0.8"
-        android:layout_below="@+id/linear"
-        android:layout_marginRight="40dp" />
-    <Button
-        android:id="@+id/SetAccessTokenButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/set_access_token"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/AccessTokenEditText"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="45dp"
-        android:layout_marginRight="45dp" />
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@color/windowBackground">
+  <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_gravity="center_horizontal" android:layout_centerHorizontal="true" android:id="@+id/Linear" android:layout_marginTop="60dp">
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" android:layout_gravity="center_vertical" android:text="@string/set_your_access_token" android:id="@+id/Lbl1" android:textColor="@color/secondaryTextColor" android:layout_marginRight="10dp" android:textSize="25sp" />
+    <ImageButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/LearnMoreButton" android:src="@drawable/Question" android:tintMode="src_over" android:background="@android:color/transparent" android:contentDescription="@string/question_mark_image_description" />
+  </LinearLayout>
+  <EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/AccessTokenEditText" android:layout_gravity="center_horizontal" android:layout_marginLeft="40dp" android:layout_marginTop="10dp" android:layout_alignParentStart="true" android:inputType="textMultiLine" tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit" android:gravity="center_horizontal" android:letterSpacing="0.8" android:layout_below="@+id/Linear" android:layout_marginRight="40dp" />
+  <Button android:id="@+id/SetAccessTokenButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/set_access_token" android:layout_alignParentLeft="true" android:layout_below="@+id/AccessTokenEditText" android:layout_marginTop="10dp" android:layout_marginLeft="45dp" android:layout_marginRight="45dp" />
 </RelativeLayout>

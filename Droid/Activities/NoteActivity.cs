@@ -49,7 +49,7 @@ namespace MyIssues.Droid.Activities
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.Note);
 
-            Toolbar toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
+            Toolbar toolbar = FindViewById<Toolbar>(Resource.Id.Toolbar);
             if (toolbar != null)
             {
                 SetSupportActionBar(toolbar);
@@ -57,10 +57,10 @@ namespace MyIssues.Droid.Activities
             }
 
             context = ApplicationContext;
-            Content = FindViewById<HighlightingEditor>(Resource.Id.note_content);
-            noteTitle = (EditText)FindViewById(Resource.Id.edit_note_title);
-            scrollView = (ScrollView)FindViewById(Resource.Id.note_scrollview);
-            keyboardBarView = (ViewGroup)FindViewById(Resource.Id.keyboard_bar);
+            Content = FindViewById<HighlightingEditor>(Resource.Id.NoteContent);
+            noteTitle = (EditText)FindViewById(Resource.Id.EditNoteTitle);
+            scrollView = (ScrollView)FindViewById(Resource.Id.NoteScrollview);
+            keyboardBarView = (ViewGroup)FindViewById(Resource.Id.KeyboardBar);
 
             Intent receivingIntent = Intent;
             issueNumber = receivingIntent.GetIntExtra(Constants.IssueNumber, 0);
@@ -75,7 +75,7 @@ namespace MyIssues.Droid.Activities
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            MenuInflater.Inflate(Resource.Menu.note_menu, menu);
+            MenuInflater.Inflate(Resource.Menu.NoteMenu, menu);
             return true;
         }
 
@@ -85,9 +85,9 @@ namespace MyIssues.Droid.Activities
             {
                 case Android.Resource.Id.Home:
                     base.OnBackPressed();
-                    OverridePendingTransition(Resource.Animation.anim_slide_out_right, Resource.Animation.anim_slide_in_right);
+                    OverridePendingTransition(Resource.Animation.AnimSlideOutRight, Resource.Animation.AnimSlideInRight);
                     return true;
-                case Resource.Id.action_comment:
+                case Resource.Id.ActionComment:
                     var published = AsyncHelpers.RunSync<bool>(() => Publish(Content.Text, noteTitle.Text)); ;
                     if (published)
                     {
@@ -98,7 +98,7 @@ namespace MyIssues.Droid.Activities
                     }
 
                     return true;
-                case Resource.Id.action_preview:
+                case Resource.Id.ActionPreview:
                     InputMethodManager imm = (InputMethodManager)GetSystemService(Context.InputMethodService);
                     imm.HideSoftInputFromWindow(Content.WindowToken, 0);
                     ShowPopup(Content.Text, noteTitle.Text);
@@ -116,7 +116,7 @@ namespace MyIssues.Droid.Activities
         public override void OnBackPressed()
         {
             base.OnBackPressed();
-            OverridePendingTransition(Resource.Animation.anim_slide_out_right, Resource.Animation.anim_slide_in_right);
+            OverridePendingTransition(Resource.Animation.AnimSlideOutRight, Resource.Animation.AnimSlideInRight);
         }
 
         protected override void OnSaveInstanceState(Bundle outState)
@@ -166,7 +166,7 @@ namespace MyIssues.Droid.Activities
             }
             else if (!showShortcuts)
             {
-                FindViewById(Resource.Id.keyboard_bar_scroll).Visibility = ViewStates.Gone;
+                FindViewById(Resource.Id.KeyboardBarScroll).Visibility = ViewStates.Gone;
             }
         }
 
@@ -198,7 +198,7 @@ namespace MyIssues.Droid.Activities
 
         private void AppendButton(string shortcut, View.IOnClickListener l)
         {
-            TextView shortcutButton = (TextView)LayoutInflater.Inflate(Resource.Layout.keyboard_shortcut, null);
+            TextView shortcutButton = (TextView)LayoutInflater.Inflate(Resource.Layout.KeyboardShortcut, null);
             shortcutButton.Text = shortcut;
             shortcutButton.SetOnClickListener(l);
 

@@ -30,7 +30,7 @@ namespace MyIssues.Droid
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.IssueMain);
-            var toolbar = (Android.Support.V7.Widget.Toolbar)FindViewById(Resource.Id.toolbar);
+            var toolbar = (Android.Support.V7.Widget.Toolbar)FindViewById(Resource.Id.Toolbar);
             SetSupportActionBar(toolbar);
 
             var title = Intent.GetStringExtra("title");

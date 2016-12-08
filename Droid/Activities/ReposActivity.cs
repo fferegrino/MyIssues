@@ -43,11 +43,11 @@ namespace MyIssues.Droid
             _storage = Storage.GetInstance();
 
 			SetContentView(Resource.Layout.Repos);
-			var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
+			var toolbar = FindViewById<Toolbar>(Resource.Id.Toolbar);
 			SetSupportActionBar(toolbar);
 
 
-			_reposListView = FindViewById<ListView>(Resource.Id.reposListView);
+			_reposListView = FindViewById<ListView>(Resource.Id.ReposListView);
 			var repos1 = await _storage.GetRepositoriesForUser();
 			repos = repos1.ToList();
 
@@ -84,7 +84,7 @@ namespace MyIssues.Droid
 			MenuInflater.Inflate(Resource.Menu.SearchMenu, menu);
 
 			//// Associate searchable configuration with the SearchView
-			var item = menu.FindItem(Resource.Id.action_search);
+			var item = menu.FindItem(Resource.Id.ActionSearch);
 			//var searchView = MenuItemCompat.GetActionView(item);
 			//var a = item.ActionView;
 							   _searchView = new SearchView(this);

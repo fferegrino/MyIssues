@@ -101,15 +101,15 @@ namespace MyIssues.Droid.Adapters
 
 		public IssueViewHolder(View itemView) : base(itemView)
 		{
-			IssueListTitle = itemView.FindViewById<TextView>(Resource.Id.issueListTitle);
-			IssueListMilestone = itemView.FindViewById<TextView>(Resource.Id.issueListMilestone);
+			IssueListTitle = itemView.FindViewById<TextView>(Resource.Id.IssueListTitle);
+			IssueListMilestone = itemView.FindViewById<TextView>(Resource.Id.IssueListMilestone);
 			LabelColorViews = new View[]
 			{
-				itemView.FindViewById(Resource.Id.issueColorLabel1),
-				itemView.FindViewById(Resource.Id.issueColorLabel2),
-				itemView.FindViewById(Resource.Id.issueColorLabel3),
-				itemView.FindViewById(Resource.Id.issueColorLabel4),
-				itemView.FindViewById(Resource.Id.issueColorLabel5)
+				itemView.FindViewById(Resource.Id.IssueColorLabel1),
+				itemView.FindViewById(Resource.Id.IssueColorLabel2),
+				itemView.FindViewById(Resource.Id.IssueColorLabel3),
+				itemView.FindViewById(Resource.Id.IssueColorLabel4),
+				itemView.FindViewById(Resource.Id.IssueColorLabel5)
 			};
 
 			itemView.Click += ItemView_Click;

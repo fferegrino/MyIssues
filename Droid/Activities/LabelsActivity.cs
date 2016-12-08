@@ -47,7 +47,7 @@ namespace MyIssues.Droid
             _storage = Storage.GetInstance();
 
 			SetContentView(Resource.Layout.Labels);
-			var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
+			var toolbar = FindViewById<Toolbar>(Resource.Id.Toolbar);
 			SetSupportActionBar(toolbar);
 
 

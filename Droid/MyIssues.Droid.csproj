@@ -266,25 +266,15 @@
     <AndroidResource Include="Resources\drawable-hdpi\question.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\question.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\question.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\empty_icon.png" />
     <AndroidResource Include="Resources\drawable-hdpi\info.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\new_issue.png" />
     <AndroidResource Include="Resources\drawable-hdpi\reply.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\empty_icon.png" />
     <AndroidResource Include="Resources\drawable-mdpi\info.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\new_issue.png" />
     <AndroidResource Include="Resources\drawable-mdpi\reply.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\empty_icon.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\info.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\new_issue.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\reply.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\empty_icon.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\info.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\new_issue.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\reply.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\empty_icon.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\info.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\new_issue.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\question.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\reply.png" />
     <AndroidResource Include="Resources\layout\IssueComments.xml" />
@@ -334,40 +324,7 @@
     <AndroidResource Include="Resources\values\dimens.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\note_cursor_drawable.xml" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\values\donottranslate.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\menu\note_menu.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\anim\anim_no_change.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\anim\anim_slide_in_left.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\anim\anim_slide_in_right.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\anim\anim_slide_in_up.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\anim\anim_slide_out_down.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\anim\anim_slide_out_left.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\anim\anim_slide_out_right.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\keyboard_shortcut.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\keyboard_shortcut_button.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
@@ -398,6 +355,72 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxxhdpi\preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\NewIssue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\EmptyIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\menu\NoteMenu.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values-w820dp\Dimens.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\KeyboardShortcut.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\KeyboardShortcutButton.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\NoteCursorDrawable.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\anim\AnimNoChange.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\anim\AnimSlideInLeft.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\anim\AnimSlideInRight.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\anim\AnimSlideInUp.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\anim\AnimSlideOutDown.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\anim\AnimSlideOutLeft.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\anim\AnimSlideOutRight.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\EmptyIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\NewIssue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-mdpi\EmptyIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-mdpi\NewIssue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\EmptyIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\NewIssue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\EmptyIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\NewIssue.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

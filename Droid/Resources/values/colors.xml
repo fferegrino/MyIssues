@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
   <color name="primary">#3297fa</color>
   <color name="primaryDark">#1976D2</color>
@@ -9,13 +9,10 @@
   <color name="secondaryTextColor">#181818</color>
   <color name="openIssue">#6cc644</color>
   <color name="closedIssue">#bd2c00</color>
-
-
   <color name="grey">#ff505050</color>
   <color name="dark_grey">#ff212121</color>
   <color name="light_grey">#ffC0C0C0</color>
   <color name="lighter_grey">#ffE0E0E0</color>
-
   <!-- <color name="primary">#388E3C</color> -->
   <color name="light_primary">#81C784</color>
   <color name="dark_primary">#2E7D32</color>

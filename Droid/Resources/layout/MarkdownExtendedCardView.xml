@@ -1,52 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:card_view="http://schemas.android.com/apk/com.thatcsharpguy.myissues"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="7dp"
-        card_view:cardElevation="4dp"
-        card_view:cardUseCompatPadding="true"
-        card_view:cardCornerRadius="10dp"
-        android:background="#ffffff">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/MarkdownTitleTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="4dp"
-                android:textColor="#000000"
-                android:textSize="20sp"
-                tools:text="Lorem"
-                android:lines="9999999"
-                android:singleLine="true"
-                style="@style/PrimaryText"
-                android:layout_toStartOf="@+id/FullMarkdownCloseButton"
-                android:background="@color/windowBackgroundDark" />
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/FullMarkdownCloseButton"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:src="@android:drawable/ic_menu_close_clear_cancel"
-                android:background="@color/windowBackgroundDark" />
-
-
-          <myissues.droid.controls.MarkdownView
-                android:id="@+id/FullMarkdownView"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-                android:layout_below="@+id/MarkdownTitleTextView"
-              android:layout_centerVertical="true"
-              android:layout_marginStart="4dp"
-              android:layout_marginEnd="4dp"
-              android:layout_marginBottom="5dp" />
-        </RelativeLayout>
-    </android.support.v7.widget.CardView>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:card_view="http://schemas.android.com/apk/com.thatcsharpguy.myissues" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent">
+  <android.support.v7.widget.CardView android:layout_width="match_parent" android:layout_height="match_parent" android:layout_margin="7dp" card_view:cardElevation="4dp" card_view:cardUseCompatPadding="true" card_view:cardCornerRadius="10dp" android:background="#ffffff">
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+      <TextView android:id="@+id/MarkdownTitleTextView" android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="4dp" android:textColor="#000000" android:textSize="20sp" tools:text="Lorem" android:lines="9999999" android:singleLine="true" style="@style/PrimaryText" android:layout_toStartOf="@+id/FullMarkdownCloseButton" android:background="@color/windowBackgroundDark" />
+      <ImageButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/FullMarkdownCloseButton" android:layout_alignParentTop="true" android:layout_alignParentEnd="true" android:src="@android:drawable/ic_menu_close_clear_cancel" android:background="@color/windowBackgroundDark" />
+      <myissues.droid.controls.MarkdownView android:id="@+id/FullMarkdownView" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_below="@+id/MarkdownTitleTextView" android:layout_centerVertical="true" android:layout_marginStart="4dp" android:layout_marginEnd="4dp" android:layout_marginBottom="5dp" />
+    </RelativeLayout>
+  </android.support.v7.widget.CardView>
 </LinearLayout>
