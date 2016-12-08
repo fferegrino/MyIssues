@@ -43,7 +43,7 @@ namespace MyIssues.Droid
             _accessTokenEditText = FindViewById<EditText>(Resource.Id.AccessTokenEditText);
             _setAccessTokenButton = FindViewById<Button>(Resource.Id.SetAccessTokenButton);
 
-			string accessToken = await _storage.GetToken();
+			string accessToken = await _storage.GetToken() ?? "f919d499193893937b0d39e9f6c0fdef29ad5691";
             _accessTokenEditText.Text = accessToken;
             if (accessToken != null && await Authenticate(accessToken))
             {

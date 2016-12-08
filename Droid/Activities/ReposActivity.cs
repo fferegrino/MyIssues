@@ -16,7 +16,7 @@ using Android.Widget;
 using MyIssues.Droid.Adapters;
 using Xamarin.Auth;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
-//using SearchView = Android.Support.V7.Widget.SearchView;
+using SearchView = Android.Support.V7.Widget.SearchView;
 using MyIssues.DataAccess;
 
 namespace MyIssues.Droid
@@ -25,7 +25,7 @@ namespace MyIssues.Droid
 		Theme = "@style/MyTheme")]
 	//[IntentFilter( actions: new string[] { Intent.ActionSearch })]
 	//[MetaData("android.app.searchable", Resource = "@xml/searchable")]
-	public class ReposActivity : ActionBarActivity
+	public class ReposActivity : ActionBarActivity, View.IOnFocusChangeListener
 	{
 
 		ListView _reposListView;
@@ -33,6 +33,7 @@ namespace MyIssues.Droid
 		Storage _storage;
 		Spinner _repoKindSelector;
 		List<Models.Repository> repos;
+		TextView _instrucciones;
 		ReposAdapter _adapter;
 
 
@@ -54,13 +55,15 @@ namespace MyIssues.Droid
 			_reposListView.Adapter = (_adapter);
 			_reposListView.ItemClick += _reposListView_ItemClick;
 
-			_repoKindSelector = FindViewById<Spinner>(Resource.Id.RepoKindSelector);
-			var repoKindAdapter = ArrayAdapter.CreateFromResource(this,
-			                                                      Resource.Array.repo_kind, Android.Resource.Layout.SimpleSpinnerItem);
-			// Specify the layout to use when the list of choices appears
-			repoKindAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerItem);
-			// Apply the adapter to the spinner
-			_repoKindSelector.Adapter = (repoKindAdapter);
+			_instrucciones = FindViewById<TextView>(Resource.Id.InstruccionesText);
+			_instrucciones.Visibility = ViewStates.Gone;
+			//_repoKindSelector = FindViewById<Spinner>(Resource.Id.RepoKindSelector);
+			//var repoKindAdapter = ArrayAdapter.CreateFromResource(this,
+			//                                                      Resource.Array.repo_kind, Android.Resource.Layout.SimpleSpinnerItem);
+			//// Specify the layout to use when the list of choices appears
+			//repoKindAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerItem);
+			//// Apply the adapter to the spinner
+			//_repoKindSelector.Adapter = (repoKindAdapter);
 
 
 		}
@@ -86,10 +89,16 @@ namespace MyIssues.Droid
 			//var a = item.ActionView;
 							   _searchView = new SearchView(this);
 			MenuItemCompat.SetActionView(item, _searchView);
+			item.SetShowAsAction(ShowAsAction.CollapseActionView | ShowAsAction.IfRoom);
 			//item.SetActionView(_searchView);
+
+			_searchView.FocusChange += SearchView_FocusChange;
+			_searchView.SetOnQueryTextFocusChangeListener(this);
+			//item.SetOnMenuItemClickListener(this);
 
 			_searchView.QueryTextChange += (sender, e) => {
 				_adapter.Filter.InvokeFilter(e.NewText);
+				System.Diagnostics.Debug.WriteLine("Shown elements :" + _adapter.Count);
 			};
 
 			_searchView.QueryTextSubmit += async (sender, e) =>
@@ -103,6 +112,21 @@ namespace MyIssues.Droid
 						return true;
 		}
 
+		void SearchView_FocusChange(object sender, View.FocusChangeEventArgs e)
+		{
+			System.Diagnostics.Debug.WriteLine($"Has focus: {e.HasFocus}");
+		}
 
-    }
+		public bool OnMenuItemClick(IMenuItem item)
+		{
+			item.ExpandActionView();
+			return true;
+		}
+
+		public void OnFocusChange(View v, bool hasFocus)
+		{
+
+			_instrucciones.Visibility = hasFocus ? ViewStates.Visible : ViewStates.Gone;
+		}
+	}
 }

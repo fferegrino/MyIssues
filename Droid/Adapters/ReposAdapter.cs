@@ -82,15 +82,25 @@ namespace MyIssues.Droid.Adapters
 
 
 			var titleTextView = rowView.FindViewById<TextView>(Resource.Id.RepoListTitle);
+			var ownerTextView = rowView.FindViewById<TextView>(Resource.Id.RepoListOwner);
 			var descriptionTextView = rowView.FindViewById<TextView>(Resource.Id.RepoListDescription);
 			var languageTextView = rowView.FindViewById<TextView>(Resource.Id.RepoListLanguage);
-			var repoColor = rowView.FindViewById(Resource.Id.RepoListColor);
+			//var repoColor = rowView.FindViewById(Resource.Id.RepoListColor);
 
 			titleTextView.Text = _dataSource[position].Name;
-			descriptionTextView.Text = _dataSource[position].Description;
+			if (System.String.IsNullOrEmpty(_dataSource[position].Description))
+			{
+				descriptionTextView.Visibility = ViewStates.Gone;
+			}
+			else
+			{
+				descriptionTextView.Visibility = ViewStates.Visible;
+				descriptionTextView.Text = _dataSource[position].Description;
+			}
+			ownerTextView.Text = _dataSource[position].Owner;
 			languageTextView.Text = _dataSource[position].Language;
 			var color = Helpers.GetLanguageColor(_dataSource[position].Language);
-			repoColor.SetBackgroundColor(Color.Argb(255, color[0], color[1], color[2]));
+			languageTextView.SetTextColor(Color.Argb(255, color[0], color[1], color[2]));
 
 			return rowView;
 		}
