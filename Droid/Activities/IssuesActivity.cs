@@ -31,6 +31,7 @@ namespace MyIssues.Droid
         MyIssues.Droid.Controls.RecyclerViewEmptySupport _issuesListView;
         SwipeRefreshLayout _refreshLayout;
         RecyclerView.LayoutManager _layoutManager;
+		ProgressBar progress_horizontal;
         Storage _storage;
         Octokit.Repository _repo;
 
@@ -48,6 +49,9 @@ namespace MyIssues.Droid
 
 
             _issuesListView = FindViewById<RecyclerViewEmptySupport>(Resource.Id.issuesListView);
+
+
+			progress_horizontal = FindViewById<ProgressBar>(Resource.Id.progress_horizontal);
 
             var view = FindViewById(Resource.Id.EmptyListView);
             _issuesListView.EmptyView = view;
@@ -69,6 +73,9 @@ namespace MyIssues.Droid
 
         private async Task LoadRepo(long repoId)
         {
+			progress_horizontal.Visibility = ViewStates.Visible;
+			_issuesListView.IsLoading = true;
+			progress_horizontal.Indeterminate = true;
             try
             {
                 await _storage.SetWorkingRepo(repoId);
@@ -93,7 +100,11 @@ namespace MyIssues.Droid
                 intent.PutExtra("title", selected.Title);
                 StartActivity(intent);
             };
+
+			_issuesListView.IsLoading = false; 
             _issuesListView.SetAdapter(adapter);
+
+			progress_horizontal.Visibility = ViewStates.Gone;
         }
 
         private Handler updateHandler;

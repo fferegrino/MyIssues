@@ -13,9 +13,9 @@ namespace MyIssues.Droid.Controls
         private View emptyView;
 
         private EmptyDataObserver _emptyObserver;
-        private EmptyDataObserver GetEmptyObserver()
+        private EmptyDataObserver EmptyObserver
         {
-            return _emptyObserver ?? (_emptyObserver = new EmptyDataObserver(this));
+			get { return _emptyObserver ?? (_emptyObserver = new EmptyDataObserver(this)); }
         }
 
         public RecyclerViewEmptySupport(Context context) : base(context)
@@ -30,17 +30,24 @@ namespace MyIssues.Droid.Controls
         {
         }
 
+		private bool _isLoading;
+		public bool IsLoading
+		{
+			get { return _isLoading; }
+			set { _isLoading = value; 
+            EmptyObserver.OnChanged(); }
+		}
 
-        public override void SetAdapter(Adapter adapter)
+		public override void SetAdapter(Adapter adapter)
         {
             base.SetAdapter(adapter);
 
             if (adapter != null)
             {
-                adapter.RegisterAdapterDataObserver(GetEmptyObserver());
+				adapter.RegisterAdapterDataObserver(EmptyObserver);
             }
 
-            GetEmptyObserver().OnChanged();
+            EmptyObserver.OnChanged();
         }
 
 
@@ -61,7 +68,7 @@ namespace MyIssues.Droid.Controls
             var adapter = _parent.GetAdapter();
             if (adapter != null && _parent.EmptyView != null)
             {
-                if (adapter.ItemCount == 0)
+				if (adapter.ItemCount == 0 && !_parent.IsLoading)
                 {
                     _parent.EmptyView.Visibility = ViewStates.Visible;
                     _parent.Visibility = ViewStates.Gone;

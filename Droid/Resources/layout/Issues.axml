@@ -6,6 +6,14 @@
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar" />
+	 <ProgressBar
+    android:id="@+id/progress_horizontal"
+
+        android:layout_marginTop="?attr/actionBarSize"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         style="@android:style/Widget.ProgressBar.Large"
+         android:layout_marginRight="5dp" />
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/SwipeIssuesContainer"
         android:layout_marginTop="?attr/actionBarSize"
