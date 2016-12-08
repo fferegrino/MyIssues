@@ -16,7 +16,7 @@ using Android.Util;
 
 namespace MyIssues.Droid.Controls
 {
-    [Register("MyIssues.Droid.Controls.ScrollAwareFabBehavior")]
+    [Register("myissues.droid.controls.ScrollAwareFabBehavior")]
     public class ScrollAwareFabBehavior : CoordinatorLayout.Behavior
     {
 

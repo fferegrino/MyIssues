@@ -241,19 +241,19 @@
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="packages.config" />
-    <AndroidResource Include="Resources\layout\tabs.axml">
+    <AndroidResource Include="Resources\layout\tabs.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\toolbar.axml">
+    <AndroidResource Include="Resources\layout\toolbar.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\Repos.axml" />
-    <AndroidResource Include="Resources\layout\ListItemRepo.axml" />
-    <AndroidResource Include="Resources\layout\Issues.axml" />
-    <AndroidResource Include="Resources\layout\IssueCardView.axml">
+    <AndroidResource Include="Resources\layout\Repos.xml" />
+    <AndroidResource Include="Resources\layout\ListItemRepo.xml" />
+    <AndroidResource Include="Resources\layout\Issues.xml" />
+    <AndroidResource Include="Resources\layout\IssueCardView.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\IssueDetailView.axml" />
+    <AndroidResource Include="Resources\layout\IssueDetailView.xml" />
     <AndroidResource Include="Resources\menu\SearchMenu.xml" />
     <AndroidResource Include="Resources\xml\searchable.xml" />
     <AndroidResource Include="Resources\layout\LabelCardView.xml" />
@@ -288,7 +288,7 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\question.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\reply.png" />
     <AndroidResource Include="Resources\layout\IssueComments.xml" />
-    <AndroidResource Include="Resources\layout\IssueMain.axml">
+    <AndroidResource Include="Resources\layout\IssueMain.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\Note.xml">
@@ -299,7 +299,7 @@
     </AndroidResource>
     <AndroidResource Include="Resources\menu\IssueMenu.xml" />
     <AndroidResource Include="Resources\xml\Preferences.xml" />
-    <AndroidResource Include="Resources\layout\Thanks.axml" />
+    <AndroidResource Include="Resources\layout\Thanks.xml" />
     <AndroidResource Include="Resources\drawable-hdpi\search.png" />
     <AndroidResource Include="Resources\drawable-mdpi\search.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\search.png" />

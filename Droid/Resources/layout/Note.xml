@@ -14,7 +14,7 @@
       android:layout_weight="1"
       android:fillViewport="true">
 
-    <MyIssues.Droid.Controls.Editor.HighlightingEditor
+    <myissues.droid.controls.editor.HighlightingEditor
         android:id="@+id/note_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

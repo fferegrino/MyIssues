@@ -5,9 +5,11 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 using MyIssues.Droid.Util;
+using Android.Runtime;
 
 namespace MyIssues.Droid.Controls
 {
+    [Register("myissues.droid.controls.RecyclerViewEmptySupport")]
     public class RecyclerViewEmptySupport : RecyclerView
     {
         private View emptyView;

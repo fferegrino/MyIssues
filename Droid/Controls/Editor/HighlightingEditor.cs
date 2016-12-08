@@ -16,6 +16,7 @@ using Android.Text;
 
 namespace MyIssues.Droid.Controls.Editor
 {
+    [Register("myissues.droid.controls.editor.HighlightingEditor")]
     public class HighlightingEditor : EditText
     {
         const int DEFAULT_DELAY = 500;

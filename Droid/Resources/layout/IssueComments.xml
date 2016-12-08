@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-  <MyIssues.Droid.Controls.RecyclerViewEmptySupport
+  <myissues.droid.controls.RecyclerViewEmptySupport
       android:id="@+id/IssueCommentsListView"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
@@ -16,7 +16,7 @@
       android:layout_margin="16dp"
       android:clickable="true"
       android:src="@drawable/reply"
-      app:layout_behavior="MyIssues.Droid.Controls.ScrollAwareFabBehavior"
+      app:layout_behavior="myissues.droid.controls.ScrollAwareFabBehavior"
       app:layout_anchor="@id/IssueCommentsListView"
       app:layout_anchorGravity="bottom|right|end" />
   <android.support.v4.view.ViewPager

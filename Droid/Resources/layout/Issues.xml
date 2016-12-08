@@ -19,7 +19,7 @@
         android:layout_marginTop="?attr/actionBarSize"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <MyIssues.Droid.Controls.RecyclerViewEmptySupport
+        <myissues.droid.controls.RecyclerViewEmptySupport
             android:minWidth="25dp"
             android:minHeight="25dp"
             android:layout_width="match_parent"

@@ -18,7 +18,8 @@ using System.Threading.Tasks;
 
 namespace MyIssues.Droid.Controls
 {
-	public class MarkdownView : WebView
+    [Register("myissues.droid.controls.MarkdownView")]
+    public class MarkdownView : WebView
 	{
 		const string TAG = nameof(MarkdownView);
 

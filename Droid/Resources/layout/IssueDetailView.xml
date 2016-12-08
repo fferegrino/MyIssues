@@ -67,7 +67,7 @@
                 android:background="#0e000000"
                 android:minHeight="25dp"
                 android:minWidth="25dp" />
-			<MyIssues.Droid.Controls.MarkdownView
+			<myissues.droid.controls.MarkdownView
                 android:id="@+id/IssueBodyTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

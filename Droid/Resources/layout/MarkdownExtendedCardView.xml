@@ -38,7 +38,7 @@
                 android:background="@color/windowBackgroundDark" />
 
 
-          <MyIssues.Droid.Controls.MarkdownView
+          <myissues.droid.controls.MarkdownView
                 android:id="@+id/FullMarkdownView"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
@@ -47,20 +47,6 @@
               android:layout_marginStart="4dp"
               android:layout_marginEnd="4dp"
               android:layout_marginBottom="5dp" />
-            <!-- <TextView
-                android:id="@+id/FullMarkdownView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:padding="4dp"
-                android:textColor="#000000"
-                android:textSize="20sp"
-                android:layout_below="@+id/MarkdownTitleTextView"
-                tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
-                android:paddingBottom="2dp"
-                android:lines="9999999"
-                android:linksClickable="false"
-                android:singleLine="false" /> -->
         </RelativeLayout>
     </android.support.v7.widget.CardView>
 </LinearLayout>
