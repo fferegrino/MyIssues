@@ -140,10 +140,14 @@ namespace MyIssues.Droid
         {
             switch (item.ItemId)
             {
-                case Resource.Id.ViewAboutMenu:
-                    var i = new Intent(this, typeof(SettingsActivity));
-                    StartActivity(i);
-                    break;
+				case Resource.Id.ViewLabelsMenu:
+					var labelsIntent = new Intent(this, typeof(LabelsActivity));
+					StartActivity(labelsIntent);
+					break;
+				case Resource.Id.ViewAboutMenu:
+					var settingsIntent = new Intent(this, typeof(SettingsActivity));
+					StartActivity(settingsIntent);
+					break;
                 case Resource.Id.SwitchRepoMenu:
                     OpenRepoSelector();
                     break;

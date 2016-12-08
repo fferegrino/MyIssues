@@ -232,6 +232,8 @@
     <Compile Include="Fragments\SettingsFragment.cs" />
     <Compile Include="Activities\ThanksActivity.cs" />
     <Compile Include="Util\ObjectExtensions.cs" />
+    <Compile Include="Activities\LabelsActivity.cs" />
+    <Compile Include="Adapters\ModelLabelsAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -304,6 +306,7 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\search.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\search.png" />
     <AndroidResource Include="Resources\layout\MarkdownExtendedCardView.xml" />
+    <AndroidResource Include="Resources\layout\Labels.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.xml" />
