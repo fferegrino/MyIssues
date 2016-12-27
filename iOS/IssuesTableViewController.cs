@@ -20,6 +20,7 @@ namespace MyIssues2.iOS
 		struct StoryboardId
 		{
 			public const string IssueCellIdentifier = "Issue Cell";
+			public const string ViewIssueDetailSegue = "View Issue Detail";
 			public const string SwitchRepoSegue = "Switch Repo";
 		}
 
@@ -114,6 +115,41 @@ namespace MyIssues2.iOS
 
 			return cell;
 		}
+
+		int _issueNumber;
+		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
+		{
+			_issueNumber = _issues[indexPath.Row].Number;
+			this.PerformSegue(StoryboardId.ViewIssueDetailSegue, tableView);
+
+		}
+		#endregion
+
+
+		#region Segues
+
+		public override bool ShouldPerformSegue(string segueIdentifier, NSObject sender)
+		{
+			if (StoryboardId.ViewIssueDetailSegue.Equals(segueIdentifier))
+			{
+				return _issueNumber != 0;
+			}
+			return base.ShouldPerformSegue(segueIdentifier, sender);
+		}
+
+		public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
+		{
+			if (StoryboardId.ViewIssueDetailSegue.Equals(segue.Identifier))
+			{
+				var destination = segue.DestinationViewController.ContentViewController() as IssueTabBarViewController;
+				destination.IssueNumber = _issueNumber;
+			}
+			else
+			{
+				base.PrepareForSegue(segue, sender);
+			}
+		}
+
 		#endregion
 	}
 }

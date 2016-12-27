@@ -62,7 +62,10 @@ namespace MyIssues2.iOS
 			this.PerformSegue(StoryboardId.ReturnToIssuesSegue, tableView);
 
 		}
+		#endregion
 
+
+		#region Segues
 
 		public override bool ShouldPerformSegue(string segueIdentifier, NSObject sender)
 		{
@@ -85,6 +88,7 @@ namespace MyIssues2.iOS
 				base.PrepareForSegue(segue, sender);
 			}
 		}
+
 		#endregion
 	}
 }
