@@ -1,34 +1,58 @@
 ﻿using System;
-
+using System.Threading.Tasks;
+using MyIssues;
+using MyIssues.DataAccess;
 using UIKit;
 
-namespace MyIssues.iOS
+namespace MyIssues2.iOS
 {
 	public partial class ViewController : UIViewController
 	{
-		int count = 1;
-
-		public ViewController(IntPtr handle) : base(handle)
+		protected ViewController(IntPtr handle) : base(handle)
 		{
+			// Note: this .ctor should not contain any initialization logic.
 		}
-
-		public override void ViewDidLoad()
+		Storage _storage;
+		public override async void ViewDidLoad()
 		{
 			base.ViewDidLoad();
 
-			// Perform any additional setup after loading the view, typically from a nib.
-			Button.AccessibilityIdentifier = "myButton";
-			Button.TouchUpInside += delegate
+
+			_storage = MyIssues.DataAccess.Storage.GetInstance();
+			string accessToken = await _storage.GetToken() ?? "3282fb0f86f8063f8c8dfb1e3f0df2b839f1f298";
+			if (accessToken != null && await Authenticate(accessToken))
 			{
-				var title = string.Format("{0} clicks!", count++);
-				Button.SetTitle(title, UIControlState.Normal);
-			};
+				System.Diagnostics.Debug.WriteLine("Authed");
+			}
+			else
+			{
+				System.Diagnostics.Debug.WriteLine("Not authed");
+			}
+		}
+
+
+        async Task<bool> Authenticate(string accessToken)
+		{
+			//ProgressDialog progress;
+			//progress = ProgressDialog.Show(this, Resources.GetString(Resource.String.Authenticating),
+			//							   Resources.GetString(Resource.String.PleaseWait), true);
+			var cliente = GitHubClientFactory.CreateClient(accessToken);
+			var authed = await _storage.SetClient(cliente);
+
+			System.Diagnostics.Debug.WriteLine("Authenticate");
+			if (authed)
+			{
+				await _storage.SaveToken(accessToken);
+			}
+
+			//progress.Dismiss();
+			return authed;
 		}
 
 		public override void DidReceiveMemoryWarning()
 		{
 			base.DidReceiveMemoryWarning();
-			// Release any cached data, images, etc that aren't in use.		
+			// Release any cached data, images, etc that aren't in use.
 		}
 	}
 }

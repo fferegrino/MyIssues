@@ -1,7 +1,8 @@
 ﻿using Foundation;
+using MyIssues;
 using UIKit;
 
-namespace MyIssues.iOS
+namespace MyIssues2.iOS
 {
 	// The UIApplicationDelegate for the application. This class is responsible for launching the
 	// User Interface of the application, as well as listening (and optionally responding) to application events from iOS.
@@ -20,9 +21,8 @@ namespace MyIssues.iOS
 		{
 			// Override point for customization after application launch.
 			// If not required for your application you can safely delete this method
-
-			//SQLitePCL.Batteries.Init();
 			Startup.Start();
+
 			return true;
 		}
 
