@@ -89,9 +89,12 @@ namespace MyIssues.DataAccess
                     var a = await _client.Issue.GetAllForRepository(_repoId);
                     return a.Select(issue => issue.Map()).ToList();
             };
+			var list = fetchFunc();
             BlobCache.LocalMachine.GetAndFetchLatest(Issues, fetchFunc)
                 .Subscribe(action);
         }
+
+		//public Task<
 
         public async Task< List<Models.Issue>> GetIssues()
         {

@@ -161,6 +161,19 @@
       <DependentUpon>ViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="AkavacheSqliteLinkerOverride.cs" />
+    <Compile Include="SetTokenViewController.cs" />
+    <Compile Include="SetTokenViewController.designer.cs">
+      <DependentUpon>SetTokenViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReposTableViewController.cs" />
+    <Compile Include="ReposTableViewController.designer.cs">
+      <DependentUpon>ReposTableViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IssuesTableViewController.cs" />
+    <Compile Include="IssuesTableViewController.designer.cs">
+      <DependentUpon>IssuesTableViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Models\MyIssues.Models.csproj">
