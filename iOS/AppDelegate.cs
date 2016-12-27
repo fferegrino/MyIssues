@@ -21,6 +21,8 @@ namespace MyIssues.iOS
 			// Override point for customization after application launch.
 			// If not required for your application you can safely delete this method
 
+			//SQLitePCL.Batteries.Init();
+			Startup.Start();
 			return true;
 		}
 

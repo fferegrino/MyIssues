@@ -33,6 +33,7 @@ namespace MyIssues.DataAccess
         public async Task<bool> SetClient(Octokit.GitHubClient client)
         {            _client = client;
 
+                System.Diagnostics.Debug.WriteLine("Attempting login");
             try
             {
                 var user = await _client.User.Current();
