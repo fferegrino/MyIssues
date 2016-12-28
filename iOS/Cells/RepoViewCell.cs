@@ -3,6 +3,7 @@
 using System;
 
 using Foundation;
+using MyIssues;
 using UIKit;
 
 namespace MyIssues2.iOS.Cells
@@ -19,6 +20,9 @@ namespace MyIssues2.iOS.Cells
 			RepoNameLabel.Text = repository.Name;
 			LanguageLabel.Text = repository.Language;
 			DescriptionLabel.Text = repository.Description;
+
+			var color = Helpers.GetLanguageColor(repository.Language);
+			LanguageView.BackgroundColor = UIColor.FromRGB(color[0], color[1], color[2]);
 		}
 	}
 }

@@ -202,6 +202,7 @@
                                 <connections>
                                     <outlet property="DescriptionLabel" destination="TBw-us-ejv" id="Gqr-MD-IiP"/>
                                     <outlet property="LanguageLabel" destination="srM-bn-cmt" id="0bU-wJ-AWw"/>
+                                    <outlet property="LanguageView" destination="jVd-BP-pUD" id="Oc9-gu-mlw"/>
                                     <outlet property="OwnerLabel" destination="olR-bp-I8E" id="Iuc-o7-2Sb"/>
                                     <outlet property="RepoNameLabel" destination="4fa-fk-Q1t" id="qHS-ax-Ubq"/>
                                 </connections>

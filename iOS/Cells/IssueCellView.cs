@@ -14,16 +14,22 @@ namespace MyIssues2.iOS.Cells
 		{
 		}
 
-		public void SetIssueTitle(string title)
+		public void SetIssue(Issue issue)
 		{
-			IssueTitleLabel.Text = title;
+			if (String.IsNullOrEmpty(issue.Milestone))
+			{
+				MilestoneLabel.Hidden = true;
+			}
+			else 
+			{
+				MilestoneLabel.Hidden = false;
+				MilestoneLabel.Text = issue.Milestone;
+			}
+			IssueTitleLabel.Text = issue.Title;
+			SetColors(issue.Labels);
 		}
 
-		public void SetColors()
-		{
-		}
-
-		internal void SetColors(IReadOnlyList<Label> labels)
+		void SetColors(IReadOnlyList<Label> labels)
 		{
 			if (labels.Count > 0)
 				LabelColorView1.BackgroundColor = UIColor.FromRGB(labels[0].R, labels[0].G, labels[0].B);
@@ -32,9 +38,10 @@ namespace MyIssues2.iOS.Cells
 			if (labels.Count > 2)
 				LabelColorView3.BackgroundColor = UIColor.FromRGB(labels[2].R, labels[2].G, labels[2].B);
 			if (labels.Count > 3)
-				LabelColorView3.BackgroundColor = UIColor.FromRGB(labels[3].R, labels[3].G, labels[3].B);
+				LabelColorView4.BackgroundColor = UIColor.FromRGB(labels[3].R, labels[3].G, labels[3].B);
 			if (labels.Count > 4)
-				LabelColorView3.BackgroundColor = UIColor.FromRGB(labels[4].R, labels[4].G, labels[4].B);
+				LabelColorView5.BackgroundColor = UIColor.FromRGB(labels[4].R, labels[4].G, labels[4].B);
+
 		}
 	}
 }

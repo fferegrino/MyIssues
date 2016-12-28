@@ -113,8 +113,7 @@ namespace MyIssues2.iOS
 			if (cell != null)
 			{
 				var issue = _issues[indexPath.Row];
-				cell.SetIssueTitle(issue.Title);
-				cell.SetColors(issue.Labels);
+				cell.SetIssue(issue);
 			}
 
 			return cell;
