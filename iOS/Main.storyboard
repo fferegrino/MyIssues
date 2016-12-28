@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -234,13 +235,77 @@
                     <view key="view" contentMode="scaleToFill" id="Bka-qi-Sfy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a94-sP-Hh1">
+                                <rect key="frame" x="16" y="28" width="343" height="33.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ulk-qd-X3a">
+                                <rect key="frame" x="-1" y="72" width="376" height="40"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S6V-cc-Vth">
+                                        <rect key="frame" x="0.0" y="0.0" width="250.5" height="40"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iHF-ZQ-Ju4">
+                                                <rect key="frame" x="8" y="10" width="42" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="iHF-ZQ-Ju4" firstAttribute="leading" secondItem="S6V-cc-Vth" secondAttribute="leadingMargin" id="jhc-PA-pMD"/>
+                                            <constraint firstItem="iHF-ZQ-Ju4" firstAttribute="centerY" secondItem="S6V-cc-Vth" secondAttribute="centerY" id="w8l-qb-YWA"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7YZ-3T-BDI">
+                                        <rect key="frame" x="250.5" y="0.0" width="125.5" height="40"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c5L-dk-f10">
+                                                <rect key="frame" x="10" y="10" width="107.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.50196081400000003" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="c5L-dk-f10" firstAttribute="trailing" secondItem="7YZ-3T-BDI" secondAttribute="trailingMargin" id="drz-d4-Irf"/>
+                                            <constraint firstItem="c5L-dk-f10" firstAttribute="centerY" secondItem="7YZ-3T-BDI" secondAttribute="centerY" id="opg-DR-Co3"/>
+                                            <constraint firstItem="c5L-dk-f10" firstAttribute="leading" secondItem="7YZ-3T-BDI" secondAttribute="leading" constant="10" id="qjb-g4-U7E"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="7Dr-4y-9OV"/>
+                                    <constraint firstItem="7YZ-3T-BDI" firstAttribute="width" secondItem="S6V-cc-Vth" secondAttribute="width" multiplier="0.5" id="XSa-sK-beu"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="a94-sP-Hh1" firstAttribute="top" secondItem="Hur-T8-Jd3" secondAttribute="bottom" constant="8" symbolic="YES" id="1jx-8O-a5o"/>
+                            <constraint firstItem="Ulk-qd-X3a" firstAttribute="top" secondItem="a94-sP-Hh1" secondAttribute="bottom" constant="10" id="Biu-V5-PgI"/>
+                            <constraint firstItem="Ulk-qd-X3a" firstAttribute="leading" secondItem="Bka-qi-Sfy" secondAttribute="leadingMargin" constant="-17" id="gFs-Rt-Kk2"/>
+                            <constraint firstItem="a94-sP-Hh1" firstAttribute="trailing" secondItem="Bka-qi-Sfy" secondAttribute="trailingMargin" id="ibb-a6-xGp"/>
+                            <constraint firstAttribute="trailing" secondItem="Ulk-qd-X3a" secondAttribute="trailing" id="kUf-4k-Em8"/>
+                            <constraint firstItem="a94-sP-Hh1" firstAttribute="leading" secondItem="Bka-qi-Sfy" secondAttribute="leadingMargin" id="mNE-p6-mjr"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Detalles" id="FVm-7t-CyY"/>
+                    <connections>
+                        <outlet property="IssueDetailLabel" destination="iHF-ZQ-Ju4" id="uOd-3s-SbU"/>
+                        <outlet property="IssueStatusLabel" destination="c5L-dk-f10" id="xmK-pN-khW"/>
+                        <outlet property="IssueStatusView" destination="7YZ-3T-BDI" id="8f6-2k-p6Y"/>
+                        <outlet property="IssueTitleLabel" destination="a94-sP-Hh1" id="G3R-sf-JRI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nm6-0E-cAv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4133" y="253"/>
+            <point key="canvasLocation" x="4132" y="252.32383808095955"/>
         </scene>
         <!--Issue Tab Bar View Controller-->
         <scene sceneID="BvU-qL-vWs">
