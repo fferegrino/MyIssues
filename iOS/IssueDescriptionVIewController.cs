@@ -3,6 +3,7 @@
 using System;
 using System.Threading.Tasks;
 using Foundation;
+using Humanizer;
 using MyIssues.DataAccess;
 using UIKit;
 
@@ -32,8 +33,8 @@ namespace MyIssues2.iOS
 		{
 			_issue = await _storage.GetIssue(_issueNumber);
 			IssueTitleLabel.Text = _issue.Title;
-			IssueStatusLabel.Text = _issue.State.ToString();
-			IssueDateLabel.Text = _issue.CreatedAt.ToString();
+			IssueStatusLabel.Text = _issue.State.ToString().ApplyCase(LetterCasing.Title);
+			IssueDateLabel.Text = _issue.CreatedAt.Humanize();
 
 			LabelsView.Delegate = this;
 			LabelsView.ShowsVerticalScrollIndicator = false;
@@ -45,7 +46,6 @@ namespace MyIssues2.iOS
 				var color = UIColor.FromRGB(c[0], c[1], c[2]);
 				                     
 				lbl.BackgroundColor =  color;
-				//LabelsView.AddSubview(lbl);
 				x += (int)lbl.Frame.Size.Width;
 			}
 

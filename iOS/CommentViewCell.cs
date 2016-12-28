@@ -3,6 +3,7 @@
 using System;
 
 using Foundation;
+using Humanizer;
 using MyIssues.Models;
 using UIKit;
 
@@ -17,7 +18,7 @@ namespace MyIssues2.iOS
 		internal void SetComment(IssueComment comment)
 		{
 			UsernameLabel.Text = comment.Author;
-			CreatedAtLabel.Text = comment.CreatedAt.ToString();
+			CreatedAtLabel.Text = comment.CreatedAt.Humanize();
 			BodyLabel.AttributedText = comment.Body.FromMarkdown();
 
 		}
