@@ -144,6 +144,7 @@
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="Cells\" />
+    <Folder Include="Controls\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -195,6 +196,7 @@
     <Compile Include="Cells\RepoViewCell.designer.cs">
       <DependentUpon>RepoViewCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\LabelView.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Models\MyIssues.Models.csproj">

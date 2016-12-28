@@ -8,7 +8,7 @@ using UIKit;
 
 namespace MyIssues2.iOS
 {
-	public partial class IssueDescriptionVIewController : UIViewController
+	public partial class IssueDescriptionVIewController : UIViewController, IUIScrollViewDelegate
 	{
 		public IssueDescriptionVIewController (IntPtr handle) : base (handle)
 		{
@@ -34,6 +34,44 @@ namespace MyIssues2.iOS
 			IssueTitleLabel.Text = _issue.Title;
 			IssueStatusLabel.Text = _issue.State.ToString();
 			IssueDetailLabel.Text = _issue.CreatedAt.ToString();
+
+			LabelsView.Delegate = this;
+			LabelsView.ShowsVerticalScrollIndicator = false;
+			int x = 0;
+			foreach (var label in _issue.Labels)
+			{
+				var lbl = new UIView(new CoreGraphics.CGRect(x,0, 100,50));
+				var c = Storage.LabelColors[label.Name];
+				var color = UIColor.FromRGB(c[0], c[1], c[2]);
+				                     
+				lbl.BackgroundColor =  color;
+				LabelsView.AddSubview(lbl);
+				x += (int)lbl.Frame.Size.Width;
+			}
+
+			LabelsView.ContentSize = new CoreGraphics.CGSize(x,  LabelsView.Frame.Size.Height);
 		}
+
+		[Export("scrollViewDidScroll:")]
+		public void Scrolled(UIScrollView scrollView)
+		{
+			if (scrollView.ContentOffset.Y > 0 || scrollView.ContentOffset.Y < 0)
+				scrollView.ContentOffset = new CoreGraphics.CGPoint(scrollView.ContentOffset.X, 0);
+		}
+
+		/*
+		for (int i = 0; i < 8; i++) {
+            UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(x, 0, 100, 100)];
+            [button setTitle:[NSString stringWithFormat:@"Button %d", i] forState:UIControlStateNormal];
+
+            [scrollView addSubview:button];
+
+            x += button.frame.size.width;
+        }
+
+        scrollView.contentSize = CGSizeMake(x, scrollView.frame.size.height);
+            scrollView.backgroundColor = [UIColor redColor];
+
+		*/
 	}
 }
