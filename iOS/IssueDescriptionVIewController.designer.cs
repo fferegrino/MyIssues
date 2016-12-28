@@ -13,7 +13,10 @@ namespace MyIssues2.iOS
 	partial class IssueDescriptionVIewController
 	{
 		[Outlet]
-		UIKit.UILabel IssueDetailLabel { get; set; }
+		UIKit.UILabel IssueBodyLabel { get; set; }
+
+		[Outlet]
+		UIKit.UILabel IssueDateLabel { get; set; }
 
 		[Outlet]
 		UIKit.UILabel IssueStatusLabel { get; set; }
@@ -23,12 +26,25 @@ namespace MyIssues2.iOS
 
 		[Outlet]
 		UIKit.UILabel IssueTitleLabel { get; set; }
+
+		[Outlet]
+		UIKit.UIScrollView LabelsView { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (IssueTitleLabel != null) {
-				IssueTitleLabel.Dispose ();
-				IssueTitleLabel = null;
+			if (IssueStatusLabel != null) {
+				IssueStatusLabel.Dispose ();
+				IssueStatusLabel = null;
+			}
+
+			if (IssueDateLabel != null) {
+				IssueDateLabel.Dispose ();
+				IssueDateLabel = null;
+			}
+
+			if (IssueBodyLabel != null) {
+				IssueBodyLabel.Dispose ();
+				IssueBodyLabel = null;
 			}
 
 			if (IssueStatusView != null) {
@@ -36,14 +52,14 @@ namespace MyIssues2.iOS
 				IssueStatusView = null;
 			}
 
-			if (IssueStatusLabel != null) {
-				IssueStatusLabel.Dispose ();
-				IssueStatusLabel = null;
+			if (IssueTitleLabel != null) {
+				IssueTitleLabel.Dispose ();
+				IssueTitleLabel = null;
 			}
 
-			if (IssueDetailLabel != null) {
-				IssueDetailLabel.Dispose ();
-				IssueDetailLabel = null;
+			if (LabelsView != null) {
+				LabelsView.Dispose ();
+				LabelsView = null;
 			}
 		}
 	}

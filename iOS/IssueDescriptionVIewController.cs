@@ -33,7 +33,7 @@ namespace MyIssues2.iOS
 			_issue = await _storage.GetIssue(_issueNumber);
 			IssueTitleLabel.Text = _issue.Title;
 			IssueStatusLabel.Text = _issue.State.ToString();
-			IssueDetailLabel.Text = _issue.CreatedAt.ToString();
+			IssueDateLabel.Text = _issue.CreatedAt.ToString();
 
 			LabelsView.Delegate = this;
 			LabelsView.ShowsVerticalScrollIndicator = false;
@@ -45,16 +45,11 @@ namespace MyIssues2.iOS
 				var color = UIColor.FromRGB(c[0], c[1], c[2]);
 				                     
 				lbl.BackgroundColor =  color;
-				LabelsView.AddSubview(lbl);
+				//LabelsView.AddSubview(lbl);
 				x += (int)lbl.Frame.Size.Width;
 			}
 
-			NSError error = null;
-
-			var htmlString = new NSAttributedString(CommonMark.CommonMarkConverter.Convert(_issue.Body),
-								 new NSAttributedStringDocumentAttributes { DocumentType = NSDocumentType.HTML },
-								 ref error);
-			ContentLabel.AttributedText = htmlString;
+			IssueBodyLabel.AttributedText = _issue.Body.FromMarkdown();
 			System.Diagnostics.Debug.WriteLine(_issue.Body);
 
 			LabelsView.ContentSize = new CoreGraphics.CGSize(x,  LabelsView.Frame.Size.Height);

@@ -147,7 +147,7 @@
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="Cells\" />
-    <Folder Include="Controls\" />
+    <Folder Include="Utils\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -178,7 +178,6 @@
     <Compile Include="IssuesTableViewController.designer.cs">
       <DependentUpon>IssuesTableViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Util.cs" />
     <Compile Include="IssueDescriptionVIewController.cs" />
     <Compile Include="IssueDescriptionVIewController.designer.cs">
       <DependentUpon>IssueDescriptionVIewController.cs</DependentUpon>
@@ -199,7 +198,12 @@
     <Compile Include="Cells\RepoViewCell.designer.cs">
       <DependentUpon>RepoViewCell.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\LabelView.cs" />
+    <Compile Include="CommentViewCell.cs" />
+    <Compile Include="CommentViewCell.designer.cs">
+      <DependentUpon>CommentViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\ViewControllerExtensions.cs" />
+    <Compile Include="Utils\AttributedStringExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Models\MyIssues.Models.csproj">
