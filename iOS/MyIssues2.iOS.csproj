@@ -143,6 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="Cells\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -185,6 +186,14 @@
     <Compile Include="IssueTabBarViewController.cs" />
     <Compile Include="IssueTabBarViewController.designer.cs">
       <DependentUpon>IssueTabBarViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cells\IssueCellView.cs" />
+    <Compile Include="Cells\IssueCellView.designer.cs">
+      <DependentUpon>IssueCellView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cells\RepoViewCell.cs" />
+    <Compile Include="Cells\RepoViewCell.designer.cs">
+      <DependentUpon>RepoViewCell.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

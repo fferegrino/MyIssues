@@ -6,6 +6,7 @@ using Foundation;
 using System.Collections.Generic;
 using MyIssues.DataAccess;
 using UIKit;
+using MyIssues2.iOS.Cells;
 
 namespace MyIssues2.iOS
 {
@@ -45,11 +46,13 @@ namespace MyIssues2.iOS
 
 		public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
 		{
-			var cell = TableView.DequeueReusableCell(StoryboardId.RepoCellIdentifier, indexPath);
+			var cell = TableView.DequeueReusableCell(StoryboardId.RepoCellIdentifier, indexPath) as RepoViewCell;
 
 			if (cell != null)
 			{
-				cell.TextLabel.Text = _repos[indexPath.Row].Name;
+				var repo = _repos[indexPath.Row];
+				cell.SetRepo(repo);
+
 			}
 
 			return cell;
