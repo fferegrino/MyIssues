@@ -49,6 +49,14 @@ namespace MyIssues2.iOS
 				x += (int)lbl.Frame.Size.Width;
 			}
 
+			NSError error = null;
+
+			var htmlString = new NSAttributedString(CommonMark.CommonMarkConverter.Convert(_issue.Body),
+								 new NSAttributedStringDocumentAttributes { DocumentType = NSDocumentType.HTML },
+								 ref error);
+			ContentLabel.AttributedText = htmlString;
+			System.Diagnostics.Debug.WriteLine(_issue.Body);
+
 			LabelsView.ContentSize = new CoreGraphics.CGSize(x,  LabelsView.Frame.Size.Height);
 		}
 
