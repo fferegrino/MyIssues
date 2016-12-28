@@ -226,6 +226,23 @@
       <Name>MyIssues</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tab_comments_filled.png" />
+    <BundleResource Include="Resources\tab_comments_filled%402x.png" />
+    <BundleResource Include="Resources\tab_comments_filled%403x.png" />
+    <BundleResource Include="Resources\tab_comments.png" />
+    <BundleResource Include="Resources\tab_comments%402x.png" />
+    <BundleResource Include="Resources\tab_comments%403x.png" />
+    <BundleResource Include="Resources\tab_detail.png" />
+    <BundleResource Include="Resources\tab_detail%402x.png" />
+    <BundleResource Include="Resources\tab_detail%403x.png" />
+    <BundleResource Include="Resources\tab_detail_filled.png" />
+    <BundleResource Include="Resources\tab_detail_filled%402x.png" />
+    <BundleResource Include="Resources\tab_detail_filled%403x.png" />
+    <BundleResource Include="Resources\toolbar_change_repo.png" />
+    <BundleResource Include="Resources\toolbar_change_repo%402x.png" />
+    <BundleResource Include="Resources\toolbar_change_repo%403x.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
 </Project>
