@@ -6,17 +6,16 @@ using Foundation;
 using MyIssues.Models;
 using UIKit;
 
-namespace MyIssues2.iOS.Cells
+namespace MyIssues2.iOS
 {
-	public partial class IssueCellView : UITableViewCell
+	public partial class IssueNoMilestoneCellView : UITableViewCell
 	{
-		public IssueCellView (IntPtr handle) : base (handle)
+		public IssueNoMilestoneCellView (IntPtr handle) : base (handle)
 		{
 		}
 
 		public void SetIssue(Issue issue)
 		{
-				MilestoneLabel.Text = issue.Milestone;
 			IssueTitleLabel.Text = issue.Title;
 			SetColors(issue.Labels);
 		}

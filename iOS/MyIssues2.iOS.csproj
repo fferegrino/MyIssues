@@ -210,6 +210,10 @@
     </Compile>
     <Compile Include="Views\IssueLabel.cs" />
     <Compile Include="Utils\ColorsExtensions.cs" />
+    <Compile Include="Cells\IssueNoMilestoneCellView.cs" />
+    <Compile Include="Cells\IssueNoMilestoneCellView.designer.cs">
+      <DependentUpon>IssueNoMilestoneCellView.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Models\MyIssues.Models.csproj">

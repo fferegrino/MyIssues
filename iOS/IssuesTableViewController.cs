@@ -15,13 +15,14 @@ namespace MyIssues2.iOS
 {
 	public partial class IssuesTableViewController : UITableViewController
 	{
-		public IssuesTableViewController (IntPtr handle) : base (handle)
+		public IssuesTableViewController(IntPtr handle) : base(handle)
 		{
 		}
 
 		struct StoryboardId
 		{
 			public const string IssueCellIdentifier = "Issue Cell";
+			public const string IssueNoMilestoneCellIdentifier = "Issue No Milestone Cell";
 			public const string ViewIssueDetailSegue = "View Issue Detail";
 			public const string SwitchRepoSegue = "Switch Repo";
 		}
@@ -50,8 +51,10 @@ namespace MyIssues2.iOS
 		public override async void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-            _storage = Storage.GetInstance();
-			if(RepoId == 0)
+			TableView.RowHeight = UITableView.AutomaticDimension;
+			TableView.EstimatedRowHeight = 70;
+			_storage = Storage.GetInstance();
+			if (RepoId == 0)
 				RepoId = await _storage.GetWorkingRepo();
 		}
 
@@ -108,15 +111,25 @@ namespace MyIssues2.iOS
 
 		public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
 		{
-			var cell = TableView.DequeueReusableCell(StoryboardId.IssueCellIdentifier, indexPath) as IssueCellView;
-
-			if (cell != null)
+			var issue = _issues[indexPath.Row];
+			if (!String.IsNullOrEmpty(issue.Milestone))
 			{
-				var issue = _issues[indexPath.Row];
-				cell.SetIssue(issue);
+				var cell = TableView.DequeueReusableCell(StoryboardId.IssueCellIdentifier, indexPath) as IssueCellView;
+				if (cell != null)
+				{
+					cell.SetIssue(issue);
+				}
+				return cell;
 			}
-
-			return cell;
+			else 
+			{
+				var cell = TableView.DequeueReusableCell(StoryboardId.IssueNoMilestoneCellIdentifier, indexPath) as IssueNoMilestoneCellView;
+				if (cell != null)
+				{
+					cell.SetIssue(issue);
+				}
+				return cell;
+			}
 		}
 
 		int _issueNumber;
@@ -125,6 +138,16 @@ namespace MyIssues2.iOS
 			_issueNumber = _issues[indexPath.Row].Number;
 			this.PerformSegue(StoryboardId.ViewIssueDetailSegue, tableView);
 
+		}
+
+		public override nfloat GetHeightForRow(UITableView tableView, NSIndexPath indexPath)
+		{	
+			return UITableView.AutomaticDimension;
+		}
+
+		public override nfloat EstimatedHeight(UITableView tableView, NSIndexPath indexPath)
+		{
+			return UITableView.AutomaticDimension;
 		}
 		#endregion
 

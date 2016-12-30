@@ -7,14 +7,12 @@
 using Foundation;
 using System.CodeDom.Compiler;
 
-namespace MyIssues2.iOS.Cells
+namespace MyIssues2.iOS
 {
-	[Register ("IssueCellView")]
-	partial class IssueCellView
+	[Register ("IssueNoMilestoneCellView")]
+	partial class IssueNoMilestoneCellView
 	{
 
-		[Outlet]
-		UIKit.UILabel MilestoneLabel { get; set; }
 
 		[Outlet]
 		UIKit.UILabel IssueTitleLabel { get; set; }
@@ -37,12 +35,6 @@ namespace MyIssues2.iOS.Cells
 
 		void ReleaseDesignerOutlets()
 		{
-			if (MilestoneLabel != null)
-			{
-				MilestoneLabel.Dispose();
-				MilestoneLabel = null;
-			}
-
 			if (IssueTitleLabel != null)
 			{
 				IssueTitleLabel.Dispose();
