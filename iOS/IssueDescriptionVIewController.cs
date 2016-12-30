@@ -41,11 +41,12 @@ namespace MyIssues2.iOS
 			int x = 0;
 			foreach (var label in _issue.Labels)
 			{
-				var lbl = new UIView(new CoreGraphics.CGRect(x,0, 100,50));
+				var lbl = new UILabel { Text = label.Name }; //new UIView(new CoreGraphics.CGRect(x,0, 100,50));
 				var c = Storage.LabelColors[label.Name];
 				var color = UIColor.FromRGB(c[0], c[1], c[2]);
 				                     
 				lbl.BackgroundColor =  color;
+				lbl.TextColor = color.ContrastingColor();
 				x += (int)lbl.Frame.Size.Width;
 			}
 

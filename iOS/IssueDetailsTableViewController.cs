@@ -47,11 +47,17 @@ namespace MyIssues2.iOS
 			int x = 0;
 			foreach (var label in _issue.Labels)
 			{
-				var lbl = new UIView(new CoreGraphics.CGRect(x, 0, 100, 50));
+				var lbl = new UILabel { Text = label.Name, TextAlignment = UITextAlignment.Center }; //new UIView(new CoreGraphics.CGRect(x,0, 100,50));
+				lbl.SizeToFit();
+				lbl.Frame = new CoreGraphics.CGRect(x, lbl.Frame.Y, lbl.Frame.Width + 10, lbl.Frame.Height +10);
+
 				var c = Storage.LabelColors[label.Name];
 				var color = UIColor.FromRGB(c[0], c[1], c[2]);
 
 				lbl.BackgroundColor = color;
+				lbl.TextColor = color.ContrastingColor();
+				LabelsView.AddSubview(lbl);
+				System.Diagnostics.Debug.WriteLine($"{label.Name} : {x}");
 				x += (int)lbl.Frame.Size.Width;
 			}
 
@@ -63,7 +69,6 @@ namespace MyIssues2.iOS
 
 		public override nfloat GetHeightForRow(UITableView tableView, NSIndexPath indexPath)
 		{
-			System.Diagnostics.Debug.WriteLine($"{indexPath.Row}");
 			return UITableView.AutomaticDimension;
 		}
 
