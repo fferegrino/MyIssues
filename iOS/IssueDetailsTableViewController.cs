@@ -24,11 +24,14 @@ namespace MyIssues2.iOS
 			base.ViewDidLoad();
 
 			TableView.RowHeight = UITableView.AutomaticDimension;
-			TableView.EstimatedRowHeight = 300;
+			TableView.EstimatedRowHeight = 140;
+			TableView.SeparatorColor = UIColor.Clear;
 			var controller = TabBarController as IssueTabBarViewController;
 			_issueNumber = controller.IssueNumber;
 			_storage = Storage.GetInstance();
 			await LoadIssue();
+
+			TableView.ReloadData();
 		}
 
 		Octokit.Issue _issue;
