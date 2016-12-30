@@ -152,6 +152,7 @@
     <Folder Include="Cells\" />
     <Folder Include="Utils\" />
     <Folder Include="Views\" />
+    <Folder Include="New Folder\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -214,6 +215,7 @@
     <Compile Include="Cells\IssueNoMilestoneCellView.designer.cs">
       <DependentUpon>IssueNoMilestoneCellView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\LabelView.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Models\MyIssues.Models.csproj">

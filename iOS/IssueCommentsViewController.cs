@@ -28,7 +28,7 @@ namespace MyIssues2.iOS
 
 
 			TableView.RowHeight = UITableView.AutomaticDimension;
-			TableView.EstimatedRowHeight = 140;
+			TableView.EstimatedRowHeight = 50;
 
 			var controller = TabBarController as IssueTabBarViewController;
 			_issueNumber = controller.IssueNumber;
@@ -37,6 +37,7 @@ namespace MyIssues2.iOS
             var loadComments = _storage.GetIssueComments(_issueNumber);
 
 			loadComments.Subscribe(CargaComentarios);
+			TableView.ContentInset = new UIEdgeInsets(0, 0, 40, 0);
 		}
 
 		IReadOnlyList<IssueComment> _comments;

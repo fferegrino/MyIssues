@@ -15,7 +15,6 @@ namespace MyIssues2.iOS
 		{
 		}
 
-
 		Storage _storage;
 		int _issueNumber;
 
@@ -34,11 +33,15 @@ namespace MyIssues2.iOS
 			TableView.ReloadData();
 		}
 
+		static UIColor OpenIssueColor = UIColor.FromRGB(108, 198, 68);
+		static UIColor ClosedIssueColor = UIColor.FromRGB(189,44,0);
+
 		Octokit.Issue _issue;
 		public async Task LoadIssue()
 		{
 			_issue = await _storage.GetIssue(_issueNumber);
 			IssueNameLabel.Text = _issue.Title;
+			IssueStatusView.BackgroundColor = _issue.State == Octokit.ItemState.Closed ? ClosedIssueColor : OpenIssueColor;
 			IssueStatusLabel.Text = _issue.State.ToString().ApplyCase(LetterCasing.Title);
 			IssueCreationDateLabel.Text = _issue.CreatedAt.Humanize();
 
@@ -50,7 +53,7 @@ namespace MyIssues2.iOS
 				var lbl = new UILabel { 
 					Font = UIFont.PreferredTitle3,
 					Text = label.Name, 
-					TextAlignment = UITextAlignment.Center }; //new UIView(new CoreGraphics.CGRect(x,0, 100,50));
+					TextAlignment = UITextAlignment.Center };
 				lbl.SizeToFit();
 				lbl.Frame = new CoreGraphics.CGRect(x, lbl.Frame.Y, lbl.Frame.Width + 14, LabelsView.Frame.Size.Height);
 
@@ -75,7 +78,7 @@ namespace MyIssues2.iOS
 			if (indexPath.Row == 1)
 				return 30;
 			if (indexPath.Row == 2)
-				return 40;
+				return 30;
 				
 			return UITableView.AutomaticDimension;
 		}
@@ -85,7 +88,7 @@ namespace MyIssues2.iOS
 			if (indexPath.Row == 1)
 				return 30;
 			if (indexPath.Row == 2)
-				return 40;
+				return 30;
 
 			return UITableView.AutomaticDimension;
 		}
