@@ -24,7 +24,7 @@ namespace MyIssues2.iOS
 			base.ViewDidLoad();
 
 			TableView.RowHeight = UITableView.AutomaticDimension;
-			TableView.EstimatedRowHeight = 140;
+			TableView.EstimatedRowHeight = 40;
 			TableView.SeparatorColor = UIColor.Clear;
 			var controller = TabBarController as IssueTabBarViewController;
 			_issueNumber = controller.IssueNumber;
@@ -47,9 +47,12 @@ namespace MyIssues2.iOS
 			int x = 0;
 			foreach (var label in _issue.Labels)
 			{
-				var lbl = new UILabel { Text = label.Name, TextAlignment = UITextAlignment.Center }; //new UIView(new CoreGraphics.CGRect(x,0, 100,50));
+				var lbl = new UILabel { 
+					Font = UIFont.PreferredTitle3,
+					Text = label.Name, 
+					TextAlignment = UITextAlignment.Center }; //new UIView(new CoreGraphics.CGRect(x,0, 100,50));
 				lbl.SizeToFit();
-				lbl.Frame = new CoreGraphics.CGRect(x, lbl.Frame.Y, lbl.Frame.Width + 10, lbl.Frame.Height +10);
+				lbl.Frame = new CoreGraphics.CGRect(x, lbl.Frame.Y, lbl.Frame.Width + 14, LabelsView.Frame.Size.Height);
 
 				var c = Storage.LabelColors[label.Name];
 				var color = UIColor.FromRGB(c[0], c[1], c[2]);
@@ -69,13 +72,22 @@ namespace MyIssues2.iOS
 
 		public override nfloat GetHeightForRow(UITableView tableView, NSIndexPath indexPath)
 		{
+			if (indexPath.Row == 1)
+				return 30;
+			if (indexPath.Row == 2)
+				return 40;
+				
 			return UITableView.AutomaticDimension;
 		}
 
 		public override nfloat EstimatedHeight(UITableView tableView, NSIndexPath indexPath)
 		{
+			if (indexPath.Row == 1)
+				return 30;
+			if (indexPath.Row == 2)
+				return 40;
+
 			return UITableView.AutomaticDimension;
-			//returnreturn base.EstimatedHeight(tableView, indexPath);
 		}
 	}
 }
