@@ -26,6 +26,10 @@ namespace MyIssues2.iOS
 		{
 			base.ViewDidLoad();
 
+
+			TableView.RowHeight = UITableView.AutomaticDimension;
+			TableView.EstimatedRowHeight = 140;
+
 			var controller = TabBarController as IssueTabBarViewController;
 			_issueNumber = controller.IssueNumber;
 			_storage = Storage.GetInstance();
@@ -69,6 +73,16 @@ namespace MyIssues2.iOS
 			}
 
 			return cell;
+		}
+
+		public override nfloat EstimatedHeight(UITableView tableView, NSIndexPath indexPath)
+		{
+			return UITableView.AutomaticDimension;
+		}
+
+		public override nfloat GetHeightForRow(UITableView tableView, NSIndexPath indexPath)
+		{
+			return UITableView.AutomaticDimension;
 		}
 
 		#endregion
