@@ -146,6 +146,12 @@
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon-29.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon-29%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon-29%403x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon-40%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon-40%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -262,6 +268,16 @@
     <BundleResource Include="Resources\toolbar_reply.png" />
     <BundleResource Include="Resources\toolbar_reply%402x.png" />
     <BundleResource Include="Resources\toolbar_reply%403x.png" />
+    <BundleResource Include="Resources\button_preview.png" />
+    <BundleResource Include="Resources\button_preview%402x.png" />
+    <BundleResource Include="Resources\button_preview%403x.png" />
+    <BundleResource Include="Resources\icon.png" />
+    <BundleResource Include="Resources\icon%402x.png" />
+    <BundleResource Include="Resources\icon%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ITunesArtwork Include="iTunesArtwork" />
+    <ITunesArtwork Include="iTunesArtwork%402x" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
