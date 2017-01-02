@@ -22,6 +22,7 @@ namespace MyIssues2.iOS
 		{
 			base.ViewDidLoad();
 
+			TableView.AllowsSelection = false;
 			TableView.RowHeight = UITableView.AutomaticDimension;
 			TableView.EstimatedRowHeight = 40;
 			TableView.SeparatorColor = UIColor.Clear;

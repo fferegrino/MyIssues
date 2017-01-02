@@ -9,7 +9,7 @@ using UIKit;
 
 namespace MyIssues2.iOS
 {
-	public partial class SetTokenViewController : UIViewController
+	public partial class SetTokenViewController : UIViewController, IUITextViewDelegate
 	{
 		public SetTokenViewController (IntPtr handle) : base (handle)
 		{
@@ -31,14 +31,27 @@ namespace MyIssues2.iOS
 
 			TokenTextView.Text = accessToken;
 
-			if (accessToken != null && await Authenticate(accessToken))
+
+			TokenTextView.Delegate = this;
+			//if (accessToken != null && await Authenticate(accessToken))
+			//{
+			//	PerformSegue(StoryboardId.ViewIssuesSegue, this);
+			//}
+			//else
+			//{
+			//	System.Diagnostics.Debug.WriteLine("Not authed");
+			//}
+		}
+
+		[Export("textView:shouldChangeTextInRange:replacementText:")]
+		public bool ShouldChangeText(UITextView textView, NSRange range, string text)
+		{
+			if (text == "\n")
 			{
-				PerformSegue(StoryboardId.ViewIssuesSegue, this);
+				TryAuth();
+				return false;
 			}
-			else
-			{
-				System.Diagnostics.Debug.WriteLine("Not authed");
-			}
+			return true;
 		}
 
 		partial void LearnMoreClick(NSObject sender)
@@ -46,7 +59,14 @@ namespace MyIssues2.iOS
 			UIApplication.SharedApplication.OpenUrl(new Uri("http://thatcsharpguy.com/apps/myissues#personal-access-token"));
 		}
 
-		async partial  void ContinueButton(NSObject sender)
+
+		async partial void ContinueButton(NSObject sender)
+		{
+			await TryAuth();
+		}
+
+
+		async Task TryAuth()
 		{
 			if (TokenTextView.Text != null && await Authenticate(TokenTextView.Text))
 			{
@@ -56,9 +76,7 @@ namespace MyIssues2.iOS
 			{
 				System.Diagnostics.Debug.WriteLine("Not authed");
 			}
-
 		}
-
 
 		async Task<bool> Authenticate(string accessToken)
 		{
