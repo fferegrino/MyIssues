@@ -9,6 +9,11 @@ namespace MyIssues2.iOS
 {
 	public partial class IssueTabBarViewController : UITabBarController
 	{
+
+		struct StoryboardId
+		{
+			public const string ReplyToIssueSegueIdentifier = "Reply To Issue";
+		}
 		public IssueTabBarViewController (IntPtr handle) : base (handle)
 		{
 		}
@@ -23,6 +28,22 @@ namespace MyIssues2.iOS
 		{
 			base.ViewDidLoad();
 			Title = $"Issue #{IssueNumber}";
+			NavigationItem.RightBarButtonItem = new UIBarButtonItem(UIImage.FromFile("toolbar_reply.png"), UIBarButtonItemStyle.Plain, (sender, e) => {
+				PerformSegue(StoryboardId.ReplyToIssueSegueIdentifier, this);
+			});
+		}
+
+		public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
+		{
+			if (segue.Identifier == StoryboardId.ReplyToIssueSegueIdentifier)
+			{
+				var replyToIssueController = segue.DestinationViewController as ReplyToIssueViewController;
+				replyToIssueController.SetIssueNumber(IssueNumber);
+			}
+			else 
+			{
+				base.PrepareForSegue(segue, sender);
+			}
 		}
 	}
 }

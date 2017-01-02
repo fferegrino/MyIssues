@@ -46,7 +46,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QOF-Bc-Gj1" id="SAS-hi-Jv9">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="69"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Ssd-iM-sYu">
@@ -117,7 +117,7 @@
                                 <rect key="frame" x="0.0" y="98" width="375" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Blo-Ie-RpS" id="7Oo-PT-l1w">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="7Oj-CN-Ok9">
@@ -299,7 +299,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pO5-2c-F24" id="tWs-rj-Mdk">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My issue name" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dOZ-GC-asc">
@@ -321,7 +321,7 @@
                                         <rect key="frame" x="0.0" y="44" width="375" height="30"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8nY-eX-svw" id="BNw-3j-aV1">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="29.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="29"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cuu-Gh-Fbr">
@@ -379,7 +379,7 @@
                                         <rect key="frame" x="0.0" y="74" width="375" height="30"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9A0-f7-bPm" id="JhD-FS-cor">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="29.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="29"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dnf-6O-oUM">
@@ -402,7 +402,7 @@
                                         <rect key="frame" x="0.0" y="104" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hve-sG-wUg" id="OEv-I2-InE">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wsL-yX-RDP">
@@ -452,7 +452,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qfR-6x-hP9" id="DpI-JW-Z6c">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d58-Uk-wWz">
@@ -495,7 +495,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="E5e-IS-lkD" kind="relationship" relationship="viewControllers" id="sE7-C5-1ye"/>
-                        <segue destination="M40-ob-Ij6" kind="relationship" relationship="viewControllers" id="mPU-XU-PrD"/>
+                        <segue destination="M40-ob-Ij6" kind="relationship" relationship="viewControllers" id="FNA-Um-PK9"/>
+                        <segue destination="ZUy-G6-1Xq" kind="presentation" identifier="Reply To Issue" id="NXj-Zp-0vT"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qSO-fV-tHC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -571,21 +572,18 @@
                             <outlet property="delegate" destination="M40-ob-Ij6" id="uvR-WR-Q7V"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Comments" image="tab_comments.png" selectedImage="tab_comments_filled.png" id="369-Gg-rhy"/>
-                    <toolbarItems>
-                        <barButtonItem image="toolbar_reply.png" id="HPE-zX-EZ8">
-                            <connections>
-                                <segue destination="ZUy-G6-1Xq" kind="presentation" identifier="Reply To Issue" id="UZ4-0P-lEO"/>
-                            </connections>
-                        </barButtonItem>
-                    </toolbarItems>
+                    <tabBarItem key="tabBarItem" title="Comments" image="tab_comments.png" selectedImage="tab_comments.png" id="eRM-Ce-Azx"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="wSL-a9-g7P">
+                        <barButtonItem key="rightBarButtonItem" image="toolbar_reply.png" id="5ws-SP-gRN"/>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZQl-8z-NC4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4132" y="998"/>
+            <point key="canvasLocation" x="4132" y="1026"/>
         </scene>
-        <!--Reply To Issue View Controller-->
+        <!--Title-->
         <scene sceneID="mHy-zS-d1W">
             <objects>
                 <viewController id="ZUy-G6-1Xq" customClass="ReplyToIssueViewController" sceneMemberID="viewController">
@@ -596,12 +594,28 @@
                     <view key="view" contentMode="scaleToFill" id="zRf-0Q-QLH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PQ0-iw-hSc">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Reply" id="tEI-cU-Dok">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="fMX-7o-6WI"/>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="Kab-Rd-4tO"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="NZW-VM-Tlf"/>
+                    <connections>
+                        <outlet property="NavBar" destination="tEI-cU-Dok" id="ZKs-0f-V8E"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W0A-oi-1zi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5116" y="997"/>
+            <point key="canvasLocation" x="3182" y="1471"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4Es-qk-W7a">
@@ -642,13 +656,12 @@
     </scenes>
     <resources>
         <image name="tab_comments.png" width="30" height="30"/>
-        <image name="tab_comments_filled.png" width="30" height="30"/>
         <image name="tab_detail.png" width="30" height="30"/>
         <image name="tab_detail_filled.png" width="30" height="30"/>
         <image name="toolbar_change_repo.png" width="25" height="25"/>
         <image name="toolbar_reply.png" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="VxU-z6-m98"/>
+        <segue reference="8KR-lA-wxP"/>
     </inferredMetricsTieBreakers>
 </document>

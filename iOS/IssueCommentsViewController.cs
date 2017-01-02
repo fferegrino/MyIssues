@@ -37,6 +37,8 @@ namespace MyIssues2.iOS
 
 			loadComments.Subscribe(CargaComentarios);
 			TableView.ContentInset = new UIEdgeInsets(0, 0, 40, 0);
+
+			NavigationItem.RightBarButtonItem = new UIBarButtonItem("toolbar_reply.png",  UIBarButtonItemStyle.Plain, null);
 		}
 
 		IReadOnlyList<IssueComment> _comments;

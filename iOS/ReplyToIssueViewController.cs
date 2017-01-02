@@ -12,5 +12,29 @@ namespace MyIssues2.iOS
 		public ReplyToIssueViewController (IntPtr handle) : base (handle)
 		{
 		}
+
+		int _issueNumber;
+		public void SetIssueNumber(int number)
+		{
+			_issueNumber = number;
+		}
+
+		public override void ViewDidLoad()
+		{
+			base.ViewDidLoad();
+
+			NavBar.Title = $"Reply to #{_issueNumber}";
+			NavBar.LeftBarButtonItem.Clicked += (sender, e) => Cancel();
+			//CancelButton.Clicked += (s, a) =>
+			//{
+			//	Cancel();
+			//};
+		}
+
+		 void Cancel()
+		{
+			PresentingViewController.DismissModalViewController(true);
+			//NavigationController.PopViewController(true);
+		}
 	}
 }

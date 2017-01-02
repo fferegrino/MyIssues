@@ -12,9 +12,16 @@ namespace MyIssues2.iOS
 	[Register ("ReplyToIssueViewController")]
 	partial class ReplyToIssueViewController
 	{
-		
+		[Outlet]
+		UIKit.UINavigationItem NavBar { get; set; }
+
 		void ReleaseDesignerOutlets ()
 		{
+			if (NavBar != null) {
+				NavBar.Dispose ();
+				NavBar = null;
+			}
+
 		}
 	}
 }
