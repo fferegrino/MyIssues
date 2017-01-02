@@ -15,6 +15,9 @@ namespace MyIssues2.iOS
 		[Outlet]
 		UIKit.UINavigationItem NavBar { get; set; }
 
+		[Outlet]
+		UIKit.UITextView ReplyTextView { get; set; }
+		
 		void ReleaseDesignerOutlets ()
 		{
 			if (NavBar != null) {
@@ -22,6 +25,10 @@ namespace MyIssues2.iOS
 				NavBar = null;
 			}
 
+			if (ReplyTextView != null) {
+				ReplyTextView.Dispose ();
+				ReplyTextView = null;
+			}
 		}
 	}
 }
