@@ -23,10 +23,54 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text=" Access token" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="HRk-RX-CMc">
+                                <rect key="frame" x="36" y="163.5" width="303" height="248.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="alphabet" returnKeyType="go"/>
+                                <dataDetectorType key="dataDetectorTypes" flightNumber="YES"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="boy-Vb-sGA">
+                                <rect key="frame" x="156.5" y="422" width="62" height="30"/>
+                                <state key="normal" title="Continue"/>
+                                <connections>
+                                    <action selector="ContinueButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TmN-eB-Yfi"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="av4-cl-eTu">
+                                <rect key="frame" x="63" y="117" width="248" height="26.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set your access token" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A9F-oS-NWB">
+                                        <rect key="frame" x="0.0" y="0.0" width="216" height="26.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gTG-f8-mUo">
+                                        <rect key="frame" x="226" y="0.0" width="22" height="26.5"/>
+                                        <connections>
+                                            <action selector="LearnMoreClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="h5s-Fi-YKj"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="boy-Vb-sGA" firstAttribute="top" secondItem="HRk-RX-CMc" secondAttribute="bottom" constant="10" id="0UH-8b-u28"/>
+                            <constraint firstItem="av4-cl-eTu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="97l-sd-n2g"/>
+                            <constraint firstItem="boy-Vb-sGA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Adp-o7-qfh"/>
+                            <constraint firstItem="HRk-RX-CMc" firstAttribute="top" secondItem="av4-cl-eTu" secondAttribute="bottom" constant="20" id="HoK-gs-cTc"/>
+                            <constraint firstItem="av4-cl-eTu" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="53" id="Tfn-uC-ncL"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="boy-Vb-sGA" secondAttribute="bottom" constant="215" id="V0l-fi-XSS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="HRk-RX-CMc" secondAttribute="trailing" constant="20" id="hJr-TO-PE2"/>
+                            <constraint firstItem="HRk-RX-CMc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="hbU-tn-enB"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Set your access token" id="OTl-jH-bZH"/>
                     <connections>
+                        <outlet property="TokenTextView" destination="HRk-RX-CMc" id="Yc6-7E-sQ8"/>
                         <segue destination="eBj-Dq-je7" kind="show" identifier="View Issues" id="8KR-lA-wxP"/>
                     </connections>
                 </viewController>

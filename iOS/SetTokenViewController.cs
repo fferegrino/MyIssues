@@ -27,7 +27,10 @@ namespace MyIssues2.iOS
 
 
 			_storage = MyIssues.DataAccess.Storage.GetInstance();
-			string accessToken = await _storage.GetToken() ?? "3282fb0f86f8063f8c8dfb1e3f0df2b839f1f298";
+			string accessToken = await _storage.GetToken();// ?? "3282fb0f86f8063f8c8dfb1e3f0df2b839f1f298";
+
+			TokenTextView.Text = accessToken;
+
 			if (accessToken != null && await Authenticate(accessToken))
 			{
 				PerformSegue(StoryboardId.ViewIssuesSegue, this);
@@ -36,6 +39,24 @@ namespace MyIssues2.iOS
 			{
 				System.Diagnostics.Debug.WriteLine("Not authed");
 			}
+		}
+
+		partial void LearnMoreClick(NSObject sender)
+		{
+			UIApplication.SharedApplication.OpenUrl(new Uri("http://thatcsharpguy.com/apps/myissues#personal-access-token"));
+		}
+
+		async partial  void ContinueButton(NSObject sender)
+		{
+			if (TokenTextView.Text != null && await Authenticate(TokenTextView.Text))
+			{
+				PerformSegue(StoryboardId.ViewIssuesSegue, this);
+			}
+			else
+			{
+				System.Diagnostics.Debug.WriteLine("Not authed");
+			}
+
 		}
 
 

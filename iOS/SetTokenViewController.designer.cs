@@ -12,9 +12,21 @@ namespace MyIssues2.iOS
 	[Register ("SetTokenViewController")]
 	partial class SetTokenViewController
 	{
+		[Outlet]
+		UIKit.UITextView TokenTextView { get; set; }
+
+		[Action ("ContinueButton:")]
+		partial void ContinueButton (Foundation.NSObject sender);
+
+		[Action ("LearnMoreClick:")]
+		partial void LearnMoreClick (Foundation.NSObject sender);
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (TokenTextView != null) {
+				TokenTextView.Dispose ();
+				TokenTextView = null;
+			}
 		}
 	}
 }
