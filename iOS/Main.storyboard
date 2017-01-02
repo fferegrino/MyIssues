@@ -8,6 +8,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -600,14 +601,16 @@
                                 <items>
                                     <navigationItem title="Reply" id="tEI-cU-Dok">
                                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="fMX-7o-6WI"/>
-                                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="Kab-Rd-4tO"/>
+                                        <rightBarButtonItems>
+                                            <barButtonItem style="done" systemItem="done" id="Kab-Rd-4tO"/>
+                                            <barButtonItem tag="10" title="Preview" id="phf-hG-QJZ"/>
+                                        </rightBarButtonItems>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sau-Zh-QSk">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="## Escribe aquí tu respuesta usando Markdown" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sau-Zh-QSk">
                                 <rect key="frame" x="16" y="64" width="343" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -627,11 +630,66 @@
                     <connections>
                         <outlet property="NavBar" destination="tEI-cU-Dok" id="ZKs-0f-V8E"/>
                         <outlet property="ReplyTextView" destination="sau-Zh-QSk" id="FQ6-UU-zZK"/>
+                        <segue destination="zuh-S7-5Mv" kind="presentation" identifier="Preview Reply" id="k5f-zr-QTQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W0A-oi-1zi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3181.5999999999999" y="1470.3148425787108"/>
+            <point key="canvasLocation" x="3182" y="1747"/>
+        </scene>
+        <!--Preview Reply View Controller-->
+        <scene sceneID="Pxd-gv-6y9">
+            <objects>
+                <viewController id="zuh-S7-5Mv" customClass="PreviewReplyViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="D8c-oe-Rhh"/>
+                        <viewControllerLayoutGuide type="bottom" id="fzh-p7-Cg9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="AfN-B3-w7n">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q9d-Pb-zKJ">
+                                <rect key="frame" x="0.0" y="20" width="375" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="SfX-N4-8lo"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Title" id="eJy-J3-Qzu">
+                                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="BdU-s7-SuM"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QC9-M0-kDL">
+                                <rect key="frame" x="16" y="70" width="343" height="20.5"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Label">
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="17"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Q9d-Pb-zKJ" firstAttribute="width" secondItem="AfN-B3-w7n" secondAttribute="width" id="Cfq-eL-n99"/>
+                            <constraint firstItem="QC9-M0-kDL" firstAttribute="top" secondItem="Q9d-Pb-zKJ" secondAttribute="bottom" id="SO9-Hs-xty"/>
+                            <constraint firstItem="Q9d-Pb-zKJ" firstAttribute="top" secondItem="D8c-oe-Rhh" secondAttribute="bottom" id="a8d-j4-C5B"/>
+                            <constraint firstItem="Q9d-Pb-zKJ" firstAttribute="leading" secondItem="AfN-B3-w7n" secondAttribute="leading" id="bcq-Ka-g0E"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QC9-M0-kDL" secondAttribute="trailing" id="dxl-JA-bJQ"/>
+                            <constraint firstItem="QC9-M0-kDL" firstAttribute="leading" secondItem="AfN-B3-w7n" secondAttribute="leadingMargin" id="v35-5B-Zj8"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="ContentLabel" destination="QC9-M0-kDL" id="nxg-sB-IQP"/>
+                        <outlet property="NavBar" destination="eJy-J3-Qzu" id="7eh-Gq-lYV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KOP-XP-rbV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3996" y="1745.577211394303"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4Es-qk-W7a">

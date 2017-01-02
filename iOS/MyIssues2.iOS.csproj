@@ -220,6 +220,10 @@
     <Compile Include="ReplyToIssueViewController.designer.cs">
       <DependentUpon>ReplyToIssueViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="PreviewReplyViewController.cs" />
+    <Compile Include="PreviewReplyViewController.designer.cs">
+      <DependentUpon>PreviewReplyViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Models\MyIssues.Models.csproj">
