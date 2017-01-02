@@ -165,6 +165,9 @@ namespace MyIssues2.iOS
 
 		public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
 		{
+
+			NavigationItem.BackBarButtonItem = new UIBarButtonItem("Repo", UIBarButtonItemStyle.Plain, null);//, //em = [[[UIBarButtonItem alloc] initWithTitle: @"Back" style: UIBarButtonItemStylePlain target:nil action:nil] autorelease]
+
 			if (StoryboardId.ViewIssueDetailSegue.Equals(segue.Identifier))
 			{
 				var destination = segue.DestinationViewController.ContentViewController() as IssueTabBarViewController;

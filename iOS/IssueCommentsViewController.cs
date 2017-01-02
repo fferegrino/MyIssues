@@ -26,7 +26,6 @@ namespace MyIssues2.iOS
 		{
 			base.ViewDidLoad();
 
-
 			TableView.RowHeight = UITableView.AutomaticDimension;
 			TableView.EstimatedRowHeight = 50;
 

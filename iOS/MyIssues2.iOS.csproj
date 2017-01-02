@@ -216,6 +216,10 @@
       <DependentUpon>IssueNoMilestoneCellView.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\LabelView.cs" />
+    <Compile Include="ReplyToIssueViewController.cs" />
+    <Compile Include="ReplyToIssueViewController.designer.cs">
+      <DependentUpon>ReplyToIssueViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Models\MyIssues.Models.csproj">
@@ -251,6 +255,9 @@
     <BundleResource Include="Resources\toolbar_change_repo.png" />
     <BundleResource Include="Resources\toolbar_change_repo%402x.png" />
     <BundleResource Include="Resources\toolbar_change_repo%403x.png" />
+    <BundleResource Include="Resources\toolbar_reply.png" />
+    <BundleResource Include="Resources\toolbar_reply%402x.png" />
+    <BundleResource Include="Resources\toolbar_reply%403x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
