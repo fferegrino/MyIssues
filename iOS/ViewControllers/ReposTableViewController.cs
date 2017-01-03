@@ -104,7 +104,7 @@ namespace MyIssues2.iOS
 		public void TextChanged(UISearchBar searchBar, string searchText)
 		{
 			System.Diagnostics.Debug.WriteLine($"{searchText}");
-			_shown = _original.Where(r => r.Name.StartsWith(searchText)).ToList();
+			_shown = _original.Where(r => r.Name.StartsWith(searchText, StringComparison.OrdinalIgnoreCase)).ToList();
 			TableView.ReloadData();
 		}
 

@@ -32,14 +32,14 @@ namespace MyIssues2.iOS
 			TokenTextView.AttributedText = StyleToken(accessToken);
 
 			TokenTextView.Delegate = this;
-			if (accessToken != null && await Authenticate(accessToken))
-			{
-				PerformSegue(StoryboardId.ViewIssuesSegue, this);
-			}
-			else
-			{
-				System.Diagnostics.Debug.WriteLine("Not authed");
-			}
+			//if (accessToken != null && await Authenticate(accessToken))
+			//{
+			//	PerformSegue(StoryboardId.ViewIssuesSegue, this);
+			//}
+			//else
+			//{
+			//	System.Diagnostics.Debug.WriteLine("Not authed");
+			//}
 		}
 
 		[Export("textView:shouldChangeTextInRange:replacementText:")]
@@ -73,6 +73,11 @@ namespace MyIssues2.iOS
 			await TryAuth();
 		}
 
+		public override void ViewDidLayoutSubviews()
+		{
+			base.ViewDidLayoutSubviews();
+			TokenTextView.SetContentOffset(CoreGraphics.CGPoint.Empty, false);
+		}
 
 		async Task TryAuth()
 		{

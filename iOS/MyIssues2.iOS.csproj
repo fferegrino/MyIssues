@@ -158,6 +158,7 @@
     <Folder Include="Cells\" />
     <Folder Include="Utils\" />
     <Folder Include="ViewControllers\" />
+    <Folder Include="Controls\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -231,6 +232,7 @@
     <Compile Include="Cells\CommentViewCell.designer.cs">
       <DependentUpon>CommentViewCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\VerticalCenteredTextView.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Models\MyIssues.Models.csproj">

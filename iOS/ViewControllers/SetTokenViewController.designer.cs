@@ -16,7 +16,7 @@ namespace MyIssues2.iOS
 		UIKit.UIActivityIndicatorView ActivityIndicator { get; set; }
 
 		[Outlet]
-		UIKit.UITextView TokenTextView { get; set; }
+		MyIssues2.iOS.VerticalCenteredTextView TokenTextView { get; set; }
 
 		[Action ("ContinueButton:")]
 		partial void ContinueButton (Foundation.NSObject sender);
@@ -26,14 +26,14 @@ namespace MyIssues2.iOS
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (TokenTextView != null) {
-				TokenTextView.Dispose ();
-				TokenTextView = null;
-			}
-
 			if (ActivityIndicator != null) {
 				ActivityIndicator.Dispose ();
 				ActivityIndicator = null;
+			}
+
+			if (TokenTextView != null) {
+				TokenTextView.Dispose ();
+				TokenTextView = null;
 			}
 		}
 	}
