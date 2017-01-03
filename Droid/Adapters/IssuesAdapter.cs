@@ -5,6 +5,7 @@ using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
 using MyIssues.DataAccess;
+using Humanizer;
 
 namespace MyIssues.Droid.Adapters
 {
@@ -50,7 +51,7 @@ namespace MyIssues.Droid.Adapters
             else
             {
                 h.IssueListMilestone.Visibility = ViewStates.Visible;
-                h.IssueListMilestone.Text = milestone;
+                h.IssueListMilestone.Text = $"{issue.MilestoneDueDate.Humanize(DateTimeOffset.Now)}: {milestone}";
             }
 
             SetLabelColors(h, issue.Labels);
@@ -60,13 +61,14 @@ namespace MyIssues.Droid.Adapters
 
 
         readonly Color[] DefaultColors = new Color[]
-            {
-                        Color.Argb(255,160,160,160),
-                       Color.Argb(255,180,180,180),
-                       Color.Argb(255,200,200,200),
-                       Color.Argb(255,220,220,220),
-                       Color.Argb(255,240,240,240)
-            };
+        {
+            Color.Argb(255,160,160,160),
+            Color.Argb(255,180,180,180),
+            Color.Argb(255,200,200,200),
+            Color.Argb(255,220,220,220),
+            Color.Argb(255,240,240,240)
+        };
+
         void SetLabelColors(IssueViewHolder h, IReadOnlyList<Models.Label> labels)
         {
             for (int i = 0; i < h.LabelColorViews.Length; i++)
