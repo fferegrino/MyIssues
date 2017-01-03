@@ -279,6 +279,23 @@
     <BundleResource Include="Resources\icon.png" />
     <BundleResource Include="Resources\icon%402x.png" />
     <BundleResource Include="Resources\icon%403x.png" />
+    <BundleResource Include="Resources\toolbar_add_issue.png" />
+    <BundleResource Include="Resources\toolbar_add_issue%402x.png" />
+    <BundleResource Include="Resources\toolbar_add_issue%403x.png" />
+    <BundleResource Include="Resources\toolbar_labels.png" />
+    <BundleResource Include="Resources\toolbar_labels%402x.png" />
+    <BundleResource Include="Resources\toolbar_labels%403x.png" />
+    <BundleResource Include="Resources\toolbar_settings.png" />
+    <BundleResource Include="Resources\toolbar_settings%402x.png" />
+    <BundleResource Include="Resources\AppIcon-29.png" />
+    <BundleResource Include="Resources\AppIcon-29%402x.png" />
+    <BundleResource Include="Resources\AppIcon-29%403x.png" />
+    <BundleResource Include="Resources\AppIcon-40.png" />
+    <BundleResource Include="Resources\AppIcon-40%402x.png" />
+    <BundleResource Include="Resources\AppIcon-40%403x.png" />
+    <BundleResource Include="Resources\icon-largeartwork.png" />
+    <BundleResource Include="Resources\toolbar_settings%403x.png" />
+    <BundleResource Include="Resources\icon-smallartwork.png" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork" />
