@@ -10,9 +10,9 @@ namespace MyIssues2.iOS
 	public partial class SettingsTableViewController : UITableViewController
 	{
 
-		struct Sections 
+		struct StoryboardId 
 		{
-			public const int GitHub = 0;
+			public const string SwitchRepoSegue = "Switch Repo";
 		}
 		public SettingsTableViewController (IntPtr handle) : base (handle)
 		{
@@ -23,7 +23,15 @@ namespace MyIssues2.iOS
 		{
 			base.ViewDidAppear(animated);
 
+
+			UITapGestureRecognizer changeRepoTap = new UITapGestureRecognizer(ChangeRepoTap);
+			ChangeRepoLabel.AddGestureRecognizer(changeRepoTap);
 		}
 
+		void ChangeRepoTap(UITapGestureRecognizer obj)
+		{
+			PerformSegue(StoryboardId.SwitchRepoSegue, this);
+		}
+				
 	}
 }

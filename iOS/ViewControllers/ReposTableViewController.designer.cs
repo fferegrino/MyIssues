@@ -12,9 +12,15 @@ namespace MyIssues2.iOS
 	[Register ("ReposTableViewController")]
 	partial class ReposTableViewController
 	{
+		[Outlet]
+		UIKit.UISearchBar SearchBar { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (SearchBar != null) {
+				SearchBar.Dispose ();
+				SearchBar = null;
+			}
 		}
 	}
 }

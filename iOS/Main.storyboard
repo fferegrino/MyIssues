@@ -258,17 +258,17 @@
                     <connections>
                         <outlet property="SettingsBarButton" destination="PaW-TQ-4Dj" id="fwD-1w-ufo"/>
                         <segue destination="W01-PR-JuV" kind="show" identifier="View Issue Detail" id="GgQ-He-F1L"/>
-                        <segue destination="elw-jE-ATW" kind="presentation" identifier="Switch Repo" id="Ell-6a-8J4"/>
+                        <segue destination="elw-jE-ATW" kind="show" identifier="Switch Repo" id="Ell-6a-8J4"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9nG-OO-5tH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2263.1999999999998" y="64.31784107946028"/>
         </scene>
-        <!--Settings Table View Controller-->
+        <!--Settings-->
         <scene sceneID="Hbr-Xo-nN4">
             <objects>
-                <tableViewController id="IDQ-uW-qMe" customClass="SettingsTableViewController" sceneMemberID="viewController">
+                <tableViewController title="Settings" id="IDQ-uW-qMe" customClass="SettingsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="4v8-kx-dff">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -340,14 +340,17 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <segue destination="elw-jE-ATW" kind="presentation" identifier="Switch Repo" id="JXq-6N-BZu"/>
+                        <outlet property="AboutLabel" destination="qxA-Bf-MRM" id="M6P-nk-MvE"/>
+                        <outlet property="ChangeRepoLabel" destination="B6X-xm-HE9" id="9hE-QR-lkw"/>
+                        <outlet property="GitHubAccountLabel" destination="R2H-HD-3l6" id="Qdo-Hk-bES"/>
+                        <segue destination="elw-jE-ATW" kind="show" identifier="Switch Repo" id="JXq-6N-BZu"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t9l-3Y-Klf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2263" y="-893"/>
         </scene>
-        <!--Repos Table View Controller-->
+        <!--Select repo-->
         <scene sceneID="GEK-OP-lcE">
             <objects>
                 <tableViewController id="elw-jE-ATW" customClass="ReposTableViewController" sceneMemberID="viewController">
@@ -355,9 +358,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <inset key="scrollIndicatorInsets" minX="0.0" minY="20" maxX="0.0" maxY="0.0"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="C6e-qj-K47">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Repo Cell" rowHeight="53" id="7zk-Bh-411" customClass="RepoViewCell">
-                                <rect key="frame" x="0.0" y="28" width="375" height="53"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="53"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7zk-Bh-411" id="U2T-yg-V6j">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="52"/>
@@ -425,12 +434,23 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Select repo" id="kKB-AW-bL1"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="SearchBar" destination="C6e-qj-K47" id="Dsa-1b-Rov"/>
+                        <outlet property="searchDisplayController" destination="PD4-qT-oAO" id="K9S-GW-vZ3"/>
                         <segue destination="eBj-Dq-je7" kind="show" identifier="Return To Issues" id="VxU-z6-m98"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mod-1W-0zw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="PD4-qT-oAO">
+                    <connections>
+                        <outlet property="delegate" destination="elw-jE-ATW" id="S22-sS-5al"/>
+                        <outlet property="searchContentsController" destination="elw-jE-ATW" id="GZo-1E-ga6"/>
+                        <outlet property="searchResultsDataSource" destination="elw-jE-ATW" id="pcW-ol-PEs"/>
+                        <outlet property="searchResultsDelegate" destination="elw-jE-ATW" id="yiu-kU-RaP"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="3182" y="-145"/>
         </scene>
@@ -886,7 +906,7 @@
         <image name="toolbar_settings.png" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8KR-lA-wxP"/>
-        <segue reference="JXq-6N-BZu"/>
+        <segue reference="VxU-z6-m98"/>
+        <segue reference="Ell-6a-8J4"/>
     </inferredMetricsTieBreakers>
 </document>

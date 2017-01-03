@@ -12,9 +12,31 @@ namespace MyIssues2.iOS
 	[Register ("SettingsTableViewController")]
 	partial class SettingsTableViewController
 	{
+		[Outlet]
+		UIKit.UILabel AboutLabel { get; set; }
+
+		[Outlet]
+		UIKit.UILabel ChangeRepoLabel { get; set; }
+
+		[Outlet]
+		UIKit.UILabel GitHubAccountLabel { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (ChangeRepoLabel != null) {
+				ChangeRepoLabel.Dispose ();
+				ChangeRepoLabel = null;
+			}
+
+			if (GitHubAccountLabel != null) {
+				GitHubAccountLabel.Dispose ();
+				GitHubAccountLabel = null;
+			}
+
+			if (AboutLabel != null) {
+				AboutLabel.Dispose ();
+				AboutLabel = null;
+			}
 		}
 	}
 }
