@@ -12,9 +12,15 @@ namespace MyIssues2.iOS
 	[Register ("IssuesTableViewController")]
 	partial class IssuesTableViewController
 	{
+		[Outlet]
+		UIKit.UIBarButtonItem SettingsBarButton { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (SettingsBarButton != null) {
+				SettingsBarButton.Dispose ();
+				SettingsBarButton = null;
+			}
 		}
 	}
 }

@@ -157,8 +157,6 @@
     <Folder Include="Resources\" />
     <Folder Include="Cells\" />
     <Folder Include="Utils\" />
-    <Folder Include="Views\" />
-    <Folder Include="New Folder\" />
     <Folder Include="ViewControllers\" />
   </ItemGroup>
   <ItemGroup>
@@ -188,13 +186,11 @@
     </Compile>
     <Compile Include="Utils\ViewControllerExtensions.cs" />
     <Compile Include="Utils\AttributedStringExtensions.cs" />
-    <Compile Include="Views\IssueLabel.cs" />
     <Compile Include="Utils\ColorsExtensions.cs" />
     <Compile Include="Cells\IssueNoMilestoneCellView.cs" />
     <Compile Include="Cells\IssueNoMilestoneCellView.designer.cs">
       <DependentUpon>IssueNoMilestoneCellView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\LabelView.cs" />
     <Compile Include="ViewControllers\IssueCommentsViewController.cs" />
     <Compile Include="ViewControllers\IssueCommentsViewController.designer.cs">
       <DependentUpon>IssueCommentsViewController.cs</DependentUpon>

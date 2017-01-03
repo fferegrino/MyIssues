@@ -57,6 +57,8 @@ namespace MyIssues2.iOS
 			_storage = Storage.GetInstance();
 			if (RepoId == 0)
 				RepoId = await _storage.GetWorkingRepo();
+
+			ShowMenu();
 		}
 
 		Octokit.Repository _repo;
@@ -178,6 +180,14 @@ namespace MyIssues2.iOS
 			{
 				base.PrepareForSegue(segue, sender);
 			}
+		}
+
+
+		void ShowMenu()
+		{
+			UIPopoverController popover = new UIPopoverController(this);
+			popover.SetPopoverContentSize(new CoreGraphics.CGSize(100, 100), true);
+			popover.PresentFromBarButtonItem(SettingsBarButton, UIPopoverArrowDirection.Any, true);
 		}
 
 		#endregion
