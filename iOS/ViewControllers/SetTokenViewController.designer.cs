@@ -13,6 +13,9 @@ namespace MyIssues2.iOS
 	partial class SetTokenViewController
 	{
 		[Outlet]
+		UIKit.UIActivityIndicatorView ActivityIndicator { get; set; }
+
+		[Outlet]
 		UIKit.UITextView TokenTextView { get; set; }
 
 		[Action ("ContinueButton:")]
@@ -26,6 +29,11 @@ namespace MyIssues2.iOS
 			if (TokenTextView != null) {
 				TokenTextView.Dispose ();
 				TokenTextView = null;
+			}
+
+			if (ActivityIndicator != null) {
+				ActivityIndicator.Dispose ();
+				ActivityIndicator = null;
 			}
 		}
 	}

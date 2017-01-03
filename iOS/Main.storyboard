@@ -1,18 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6gU-V3-dLQ">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6gU-V3-dLQ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Set your access token-->
+        <!--MyIssues-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="SetTokenViewController" sceneMemberID="viewController">
@@ -24,22 +25,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text=" Access token" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="HRk-RX-CMc">
-                                <rect key="frame" x="26" y="153.5" width="313" height="258.5"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HRk-RX-CMc">
+                                <rect key="frame" x="26" y="121" width="323" height="239"/>
                                 <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="239" id="AM9-E9-ccz"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="Access token">
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="17"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" keyboardAppearance="light" returnKeyType="continue"/>
                                 <dataDetectorType key="dataDetectorTypes" flightNumber="YES"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="boy-Vb-sGA">
-                                <rect key="frame" x="156.5" y="422" width="62" height="30"/>
-                                <state key="normal" title="Continue"/>
-                                <connections>
-                                    <action selector="ContinueButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TmN-eB-Yfi"/>
-                                </connections>
-                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="av4-cl-eTu">
-                                <rect key="frame" x="63" y="117" width="248" height="26.5"/>
+                                <rect key="frame" x="63" y="84" width="248" height="26.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set your access token" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A9F-oS-NWB">
                                         <rect key="frame" x="0.0" y="0.0" width="216" height="26.5"/>
@@ -55,21 +59,37 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="boy-Vb-sGA">
+                                <rect key="frame" x="156" y="370" width="62" height="30"/>
+                                <state key="normal" title="Continue"/>
+                                <connections>
+                                    <action selector="ContinueButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TmN-eB-Yfi"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" placeholderIntrinsicWidth="54" placeholderIntrinsicHeight="50" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Lil-tA-lbF">
+                                <rect key="frame" x="162" y="308" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="03H-Xc-ehK"/>
+                                    <constraint firstAttribute="width" secondItem="Lil-tA-lbF" secondAttribute="height" multiplier="1:1" id="os7-6u-ZTF"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="boy-Vb-sGA" firstAttribute="top" secondItem="HRk-RX-CMc" secondAttribute="bottom" constant="10" id="0UH-8b-u28"/>
-                            <constraint firstItem="av4-cl-eTu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="97l-sd-n2g"/>
-                            <constraint firstItem="boy-Vb-sGA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Adp-o7-qfh"/>
-                            <constraint firstItem="HRk-RX-CMc" firstAttribute="top" secondItem="av4-cl-eTu" secondAttribute="bottom" constant="10" id="HoK-gs-cTc"/>
-                            <constraint firstItem="av4-cl-eTu" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="53" id="Tfn-uC-ncL"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="boy-Vb-sGA" secondAttribute="bottom" constant="215" id="V0l-fi-XSS"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="HRk-RX-CMc" secondAttribute="trailing" constant="20" id="hJr-TO-PE2"/>
-                            <constraint firstItem="HRk-RX-CMc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="hbU-tn-enB"/>
+                            <constraint firstItem="HRk-RX-CMc" firstAttribute="top" secondItem="av4-cl-eTu" secondAttribute="bottom" constant="10" id="AjF-ot-GOQ"/>
+                            <constraint firstItem="boy-Vb-sGA" firstAttribute="top" secondItem="HRk-RX-CMc" secondAttribute="bottom" constant="10" id="WD5-6l-xS5"/>
+                            <constraint firstItem="HRk-RX-CMc" firstAttribute="centerX" secondItem="boy-Vb-sGA" secondAttribute="centerX" id="dp2-P4-kvG"/>
+                            <constraint firstItem="Lil-tA-lbF" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="eVS-W1-lE1"/>
+                            <constraint firstItem="av4-cl-eTu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="oD7-Zr-WnK"/>
+                            <constraint firstItem="HRk-RX-CMc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="t0L-sm-X3H"/>
+                            <constraint firstItem="av4-cl-eTu" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="tfb-2k-mhh"/>
+                            <constraint firstItem="Lil-tA-lbF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="uvV-h6-Kdw"/>
+                            <constraint firstItem="HRk-RX-CMc" firstAttribute="centerX" secondItem="Lil-tA-lbF" secondAttribute="centerX" id="wlV-We-nuJ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Set your access token" id="OTl-jH-bZH"/>
+                    <navigationItem key="navigationItem" title="MyIssues" id="OTl-jH-bZH"/>
                     <connections>
+                        <outlet property="ActivityIndicator" destination="Lil-tA-lbF" id="vwh-Rw-tAy"/>
                         <outlet property="TokenTextView" destination="HRk-RX-CMc" id="Yc6-7E-sQ8"/>
                         <segue destination="eBj-Dq-je7" kind="show" identifier="View Issues" id="8KR-lA-wxP"/>
                     </connections>
@@ -227,20 +247,18 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Issues" id="ZNO-xD-bVr">
-                        <barButtonItem key="leftBarButtonItem" image="toolbar_settings.png" id="PaW-TQ-4Dj"/>
-                        <rightBarButtonItems>
-                            <barButtonItem image="toolbar_change_repo.png" style="plain" id="NYC-k8-Aha">
-                                <connections>
-                                    <segue destination="elw-jE-ATW" kind="show" identifier="Switch Repo" id="gxB-Sp-hjk"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem image="toolbar_labels.png" id="Ot8-LZ-UtR"/>
-                        </rightBarButtonItems>
+                        <barButtonItem key="leftBarButtonItem" image="toolbar_settings.png" id="PaW-TQ-4Dj">
+                            <connections>
+                                <segue destination="IDQ-uW-qMe" kind="show" identifier="Show Settings" id="2Ye-7F-CmQ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="toolbar_labels.png" id="Ot8-LZ-UtR"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="SettingsBarButton" destination="PaW-TQ-4Dj" id="fwD-1w-ufo"/>
                         <segue destination="W01-PR-JuV" kind="show" identifier="View Issue Detail" id="GgQ-He-F1L"/>
+                        <segue destination="elw-jE-ATW" kind="presentation" identifier="Switch Repo" id="Ell-6a-8J4"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9nG-OO-5tH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -251,21 +269,59 @@
         <scene sceneID="Hbr-Xo-nN4">
             <objects>
                 <tableViewController id="IDQ-uW-qMe" customClass="SettingsTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="4v8-kx-dff">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="4v8-kx-dff">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
-                            <tableViewSection headerTitle="MyIssues" id="uZy-WD-Vpc">
+                            <tableViewSection headerTitle="GitHub" id="uZy-WD-Vpc">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="About Cell View" textLabel="B6X-xm-HE9" style="IBUITableViewCellStyleDefault" id="EbK-NM-CwK">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Change Repo Cell View" textLabel="B6X-xm-HE9" style="IBUITableViewCellStyleDefault" id="EbK-NM-CwK">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EbK-NM-CwK" id="E7r-oG-Im7">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="About" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="B6X-xm-HE9">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Change repo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="B6X-xm-HE9">
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="GitHub Account Cell View" textLabel="R2H-HD-3l6" style="IBUITableViewCellStyleDefault" id="N09-YM-pXD">
+                                        <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="N09-YM-pXD" id="bVq-Uh-2nO">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Cuenta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="R2H-HD-3l6">
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="MyIssues" id="eYQ-ph-TaK">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="About Cell View" textLabel="qxA-Bf-MRM" style="IBUITableViewCellStyleDefault" id="1Ix-0Z-QLU">
+                                        <rect key="frame" x="0.0" y="144" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1Ix-0Z-QLU" id="nQk-FA-bc5">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="About" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qxA-Bf-MRM">
                                                     <rect key="frame" x="15" y="0.0" width="345" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -284,12 +340,12 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <outlet property="AboutCellView" destination="EbK-NM-CwK" id="6zy-TM-VDy"/>
+                        <segue destination="elw-jE-ATW" kind="presentation" identifier="Switch Repo" id="JXq-6N-BZu"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t9l-3Y-Klf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2291" y="-999"/>
+            <point key="canvasLocation" x="2263" y="-893"/>
         </scene>
         <!--Repos Table View Controller-->
         <scene sceneID="GEK-OP-lcE">
@@ -825,12 +881,12 @@
         <image name="tab_comments.png" width="30" height="30"/>
         <image name="tab_detail.png" width="30" height="30"/>
         <image name="tab_detail_filled.png" width="30" height="30"/>
-        <image name="toolbar_change_repo.png" width="25" height="25"/>
         <image name="toolbar_labels.png" width="25" height="25"/>
         <image name="toolbar_reply.png" width="25" height="25"/>
         <image name="toolbar_settings.png" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="VxU-z6-m98"/>
+        <segue reference="8KR-lA-wxP"/>
+        <segue reference="JXq-6N-BZu"/>
     </inferredMetricsTieBreakers>
 </document>

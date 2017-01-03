@@ -29,29 +29,37 @@ namespace MyIssues2.iOS
 			_storage = MyIssues.DataAccess.Storage.GetInstance();
 			string accessToken = await _storage.GetToken();// ?? "3282fb0f86f8063f8c8dfb1e3f0df2b839f1f298";
 
-			TokenTextView.Text = accessToken;
-
+			TokenTextView.AttributedText = StyleToken(accessToken);
 
 			TokenTextView.Delegate = this;
-			//if (accessToken != null && await Authenticate(accessToken))
-			//{
-			//	PerformSegue(StoryboardId.ViewIssuesSegue, this);
-			//}
-			//else
-			//{
-			//	System.Diagnostics.Debug.WriteLine("Not authed");
-			//}
+			if (accessToken != null && await Authenticate(accessToken))
+			{
+				PerformSegue(StoryboardId.ViewIssuesSegue, this);
+			}
+			else
+			{
+				System.Diagnostics.Debug.WriteLine("Not authed");
+			}
 		}
 
 		[Export("textView:shouldChangeTextInRange:replacementText:")]
 		public bool ShouldChangeText(UITextView textView, NSRange range, string text)
 		{
+			System.Diagnostics.Debug.Write(text);
+			TokenTextView.AttributedText = StyleToken(TokenTextView.Text);
 			if (text == "\n")
 			{
 				TryAuth();
 				return false;
 			}
 			return true;
+		}
+
+		NSAttributedString StyleToken(string token)
+		{
+			return new NSAttributedString(TokenTextView.Text,
+			                              kerning: 7, 
+			                              font: UIFont.PreferredTitle2);
 		}
 
 		partial void LearnMoreClick(NSObject sender)
@@ -80,6 +88,7 @@ namespace MyIssues2.iOS
 
 		async Task<bool> Authenticate(string accessToken)
 		{
+			ActivityIndicator.StartAnimating();
 			//ProgressDialog progress;
 			//progress = ProgressDialog.Show(this, Resources.GetString(Resource.String.Authenticating),
 			//							   Resources.GetString(Resource.String.PleaseWait), true);
@@ -92,7 +101,7 @@ namespace MyIssues2.iOS
 				await _storage.SaveToken(accessToken);
 			}
 
-			//progress.Dismiss();
+			ActivityIndicator.StopAnimating();
 			return authed;
 		}
 	}

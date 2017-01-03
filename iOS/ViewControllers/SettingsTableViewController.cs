@@ -9,8 +9,21 @@ namespace MyIssues2.iOS
 {
 	public partial class SettingsTableViewController : UITableViewController
 	{
+
+		struct Sections 
+		{
+			public const int GitHub = 0;
+		}
 		public SettingsTableViewController (IntPtr handle) : base (handle)
 		{
 		}
+
+
+		public override void ViewDidAppear(bool animated)
+		{
+			base.ViewDidAppear(animated);
+
+		}
+
 	}
 }

@@ -12,15 +12,9 @@ namespace MyIssues2.iOS
 	[Register ("SettingsTableViewController")]
 	partial class SettingsTableViewController
 	{
-		[Outlet]
-		UIKit.UITableViewCell AboutCellView { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (AboutCellView != null) {
-				AboutCellView.Dispose ();
-				AboutCellView = null;
-			}
 		}
 	}
 }
