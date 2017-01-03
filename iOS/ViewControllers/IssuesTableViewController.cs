@@ -24,6 +24,7 @@ namespace MyIssues2.iOS
 			public const string IssueCellIdentifier = "Issue Cell";
 			public const string IssueNoMilestoneCellIdentifier = "Issue No Milestone Cell";
 			public const string ViewIssueDetailSegue = "View Issue Detail";
+			public const string ShowSettingsSegue = "Show Settings";
 			public const string SwitchRepoSegue = "Switch Repo";
 		}
 

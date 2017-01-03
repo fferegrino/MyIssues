@@ -159,6 +159,7 @@
     <Folder Include="Utils\" />
     <Folder Include="Views\" />
     <Folder Include="New Folder\" />
+    <Folder Include="ViewControllers\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -177,26 +178,6 @@
       <DependentUpon>ViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="AkavacheSqliteLinkerOverride.cs" />
-    <Compile Include="SetTokenViewController.cs" />
-    <Compile Include="SetTokenViewController.designer.cs">
-      <DependentUpon>SetTokenViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ReposTableViewController.cs" />
-    <Compile Include="ReposTableViewController.designer.cs">
-      <DependentUpon>ReposTableViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="IssuesTableViewController.cs" />
-    <Compile Include="IssuesTableViewController.designer.cs">
-      <DependentUpon>IssuesTableViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="IssueCommentsViewController.cs" />
-    <Compile Include="IssueCommentsViewController.designer.cs">
-      <DependentUpon>IssueCommentsViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="IssueTabBarViewController.cs" />
-    <Compile Include="IssueTabBarViewController.designer.cs">
-      <DependentUpon>IssueTabBarViewController.cs</DependentUpon>
-    </Compile>
     <Compile Include="Cells\IssueCellView.cs" />
     <Compile Include="Cells\IssueCellView.designer.cs">
       <DependentUpon>IssueCellView.cs</DependentUpon>
@@ -205,16 +186,8 @@
     <Compile Include="Cells\RepoViewCell.designer.cs">
       <DependentUpon>RepoViewCell.cs</DependentUpon>
     </Compile>
-    <Compile Include="CommentViewCell.cs" />
-    <Compile Include="CommentViewCell.designer.cs">
-      <DependentUpon>CommentViewCell.cs</DependentUpon>
-    </Compile>
     <Compile Include="Utils\ViewControllerExtensions.cs" />
     <Compile Include="Utils\AttributedStringExtensions.cs" />
-    <Compile Include="IssueDetailsTableViewController.cs" />
-    <Compile Include="IssueDetailsTableViewController.designer.cs">
-      <DependentUpon>IssueDetailsTableViewController.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\IssueLabel.cs" />
     <Compile Include="Utils\ColorsExtensions.cs" />
     <Compile Include="Cells\IssueNoMilestoneCellView.cs" />
@@ -222,13 +195,45 @@
       <DependentUpon>IssueNoMilestoneCellView.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\LabelView.cs" />
-    <Compile Include="ReplyToIssueViewController.cs" />
-    <Compile Include="ReplyToIssueViewController.designer.cs">
+    <Compile Include="ViewControllers\IssueCommentsViewController.cs" />
+    <Compile Include="ViewControllers\IssueCommentsViewController.designer.cs">
+      <DependentUpon>IssueCommentsViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\IssueDetailsTableViewController.cs" />
+    <Compile Include="ViewControllers\IssueDetailsTableViewController.designer.cs">
+      <DependentUpon>IssueDetailsTableViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\IssuesTableViewController.cs" />
+    <Compile Include="ViewControllers\IssuesTableViewController.designer.cs">
+      <DependentUpon>IssuesTableViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\IssueTabBarViewController.cs" />
+    <Compile Include="ViewControllers\IssueTabBarViewController.designer.cs">
+      <DependentUpon>IssueTabBarViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\PreviewReplyViewController.cs" />
+    <Compile Include="ViewControllers\PreviewReplyViewController.designer.cs">
+      <DependentUpon>PreviewReplyViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\ReplyToIssueViewController.cs" />
+    <Compile Include="ViewControllers\ReplyToIssueViewController.designer.cs">
       <DependentUpon>ReplyToIssueViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="PreviewReplyViewController.cs" />
-    <Compile Include="PreviewReplyViewController.designer.cs">
-      <DependentUpon>PreviewReplyViewController.cs</DependentUpon>
+    <Compile Include="ViewControllers\ReposTableViewController.cs" />
+    <Compile Include="ViewControllers\ReposTableViewController.designer.cs">
+      <DependentUpon>ReposTableViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\SettingsTableViewController.cs" />
+    <Compile Include="ViewControllers\SettingsTableViewController.designer.cs">
+      <DependentUpon>SettingsTableViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\SetTokenViewController.cs" />
+    <Compile Include="ViewControllers\SetTokenViewController.designer.cs">
+      <DependentUpon>SetTokenViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cells\CommentViewCell.cs" />
+    <Compile Include="Cells\CommentViewCell.designer.cs">
+      <DependentUpon>CommentViewCell.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
