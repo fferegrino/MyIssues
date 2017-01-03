@@ -19,13 +19,24 @@ namespace MyIssues.Droid.Activities
         Theme = "@style/MyTheme")]
     public class SettingsActivity : AppCompatActivity
     {
-        
-    protected override void OnCreate(Bundle savedInstanceState)
+        SettingsFragment _settingsFragment;
+        protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+            _settingsFragment = new SettingsFragment();
+
+            _settingsFragment.DidChangedRepoEventHandler += (s, repoId) =>
+            {
+                Intent returnIntent = new Intent();
+                returnIntent.PutExtra("didChangeRepo", repoId != 0);
+                returnIntent.PutExtra("repoId", repoId);
+                SetResult(Result.Ok, returnIntent);
+                this.Finish();
+
+            };
 
             SupportFragmentManager.BeginTransaction()
-                .Replace(Android.Resource.Id.Content, new SettingsFragment())
+                .Replace(Android.Resource.Id.Content, _settingsFragment)
                     .Commit();
 
         }

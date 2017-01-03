@@ -28,10 +28,12 @@ namespace MyIssues.Droid
     public class IssuesActivity : AppCompatActivity, SwipeRefreshLayout.IOnRefreshListener
     {
         const int SelectRepoRequestCode = 1;
+        const int ChangeSettings = 2;
+
         MyIssues.Droid.Controls.RecyclerViewEmptySupport _issuesListView;
         SwipeRefreshLayout _refreshLayout;
         RecyclerView.LayoutManager _layoutManager;
-		ProgressBar progress_horizontal;
+        ProgressBar progress_horizontal;
         Storage _storage;
         Octokit.Repository _repo;
 
@@ -51,7 +53,7 @@ namespace MyIssues.Droid
             _issuesListView = FindViewById<RecyclerViewEmptySupport>(Resource.Id.IssuesListView);
 
 
-			progress_horizontal = FindViewById<ProgressBar>(Resource.Id.ProgressHorizontal);
+            progress_horizontal = FindViewById<ProgressBar>(Resource.Id.ProgressHorizontal);
 
             var view = FindViewById(Resource.Id.EmptyListView);
             _issuesListView.EmptyView = view;
@@ -73,14 +75,14 @@ namespace MyIssues.Droid
 
         private async Task LoadRepo(long repoId)
         {
-			progress_horizontal.Visibility = ViewStates.Visible;
-			_issuesListView.IsLoading = true;
-			progress_horizontal.Indeterminate = true;
+            progress_horizontal.Visibility = ViewStates.Visible;
+            _issuesListView.IsLoading = true;
+            progress_horizontal.Indeterminate = true;
             try
             {
                 await _storage.SetWorkingRepo(repoId);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 OpenRepoSelector();
                 return;
@@ -101,10 +103,10 @@ namespace MyIssues.Droid
                 StartActivity(intent);
             };
 
-			_issuesListView.IsLoading = false; 
+            _issuesListView.IsLoading = false;
             _issuesListView.SetAdapter(adapter);
 
-			progress_horizontal.Visibility = ViewStates.Gone;
+            progress_horizontal.Visibility = ViewStates.Gone;
         }
 
         private Handler updateHandler;
@@ -130,9 +132,22 @@ namespace MyIssues.Droid
         {
             if (requestCode == SelectRepoRequestCode && resultCode == Result.Ok)
             {
-                var repoName = data.GetStringExtra("repoName");
+                //var repoName = data.GetStringExtra("repoName");
                 var repoId = data.GetLongExtra("repoId", 0);
                 await LoadRepo(repoId);
+            }
+            else
+            if (requestCode == ChangeSettings && resultCode == Result.Ok)
+            {
+                var didChangeRepo = data.GetBooleanExtra("didChangeRepo", false);
+                if (didChangeRepo)
+                {
+                    var repoId = data.GetLongExtra("repoId", 0);
+                    if (repoId != (_repo?.Id ?? 0))
+                    {
+                        await LoadRepo(repoId);
+                    }
+                }
             }
             else
             {
@@ -151,17 +166,17 @@ namespace MyIssues.Droid
         {
             switch (item.ItemId)
             {
-				case Resource.Id.ViewLabelsMenu:
-					var labelsIntent = new Intent(this, typeof(LabelsActivity));
-					StartActivity(labelsIntent);
-					break;
-				case Resource.Id.ViewAboutMenu:
-					var settingsIntent = new Intent(this, typeof(SettingsActivity));
-					StartActivity(settingsIntent);
-					break;
-                case Resource.Id.SwitchRepoMenu:
-                    OpenRepoSelector();
+                case Resource.Id.ViewLabelsMenu:
+                    var labelsIntent = new Intent(this, typeof(LabelsActivity));
+                    StartActivity(labelsIntent);
                     break;
+                case Resource.Id.ViewSettingsMenu:
+                    var settingsIntent = new Intent(this, typeof(SettingsActivity));
+                    StartActivityForResult(settingsIntent, ChangeSettings);
+                    break;
+                //case Resource.Id.SwitchRepoMenu:
+                //    OpenRepoSelector();
+                //    break;
                 default:
                     return base.OnOptionsItemSelected(item);
             }
@@ -171,7 +186,7 @@ namespace MyIssues.Droid
         public async void OnRefresh()
         {
             _refreshLayout.Refreshing = true;
-             _storage.GetIssues(UpdateIssues);
+            _storage.GetIssues(UpdateIssues);
         }
     }
 }

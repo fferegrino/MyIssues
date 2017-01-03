@@ -4,6 +4,7 @@
   <string name="app_name">MyIssues</string>
   <string name="SwitchRepoText">Select repo</string>
   <string name="AboutText">About</string>
+  <string name="SettingsText">Settings</string>
   <string name="ReloadText">Reload</string>
   <string name="viewMore">View more...</string>
   <string name="emptyListText">No elements</string>

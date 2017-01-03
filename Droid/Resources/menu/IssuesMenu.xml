@@ -1,6 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/tools" xmlns:appcompat="http://schemas.android.com/apk/com.thatchsarpguy.myissues">
-  <item android:id="@+id/ViewLabelsMenu" android:title="Labels" android:orderInCategory="1" app:showAsAction="always" />
-  <item android:id="@+id/ViewAboutMenu" android:title="@string/AboutText" android:orderInCategory="100" app:showAsAction="never" />
-  <item android:id="@+id/SwitchRepoMenu" android:title="@string/SwitchRepoText" android:orderInCategory="100" app:showAsAction="never" />
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/tools"
+      xmlns:appcompat="http://schemas.android.com/apk/com.thatchsarpguy.myissues">
+  <item android:id="@+id/ViewLabelsMenu" android:title="Labels" android:orderInCategory="1" 
+        appcompat:showAsAction="always" />
+  <item android:id="@+id/ViewSettingsMenu" android:title="@string/SettingsText"
+        android:orderInCategory="100" appcompat:showAsAction="never" />
+  <!--<item android:id="@+id/SwitchRepoMenu" android:title="@string/SwitchRepoText" android:orderInCategory="100" appcompat:showAsAction="never" />-->
 </menu>
