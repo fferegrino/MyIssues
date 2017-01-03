@@ -233,6 +233,14 @@
       <DependentUpon>CommentViewCell.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\VerticalCenteredTextView.cs" />
+    <Compile Include="Cells\LabelViewCell.cs" />
+    <Compile Include="Cells\LabelViewCell.designer.cs">
+      <DependentUpon>LabelViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\LabelsTableViewController.cs" />
+    <Compile Include="ViewControllers\LabelsTableViewController.designer.cs">
+      <DependentUpon>LabelsTableViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Models\MyIssues.Models.csproj">
