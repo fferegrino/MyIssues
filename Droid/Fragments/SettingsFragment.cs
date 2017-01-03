@@ -11,6 +11,7 @@ using Android.Views;
 using Android.Widget;
 using Android.Support.V7.Preferences;
 using MyIssues.Droid.Activities;
+using MyIssues.DataAccess;
 
 namespace MyIssues.Droid.Fragments
 {
@@ -21,6 +22,8 @@ namespace MyIssues.Droid.Fragments
         const int SelectRepoRequestCode = 1;
 
         public EventHandler<long> DidChangedRepoEventHandler;
+
+        public EventHandler DidEraseData;
 
         public override void OnCreatePreferences(Bundle savedInstanceState, string rootKey)
         {
@@ -34,14 +37,32 @@ namespace MyIssues.Droid.Fragments
                 StartActivity(i);
             };
 
-
             var switchRepoPreference = FindPreference("switchRepo");
             switchRepoPreference.PreferenceClick += (sender, e) =>
             {
                 var i = new Intent(this.Context, typeof(ReposActivity));
                 StartActivityForResult(i, SelectRepoRequestCode);
             };
+
+            var accountPreference = FindPreference("account");
+            accountPreference.PreferenceClick += (sender, e) =>
+            {
+                var alertDialog = new AlertDialog.Builder(this.Context)
+                    .SetTitle("¿Deseas eliminar la cuenta?")
+                    .SetMessage("Se borrarán todos tus datos")
+                    .SetPositiveButton("Si", DeleteAccountClick)
+                    .SetNegativeButton("No", listener: null);
+
+                alertDialog.Show();
+            };
         }
+
+        async void DeleteAccountClick(object sender, DialogClickEventArgs e)
+        {
+            await Storage.GetInstance().EraseAll();
+            DidEraseData?.Invoke(this, new EventArgs());
+        }
+        
 
         public override void OnActivityResult(int requestCode, int resultCode, Intent data)
         {

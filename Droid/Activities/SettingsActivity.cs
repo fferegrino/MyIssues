@@ -35,6 +35,15 @@ namespace MyIssues.Droid.Activities
 
             };
 
+            _settingsFragment.DidEraseData += (s,a) =>
+            {
+                var i = BaseContext.PackageManager.GetLaunchIntentForPackage(BaseContext.PackageName);
+                i.SetFlags(ActivityFlags.ClearTop | ActivityFlags.NewTask | ActivityFlags.ClearTask);
+                StartActivity(i);
+            };
+
+
+
             SupportFragmentManager.BeginTransaction()
                 .Replace(Android.Resource.Id.Content, _settingsFragment)
                     .Commit();

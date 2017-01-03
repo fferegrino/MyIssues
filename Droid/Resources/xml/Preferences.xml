@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-  <android.support.v7.preference.PreferenceCategory android:title="MyIssues">
+  <android.support.v7.preference.PreferenceCategory android:title="GitHub">
     <Preference android:key="switchRepo" android:title="Switch repo"></Preference>
+    <Preference android:key="account" android:title="Account"></Preference>
   </android.support.v7.preference.PreferenceCategory>
   <android.support.v7.preference.PreferenceCategory android:title="MyIssues">
     <Preference android:key="about" android:title="About">

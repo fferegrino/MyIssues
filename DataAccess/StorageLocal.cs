@@ -64,5 +64,13 @@ namespace MyIssues.DataAccess
         {
             await BlobCache.LocalMachine.InsertObject<long>(WorkingRepo, repoId);
         }
+
+        public async Task EraseAll()
+        {
+            await BlobCache.LocalMachine.InvalidateAll();
+            await BlobCache.Secure.InvalidateAll();
+            await BlobCache.Secure.Vacuum();
+            await BlobCache.LocalMachine.Vacuum();
+        }
     }
 }
