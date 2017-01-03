@@ -16,10 +16,10 @@ namespace MyIssues2.iOS
 		UIKit.UILabel AboutLabel { get; set; }
 
 		[Outlet]
-		UIKit.UILabel ChangeRepoLabel { get; set; }
+		UIKit.UILabel AccountLabel { get; set; }
 
 		[Outlet]
-		UIKit.UILabel GitHubAccountLabel { get; set; }
+		UIKit.UILabel ChangeRepoLabel { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
@@ -28,9 +28,9 @@ namespace MyIssues2.iOS
 				ChangeRepoLabel = null;
 			}
 
-			if (GitHubAccountLabel != null) {
-				GitHubAccountLabel.Dispose ();
-				GitHubAccountLabel = null;
+			if (AccountLabel != null) {
+				AccountLabel.Dispose ();
+				AccountLabel = null;
 			}
 
 			if (AboutLabel != null) {
