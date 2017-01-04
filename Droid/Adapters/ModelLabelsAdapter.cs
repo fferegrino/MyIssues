@@ -18,14 +18,12 @@ using MyIssues.DataAccess;
 
 namespace MyIssues.Droid.Adapters
 {
-
-
     public class ModelLabelsAdapter : RecyclerView.Adapter
     {
         private List<Models.Label> _items;
-        public event IssueSelected OnIssueSelected;
+        public event EventHandler<Models.Label> OnLabelSelected;
 
-		public ModelLabelsAdapter(List<Models.Label> items)
+        public ModelLabelsAdapter(List<Models.Label> items)
         {
             _items = items;
         }
@@ -47,7 +45,7 @@ namespace MyIssues.Droid.Adapters
             var color = Color.Argb(255, label.R, label.G, label.B);
             h.LabelTitle.SetTextColor(TextColor(color));
             h.CardView.SetBackgroundColor(color);
-
+            h.Bind(label, OnLabelSelected);
         }
 
         Android.Graphics.Color TextColor(Android.Graphics.Color bgColor)
@@ -84,6 +82,21 @@ namespace MyIssues.Droid.Adapters
         {
             CardView = itemView.FindViewById<CardView>(Resource.Id.LabelCardView);
             LabelTitle = itemView.FindViewById<TextView>(Resource.Id.LabelCardViewName);
+
+            itemView.Click += ItemView_Click;
+        }
+
+        Models.Label _boundItem;
+        EventHandler<Models.Label> _boundEvent;
+        public void Bind(Models.Label item, EventHandler<Models.Label> listener)
+        {
+            _boundItem = item;
+            _boundEvent = listener;
+        }
+
+        void ItemView_Click(object sender, EventArgs e)
+        {
+            _boundEvent(this, _boundItem);
         }
     }
 

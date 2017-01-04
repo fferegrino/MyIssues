@@ -27,8 +27,13 @@ namespace MyIssues.Droid
         Theme = "@style/MyTheme")]
     public class IssuesActivity : AppCompatActivity, SwipeRefreshLayout.IOnRefreshListener
     {
-        const int SelectRepoRequestCode = 1;
-        const int ChangeSettings = 2;
+
+        struct RequestCodes
+        {
+            public const int SelectRepo = 1;
+            public const int ChangeSettings = 2;
+            public const int FilterByLabel = 3;
+        }
 
         MyIssues.Droid.Controls.RecyclerViewEmptySupport _issuesListView;
         SwipeRefreshLayout _refreshLayout;
@@ -60,8 +65,6 @@ namespace MyIssues.Droid
             _layoutManager = new LinearLayoutManager(this);
             _issuesListView.SetLayoutManager(_layoutManager);
 
-
-
             long repo = await _storage.GetWorkingRepo();
             if (repo == 0)
             {
@@ -90,8 +93,9 @@ namespace MyIssues.Droid
             _repo = await _storage.GetRepo(repoId);
 
             Title = _repo.Name;
-            _storage.GetIssues(UpdateIssues);
+            var observableIssues = _storage.GetIssues();
 
+            observableIssues.Subscribe(UpdateIssues);
 
             var adapter = new IssuesAdapter(new List<Models.Issue>());
             adapter.OnIssueSelected += (selected) =>
@@ -118,26 +122,23 @@ namespace MyIssues.Droid
                     (_issuesListView.GetAdapter() as IssuesAdapter).Update(issues);
                     _refreshLayout.Refreshing = false;
                 });
-            System.Diagnostics.Debug.WriteLine("Updated: " + issues.Count);
-
         }
 
         void OpenRepoSelector()
         {
             var i = new Intent(this, typeof(ReposActivity));
-            StartActivityForResult(i, SelectRepoRequestCode);
+            StartActivityForResult(i, RequestCodes.SelectRepo);
         }
 
         protected override async void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
         {
-            if (requestCode == SelectRepoRequestCode && resultCode == Result.Ok)
+            if (requestCode == RequestCodes.SelectRepo && resultCode == Result.Ok)
             {
                 //var repoName = data.GetStringExtra("repoName");
                 var repoId = data.GetLongExtra("repoId", 0);
                 await LoadRepo(repoId);
             }
-            else
-            if (requestCode == ChangeSettings && resultCode == Result.Ok)
+            else if (requestCode == RequestCodes.ChangeSettings && resultCode == Result.Ok)
             {
                 var didChangeRepo = data.GetBooleanExtra("didChangeRepo", false);
                 if (didChangeRepo)
@@ -148,6 +149,14 @@ namespace MyIssues.Droid
                         await LoadRepo(repoId);
                     }
                 }
+            }
+            else if (requestCode == RequestCodes.FilterByLabel && resultCode == Result.Ok)
+            {
+                var selectedLabel = data.GetStringExtra("selectedLabel");
+                var ia = _issuesListView.GetAdapter() as IssuesAdapter;
+
+                ia.Filter.InvokeFilter(selectedLabel);
+                System.Diagnostics.Debug.WriteLine($"{selectedLabel}");
             }
             else
             {
@@ -168,11 +177,11 @@ namespace MyIssues.Droid
             {
                 case Resource.Id.ViewLabelsMenu:
                     var labelsIntent = new Intent(this, typeof(LabelsActivity));
-                    StartActivity(labelsIntent);
+                    StartActivityForResult(labelsIntent, RequestCodes.FilterByLabel);
                     break;
                 case Resource.Id.ViewSettingsMenu:
                     var settingsIntent = new Intent(this, typeof(SettingsActivity));
-                    StartActivityForResult(settingsIntent, ChangeSettings);
+                    StartActivityForResult(settingsIntent, RequestCodes.ChangeSettings);
                     break;
                 //case Resource.Id.SwitchRepoMenu:
                 //    OpenRepoSelector();
@@ -186,7 +195,8 @@ namespace MyIssues.Droid
         public async void OnRefresh()
         {
             _refreshLayout.Refreshing = true;
-            _storage.GetIssues(UpdateIssues);
+          var observableIssues =   _storage.GetIssues();
+            observableIssues.Subscribe(UpdateIssues);
         }
     }
 }

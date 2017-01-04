@@ -35,13 +35,12 @@ namespace MyIssues.Droid
 		Spinner _repoKindSelector;
 		List<Models.Repository> repos;
 		TextView _instrucciones;
-		ReposAdapter _adapter;
 
 		RecyclerView _labelsRecyclerView;
 
+        ModelLabelsAdapter _adapter;
 
-
-		protected override async void OnCreate(Bundle savedInstanceState)
+        protected override async void OnCreate(Bundle savedInstanceState)
 		{
             base.OnCreate(savedInstanceState);
             _storage = Storage.GetInstance();
@@ -58,10 +57,20 @@ namespace MyIssues.Droid
 
 			_labelsRecyclerView.SetLayoutManager(_layoutManager);
 			var labels = await _storage.GetLabels();
-			var adapter = new ModelLabelsAdapter(labels.ToList());
-			_labelsRecyclerView.SetAdapter(adapter);
+            _adapter = new ModelLabelsAdapter(labels.ToList());
+			_labelsRecyclerView.SetAdapter(_adapter);
 
-		}
+            _adapter.OnLabelSelected += _adapter_OnLabelSelected;
 
-	}
+
+        }
+
+        private void _adapter_OnLabelSelected(object sender, Models.Label e)
+        {
+            Intent returnIntent = new Intent();
+            returnIntent.PutExtra("selectedLabel", e.Name);
+            SetResult(Result.Ok, returnIntent);
+            Finish();
+        }
+    }
 }

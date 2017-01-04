@@ -218,6 +218,7 @@
     <Compile Include="Adapters\LabelsAdapter.cs" />
     <Compile Include="Adapters\IssueCommentsAdapter.cs" />
     <Compile Include="Controls\RecyclerViewEmptySupport.cs" />
+    <Compile Include="Util\ColorsExtensions.cs" />
     <Compile Include="Util\Constants.cs" />
     <Compile Include="Util\UiExtensions.cs" />
     <Compile Include="Activities\SettingsActivity.cs" />

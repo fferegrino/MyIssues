@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using Android.Graphics;
 using Android.Support.V7.Widget;
@@ -6,26 +7,31 @@ using Android.Views;
 using Android.Widget;
 using MyIssues.DataAccess;
 using Humanizer;
+using Java.Lang;
+using Object = Java.Lang.Object;
 
 namespace MyIssues.Droid.Adapters
 {
 
     public delegate void IssueSelected(Models.Issue selected);
 
-    public class IssuesAdapter : RecyclerView.Adapter
+    public class IssuesAdapter : RecyclerView.Adapter, IFilterable
     {
-        private List<Models.Issue> _items;
+        internal List<Models.Issue> _dataSource;
+        internal List<Models.Issue> _originalData;
+
         public event IssueSelected OnIssueSelected;
 
         public IssuesAdapter(List<Models.Issue> items)
         {
-            _items = items;
+            _dataSource = items;
+            Filter = new ByContainingLabel(this);
         }
 
         public void Update(List<Models.Issue> issues)
         {
-            _items.Clear();
-            _items.AddRange(issues);
+            _dataSource.Clear();
+            _dataSource.AddRange(issues);
             NotifyDataSetChanged();
         }
 
@@ -33,15 +39,20 @@ namespace MyIssues.Droid.Adapters
         {
             get
             {
-                return _items.Count;
+                return _dataSource.Count;
             }
+        }
+
+        public Filter Filter
+        {
+            get; private set;
         }
 
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
             var h = holder as IssueViewHolder;
 
-            var issue = _items[position];
+            var issue = _dataSource[position];
             h.IssueListTitle.Text = issue.Title;
             var milestone = issue.Milestone;
             if (System.String.IsNullOrWhiteSpace(milestone))
@@ -117,17 +128,69 @@ namespace MyIssues.Droid.Adapters
             itemView.Click += ItemView_Click;
         }
 
-        Models.Issue _boundIssue;
-        IssueSelected _l;
+        Models.Issue _boundItem;
+        IssueSelected _boundEvent;
         public void Bind(Models.Issue item, IssueSelected listener)
         {
-            _boundIssue = item;
-            _l = listener;
+            _boundItem = item;
+            _boundEvent = listener;
         }
 
         void ItemView_Click(object sender, EventArgs e)
         {
-            _l(_boundIssue);
+            _boundEvent(_boundItem);
+        }
+    }
+
+    public class ByContainingLabel : Filter
+    {
+
+        IssuesAdapter _parent;
+        public ByContainingLabel(IssuesAdapter parent)
+        {
+            _parent = parent;
+        }
+
+        protected override FilterResults PerformFiltering(ICharSequence constraint)
+        {
+
+            var returnObj = new FilterResults();
+            var results = new List<Models.Issue>();
+            if (_parent._originalData == null)
+                _parent._originalData = _parent._dataSource;
+
+            if (constraint == null) return returnObj;
+
+            if (_parent._originalData != null && _parent._originalData.Any())
+            {
+                // Compare constraint to all names lowercased. 
+                // It they are contained they are added to results.
+                results.AddRange(
+                    _parent._originalData.Where(
+                        chemical => chemical.Labels.Where(l => l.Name.Equals(constraint.ToString())).Any()));
+            }
+
+            // Nasty piece of .NET to Java wrapping, be careful with this!
+            returnObj.Values = FromArray(results.Select(r => r.ToJavaObject()).ToArray());
+            returnObj.Count = results.Count;
+
+            constraint.Dispose();
+
+            return returnObj;
+        }
+
+        protected override void PublishResults(ICharSequence constraint, FilterResults results)
+        {
+            using (var values = results.Values)
+                _parent._dataSource = values.ToArray<Object>()
+                    .Select(r => r.ToNetObject<Models.Issue>()).ToList();
+
+            _parent.NotifyDataSetChanged();
+
+            // Don't do this and see GREF counts rising
+            constraint.Dispose();
+            results.Dispose();
+
         }
     }
 
