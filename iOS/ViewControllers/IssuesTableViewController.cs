@@ -10,6 +10,7 @@ using MyIssues.DataAccess;
 using MyIssues.Models;
 using MyIssues2.iOS.Cells;
 using UIKit;
+using Humanizer;
 
 namespace MyIssues2.iOS
 {
@@ -26,6 +27,7 @@ namespace MyIssues2.iOS
 			public const string ViewIssueDetailSegue = "View Issue Detail";
 			public const string ShowSettingsSegue = "Show Settings";
 			public const string SwitchRepoSegue = "Switch Repo";
+			public const string ShowLabelsSegue = "Show Labels";
 		}
 
 		Storage _storage;
@@ -33,6 +35,12 @@ namespace MyIssues2.iOS
 		{
 			get;
 			set;
+		}
+
+		public string ViewingLabel
+		{
+			get;
+			private set;
 		}
 
 		public override async void ViewDidAppear(bool animated)
@@ -87,11 +95,20 @@ namespace MyIssues2.iOS
 			PerformSegue(StoryboardId.SwitchRepoSegue, this);
 		}
 
-		List<Issue> _issues;
+		List<Issue> _originalIssues;
+		List<Issue> _shownIssues;
 		void UpdateIssues(List<Issue> issues)
 		{
 			System.Diagnostics.Debug.WriteLine($"Load {RepoId} ::: {(issues?.Count ?? 0)}");
-			_issues = issues;
+			_originalIssues = issues;
+			if (String.IsNullOrEmpty(ViewingLabel))
+			{
+				_shownIssues = _originalIssues;
+			}
+			else
+			{
+				_shownIssues = _originalIssues.Where(i => i.Labels.Where(l => l.Name.Equals(ViewingLabel)).Any()).ToList();
+			}
 			InvokeOnMainThread(() =>
 			{
 				TableView.ReloadData();
@@ -107,13 +124,13 @@ namespace MyIssues2.iOS
 
 		public override nint RowsInSection(UITableView tableView, nint section)
 		{
-			return _issues?.Count ?? 0;
+			return _shownIssues?.Count ?? 0;
 		}
 
 
 		public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
 		{
-			var issue = _issues[indexPath.Row];
+			var issue = _shownIssues[indexPath.Row];
 			if (!String.IsNullOrEmpty(issue.Milestone))
 			{
 				var cell = TableView.DequeueReusableCell(StoryboardId.IssueCellIdentifier, indexPath) as IssueCellView;
@@ -137,7 +154,7 @@ namespace MyIssues2.iOS
 		int _issueNumber;
 		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
 		{
-			_issueNumber = _issues[indexPath.Row].Number;
+			_issueNumber = _shownIssues[indexPath.Row].Number;
 			this.PerformSegue(StoryboardId.ViewIssueDetailSegue, tableView);
 
 		}
@@ -168,12 +185,21 @@ namespace MyIssues2.iOS
 		public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
 		{
 
-			NavigationItem.BackBarButtonItem = new UIBarButtonItem("Repo", UIBarButtonItemStyle.Plain, null);//, //em = [[[UIBarButtonItem alloc] initWithTitle: @"Back" style: UIBarButtonItemStylePlain target:nil action:nil] autorelease]
+			NavigationItem.BackBarButtonItem = new UIBarButtonItem(_repo.Name.Truncate(10), UIBarButtonItemStyle.Plain, null);//, //em = [[[UIBarButtonItem alloc] initWithTitle: @"Back" style: UIBarButtonItemStylePlain target:nil action:nil] autorelease]
 
 			if (StoryboardId.ViewIssueDetailSegue.Equals(segue.Identifier))
 			{
 				var destination = segue.DestinationViewController.ContentViewController() as IssueTabBarViewController;
 				destination.IssueNumber = _issueNumber;
+			}
+			else if (StoryboardId.ShowLabelsSegue.Equals(segue.Identifier))
+			{
+				var destination = segue.DestinationViewController.ContentViewController() as LabelsTableViewController;
+				destination.LabelSelected += (s, selectedLabel) =>
+				{
+					System.Diagnostics.Debug.WriteLine($"Selected label: {selectedLabel}");
+					ViewingLabel = selectedLabel;
+				};
 			}
 			else
 			{

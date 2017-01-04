@@ -12,6 +12,8 @@ namespace MyIssues2.iOS
 	public partial class LabelsTableViewController : UITableViewController
 	{
 
+		public EventHandler<string> LabelSelected;
+
 		struct StoryboardId
 		{
 			public const string LabelViewCell = "Label View Cell";
@@ -46,6 +48,12 @@ namespace MyIssues2.iOS
 			var cell = tableView.DequeueReusableCell(StoryboardId.LabelViewCell, indexPath) as LabelViewCell;
 			cell.SetLabel(_labels[indexPath.Row]);
 			return cell;
+		}
+
+		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
+		{
+			LabelSelected?.Invoke(this, _labels[indexPath.Row].Name);
+			NavigationController.PopViewController(true);
 		}
 	}
 }

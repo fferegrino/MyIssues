@@ -27,19 +27,13 @@ namespace MyIssues2.iOS
 
 
 			_storage = MyIssues.DataAccess.Storage.GetInstance();
-			string accessToken = await _storage.GetToken();// ?? "3282fb0f86f8063f8c8dfb1e3f0df2b839f1f298";
+			string accessToken =  "3282fb0f86f8063f8c8dfb1e3f0df2b839f1f298";
 
+			TokenTextView.Text = accessToken;
 			TokenTextView.AttributedText = StyleToken(accessToken);
 
 			TokenTextView.Delegate = this;
-			//if (accessToken != null && await Authenticate(accessToken))
-			//{
-			//	PerformSegue(StoryboardId.ViewIssuesSegue, this);
-			//}
-			//else
-			//{
-			//	System.Diagnostics.Debug.WriteLine("Not authed");
-			//}
+			await TryAuth();
 		}
 
 		[Export("textView:shouldChangeTextInRange:replacementText:")]

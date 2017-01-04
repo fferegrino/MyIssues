@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MyIssues.Models
 {
-    public class Label
+	public class Label : IEquatable<Label>
     {
         /// <summary>
         /// Name of the label
@@ -15,5 +15,21 @@ namespace MyIssues.Models
         public int R { get; set; }
         public int G { get; set; }
         public int B { get; set; }
-    }
+
+		public override int GetHashCode()
+		{
+			return Name.GetHashCode();
+		}
+
+		public override bool Equals(object obj)
+		{
+			var lbl = obj as Label;
+			return lbl == null ? false : Equals(lbl);
+		}
+
+		public bool Equals(Label other)
+		{
+			return this.Name.Equals(other.Name);
+		}
+	}
 }

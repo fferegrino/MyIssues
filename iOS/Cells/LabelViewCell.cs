@@ -17,6 +17,12 @@ namespace MyIssues2.iOS
 		public void SetLabel(MyIssues.Models.Label label)
 		{
 			ContentView.BackgroundColor = UIColor.FromRGB(label.R, label.G, label.B);
+			TextLabel.Text = label.Name;
+			TextLabel.TextColor = ContentView.BackgroundColor.ContrastingColor();
+			TextLabel.BackgroundColor = ContentView.BackgroundColor;
+			//TextLabel.AttributedText = new NSAttributedString(label.Name,
+			                                                  
+			//												  foregroundColor: ContentView.BackgroundColor.ContrastingColor());
 		}
 	}
 }
