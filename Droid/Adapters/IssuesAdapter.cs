@@ -159,23 +159,30 @@ namespace MyIssues.Droid.Adapters
             if (_parent._originalData == null)
                 _parent._originalData = _parent._dataSource;
 
-            if (constraint == null) return returnObj;
 
             if (_parent._originalData != null && _parent._originalData.Any())
             {
-                // Compare constraint to all names lowercased. 
-                // It they are contained they are added to results.
-                results.AddRange(
-                    _parent._originalData.Where(
-                        chemical => chemical.Labels.Where(l => l.Name.Equals(constraint.ToString())).Any()));
+
+                if (constraint == null)
+                {
+                    results.AddRange(_parent._originalData);
+                }
+                else
+                {
+                    results.AddRange(
+                        _parent._originalData.Where(
+                            chemical => chemical.Labels.Where(l => l.Name.Equals(constraint.ToString())).Any()));
+                }
             }
 
             // Nasty piece of .NET to Java wrapping, be careful with this!
             returnObj.Values = FromArray(results.Select(r => r.ToJavaObject()).ToArray());
             returnObj.Count = results.Count;
 
-            constraint.Dispose();
-
+            if (constraint != null)
+            {
+                constraint.Dispose();
+            }
             return returnObj;
         }
 
@@ -188,7 +195,10 @@ namespace MyIssues.Droid.Adapters
             _parent.NotifyDataSetChanged();
 
             // Don't do this and see GREF counts rising
-            constraint.Dispose();
+            if (constraint != null)
+            {
+                constraint.Dispose();
+            }
             results.Dispose();
 
         }
