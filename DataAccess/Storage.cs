@@ -82,7 +82,7 @@ namespace MyIssues.DataAccess
             return await _client.Issue.Get(_repoId, number);
         }
 
-        public void GetIssues(Action<List<Models.Issue>> action)
+		public IObservable<List<Models.Issue>> GetIssues()
         {
             Func<Task<List<Models.Issue>>> fetchFunc =   async () =>
                 {
@@ -90,13 +90,12 @@ namespace MyIssues.DataAccess
                     return a.Select(issue => issue.Map()).ToList();
             };
 			var list = fetchFunc();
-            BlobCache.LocalMachine.GetAndFetchLatest(Issues, fetchFunc)
-                .Subscribe(action);
+			return BlobCache.LocalMachine.GetAndFetchLatest(Issues, fetchFunc);
         }
 
 		//public Task<
 
-        public async Task< List<Models.Issue>> GetIssues()
+        public async Task<List<Models.Issue>> GetStoredIssues()
         {
             Func<Task<List<Models.Issue>>> fetchFunc = async () =>
             {

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MyIssues.Models
 {
-	public class Label : IEquatable<Label>
+	public class Label : IEquatable<Label>, IEquatable<string>
     {
         /// <summary>
         /// Name of the label
@@ -30,6 +30,11 @@ namespace MyIssues.Models
 		public bool Equals(Label other)
 		{
 			return this.Name.Equals(other.Name);
+		}
+
+		public bool Equals(string other)
+		{
+			return this.Name.Equals(other);
 		}
 	}
 }
