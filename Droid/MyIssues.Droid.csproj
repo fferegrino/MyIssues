@@ -290,6 +290,16 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\search.png" />
     <AndroidResource Include="Resources\layout\MarkdownExtendedCardView.xml" />
     <AndroidResource Include="Resources\layout\Labels.xml" />
+    <AndroidResource Include="Resources\drawable-hdpi\toolbar_labels.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\toolbar_labels_remove.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\toolbar_labels.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\toolbar_labels_remove.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\toolbar_labels.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\toolbar_labels_remove.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\toolbar_labels.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\toolbar_labels_remove.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\toolbar_labels.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\toolbar_labels_remove.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.xml" />
