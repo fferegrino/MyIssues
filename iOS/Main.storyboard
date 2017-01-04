@@ -105,14 +105,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="TOJ-7x-ISn">
-                            <rect key="frame" x="0.0" y="148" width="375" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                            <items>
-                                <barButtonItem title="Label" id="EJR-lc-yii"/>
-                                <barButtonItem style="done" systemItem="cancel" id="id9-7S-xzd"/>
-                            </items>
-                        </toolbar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Issue Cell" rowHeight="70" id="QOF-Bc-Gj1" customClass="IssueCellView">
                                 <rect key="frame" x="0.0" y="28" width="375" height="70"/>
@@ -259,17 +251,14 @@
                                 <segue destination="IDQ-uW-qMe" kind="show" identifier="Show Settings" id="2Ye-7F-CmQ"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="toolbar_labels.png" id="Ot8-LZ-UtR">
-                            <connections>
-                                <segue destination="F49-FL-ZUU" kind="show" identifier="Show Labels" id="faA-eJ-NHj"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="toolbar_labels.png" id="Ot8-LZ-UtR"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="SettingsBarButton" destination="PaW-TQ-4Dj" id="fwD-1w-ufo"/>
                         <segue destination="W01-PR-JuV" kind="show" identifier="View Issue Detail" id="GgQ-He-F1L"/>
                         <segue destination="elw-jE-ATW" kind="show" identifier="Switch Repo" id="Ell-6a-8J4"/>
+                        <segue destination="F49-FL-ZUU" kind="show" identifier="Show Labels" id="4vg-Ys-8XM"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9nG-OO-5tH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -946,6 +935,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="8KR-lA-wxP"/>
-        <segue reference="JXq-6N-BZu"/>
+        <segue reference="Ell-6a-8J4"/>
     </inferredMetricsTieBreakers>
 </document>

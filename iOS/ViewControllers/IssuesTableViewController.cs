@@ -101,19 +101,47 @@ namespace MyIssues2.iOS
 		{
 			System.Diagnostics.Debug.WriteLine($"Load {RepoId} ::: {(issues?.Count ?? 0)}");
 			_originalIssues = issues;
-			if (String.IsNullOrEmpty(ViewingLabel))
-			{
-				_shownIssues = _originalIssues;
-			}
-			else
-			{
-				_shownIssues = _originalIssues.Where(i => i.Labels.Where(l => l.Name.Equals(ViewingLabel)).Any()).ToList();
-			}
+
+			//SetFilterByLabel();
 			InvokeOnMainThread(() =>
 			{
+				SetFilterByLabel();
 				TableView.ReloadData();
 			});
 
+		}
+
+		void SetFilterByLabel()
+		{
+
+			if (String.IsNullOrEmpty(ViewingLabel))
+			{
+				_shownIssues = _originalIssues;
+				NavigationItem.RightBarButtonItem.Image = UIImage.FromFile("toolbar_labels.png");
+				NavigationItem.RightBarButtonItem.Clicked -= RemoveFilter;
+				NavigationItem.RightBarButtonItem.Clicked -= NavigateToLabels;
+				NavigationItem.RightBarButtonItem.Clicked += NavigateToLabels;
+				TableView.ReloadData();
+			}
+			else
+			{
+				NavigationItem.RightBarButtonItem.Image = UIImage.FromFile("toolbar_labels_remove.png");
+				_shownIssues = _originalIssues.Where(i => i.Labels.Where(l => l.Name.Equals(ViewingLabel)).Any()).ToList();
+				NavigationItem.RightBarButtonItem.Clicked -= NavigateToLabels;
+				NavigationItem.RightBarButtonItem.Clicked -= RemoveFilter;
+				NavigationItem.RightBarButtonItem.Clicked += RemoveFilter;
+			}
+		}
+
+		void RemoveFilter(object sender, EventArgs e)
+		{
+			ViewingLabel = null;
+			SetFilterByLabel();
+		}
+
+		void NavigateToLabels(object sender, EventArgs e)
+		{
+			PerformSegue(StoryboardId.ShowLabelsSegue, this);
 		}
 
 		#region Table stuff

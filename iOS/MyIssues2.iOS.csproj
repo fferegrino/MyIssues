@@ -302,6 +302,9 @@
     <BundleResource Include="Resources\icon-largeartwork.png" />
     <BundleResource Include="Resources\toolbar_settings%403x.png" />
     <BundleResource Include="Resources\icon-smallartwork.png" />
+    <BundleResource Include="Resources\toolbar_labels_remove.png" />
+    <BundleResource Include="Resources\toolbar_labels_remove%402x.png" />
+    <BundleResource Include="Resources\toolbar_labels_remove%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork" />
