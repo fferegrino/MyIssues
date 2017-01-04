@@ -2345,14 +2345,17 @@ namespace MyIssues.Droid
 			// aapt resource value: 0x7f08009f
 			public const int AccessTokenEditText = 2131230879;
 			
-			// aapt resource value: 0x7f0800c3
-			public const int ActionComment = 2131230915;
-			
-			// aapt resource value: 0x7f0800c2
-			public const int ActionPreview = 2131230914;
-			
 			// aapt resource value: 0x7f0800c4
-			public const int ActionSearch = 2131230916;
+			public const int ActionComment = 2131230916;
+			
+			// aapt resource value: 0x7f0800c3
+			public const int ActionPreview = 2131230915;
+			
+			// aapt resource value: 0x7f0800c5
+			public const int ActionSearch = 2131230917;
+			
+			// aapt resource value: 0x7f0800c0
+			public const int DeleteLabelFilter = 2131230912;
 			
 			// aapt resource value: 0x7f0800a8
 			public const int EditNoteTitle = 2131230888;
@@ -2513,11 +2516,11 @@ namespace MyIssues.Droid
 			// aapt resource value: 0x7f08008d
 			public const int Toolbar = 2131230861;
 			
-			// aapt resource value: 0x7f0800c0
-			public const int ViewLabelsMenu = 2131230912;
-			
 			// aapt resource value: 0x7f0800c1
-			public const int ViewSettingsMenu = 2131230913;
+			public const int ViewLabelsMenu = 2131230913;
+			
+			// aapt resource value: 0x7f0800c2
+			public const int ViewSettingsMenu = 2131230914;
 			
 			// aapt resource value: 0x7f080082
 			public const int Viewpager = 2131230850;

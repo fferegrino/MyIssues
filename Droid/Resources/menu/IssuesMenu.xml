@@ -1,8 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto">
+  <item android:id="@+id/DeleteLabelFilter" android:title="Delete" 
+        app:showAsAction="always"
+        android:showAsAction="always" />
   <item android:id="@+id/ViewLabelsMenu" android:title="Labels" 
-        android:icon="@drawable/info"
         app:showAsAction="always"
         android:showAsAction="always" />
   <item android:id="@+id/ViewSettingsMenu" android:title="@string/SettingsText" app:showAsAction="never" />

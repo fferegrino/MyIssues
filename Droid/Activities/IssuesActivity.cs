@@ -36,6 +36,7 @@ namespace MyIssues.Droid
         }
 
         MyIssues.Droid.Controls.RecyclerViewEmptySupport _issuesListView;
+        IssuesAdapter IssuesAdapter => _issuesListView?.GetAdapter() as IssuesAdapter;
         SwipeRefreshLayout _refreshLayout;
         RecyclerView.LayoutManager _layoutManager;
         ProgressBar progress_horizontal;
@@ -130,11 +131,12 @@ namespace MyIssues.Droid
             StartActivityForResult(i, RequestCodes.SelectRepo);
         }
 
+        string _selectedLabel;
+
         protected override async void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
         {
             if (requestCode == RequestCodes.SelectRepo && resultCode == Result.Ok)
             {
-                //var repoName = data.GetStringExtra("repoName");
                 var repoId = data.GetLongExtra("repoId", 0);
                 await LoadRepo(repoId);
             }
@@ -152,11 +154,9 @@ namespace MyIssues.Droid
             }
             else if (requestCode == RequestCodes.FilterByLabel && resultCode == Result.Ok)
             {
-                var selectedLabel = data.GetStringExtra("selectedLabel");
-                var ia = _issuesListView.GetAdapter() as IssuesAdapter;
-
-                ia.Filter.InvokeFilter(selectedLabel);
-                System.Diagnostics.Debug.WriteLine($"{selectedLabel}");
+                _selectedLabel = data.GetStringExtra("selectedLabel");
+                InvalidateOptionsMenu();
+                IssuesAdapter.Filter.InvokeFilter(_selectedLabel);
             }
             else
             {
@@ -166,8 +166,22 @@ namespace MyIssues.Droid
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-
             MenuInflater.Inflate(Resource.Menu.IssuesMenu, menu);
+
+            var viewLabels = menu.FindItem(Resource.Id.ViewLabelsMenu);
+            var deleteFilter = menu.FindItem(Resource.Id.DeleteLabelFilter);
+
+            if (String.IsNullOrEmpty(_selectedLabel))
+            {
+                deleteFilter.SetVisible(false);
+                viewLabels.SetVisible(true);
+            }
+            else
+            {
+                deleteFilter.SetVisible(true);
+                viewLabels.SetVisible(false);
+            }
+
             return true;
         }
 
@@ -175,6 +189,11 @@ namespace MyIssues.Droid
         {
             switch (item.ItemId)
             {
+                case Resource.Id.DeleteLabelFilter:
+                    _selectedLabel = null;
+                    IssuesAdapter.Filter.InvokeFilter(_selectedLabel);
+                    InvalidateOptionsMenu();
+                    break;
                 case Resource.Id.ViewLabelsMenu:
                     var labelsIntent = new Intent(this, typeof(LabelsActivity));
                     StartActivityForResult(labelsIntent, RequestCodes.FilterByLabel);
@@ -183,9 +202,6 @@ namespace MyIssues.Droid
                     var settingsIntent = new Intent(this, typeof(SettingsActivity));
                     StartActivityForResult(settingsIntent, RequestCodes.ChangeSettings);
                     break;
-                //case Resource.Id.SwitchRepoMenu:
-                //    OpenRepoSelector();
-                //    break;
                 default:
                     return base.OnOptionsItemSelected(item);
             }
@@ -195,7 +211,7 @@ namespace MyIssues.Droid
         public async void OnRefresh()
         {
             _refreshLayout.Refreshing = true;
-          var observableIssues =   _storage.GetIssues();
+            var observableIssues = _storage.GetIssues();
             observableIssues.Subscribe(UpdateIssues);
         }
     }
