@@ -16,7 +16,9 @@ namespace MyIssues2.iOS.Cells
 
 		public void SetIssue(Issue issue)
 		{
-				MilestoneLabel.Text = issue.Milestone;
+			var milestoneDate = issue.MilestoneDueDate.Value.LocalDateTime;
+			MilestoneLabel.Text = $"{milestoneDate:MMMM}";
+			MilestoneDayLabel.Text = $"{milestoneDate:dd}";
 			IssueTitleLabel.Text = issue.Title;
 			SetColors(issue.Labels);
 		}
