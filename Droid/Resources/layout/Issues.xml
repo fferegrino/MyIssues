@@ -1,9 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent">
-  <include android:id="@+id/Toolbar" layout="@layout/Toolbar" />
-  <ProgressBar android:id="@+id/ProgressHorizontal" android:layout_marginTop="?attr/actionBarSize" android:layout_width="match_parent" android:layout_height="wrap_content" style="@android:style/Widget.ProgressBar.Large" android:layout_marginRight="5dp" />
-  <android.support.v4.widget.SwipeRefreshLayout android:id="@+id/SwipeIssuesContainer" android:layout_marginTop="?attr/actionBarSize" android:layout_width="match_parent" android:layout_height="match_parent">
-    <myissues.droid.controls.RecyclerViewEmptySupport android:minWidth="25dp" android:minHeight="25dp" android:layout_width="match_parent" android:layout_height="match_parent" android:id="@+id/IssuesListView" />
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+  <include
+    android:id="@+id/Toolbar"
+    layout="@layout/Toolbar" />
+  <ProgressBar
+    android:id="@+id/ProgressHorizontal"
+    android:layout_marginTop="?attr/actionBarSize"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@android:style/Widget.ProgressBar.Large"
+    android:layout_marginRight="5dp" />
+  <android.support.v4.widget.SwipeRefreshLayout
+    android:id="@+id/SwipeIssuesContainer"
+    android:layout_marginTop="?attr/actionBarSize"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <myissues.droid.controls.RecyclerViewEmptySupport
+      android:minWidth="25dp"
+      android:minHeight="25dp"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:id="@+id/IssuesListView" />
   </android.support.v4.widget.SwipeRefreshLayout>
-  <include android:id="@+id/EmptyListView" layout="@layout/EmptyListView" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="?attr/actionBarSize" />
+  <include
+    android:id="@+id/EmptyListView"
+    layout="@layout/EmptyListView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="?attr/actionBarSize" />
 </FrameLayout>

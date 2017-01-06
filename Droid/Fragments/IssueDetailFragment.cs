@@ -76,8 +76,8 @@ namespace MyIssues.Droid.Fragments
             _issueStatusTextView.Text = _issue.State.ToString();
 
             _issueStatusTextView.SetBackgroundColor(_issue.State == Octokit.ItemState.Closed ?
-                                                   Resources.GetColor(Resource.Color.closedIssue) :
-                                                   Resources.GetColor(Resource.Color.openIssue));
+			                                        Resources.GetColor(Resource.Color.closed_issue) :
+			                                        Resources.GetColor(Resource.Color.open_issue));
 
             _issueCreatedAtTextView.Text = _issue.CreatedAt.Humanize(DateTimeOffset.Now);
 

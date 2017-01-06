@@ -1,4 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <preference-headers xmlns:android="http://schemas.android.com/apk/res/android">
-  <header android:fragment="MyIssues.Droid.Fragments.SettingsFragment" android:title="Goto: Preference fragment" android:summary="An example of some preferences." />
+  <header
+    android:fragment="MyIssues.Droid.Fragments.SettingsFragment"
+    android:title="Goto: Preference fragment"
+    android:summary="An example of some preferences." />
 </preference-headers>

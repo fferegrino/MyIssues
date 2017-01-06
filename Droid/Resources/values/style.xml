@@ -1,23 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <style name="MyTheme" parent="MyTheme.Base">
-  </style>
-  <style name="MyTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+  <style
+    name="MyTheme"
+    parent="MyTheme.Base"></style>
+  <style
+    name="MyTheme.Base"
+    parent="Theme.AppCompat.Light.DarkActionBar">
     <!--If you are using revision 22.1 please use just windowNoTitle. Without android:-->
-    <item name="windowNoTitle">true</item>
+    <item
+      name="windowNoTitle">true</item>
     <!--We will be using the toolbar so no need to show ActionBar-->
-    <item name="windowActionBar">false</item>
-    <item name="colorPrimary">@color/primary</item>
-    <item name="colorPrimaryDark">@color/primaryDark</item>
-    <item name="colorAccent">@color/accent</item>
-    <item name="android:windowBackground">@color/windowBackground</item>
-    <item name="windowActionModeOverlay">true</item>
-    <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
+    <item
+      name="windowActionBar">false</item>
+    <item
+      name="colorPrimary">@color/primary</item>
+    <item
+      name="colorPrimaryDark">@color/primary_dark</item>
+    <item
+      name="colorAccent">@color/accent</item>
+    <item
+      name="android:windowBackground">@color/window_background</item>
+    <item
+      name="windowActionModeOverlay">true</item>
+    <item
+      name="preferenceTheme">@style/PreferenceThemeOverlay</item>
   </style>
-  <style name="PrimaryText">
-    <item name="android:textColor">@color/mainTextColor</item>
+  <style
+    name="PrimaryText">
+    <item
+      name="android:textColor">@color/main_text_color</item>
   </style>
-  <style name="SecondaryText">
-    <item name="android:textColor">@color/secondaryTextColor</item>
+  <style
+    name="SecondaryText">
+    <item
+      name="android:textColor">@color/secondary_text_color</item>
   </style>
 </resources>

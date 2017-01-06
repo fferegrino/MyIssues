@@ -1,5 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/EmptyListView" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent" android:weightSum="1">
-  <ImageView android:layout_width="139dp" android:layout_height="wrap_content" android:id="@+id/EmptyImageView" android:layout_gravity="center_horizontal" android:src="@drawable/EmptyIcon" android:layout_weight="0.23" />
-  <TextView android:layout_height="wrap_content" android:layout_width="match_parent" android:text="@string/emptyListText" style="@style/SecondaryText" android:gravity="center" />
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/EmptyListView"
+  android:orientation="vertical"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:weightSum="1">
+  <ImageView
+    android:layout_width="139dp"
+    android:layout_height="wrap_content"
+    android:id="@+id/EmptyImageView"
+    android:layout_gravity="center_horizontal"
+    android:src="@drawable/EmptyIcon"
+    android:layout_weight="0.23" />
+  <TextView
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:text="@string/emptyListText"
+    style="@style/SecondaryText"
+    android:gravity="center" />
 </LinearLayout>

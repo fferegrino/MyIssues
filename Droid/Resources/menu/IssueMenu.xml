@@ -1,4 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/tools" xmlns:appcompat="http://schemas.android.com/apk/com.thatchsarpguy.myissues">
-  <item android:id="@+id/RefreshIssue" android:title="@string/ReloadText" android:icon="@drawable/preview" android:orderInCategory="100" android:showAsAction="always" />
+  <item
+    android:id="@+id/RefreshIssue"
+    android:title="@string/ReloadText"
+    android:icon="@drawable/preview"
+    android:orderInCategory="100"
+    android:showAsAction="always" />
 </menu>

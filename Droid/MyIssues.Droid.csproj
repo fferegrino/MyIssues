@@ -290,16 +290,17 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\search.png" />
     <AndroidResource Include="Resources\layout\MarkdownExtendedCardView.xml" />
     <AndroidResource Include="Resources\layout\Labels.xml" />
-    <AndroidResource Include="Resources\drawable-hdpi\toolbar_labels.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\toolbar_labels_remove.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\toolbar_labels.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\toolbar_labels_remove.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\toolbar_labels.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\toolbar_labels_remove.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\toolbar_labels.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\toolbar_labels_remove.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\toolbar_labels.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\toolbar_labels_remove.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ToolbarLabels.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ToolbarLabelsRemove.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ToolbarLabels.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ToolbarLabelsRemove.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ToolbarLabels.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ToolbarLabelsRemove.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ToolbarLabels.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ToolbarLabelsRemove.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ToolbarLabels.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ToolbarLabelsRemove.png" />
+    <AndroidResource Include="Resources\layout\IssueCardNoMilestoneView.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.xml" />

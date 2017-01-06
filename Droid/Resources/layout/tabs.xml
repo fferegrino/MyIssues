@@ -1,2 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.TabLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/com.thatcsharpguy.myissues" android:id="@+id/SlidingTabs" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="?attr/colorPrimary" android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" app:tabIndicatorColor="@android:color/white" app:tabGravity="fill" app:tabMode="fixed" />
+<android.support.design.widget.TabLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/com.thatcsharpguy.myissues"
+  android:id="@+id/SlidingTabs"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:background="?attr/colorPrimary"
+  android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+  app:tabIndicatorColor="@android:color/white"
+  app:tabGravity="fill"
+  app:tabMode="fixed" />
