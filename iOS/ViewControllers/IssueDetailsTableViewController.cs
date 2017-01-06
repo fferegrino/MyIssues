@@ -67,7 +67,15 @@ namespace MyIssues2.iOS
 				System.Diagnostics.Debug.WriteLine($"{label.Name} : {x}");
 				x += (int)lbl.Frame.Size.Width;
 			}
-
+			if (_issue.Milestone != null)
+			{
+				IssueMilestoneCell.Hidden = false;
+				IssueMilestoneLabel.Text = $"{_issue.Milestone.Title} | {_issue.Milestone.DueOn.GetValueOrDefault().DateTime:dd MMMM}";
+			}
+			else 
+			{
+				IssueMilestoneCell.Hidden = true;
+			}
 			IssueBodyLabel.AttributedText = _issue.Body.FromMarkdown();
 			System.Diagnostics.Debug.WriteLine(_issue.Body);
 
@@ -77,8 +85,12 @@ namespace MyIssues2.iOS
 		public override nfloat GetHeightForRow(UITableView tableView, NSIndexPath indexPath)
 		{
 			if (indexPath.Row == 1)
-				return 30;
+			{
+				return _issue?.Milestone == null ? 0 : 30;
+			}
 			if (indexPath.Row == 2)
+				return 30;
+			if (indexPath.Row == 3)
 				return 30;
 				
 			return UITableView.AutomaticDimension;
@@ -87,8 +99,12 @@ namespace MyIssues2.iOS
 		public override nfloat EstimatedHeight(UITableView tableView, NSIndexPath indexPath)
 		{
 			if (indexPath.Row == 1)
-				return 30;
+			{
+				return _issue?.Milestone == null ? 0 : 30;
+			}
 			if (indexPath.Row == 2)
+				return 30;
+			if (indexPath.Row == 3)
 				return 30;
 
 			return UITableView.AutomaticDimension;

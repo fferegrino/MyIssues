@@ -19,6 +19,12 @@ namespace MyIssues2.iOS
 		UIKit.UILabel IssueCreationDateLabel { get; set; }
 
 		[Outlet]
+		UIKit.UITableViewCell IssueMilestoneCell { get; set; }
+
+		[Outlet]
+		UIKit.UILabel IssueMilestoneLabel { get; set; }
+
+		[Outlet]
 		UIKit.UILabel IssueNameLabel { get; set; }
 
 		[Outlet]
@@ -32,6 +38,16 @@ namespace MyIssues2.iOS
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (IssueMilestoneLabel != null) {
+				IssueMilestoneLabel.Dispose ();
+				IssueMilestoneLabel = null;
+			}
+
+			if (IssueMilestoneCell != null) {
+				IssueMilestoneCell.Dispose ();
+				IssueMilestoneCell = null;
+			}
+
 			if (IssueBodyLabel != null) {
 				IssueBodyLabel.Dispose ();
 				IssueBodyLabel = null;

@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6gU-V3-dLQ">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6gU-V3-dLQ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -551,8 +551,30 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Milestone Body Cell" rowHeight="40" id="Zwx-K6-GVk">
+                                        <rect key="frame" x="0.0" y="44" width="375" height="40"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zwx-K6-GVk" id="B3Q-q3-UbQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="39"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01 January | Milestone title" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ri2-4n-kNS">
+                                                    <rect key="frame" x="8" y="8" width="359" height="23.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Ri2-4n-kNS" firstAttribute="top" secondItem="B3Q-q3-UbQ" secondAttribute="topMargin" id="4Cb-yr-pz8"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Ri2-4n-kNS" secondAttribute="trailing" id="Lo8-42-zNc"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Ri2-4n-kNS" secondAttribute="bottom" id="fU8-sA-dCS"/>
+                                                <constraint firstItem="Ri2-4n-kNS" firstAttribute="leading" secondItem="B3Q-q3-UbQ" secondAttribute="leadingMargin" id="i8s-dK-kUS"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Issue Details Cell" rowHeight="30" id="8nY-eX-svw">
-                                        <rect key="frame" x="0.0" y="44" width="375" height="30"/>
+                                        <rect key="frame" x="0.0" y="84" width="375" height="30"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8nY-eX-svw" id="BNw-3j-aV1">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="29"/>
@@ -609,18 +631,18 @@
                                             <constraint firstItem="cuu-Gh-Fbr" firstAttribute="top" secondItem="8nY-eX-svw" secondAttribute="top" id="mdj-bm-0v3"/>
                                         </constraints>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Issue Labels Cell" rowHeight="30" id="9A0-f7-bPm">
-                                        <rect key="frame" x="0.0" y="74" width="375" height="30"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Issue Labels Cell" rowHeight="40" id="9A0-f7-bPm">
+                                        <rect key="frame" x="0.0" y="114" width="375" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9A0-f7-bPm" id="JhD-FS-cor">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="29"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="39"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dnf-6O-oUM">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
                                                     <color key="backgroundColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="22K-fK-GEy"/>
+                                                        <constraint firstAttribute="height" constant="40" id="22K-fK-GEy"/>
                                                     </constraints>
                                                 </scrollView>
                                             </subviews>
@@ -633,7 +655,7 @@
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Issue Body Cell" id="Hve-sG-wUg">
-                                        <rect key="frame" x="0.0" y="104" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="154" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hve-sG-wUg" id="OEv-I2-InE">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -642,8 +664,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wsL-yX-RDP">
                                                     <rect key="frame" x="8" y="8" width="359" height="27"/>
                                                     <attributedString key="attributedText">
-                                                        <fragment>
-                                                            <string key="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur id dapibus neque. Mauris consectetur feugiat nisl, et porttitor nisi pretium ut. Nulla tincidunt diam ligula, vel bibendum purus semper sit amet. Nulla eu metus nec justo mattis congue. Curabitur ac ligula condimentum, venenatis ligula a, fringilla velit.</string>
+                                                        <fragment content="Body">
                                                             <attributes>
                                                                 <font key="NSFont" metaFont="system" size="14"/>
                                                                 <real key="NSKern" value="0.0"/>
@@ -676,6 +697,8 @@
                     <connections>
                         <outlet property="IssueBodyLabel" destination="wsL-yX-RDP" id="Lse-ob-OFw"/>
                         <outlet property="IssueCreationDateLabel" destination="HAC-Sp-elU" id="JPI-Zi-Sgh"/>
+                        <outlet property="IssueMilestoneCell" destination="Zwx-K6-GVk" id="7ae-s3-BWt"/>
+                        <outlet property="IssueMilestoneLabel" destination="Ri2-4n-kNS" id="OYZ-As-ZQm"/>
                         <outlet property="IssueNameLabel" destination="dOZ-GC-asc" id="IMB-Do-T6G"/>
                         <outlet property="IssueStatusLabel" destination="a0e-X8-uPS" id="BaC-qs-UgD"/>
                         <outlet property="IssueStatusView" destination="ApN-Pe-IcD" id="TYA-32-1qB"/>
