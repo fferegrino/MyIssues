@@ -24,9 +24,10 @@ namespace MyIssues.Droid.Fragments
         Storage _storage;
         Octokit.Issue _issue;
         MarkdownView _issueBodyTextView;
-        TextView  _issueTitleTextView,
+        TextView _issueTitleTextView,
             _issueStatusTextView,
-            _issueCreatedAtTextView;
+            _issueCreatedAtTextView,
+            _issueMilestoneInfo;
         RecyclerView _labelsRecyclerView;
 
         int _issueNumber;
@@ -51,6 +52,7 @@ namespace MyIssues.Droid.Fragments
             _issueTitleTextView = view.FindViewById<TextView>(Resource.Id.IssueTitle);
             _issueStatusTextView = view.FindViewById<TextView>(Resource.Id.IssueStatusTextView);
             _issueCreatedAtTextView = view.FindViewById<TextView>(Resource.Id.IssueCreatedAtTextView);
+            _issueMilestoneInfo = view.FindViewById<TextView>(Resource.Id.IssueMilestoneInfo);
             _labelsRecyclerView = view.FindViewById<RecyclerView>(Resource.Id.LabelsRecyclerView);
 
             return view;
@@ -72,12 +74,21 @@ namespace MyIssues.Droid.Fragments
             }
 
             _issueTitleTextView.Text = _issue.Title;
-            
+
             _issueStatusTextView.Text = _issue.State.ToString();
+            if (_issue.Milestone != null)
+            {
+                _issueMilestoneInfo.Visibility = ViewStates.Visible;
+                _issueMilestoneInfo.Text = $"{_issue.Milestone.Title} | {_issue.Milestone.DueOn.GetValueOrDefault().DateTime:DD MMMM}";
+            }
+            else
+            {
+                _issueMilestoneInfo.Visibility = ViewStates.Gone;
+            }
 
             _issueStatusTextView.SetBackgroundColor(_issue.State == Octokit.ItemState.Closed ?
-			                                        Resources.GetColor(Resource.Color.closed_issue) :
-			                                        Resources.GetColor(Resource.Color.open_issue));
+                                                    Resources.GetColor(Resource.Color.closed_issue) :
+                                                    Resources.GetColor(Resource.Color.open_issue));
 
             _issueCreatedAtTextView.Text = _issue.CreatedAt.Humanize(DateTimeOffset.Now);
 
