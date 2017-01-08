@@ -3,7 +3,7 @@
   <item
     android:id="@+id/RefreshIssue"
     android:title="@string/ReloadText"
-    android:icon="@drawable/preview"
+    android:icon="@drawable/Preview"
     android:orderInCategory="100"
     android:showAsAction="always" />
 </menu>

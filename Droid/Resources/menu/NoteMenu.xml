@@ -3,11 +3,11 @@
   <item
     android:id="@+id/ActionPreview"
     android:title="@string/preview"
-    android:icon="@drawable/preview"
+    android:icon="@drawable/Preview"
     app:showAsAction="always" />
   <item
     android:id="@+id/ActionComment"
     android:title="@string/comment"
-    android:icon="@drawable/reply"
+    android:icon="@drawable/Reply"
     app:showAsAction="always" />
 </menu>
