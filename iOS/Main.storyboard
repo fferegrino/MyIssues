@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6gU-V3-dLQ">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6gU-V3-dLQ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -25,25 +25,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HRk-RX-CMc" customClass="VerticalCenteredTextView">
-                                <rect key="frame" x="26" y="120.5" width="323" height="239"/>
-                                <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="HRk-RX-CMc" customClass="VerticalCenteredTextView">
+                                <rect key="frame" x="36" y="160.5" width="303" height="150"/>
+                                <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="239" id="AM9-E9-ccz"/>
+                                    <constraint firstAttribute="height" constant="150" id="AM9-E9-ccz"/>
                                 </constraints>
-                                <attributedString key="attributedText">
-                                    <fragment content="Access token">
-                                        <attributes>
-                                            <font key="NSFont" metaFont="system" size="17"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="30"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" keyboardAppearance="light" returnKeyType="continue"/>
                                 <dataDetectorType key="dataDetectorTypes" flightNumber="YES"/>
                             </textView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="av4-cl-eTu">
-                                <rect key="frame" x="63" y="84" width="248" height="26.5"/>
+                                <rect key="frame" x="63" y="104" width="248" height="26.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set your access token" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A9F-oS-NWB">
                                         <rect key="frame" x="0.0" y="0.0" width="216" height="26.5"/>
@@ -60,14 +53,14 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="boy-Vb-sGA">
-                                <rect key="frame" x="156" y="369.5" width="62" height="30"/>
+                                <rect key="frame" x="156" y="340.5" width="62" height="30"/>
                                 <state key="normal" title="Continue"/>
                                 <connections>
                                     <action selector="ContinueButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TmN-eB-Yfi"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" placeholderIntrinsicWidth="54" placeholderIntrinsicHeight="50" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Lil-tA-lbF">
-                                <rect key="frame" x="162" y="308" width="50" height="50"/>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" placeholderIntrinsicWidth="50" placeholderIntrinsicHeight="50" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Lil-tA-lbF">
+                                <rect key="frame" x="162" y="208.5" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="03H-Xc-ehK"/>
                                     <constraint firstAttribute="width" secondItem="Lil-tA-lbF" secondAttribute="height" multiplier="1:1" id="os7-6u-ZTF"/>
@@ -76,13 +69,13 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="HRk-RX-CMc" firstAttribute="top" secondItem="av4-cl-eTu" secondAttribute="bottom" constant="10" id="AjF-ot-GOQ"/>
-                            <constraint firstItem="boy-Vb-sGA" firstAttribute="top" secondItem="HRk-RX-CMc" secondAttribute="bottom" constant="10" id="WD5-6l-xS5"/>
+                            <constraint firstItem="HRk-RX-CMc" firstAttribute="top" secondItem="av4-cl-eTu" secondAttribute="bottom" constant="30" id="AjF-ot-GOQ"/>
+                            <constraint firstItem="boy-Vb-sGA" firstAttribute="top" secondItem="HRk-RX-CMc" secondAttribute="bottom" constant="30" id="WD5-6l-xS5"/>
                             <constraint firstItem="HRk-RX-CMc" firstAttribute="centerX" secondItem="boy-Vb-sGA" secondAttribute="centerX" id="dp2-P4-kvG"/>
-                            <constraint firstItem="Lil-tA-lbF" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="eVS-W1-lE1"/>
+                            <constraint firstItem="Lil-tA-lbF" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-100" id="eVS-W1-lE1"/>
                             <constraint firstItem="av4-cl-eTu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="oD7-Zr-WnK"/>
-                            <constraint firstItem="HRk-RX-CMc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="t0L-sm-X3H"/>
-                            <constraint firstItem="av4-cl-eTu" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="tfb-2k-mhh"/>
+                            <constraint firstItem="HRk-RX-CMc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="t0L-sm-X3H"/>
+                            <constraint firstItem="av4-cl-eTu" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="40" id="tfb-2k-mhh"/>
                             <constraint firstItem="Lil-tA-lbF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="uvV-h6-Kdw"/>
                             <constraint firstItem="HRk-RX-CMc" firstAttribute="centerX" secondItem="Lil-tA-lbF" secondAttribute="centerX" id="wlV-We-nuJ"/>
                         </constraints>

@@ -27,33 +27,28 @@ namespace MyIssues2.iOS
 
 
 			_storage = MyIssues.DataAccess.Storage.GetInstance();
-			string accessToken =  "3282fb0f86f8063f8c8dfb1e3f0df2b839f1f298";
-
+			string accessToken = await _storage.GetToken();
+			TokenTextView.ContentInset = new UIEdgeInsets(-10, 0, 0, 0);
+			TokenTextView.TextAlignment = UITextAlignment.Center;
+			if (!String.IsNullOrEmpty(accessToken))
+			{
+				await TryAuth();
+			}
 			TokenTextView.Text = accessToken;
-			TokenTextView.AttributedText = StyleToken(accessToken);
 
 			TokenTextView.Delegate = this;
-			await TryAuth();
 		}
 
 		[Export("textView:shouldChangeTextInRange:replacementText:")]
 		public bool ShouldChangeText(UITextView textView, NSRange range, string text)
 		{
-			System.Diagnostics.Debug.Write(text);
-			TokenTextView.AttributedText = StyleToken(TokenTextView.Text);
+			TokenTextView.ContentInset = new UIEdgeInsets(-10, 0, 0, 0);
 			if (text == "\n")
 			{
 				TryAuth();
 				return false;
 			}
 			return true;
-		}
-
-		NSAttributedString StyleToken(string token)
-		{
-			return new NSAttributedString(TokenTextView.Text,
-			                              kerning: 7, 
-			                              font: UIFont.PreferredTitle2);
 		}
 
 		partial void LearnMoreClick(NSObject sender)
@@ -67,20 +62,22 @@ namespace MyIssues2.iOS
 			await TryAuth();
 		}
 
-		public override void ViewDidLayoutSubviews()
-		{
-			base.ViewDidLayoutSubviews();
-			TokenTextView.SetContentOffset(CoreGraphics.CGPoint.Empty, false);
-		}
+		//public override void ViewDidLayoutSubviews()
+		//{
+		//	base.ViewDidLayoutSubviews();
+		//	TokenTextView.SetContentOffset(CoreGraphics.CGPoint.Empty, false);
+		//}
 
 		async Task TryAuth()
 		{
-			if (TokenTextView.Text != null && await Authenticate(TokenTextView.Text))
+			var text = TokenTextView.Text;
+			if (!String.IsNullOrEmpty(text) && await Authenticate(text))
 			{
 				PerformSegue(StoryboardId.ViewIssuesSegue, this);
 			}
 			else
 			{
+				new UIAlertView("Error", $"Token inválido", null, "OK", null).Show();
 				System.Diagnostics.Debug.WriteLine("Not authed");
 			}
 		}
