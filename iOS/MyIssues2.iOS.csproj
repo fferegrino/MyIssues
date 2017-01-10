@@ -159,10 +159,13 @@
     <Folder Include="Utils\" />
     <Folder Include="ViewControllers\" />
     <Folder Include="Controls\" />
+    <Folder Include="Resources\es.lproj\" />
+    <Folder Include="Base.lproj\" />
+    <Folder Include="Resources\en.lproj\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
-    <InterfaceDefinition Include="Main.storyboard" />
+    <InterfaceDefinition Include="Base.lproj\Main.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -261,50 +264,54 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\tab_comments_filled.png" />
-    <BundleResource Include="Resources\tab_comments_filled%402x.png" />
-    <BundleResource Include="Resources\tab_comments_filled%403x.png" />
-    <BundleResource Include="Resources\tab_comments.png" />
-    <BundleResource Include="Resources\tab_comments%402x.png" />
-    <BundleResource Include="Resources\tab_comments%403x.png" />
-    <BundleResource Include="Resources\tab_detail.png" />
-    <BundleResource Include="Resources\tab_detail%402x.png" />
-    <BundleResource Include="Resources\tab_detail%403x.png" />
-    <BundleResource Include="Resources\tab_detail_filled.png" />
-    <BundleResource Include="Resources\tab_detail_filled%402x.png" />
-    <BundleResource Include="Resources\tab_detail_filled%403x.png" />
-    <BundleResource Include="Resources\toolbar_change_repo.png" />
-    <BundleResource Include="Resources\toolbar_change_repo%402x.png" />
-    <BundleResource Include="Resources\toolbar_change_repo%403x.png" />
-    <BundleResource Include="Resources\toolbar_reply.png" />
-    <BundleResource Include="Resources\toolbar_reply%402x.png" />
-    <BundleResource Include="Resources\toolbar_reply%403x.png" />
-    <BundleResource Include="Resources\button_preview.png" />
-    <BundleResource Include="Resources\button_preview%402x.png" />
-    <BundleResource Include="Resources\button_preview%403x.png" />
-    <BundleResource Include="Resources\icon.png" />
-    <BundleResource Include="Resources\icon%402x.png" />
-    <BundleResource Include="Resources\icon%403x.png" />
-    <BundleResource Include="Resources\toolbar_add_issue.png" />
-    <BundleResource Include="Resources\toolbar_add_issue%402x.png" />
-    <BundleResource Include="Resources\toolbar_add_issue%403x.png" />
-    <BundleResource Include="Resources\toolbar_labels.png" />
-    <BundleResource Include="Resources\toolbar_labels%402x.png" />
-    <BundleResource Include="Resources\toolbar_labels%403x.png" />
-    <BundleResource Include="Resources\toolbar_settings.png" />
-    <BundleResource Include="Resources\toolbar_settings%402x.png" />
-    <BundleResource Include="Resources\AppIcon-29.png" />
-    <BundleResource Include="Resources\AppIcon-29%402x.png" />
-    <BundleResource Include="Resources\AppIcon-29%403x.png" />
-    <BundleResource Include="Resources\AppIcon-40.png" />
-    <BundleResource Include="Resources\AppIcon-40%402x.png" />
-    <BundleResource Include="Resources\AppIcon-40%403x.png" />
-    <BundleResource Include="Resources\icon-largeartwork.png" />
-    <BundleResource Include="Resources\toolbar_settings%403x.png" />
-    <BundleResource Include="Resources\icon-smallartwork.png" />
-    <BundleResource Include="Resources\toolbar_labels_remove.png" />
-    <BundleResource Include="Resources\toolbar_labels_remove%402x.png" />
-    <BundleResource Include="Resources\toolbar_labels_remove%403x.png" />
+    <BundleResource Include="Base.lproj\AppIcon-29.png" />
+    <BundleResource Include="Base.lproj\AppIcon-29%402x.png" />
+    <BundleResource Include="Base.lproj\AppIcon-29%403x.png" />
+    <BundleResource Include="Base.lproj\AppIcon-40.png" />
+    <BundleResource Include="Base.lproj\AppIcon-40%402x.png" />
+    <BundleResource Include="Base.lproj\AppIcon-40%403x.png" />
+    <BundleResource Include="Base.lproj\button_preview.png" />
+    <BundleResource Include="Base.lproj\button_preview%402x.png" />
+    <BundleResource Include="Base.lproj\button_preview%403x.png" />
+    <BundleResource Include="Base.lproj\icon.png" />
+    <BundleResource Include="Base.lproj\icon%402x.png" />
+    <BundleResource Include="Base.lproj\icon%403x.png" />
+    <BundleResource Include="Base.lproj\icon-largeartwork.png" />
+    <BundleResource Include="Base.lproj\icon-smallartwork.png" />
+    <BundleResource Include="Base.lproj\tab_comments.png" />
+    <BundleResource Include="Base.lproj\tab_comments%402x.png" />
+    <BundleResource Include="Base.lproj\tab_comments%403x.png" />
+    <BundleResource Include="Base.lproj\tab_comments_filled.png" />
+    <BundleResource Include="Base.lproj\tab_comments_filled%402x.png" />
+    <BundleResource Include="Base.lproj\tab_comments_filled%403x.png" />
+    <BundleResource Include="Base.lproj\tab_detail.png" />
+    <BundleResource Include="Base.lproj\tab_detail%402x.png" />
+    <BundleResource Include="Base.lproj\tab_detail%403x.png" />
+    <BundleResource Include="Base.lproj\tab_detail_filled.png" />
+    <BundleResource Include="Base.lproj\tab_detail_filled%402x.png" />
+    <BundleResource Include="Base.lproj\tab_detail_filled%403x.png" />
+    <BundleResource Include="Base.lproj\toolbar_add_issue.png" />
+    <BundleResource Include="Base.lproj\toolbar_add_issue%402x.png" />
+    <BundleResource Include="Base.lproj\toolbar_add_issue%403x.png" />
+    <BundleResource Include="Base.lproj\toolbar_change_repo.png" />
+    <BundleResource Include="Base.lproj\toolbar_change_repo%402x.png" />
+    <BundleResource Include="Base.lproj\toolbar_change_repo%403x.png" />
+    <BundleResource Include="Base.lproj\toolbar_labels.png" />
+    <BundleResource Include="Base.lproj\toolbar_labels%402x.png" />
+    <BundleResource Include="Base.lproj\toolbar_labels%403x.png" />
+    <BundleResource Include="Base.lproj\toolbar_labels_remove.png" />
+    <BundleResource Include="Base.lproj\toolbar_labels_remove%402x.png" />
+    <BundleResource Include="Base.lproj\toolbar_labels_remove%403x.png" />
+    <BundleResource Include="Base.lproj\toolbar_reply.png" />
+    <BundleResource Include="Base.lproj\toolbar_reply%402x.png" />
+    <BundleResource Include="Base.lproj\toolbar_reply%403x.png" />
+    <BundleResource Include="Base.lproj\toolbar_settings.png" />
+    <BundleResource Include="Base.lproj\toolbar_settings%402x.png" />
+    <BundleResource Include="Base.lproj\toolbar_settings%403x.png" />
+    <BundleResource Include="Resources\en.lproj\Localizable.strings" />
+    <BundleResource Include="Resources\es.lproj\Localizable.strings" />
+    <BundleResource Include="Resources\en.lproj\MainStoryboard.strings" />
+    <BundleResource Include="Resources\es.lproj\MainStoryboard.strings" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork" />
