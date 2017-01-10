@@ -1,0 +1,102 @@
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "4fa-fk-Q1t"; */
+"4fa-fk-Q1t.text" = "Label";
+
+/* Class = "UILabel"; text = "as"; ObjectID = "A9F-oS-NWB"; */
+"A9F-oS-NWB.text" = "Establecer token";
+
+/* Class = "UILabel"; text = "Change repo"; ObjectID = "B6X-xm-HE9"; */
+"B6X-xm-HE9.text" = "Cambiar repositorio";
+
+/* Class = "UITableViewController"; title = "Labels"; ObjectID = "F49-FL-ZUU"; */
+"F49-FL-ZUU.title" = "Labels";
+
+/* Class = "UILabel"; text = "Created At"; ObjectID = "HAC-Sp-elU"; */
+"HAC-Sp-elU.text" = "Created At";
+
+/* Class = "UITableViewController"; title = "Settings"; ObjectID = "IDQ-uW-qMe"; */
+"IDQ-uW-qMe.title" = "Configuración";
+
+/* Class = "UILabel"; text = "Username"; ObjectID = "Lyr-ZV-JXF"; */
+"Lyr-ZV-JXF.text" = "Username";
+
+/* Class = "UINavigationItem"; title = "Title"; ObjectID = "NZW-VM-Tlf"; */
+"NZW-VM-Tlf.title" = "Title";
+
+/* Class = "UINavigationItem"; title = "MyIssues"; ObjectID = "OTl-jH-bZH"; */
+"OTl-jH-bZH.title" = "MyIssues";
+
+/* Class = "UILabel"; text = "Erase data"; ObjectID = "R2H-HD-3l6"; */
+"R2H-HD-3l6.text" = "Borrar datos";
+
+/* Class = "UILabel"; text = "01 January | Milestone title"; ObjectID = "Ri2-4n-kNS"; */
+"Ri2-4n-kNS.text" = "01 January | Milestone title";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "TBw-us-ejv"; */
+"TBw-us-ejv.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "Issues"; ObjectID = "ZNO-xD-bVr"; */
+"ZNO-xD-bVr.title" = "Issues";
+
+/* Class = "UILabel"; text = "Open"; ObjectID = "a0e-X8-uPS"; */
+"a0e-X8-uPS.text" = "Open";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "b3T-zx-GpV"; */
+"b3T-zx-GpV.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "boy-Vb-sGA"; */
+"boy-Vb-sGA.normalTitle" = "Continuar";
+
+/* Class = "UILabel"; text = "My issue name"; ObjectID = "dOZ-GC-asc"; */
+"dOZ-GC-asc.text" = "My issue name";
+
+/* Class = "UINavigationItem"; title = "Title"; ObjectID = "eJy-J3-Qzu"; */
+"eJy-J3-Qzu.title" = "Title";
+
+/* Class = "UITabBarItem"; title = "Comments"; ObjectID = "eRM-Ce-Azx"; */
+"eRM-Ce-Azx.title" = "Comments";
+
+/* Class = "UITableViewSection"; headerTitle = "MyIssues"; ObjectID = "eYQ-ph-TaK"; */
+"eYQ-ph-TaK.headerTitle" = "MyIssues";
+
+/* Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "fMX-7o-6WI"; */
+"fMX-7o-6WI.title" = "Cancelar";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "fQw-ed-0YD"; */
+"fQw-ed-0YD.text" = "Label";
+
+/* Class = "UILabel"; text = "00"; ObjectID = "j8k-eG-CWO"; */
+"j8k-eG-CWO.text" = "00";
+
+/* Class = "UINavigationItem"; title = "Select repo"; ObjectID = "kKB-AW-bL1"; */
+"kKB-AW-bL1.title" = "Elegir repo";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "olR-bp-I8E"; */
+"olR-bp-I8E.text" = "Label";
+
+/* Class = "UIBarButtonItem"; title = "Preview"; ObjectID = "phf-hG-QJZ"; */
+"phf-hG-QJZ.title" = "Preview";
+
+/* Class = "UILabel"; text = "About"; ObjectID = "qxA-Bf-MRM"; */
+"qxA-Bf-MRM.text" = "Acerca de";
+
+/* Class = "UITabBarItem"; title = "Detalles"; ObjectID = "rDY-UD-je4"; */
+"rDY-UD-je4.title" = "Detalles";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "rk9-u1-inO"; */
+"rk9-u1-inO.text" = "Label";
+
+/* Class = "UITextView"; text = "## Escribe aquí tu respuesta usando Markdown"; ObjectID = "sau-Zh-QSk"; */
+"sau-Zh-QSk.text" = "## Escribe aquí tu respuesta usando Markdown";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "srM-bn-cmt"; */
+"srM-bn-cmt.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "Reply"; ObjectID = "tEI-cU-Dok"; */
+"tEI-cU-Dok.title" = "Responder";
+
+/* Class = "UITableViewSection"; headerTitle = "GitHub"; ObjectID = "uZy-WD-Vpc"; */
+"uZy-WD-Vpc.headerTitle" = "GitHub";
+
+/* Class = "UILabel"; text = "At 10/10/2016"; ObjectID = "ymH-92-xio"; */
+"ymH-92-xio.text" = "At 10/10/2016";

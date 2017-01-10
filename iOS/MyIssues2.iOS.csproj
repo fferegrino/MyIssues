@@ -308,10 +308,10 @@
     <BundleResource Include="Base.lproj\toolbar_settings.png" />
     <BundleResource Include="Base.lproj\toolbar_settings%402x.png" />
     <BundleResource Include="Base.lproj\toolbar_settings%403x.png" />
+    <BundleResource Include="Resources\en.lproj\Main.strings" />
+    <BundleResource Include="Resources\es.lproj\Main.strings" />
     <BundleResource Include="Resources\en.lproj\Localizable.strings" />
     <BundleResource Include="Resources\es.lproj\Localizable.strings" />
-    <BundleResource Include="Resources\en.lproj\MainStoryboard.strings" />
-    <BundleResource Include="Resources\es.lproj\MainStoryboard.strings" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork" />

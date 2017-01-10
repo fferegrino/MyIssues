@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -36,23 +35,23 @@
                                 <dataDetectorType key="dataDetectorTypes" flightNumber="YES"/>
                             </textView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="av4-cl-eTu">
-                                <rect key="frame" x="63" y="104" width="248" height="26.5"/>
+                                <rect key="frame" x="159.5" y="104" width="55" height="26.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set your access token" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A9F-oS-NWB">
-                                        <rect key="frame" x="0.0" y="0.0" width="216" height="26.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="as" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A9F-oS-NWB" userLabel="Set access token label">
+                                        <rect key="frame" x="0.0" y="0.0" width="23" height="26.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gTG-f8-mUo">
-                                        <rect key="frame" x="226" y="0.0" width="22" height="26.5"/>
+                                        <rect key="frame" x="33" y="0.0" width="22" height="26.5"/>
                                         <connections>
                                             <action selector="LearnMoreClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="h5s-Fi-YKj"/>
                                         </connections>
                                     </button>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="boy-Vb-sGA">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="boy-Vb-sGA" userLabel="Continue button">
                                 <rect key="frame" x="156" y="340.5" width="62" height="30"/>
                                 <state key="normal" title="Continue"/>
                                 <connections>
@@ -945,7 +944,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6gU-V3-dLQ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xoy-ew-RAu">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="xoy-ew-RAu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -963,7 +962,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eBj-Dq-je7" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Hfo-tA-n28">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Hfo-tA-n28">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

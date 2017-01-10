@@ -77,7 +77,9 @@ namespace MyIssues2.iOS
 			}
 			else
 			{
-				new UIAlertView("Error", $"Token inválido", null, "OK", null).Show();
+				var authError = NSBundle.MainBundle.LocalizedString("Auth error", "optional");
+
+				new UIAlertView("Error", authError, null, "OK", null).Show();
 				System.Diagnostics.Debug.WriteLine("Not authed");
 			}
 		}
