@@ -21,7 +21,7 @@ using MyIssues.DataAccess;
 
 namespace MyIssues.Droid
 {
-	[Activity(Label = "Repositories",
+	[Activity(Label = "@string/repositories_activity_name",
 		Theme = "@style/MyTheme")]
 	//[IntentFilter( actions: new string[] { Intent.ActionSearch })]
 	//[MetaData("android.app.searchable", Resource = "@xml/searchable")]

@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string
-    name="set_your_access_token">Set your access token</string>
+    name="set_your_access_token">Establecer token</string>
   <string
-    name="continue_button">Continue</string>
+    name="continue_button">Continuar</string>
   <string
-    name="Authenticating">Authenticating</string>
+    name="Authenticating">Autenticando</string>
   <string
-    name="SwitchRepoText">Select repo</string>
+    name="SwitchRepoText">Elegir repositorio</string>
   <string
-    name="repositories_activity_name">Repositories</string>
+    name="repositories_activity_name">Repositorios</string>
   <string
-  	name="repositories_search_instructions">Start writing to search within your repositories. Press search to query GitHub.</string>
+	name="repositories_search_instructions">Comienza a escribir para buscar en tus repositorios. Presiona buscar para buscar en GitHub.</string>
 	
   <string
     name="hello">Hello World, Click Me!</string>
