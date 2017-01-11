@@ -17,8 +17,7 @@ using MyIssues.Droid.Controls;
 namespace MyIssues.Droid.Activities
 {
 	
-    [Activity(Label = "ThanksActivity",
-        //Name = "myissues.droid.activities.ThanksActivity",
+    [Activity(Label = "@string/acknowledgement_activity_label",
         Theme = "@style/MyTheme")]
     public class ThanksActivity : AppCompatActivity
     {

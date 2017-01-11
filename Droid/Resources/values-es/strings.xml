@@ -1,22 +1,53 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <!-- ES -->
+  <string
+    name="app_name">MyIssues</string>
   <string
     name="set_your_access_token">Establecer token</string>
   <string
     name="continue_button">Continuar</string>
   <string
+    name="issue_activity_label">Issue</string>
+  <string
+    name="issue_number">Issue #{0}</string>
+  <string
+    name="issue_details">Detalles</string>
+  <string
+    name="issue_comments">Comentarios</string>
+  <string
+    name="issues_activity_label">Issues</string>
+  <string
+    name="labels_activity_label">Etiquetas</string>
+  <string
     name="Authenticating">Autenticando</string>
+  <string
+    name="PleaseWait">Espera, por favor</string>
   <string
     name="SwitchRepoText">Elegir repositorio</string>
   <string
     name="repositories_activity_name">Repositorios</string>
   <string
 	name="repositories_search_instructions">Comienza a escribir para buscar en tus repositorios. Presiona buscar para buscar en GitHub.</string>
+  <string
+    name="reply_activity_label">Respuesta</string>
+  <string
+    name="reply_to_issue_number">Respuesta a #{0}</string>
+  <string
+    name="settings_activity_label">Configuración</string>
+  <string
+    name="acknowledgement_activity_label">Agradecimientos</string>
+  <string
+    name="erase_account_confirmation_title">¿Deseas eliminar la cuenta?</string>
+  <string
+    name="erase_account_confirmation_body">Se borrarán todos tus datos, y la aplicación se reiniciará.</string>
+  <string
+    name="dialog_yes">Si</string>
+  <string
+    name="dialog_no">No</string>
+  <string
+    name="search_hint">Search hint</string>
 	
-  <string
-    name="hello">Hello World, Click Me!</string>
-  <string
-    name="app_name">MyIssues</string>
   <string
     name="AboutText">About</string>
   <string
@@ -31,8 +62,6 @@
     name="question_mark_image_description">Question mark</string>
   <string
     name="view_token">View token</string>
-  <string
-    name="PleaseWait">Please wait</string>
   <string
     name="ReposKindLabel">Search in</string>
   <string

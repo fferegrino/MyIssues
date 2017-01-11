@@ -15,7 +15,7 @@ using Android.Support.V7.App;
 
 namespace MyIssues.Droid.Activities
 {
-    [Activity(Label = "SettingsActivity",
+    [Activity(Label = "@string/settings_activity_label",
         Theme = "@style/MyTheme")]
     public class SettingsActivity : AppCompatActivity
     {

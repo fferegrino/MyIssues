@@ -48,10 +48,10 @@ namespace MyIssues.Droid.Fragments
             accountPreference.PreferenceClick += (sender, e) =>
             {
                 var alertDialog = new AlertDialog.Builder(this.Context)
-                    .SetTitle("¿Deseas eliminar la cuenta?")
-                    .SetMessage("Se borrarán todos tus datos")
-                    .SetPositiveButton("Si", DeleteAccountClick)
-                    .SetNegativeButton("No", listener: null);
+                    .SetTitle(Resources.GetString(Resource.String.erase_account_confirmation_title))
+                    .SetMessage(Resources.GetString(Resource.String.erase_account_confirmation_body))
+                    .SetPositiveButton(Resources.GetString(Resource.String.dialog_yes), DeleteAccountClick)
+                    .SetNegativeButton(Resources.GetString(Resource.String.dialog_no), listener: null);
 
                 alertDialog.Show();
             };

@@ -15,7 +15,7 @@ using Android.Util;
 
 namespace MyIssues.Droid
 {
-    [Activity(Label = "MyIssues",
+    [Activity(Label = "@string/app_name",
         MainLauncher = true,
         Theme = "@style/MyTheme",
         NoHistory = true,

@@ -20,7 +20,7 @@ using MyIssues.Droid.Fragments;
 
 namespace MyIssues.Droid
 {
-    [Activity(Label = "Issue",
+    [Activity(Label = "@string/issue_activity_label",
         Theme = "@style/MyTheme",
         ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
     public class IssueMainActivity : AppCompatActivity
@@ -38,11 +38,11 @@ namespace MyIssues.Droid
             var id = Intent.GetIntExtra("id", -1);
             var number = Intent.GetIntExtra("number", -1);
 
-            Title = $"Issue #{number}";
+            Title =String.Format(Resources.GetString(Resource.String.issue_number),number);
 
             TabLayout tabLayout = (TabLayout)FindViewById(Resource.Id.TabLayout);
-            tabLayout.AddTab(tabLayout.NewTab().SetText("Detail"));
-            tabLayout.AddTab(tabLayout.NewTab().SetText("Comments"));
+            tabLayout.AddTab(tabLayout.NewTab().SetText(Resources.GetString(Resource.String.issue_details)));
+            tabLayout.AddTab(tabLayout.NewTab().SetText(Resources.GetString(Resource.String.issue_comments)));
             tabLayout.TabGravity = TabLayout.GravityFill;
 
              _pagerAdapter = new IssuePagerAdapter(SupportFragmentManager, tabLayout.TabCount, number);

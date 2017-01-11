@@ -22,7 +22,7 @@ using Android.Support.V7.Widget;
 
 namespace MyIssues.Droid
 {
-	[Activity(Label = "Labels",
+	[Activity(Label = "@string/labels_activity_label",
 		Theme = "@style/MyTheme")]
 	//[IntentFilter( actions: new string[] { Intent.ActionSearch })]
 	//[MetaData("android.app.searchable", Resource = "@xml/searchable")]

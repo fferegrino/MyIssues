@@ -1,22 +1,53 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <!-- EN -->
+  <string
+    name="app_name">MyIssues</string>
   <string
     name="set_your_access_token">Set your access token</string>
   <string
     name="continue_button">Continue</string>
   <string
+    name="issue_activity_label">Issue</string>
+  <string
+    name="issue_number">Issue #{0}</string>
+  <string
+    name="issue_details">Details</string>
+  <string
+    name="issue_comments">Comments</string>
+  <string
+    name="issues_activity_label">Issues</string>
+  <string
+    name="labels_activity_label">Labels</string>
+  <string
     name="Authenticating">Authenticating</string>
+  <string
+    name="PleaseWait">Please wait</string>
   <string
     name="SwitchRepoText">Select repo</string>
   <string
     name="repositories_activity_name">Repositories</string>
   <string
   	name="repositories_search_instructions">Start writing to search within your repositories. Press search to query GitHub.</string>
+  <string
+    name="reply_activity_label">Reply</string>
+  <string
+    name="reply_to_issue_number">Reply to #{0}</string>
+  <string
+    name="settings_activity_label">Settings</string>
+  <string
+    name="acknowledgement_activity_label">Acknowledgements</string>
+  <string
+    name="erase_account_confirmation_title">¿Deseas eliminar la cuenta?</string>
+  <string
+    name="erase_account_confirmation_body">Se borrarán todos tus datos, y la aplicación se reiniciará.</string>
+  <string
+    name="dialog_yes">Si</string>
+  <string
+    name="dialog_no">No</string>
+  <string
+    name="search_hint">Search hint</string>
 	
-  <string
-    name="hello">Hello World, Click Me!</string>
-  <string
-    name="app_name">MyIssues</string>
   <string
     name="AboutText">About</string>
   <string
@@ -31,8 +62,6 @@
     name="question_mark_image_description">Question mark</string>
   <string
     name="view_token">View token</string>
-  <string
-    name="PleaseWait">Please wait</string>
   <string
     name="ReposKindLabel">Search in</string>
   <string

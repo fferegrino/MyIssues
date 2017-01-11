@@ -23,7 +23,7 @@ using MyIssues.Droid.Activities;
 namespace MyIssues.Droid
 {
 
-    [Activity(Label = "Issues",
+    [Activity(Label = "@string/issues_activity_label",
         Theme = "@style/MyTheme")]
     public class IssuesActivity : AppCompatActivity, SwipeRefreshLayout.IOnRefreshListener
     {

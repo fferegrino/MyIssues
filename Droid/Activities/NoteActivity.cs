@@ -27,7 +27,7 @@ using MyIssues.Util;
 
 namespace MyIssues.Droid.Activities
 {
-    [Activity(Label = "NoteActivity",
+    [Activity(Label = "@string/reply_activity_label",
         Theme = "@style/MyTheme")]
     public class NoteActivity : ActionBarActivity
     {
@@ -68,7 +68,8 @@ namespace MyIssues.Droid.Activities
             if (issueNumber != 0)
             {
                 noteTitle.Enabled = false;
-                noteTitle.Text = String.Format("Respuesta a #{0}", issueNumber);
+               var replyToIssue = Resources.GetString(Resource.String.reply_to_issue_number);
+                noteTitle.Text = String.Format(replyToIssue, issueNumber);
             }
             Content.RequestFocus();
         }
