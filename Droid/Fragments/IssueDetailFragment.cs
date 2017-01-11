@@ -32,6 +32,11 @@ namespace MyIssues.Droid.Fragments
 
         int _issueNumber;
 
+        public IssueDetailFragment()
+        {
+            System.Diagnostics.Debug.WriteLine($"Fragment {_issueNumber}");
+        }
+
         public IssueDetailFragment(int issueNumber)
         {
             _issueNumber = issueNumber;

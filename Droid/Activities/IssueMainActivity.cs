@@ -21,7 +21,8 @@ using MyIssues.Droid.Fragments;
 namespace MyIssues.Droid
 {
     [Activity(Label = "Issue",
-        Theme = "@style/MyTheme")]
+        Theme = "@style/MyTheme",
+        ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
     public class IssueMainActivity : AppCompatActivity
     {
         ViewPager _viewPager;

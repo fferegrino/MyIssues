@@ -62,7 +62,6 @@ namespace MyIssues.Droid.Adapters
 				var h = holder as IssueNoMilestoneViewHolder;
 
 				h.IssueListTitle.Text = issue.Title;
-				h.IssueListMilestone.Visibility = ViewStates.Gone;
 				SetLabelColors(h, issue.Labels);
 
 				h.Bind(issue, OnIssueSelected);
@@ -72,7 +71,6 @@ namespace MyIssues.Droid.Adapters
 				var h = holder as IssueViewHolder;
 
 				h.IssueListTitle.Text = issue.Title;
-				h.IssueListMilestone.Visibility = ViewStates.Gone;
 				SetLabelColors(h, issue.Labels);
 				h.IssueMilestoneDay.Text = milestoneDate.Value.Day.ToString("00");
 				h.IssueMilestoneMonth.Text = milestoneDate.Value.ToString("MMMM");
@@ -162,12 +160,10 @@ namespace MyIssues.Droid.Adapters
 	{
 		public View[] LabelColorViews { get; private set; }
 		public TextView IssueListTitle { get; private set; }
-		public TextView IssueListMilestone { get; private set; }
 
 		public IssueNoMilestoneViewHolder(View itemView) : base(itemView)
 		{
 			IssueListTitle = itemView.FindViewById<TextView>(Resource.Id.IssueListTitle);
-			IssueListMilestone = itemView.FindViewById<TextView>(Resource.Id.IssueListMilestone);
 			LabelColorViews = new View[]
 			{
 				itemView.FindViewById(Resource.Id.IssueColorLabel1),
@@ -197,14 +193,12 @@ namespace MyIssues.Droid.Adapters
 	{
 		public View[] LabelColorViews { get; private set; }
 		public TextView IssueListTitle { get; private set; }
-		public TextView IssueListMilestone { get; private set; }
 		public TextView IssueMilestoneMonth { get; private set; }
 		public TextView IssueMilestoneDay { get; private set; }
 
 		public IssueViewHolder(View itemView) : base(itemView)
 		{
 			IssueListTitle = itemView.FindViewById<TextView>(Resource.Id.IssueListTitle);
-			IssueListMilestone = itemView.FindViewById<TextView>(Resource.Id.IssueListMilestone);
 			IssueMilestoneMonth = itemView.FindViewById<TextView>(Resource.Id.MilestoneMonth);
 			IssueMilestoneDay = itemView.FindViewById<TextView>(Resource.Id.MilestoneDay);
 			LabelColorViews = new View[]

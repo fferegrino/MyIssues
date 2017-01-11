@@ -27,6 +27,11 @@ namespace MyIssues.Droid.Fragments
 
         int _issueNumber;
 
+
+        public IssueCommentsFragment()
+        {
+        }
+
         public IssueCommentsFragment(int issueNumber)
         {
             _issueNumber = issueNumber;
