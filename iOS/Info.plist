@@ -5,7 +5,7 @@
 	<key>CFBundleName</key>
 	<string>MyIssues</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.thatcsharpguy.myissues2</string>
+	<string>com.messier16.myissues</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
@@ -17,7 +17,6 @@
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>1</integer>
-		<integer>2</integer>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
@@ -25,7 +24,7 @@
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
-		<string>armv7</string>
+		<string>arm64</string>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
@@ -43,5 +42,7 @@
 	<array>
 		<string>es</string>
 	</array>
+	<key>Custom Property</key>
+	<string></string>
 </dict>
 </plist>

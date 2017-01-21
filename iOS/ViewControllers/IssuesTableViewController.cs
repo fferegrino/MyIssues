@@ -122,7 +122,7 @@ namespace MyIssues2.iOS
 
 		public void SetNavigateToLabelsEvent()
 		{
-			NavigationItem.RightBarButtonItem.Image = UIImage.FromFile("toolbar_labels.png");
+			NavigationItem.RightBarButtonItem.Image = UIImage.FromBundle("toolbar_labels");
 			NavigationItem.RightBarButtonItem.Clicked -= RemoveFilter;
 			NavigationItem.RightBarButtonItem.Clicked -= NavigateToLabels;
 			NavigationItem.RightBarButtonItem.Clicked += NavigateToLabels;
@@ -130,8 +130,7 @@ namespace MyIssues2.iOS
 
 		public void SetRemoveFilterEvent()
 		{
-
-			NavigationItem.RightBarButtonItem.Image = UIImage.FromFile("toolbar_labels_remove.png");
+			NavigationItem.RightBarButtonItem.Image = UIImage.FromBundle("toolbar_labels_remove");
 			NavigationItem.RightBarButtonItem.Clicked -= NavigateToLabels;
 			NavigationItem.RightBarButtonItem.Clicked -= RemoveFilter;
 			NavigationItem.RightBarButtonItem.Clicked += RemoveFilter;

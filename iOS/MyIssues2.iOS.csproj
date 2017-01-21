@@ -18,7 +18,7 @@
     <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Developer: Antonio Feregrino (ZX3X37UM6C)</CodesignKey>
+    <CodesignKey>iPhone Developer: aferegrino@heuristicasoluciones.com.mx (JJQ8GJ766G)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <MtouchFastDev>true</MtouchFastDev>
     <MtouchUseSGen>true</MtouchUseSGen>
@@ -29,6 +29,7 @@
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <MtouchTlsProvider>Default</MtouchTlsProvider>
     <DeviceSpecificBuild>false</DeviceSpecificBuild>
+    <CodesignProvision></CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>pdbonly</DebugType>
@@ -37,15 +38,19 @@
     <DefineConstants></DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Distribution: Antonio Feregrino (7WF9KH7X9Y)</CodesignKey>
     <MtouchUseSGen>true</MtouchUseSGen>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
     <MtouchFloat32>true</MtouchFloat32>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchLink>SdkOnly</MtouchLink>
-    <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <MtouchArch>ARM64</MtouchArch>
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <MtouchTlsProvider>Default</MtouchTlsProvider>
+    <CodesignProvision>9ec4635a-5187-4a52-8d2f-425520ebf638</CodesignProvision>
+    <DeviceSpecificBuild>true</DeviceSpecificBuild>
+    <MtouchSdkVersion>10.2</MtouchSdkVersion>
+    <MtouchUseLlvm>true</MtouchUseLlvm>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>pdbonly</DebugType>
@@ -70,18 +75,20 @@
     <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Distribution: Antonio Feregrino (7WF9KH7X9Y)</CodesignKey>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
     <MtouchDebug>true</MtouchDebug>
-    <MtouchFastDev>true</MtouchFastDev>
+    <MtouchFastDev>false</MtouchFastDev>
     <MtouchUseSGen>true</MtouchUseSGen>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
     <MtouchFloat32>true</MtouchFloat32>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <MtouchLink>None</MtouchLink>
-    <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchArch>ARM64</MtouchArch>
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <MtouchTlsProvider>Default</MtouchTlsProvider>
+    <CodesignProvision>9ec4635a-5187-4a52-8d2f-425520ebf638</CodesignProvision>
+    <MtouchSdkVersion>10.2</MtouchSdkVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -152,6 +159,18 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon-29%403x.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon-40%402x.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon-40%403x.png" />
+    <ImageAsset Include="Resources\Assets.xcassets\.DS_Store" />
+    <ImageAsset Include="Resources\Assets.xcassets\AppIcon.appiconset\AppIcon-40-180.png" />
+    <ImageAsset Include="Resources\Assets.xcassets\AppIcon.appiconset\AppIcon-40.png" />
+    <ImageAsset Include="Resources\Assets.xcassets\AppIcon.appiconset\AppIcon-40%401.5x-1.png" />
+    <ImageAsset Include="Resources\Assets.xcassets\AppIcon.appiconset\AppIcon-40%401.5x.png" />
+    <ImageAsset Include="Resources\Assets.xcassets\AppIcon.appiconset\AppIcon-57.png" />
+    <ImageAsset Include="Resources\Assets.xcassets\AppIcon.appiconset\AppIcon-57%402x.png" />
+    <ImageAsset Include="Resources\Assets.xcassets\AppIcon.appiconset\AppIcon-40%403x-1.png" />
+    <ImageAsset Include="Resources\Assets.xcassets\AppIcon.appiconset\AppIcon-40%403x-2.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon-57.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon-57%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon-40-180.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />

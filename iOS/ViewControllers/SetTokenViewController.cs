@@ -32,7 +32,7 @@ namespace MyIssues2.iOS
 			TokenTextView.TextAlignment = UITextAlignment.Center;
 			if (!String.IsNullOrEmpty(accessToken))
 			{
-				await TryAuth();
+				await TryAuth(accessToken);
 			}
 			TokenTextView.Text = accessToken;
 
@@ -68,10 +68,11 @@ namespace MyIssues2.iOS
 		//	TokenTextView.SetContentOffset(CoreGraphics.CGPoint.Empty, false);
 		//}
 
-		async Task TryAuth()
+		async Task TryAuth(string token = null)
 		{
-			var text = TokenTextView.Text;
-			if (!String.IsNullOrEmpty(text) && await Authenticate(text))
+			if(String.IsNullOrEmpty(token))
+				token = TokenTextView.Text;
+			if (!String.IsNullOrEmpty(token) && await Authenticate(token))
 			{
 				PerformSegue(StoryboardId.ViewIssuesSegue, this);
 			}
@@ -86,7 +87,7 @@ namespace MyIssues2.iOS
 
 		async Task<bool> Authenticate(string accessToken)
 		{
-			ActivityIndicator.StartAnimating();
+			ActivityIndicator?.StartAnimating();
 			//ProgressDialog progress;
 			//progress = ProgressDialog.Show(this, Resources.GetString(Resource.String.Authenticating),
 			//							   Resources.GetString(Resource.String.PleaseWait), true);
@@ -99,7 +100,7 @@ namespace MyIssues2.iOS
 				await _storage.SaveToken(accessToken);
 			}
 
-			ActivityIndicator.StopAnimating();
+			ActivityIndicator?.StopAnimating();
 			return authed;
 		}
 	}
