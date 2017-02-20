@@ -30,13 +30,18 @@ namespace MyIssues2.iOS
 			string accessToken = await _storage.GetToken();
 			TokenTextView.ContentInset = new UIEdgeInsets(-10, 0, 0, 0);
 			TokenTextView.TextAlignment = UITextAlignment.Center;
+			TokenTextView.Delegate = this;
 			if (!String.IsNullOrEmpty(accessToken))
 			{
 				await TryAuth(accessToken);
+				TokenTextView.Text = accessToken;
 			}
-			TokenTextView.Text = accessToken;
+			else 
+			{
+				TokenTextView.Text = PlaceholderText;
+				TokenTextView.TextColor = PlaceholderColor;
+			}
 
-			TokenTextView.Delegate = this;
 		}
 
 		[Export("textView:shouldChangeTextInRange:replacementText:")]
@@ -102,6 +107,29 @@ namespace MyIssues2.iOS
 
 			ActivityIndicator?.StopAnimating();
 			return authed;
+		}
+
+		static UIColor PlaceholderColor = UIColor.Gray;
+		const string PlaceholderText = "Set your token here";
+
+		[Export("textViewDidBeginEditing:")]
+		public void EditingStarted(UITextView textView)
+		{
+			if (TokenTextView.TextColor == PlaceholderColor)
+			{
+				TokenTextView.Text = null;
+				TokenTextView.TextColor = UIColor.Black;
+			}
+		}
+
+		[Export("textViewDidEndEditing:")]
+		public void EditingEnded(UITextView textView)
+		{
+			if (String.IsNullOrEmpty(TokenTextView.Text))
+			{
+				TokenTextView.Text = PlaceholderText;
+				TokenTextView.TextColor = PlaceholderColor;
+			}
 		}
 	}
 }

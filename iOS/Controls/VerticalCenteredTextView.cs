@@ -10,12 +10,17 @@ namespace MyIssues2.iOS
 	{
 
 		public VerticalCenteredTextView(IntPtr handle) : base (handle) {
+			Text = "Set your token here";
+			TextColor = UIColor.LightGray;
 			AddContentSizeObserver();
 		}
 		public VerticalCenteredTextView(CGRect frame, NSTextContainer textContainer) :
 			base(frame, textContainer)
 		{
+			Text = "Set your token here";
+			TextColor = UIColor.LightGray;
 			AddContentSizeObserver();
+
 		}
 
 		public VerticalCenteredTextView(CGRect frame) : base(frame)
@@ -46,13 +51,9 @@ namespace MyIssues2.iOS
 		{
 			
 			var top = (Bounds.Size.Height - ContentSize.Height * ZoomScale) / 2.0;
-			System.Diagnostics.Debug.WriteLine($"TOP: {top}");
 			top = top < 0.0 ? 0.0 : top;
-			this.SetContentOffset(CGPoint.Empty, false);// =  new CGPoint(x: -1000, y: -1500);
-			//SetNeedsLayout();
+			this.SetContentOffset(CGPoint.Empty, false);
 		}
-
-
 
 		protected override void Dispose(bool disposing)
 		{
