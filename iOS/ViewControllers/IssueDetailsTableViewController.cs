@@ -70,7 +70,8 @@ namespace MyIssues2.iOS
 			if (_issue.Milestone != null)
 			{
 				IssueMilestoneCell.Hidden = false;
-				IssueMilestoneLabel.Text = $"{_issue.Milestone.Title} | {_issue.Milestone.DueOn.GetValueOrDefault().DateTime:dd MMMM}";
+				IssueMilestoneDateLabel.Text = $"{_issue.Milestone.DueOn.GetValueOrDefault().DateTime:dd MMM}";
+				IssueMilestoneLabel.Text = $"{_issue.Milestone.Title}";
 			}
 			else 
 			{

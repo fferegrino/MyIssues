@@ -156,7 +156,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.71091128355704702" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.70980392156862748" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="b3T-zx-GpV" firstAttribute="leading" secondItem="zVw-xI-XEn" secondAttribute="leading" constant="5" id="95I-Se-XSh"/>
                                                         <constraint firstAttribute="bottom" secondItem="b3T-zx-GpV" secondAttribute="bottom" constant="1" id="f1Z-yk-6RV"/>
@@ -554,19 +554,41 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01 January | Milestone title" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ri2-4n-kNS">
-                                                    <rect key="frame" x="8" y="8" width="359" height="24"/>
+                                                    <rect key="frame" x="98.5" y="8" width="268.5" height="24"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wf3-Ag-TvB" userLabel="Date view">
+                                                    <rect key="frame" x="0.0" y="0.0" width="93.5" height="40"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4u-Lm-Jlf">
+                                                            <rect key="frame" x="26.5" y="10.5" width="39.5" height="19.5"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.70980392160000005" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstItem="g4u-Lm-Jlf" firstAttribute="centerX" secondItem="Wf3-Ag-TvB" secondAttribute="centerX" id="eWV-V4-aET"/>
+                                                        <constraint firstItem="g4u-Lm-Jlf" firstAttribute="centerY" secondItem="Wf3-Ag-TvB" secondAttribute="centerY" id="iNb-YB-Bkm"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Ri2-4n-kNS" firstAttribute="top" secondItem="B3Q-q3-UbQ" secondAttribute="topMargin" id="4Cb-yr-pz8"/>
+                                                <constraint firstItem="Wf3-Ag-TvB" firstAttribute="width" secondItem="B3Q-q3-UbQ" secondAttribute="width" multiplier="0.25" id="E1g-y0-ZbO"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Ri2-4n-kNS" secondAttribute="trailing" id="Lo8-42-zNc"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="Ri2-4n-kNS" secondAttribute="bottom" id="fU8-sA-dCS"/>
-                                                <constraint firstItem="Ri2-4n-kNS" firstAttribute="leading" secondItem="B3Q-q3-UbQ" secondAttribute="leadingMargin" id="i8s-dK-kUS"/>
+                                                <constraint firstItem="Ri2-4n-kNS" firstAttribute="leading" secondItem="Wf3-Ag-TvB" secondAttribute="trailing" constant="5" id="hkd-u1-n1y"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <constraints>
+                                            <constraint firstItem="Wf3-Ag-TvB" firstAttribute="top" secondItem="Zwx-K6-GVk" secondAttribute="top" id="M0q-VJ-Wu5"/>
+                                            <constraint firstItem="Wf3-Ag-TvB" firstAttribute="leading" secondItem="Zwx-K6-GVk" secondAttribute="leading" id="Sba-IJ-1Dd"/>
+                                            <constraint firstAttribute="bottom" secondItem="Wf3-Ag-TvB" secondAttribute="bottom" id="hBp-Ou-x3k"/>
+                                        </constraints>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Issue Details Cell" rowHeight="30" id="8nY-eX-svw">
                                         <rect key="frame" x="0.0" y="84" width="375" height="30"/>
@@ -693,6 +715,7 @@
                         <outlet property="IssueBodyLabel" destination="wsL-yX-RDP" id="Lse-ob-OFw"/>
                         <outlet property="IssueCreationDateLabel" destination="HAC-Sp-elU" id="JPI-Zi-Sgh"/>
                         <outlet property="IssueMilestoneCell" destination="Zwx-K6-GVk" id="7ae-s3-BWt"/>
+                        <outlet property="IssueMilestoneDateLabel" destination="g4u-Lm-Jlf" id="vtR-0E-m1X"/>
                         <outlet property="IssueMilestoneLabel" destination="Ri2-4n-kNS" id="OYZ-As-ZQm"/>
                         <outlet property="IssueNameLabel" destination="dOZ-GC-asc" id="IMB-Do-T6G"/>
                         <outlet property="IssueStatusLabel" destination="a0e-X8-uPS" id="BaC-qs-UgD"/>
