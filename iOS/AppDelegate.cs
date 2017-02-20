@@ -23,6 +23,11 @@ namespace MyIssues2.iOS
 			// If not required for your application you can safely delete this method
 			Startup.Start();
 
+			//UIButton.Appearance.TintColor = UIColor.FromRGB(78, 139, 203);
+			UITabBar.Appearance.BarTintColor = UIColor.FromRGB(245, 245, 245);
+			UITabBar.Appearance.TintColor = UIColor.FromRGB(78, 139, 203);
+			UINavigationBar.Appearance.TintColor = UIColor.FromRGB(200, 201, 203);
+
 			return true;
 		}
 

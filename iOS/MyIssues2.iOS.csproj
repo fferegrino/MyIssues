@@ -300,15 +300,9 @@
     <BundleResource Include="Base.lproj\tab_comments.png" />
     <BundleResource Include="Base.lproj\tab_comments%402x.png" />
     <BundleResource Include="Base.lproj\tab_comments%403x.png" />
-    <BundleResource Include="Base.lproj\tab_comments_filled.png" />
-    <BundleResource Include="Base.lproj\tab_comments_filled%402x.png" />
-    <BundleResource Include="Base.lproj\tab_comments_filled%403x.png" />
     <BundleResource Include="Base.lproj\tab_detail.png" />
     <BundleResource Include="Base.lproj\tab_detail%402x.png" />
     <BundleResource Include="Base.lproj\tab_detail%403x.png" />
-    <BundleResource Include="Base.lproj\tab_detail_filled.png" />
-    <BundleResource Include="Base.lproj\tab_detail_filled%402x.png" />
-    <BundleResource Include="Base.lproj\tab_detail_filled%403x.png" />
     <BundleResource Include="Base.lproj\toolbar_add_issue.png" />
     <BundleResource Include="Base.lproj\toolbar_add_issue%402x.png" />
     <BundleResource Include="Base.lproj\toolbar_add_issue%403x.png" />
@@ -331,6 +325,24 @@
     <BundleResource Include="Resources\es.lproj\Main.strings" />
     <BundleResource Include="Resources\en.lproj\Localizable.strings" />
     <BundleResource Include="Resources\es.lproj\Localizable.strings" />
+    <BundleResource Include="Base.lproj\button_alert.png" />
+    <BundleResource Include="Base.lproj\button_alert%402x.png" />
+    <BundleResource Include="Base.lproj\button_alert%403x.png" />
+    <BundleResource Include="Base.lproj\button_alert_remove.png" />
+    <BundleResource Include="Base.lproj\button_alert_remove%402x.png" />
+    <BundleResource Include="Base.lproj\button_alert_remove%403x.png" />
+    <BundleResource Include="Base.lproj\emtpy_icon.png" />
+    <BundleResource Include="Base.lproj\emtpy_icon%402x.png" />
+    <BundleResource Include="Base.lproj\emtpy_icon%403x.png" />
+    <BundleResource Include="Base.lproj\search.png" />
+    <BundleResource Include="Base.lproj\search%402x.png" />
+    <BundleResource Include="Base.lproj\search%403x.png" />
+    <BundleResource Include="Base.lproj\tab_comments_active.png" />
+    <BundleResource Include="Base.lproj\tab_comments_active%402x.png" />
+    <BundleResource Include="Base.lproj\tab_comments_active%403x.png" />
+    <BundleResource Include="Base.lproj\tab_detail_active.png" />
+    <BundleResource Include="Base.lproj\tab_detail_active%402x.png" />
+    <BundleResource Include="Base.lproj\tab_detail_active%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork" />
