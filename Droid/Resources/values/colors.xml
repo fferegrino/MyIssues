@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
   <color
-    name="primary">#3297fa</color>
+    name="primary">#24292E</color>
   <color
-    name="primary_dark">#1976D2</color>
+    name="primary_dark">#2d2d30</color>
   <color
-    name="accent">#007acc</color>
+    name="accent">#4e8bcb</color>
   <color
     name="window_background">#EEEEF2</color>
   <color
