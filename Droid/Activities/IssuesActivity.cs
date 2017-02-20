@@ -19,6 +19,8 @@ using MyIssues.DataAccess;
 using Android.Support.Design.Widget;
 using Android.Support.V4.Widget;
 using MyIssues.Droid.Activities;
+using Android.Support.V4.Graphics.Drawable;
+using Android.Graphics;
 
 namespace MyIssues.Droid
 {
@@ -167,6 +169,7 @@ namespace MyIssues.Droid
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
             MenuInflater.Inflate(Resource.Menu.IssuesMenu, menu);
+			menu.TintIcons();
 
             var viewLabels = menu.FindItem(Resource.Id.ViewLabelsMenu);
             var deleteFilter = menu.FindItem(Resource.Id.DeleteLabelFilter);
@@ -181,6 +184,7 @@ namespace MyIssues.Droid
                 deleteFilter.SetVisible(true);
                 viewLabels.SetVisible(false);
             }
+
 
             return true;
         }

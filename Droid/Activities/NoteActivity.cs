@@ -77,6 +77,7 @@ namespace MyIssues.Droid.Activities
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
             MenuInflater.Inflate(Resource.Menu.NoteMenu, menu);
+			menu.TintIcons();
             return true;
         }
 

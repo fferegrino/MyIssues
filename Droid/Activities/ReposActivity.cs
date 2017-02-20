@@ -82,6 +82,7 @@ namespace MyIssues.Droid
 		public override bool OnCreateOptionsMenu(IMenu menu)
 		{
 			MenuInflater.Inflate(Resource.Menu.SearchMenu, menu);
+			menu.TintIcons();
 
 			//// Associate searchable configuration with the SearchView
 			var item = menu.FindItem(Resource.Id.ActionSearch);

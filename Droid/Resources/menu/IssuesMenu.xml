@@ -3,13 +3,13 @@
   <item
     android:id="@+id/DeleteLabelFilter"
     android:title="Delete"
-    android:icon="@drawable/ToolbarLabelsRemove"
+    android:icon="@drawable/toolbar_labels_remove"
     app:showAsAction="always"
     android:showAsAction="always" />
   <item
     android:id="@+id/ViewLabelsMenu"
     android:title="Labels"
-    android:icon="@drawable/ToolbarLabels"
+    android:icon="@drawable/toolbar_labels"
     app:showAsAction="always"
     android:showAsAction="always" />
   <item
