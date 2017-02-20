@@ -20,6 +20,7 @@ namespace MyIssues2.iOS
 		struct StoryboardId
 		{
 			public const string CommentViewCellIdentifier = "Comment View Cell";
+			public const string ReplyToIssueSegue = "Reply To Issue";
 		}
 
 		Storage _storage;
@@ -75,6 +76,24 @@ namespace MyIssues2.iOS
 			return _comments?.Count ?? 0;
 		}
 
+
+		partial void ReplyToIssueTapped(UIButton sender)
+		{
+			PerformSegue(StoryboardId.ReplyToIssueSegue, this);
+		}
+
+		public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
+		{
+			if (segue.Identifier.Equals(StoryboardId.ReplyToIssueSegue))
+			{
+				var vc = segue.DestinationViewController as ReplyToIssueViewController;
+				vc.SetIssueNumber(_issueNumber);
+			}
+			else 
+			{
+				base.PrepareForSegue(segue, sender);
+			}
+		}
 
 
 	}

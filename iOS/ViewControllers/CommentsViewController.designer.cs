@@ -17,6 +17,9 @@ namespace MyIssues2.iOS
 
 		[Outlet]
 		UIKit.UITableView TableView { get; set; }
+
+		[Action ("ReplyToIssueTapped:")]
+		partial void ReplyToIssueTapped (UIKit.UIButton sender);
 		
 		void ReleaseDesignerOutlets ()
 		{

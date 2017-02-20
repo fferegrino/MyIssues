@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6gU-V3-dLQ">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6gU-V3-dLQ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -770,94 +770,12 @@
                     </tabBar>
                     <connections>
                         <segue destination="E5e-IS-lkD" kind="relationship" relationship="viewControllers" id="sE7-C5-1ye"/>
-                        <segue destination="M40-ob-Ij6" kind="relationship" relationship="viewControllers" id="FNA-Um-PK9"/>
-                        <segue destination="ZUy-G6-1Xq" kind="presentation" identifier="Reply To Issue" id="NXj-Zp-0vT"/>
                         <segue destination="TSQ-Qr-S3Z" kind="relationship" relationship="viewControllers" id="jvd-l4-hfs"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qSO-fV-tHC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3183" y="580"/>
-        </scene>
-        <!--Comments-->
-        <scene sceneID="hqb-xn-T0Q">
-            <objects>
-                <tableViewController id="M40-ob-Ij6" customClass="IssueCommentsViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="110" sectionHeaderHeight="28" sectionFooterHeight="28" id="OX9-XC-mPt">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Comment View Cell" rowHeight="50" id="ITC-ph-l7I" customClass="CommentViewCell">
-                                <rect key="frame" x="0.0" y="28" width="375" height="50"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ITC-ph-l7I" id="2Bd-n0-03D">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="At 10/10/2016" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ymH-92-xio">
-                                            <rect key="frame" x="87" y="11" width="79" height="15"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="749" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jYY-Um-7lA">
-                                            <rect key="frame" x="8" y="31" width="359" height="10"/>
-                                            <attributedString key="attributedText">
-                                                <fragment>
-                                                    <string key="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur id dapibus neque. Mauris consectetur feugiat nisl, et porttitor nisi pretium ut. Nulla tincidunt diam ligula, vel bibendum purus semper sit amet. Nulla eu metus nec justo mattis congue. Curabitur ac ligula condimentum, venenatis ligula a, fringilla velit.</string>
-                                                    <attributes>
-                                                        <font key="NSFont" metaFont="system" size="14"/>
-                                                        <real key="NSKern" value="0.0"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                            <tabStops/>
-                                                        </paragraphStyle>
-                                                        <color key="NSStrokeColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lyr-ZV-JXF">
-                                            <rect key="frame" x="8" y="8" width="71" height="18"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="ymH-92-xio" firstAttribute="baseline" secondItem="Lyr-ZV-JXF" secondAttribute="baseline" id="4TL-gn-Eyc"/>
-                                        <constraint firstAttribute="leadingMargin" secondItem="Lyr-ZV-JXF" secondAttribute="leading" id="6fn-M7-xZ7"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="jYY-Um-7lA" secondAttribute="bottom" id="CCb-Wk-PF7"/>
-                                        <constraint firstItem="jYY-Um-7lA" firstAttribute="top" secondItem="Lyr-ZV-JXF" secondAttribute="bottom" constant="5" id="E9U-yw-eRj"/>
-                                        <constraint firstAttribute="leadingMargin" secondItem="jYY-Um-7lA" secondAttribute="leading" id="L83-Jt-fYM"/>
-                                        <constraint firstItem="ymH-92-xio" firstAttribute="leading" secondItem="Lyr-ZV-JXF" secondAttribute="trailing" constant="8" symbolic="YES" id="PPO-46-9FL"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="jYY-Um-7lA" secondAttribute="trailing" id="Qii-7t-GCq"/>
-                                        <constraint firstAttribute="topMargin" secondItem="Lyr-ZV-JXF" secondAttribute="top" id="Rr5-AD-7o4"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="BodyLabel" destination="jYY-Um-7lA" id="5Z7-9E-Og2"/>
-                                    <outlet property="CreatedAtLabel" destination="ymH-92-xio" id="lVr-Ut-Yah"/>
-                                    <outlet property="UsernameLabel" destination="Lyr-ZV-JXF" id="f2K-Xq-reM"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="M40-ob-Ij6" id="5e9-JQ-FxI"/>
-                            <outlet property="delegate" destination="M40-ob-Ij6" id="uvR-WR-Q7V"/>
-                        </connections>
-                    </tableView>
-                    <tabBarItem key="tabBarItem" title="Comments" image="tab_comments.png" selectedImage="tab_comments_active.png" id="eRM-Ce-Azx"/>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="wSL-a9-g7P">
-                        <barButtonItem key="rightBarButtonItem" image="toolbar_reply.png" id="5ws-SP-gRN"/>
-                    </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZQl-8z-NC4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4132" y="1026"/>
         </scene>
         <!--Comments-->
         <scene sceneID="Mvt-lr-wse">
@@ -872,7 +790,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YEd-4o-WNq">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="524"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="508"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Comment View Cell" rowHeight="50" id="jKI-cA-RLl" customClass="CommentViewCell">
@@ -932,8 +850,11 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D1b-x7-DRv">
-                                <rect key="frame" x="16" y="532" width="343" height="30"/>
+                                <rect key="frame" x="16" y="516" width="343" height="30"/>
                                 <state key="normal" title="Reply"/>
+                                <connections>
+                                    <action selector="ReplyToIssueTapped:" destination="TSQ-Qr-S3Z" eventType="touchUpInside" id="Dp1-Wr-dKr"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -941,7 +862,7 @@
                             <constraint firstItem="D1b-x7-DRv" firstAttribute="leading" secondItem="6zy-7w-yOO" secondAttribute="leadingMargin" id="65I-ez-zrV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="D1b-x7-DRv" secondAttribute="trailing" id="LXY-DL-ja8"/>
                             <constraint firstItem="D1b-x7-DRv" firstAttribute="top" secondItem="YEd-4o-WNq" secondAttribute="bottom" constant="8" symbolic="YES" id="Njf-96-oW2"/>
-                            <constraint firstItem="D1b-x7-DRv" firstAttribute="bottom" secondItem="Pli-sd-zjs" secondAttribute="top" constant="8" symbolic="YES" id="Npa-mY-BVY"/>
+                            <constraint firstItem="Pli-sd-zjs" firstAttribute="top" secondItem="D1b-x7-DRv" secondAttribute="bottom" constant="8" symbolic="YES" id="RfE-Kt-qD5"/>
                             <constraint firstAttribute="trailing" secondItem="YEd-4o-WNq" secondAttribute="trailing" id="eOI-Wd-1xC"/>
                             <constraint firstItem="YEd-4o-WNq" firstAttribute="top" secondItem="S84-QD-4um" secondAttribute="bottom" id="iPS-XC-Nya"/>
                             <constraint firstItem="YEd-4o-WNq" firstAttribute="leading" secondItem="6zy-7w-yOO" secondAttribute="leading" id="kkU-ng-zdv"/>
@@ -951,11 +872,12 @@
                     <connections>
                         <outlet property="ReplyButton" destination="D1b-x7-DRv" id="yl9-jC-Aua"/>
                         <outlet property="TableView" destination="YEd-4o-WNq" id="ROu-Xh-h4O"/>
+                        <segue destination="ZUy-G6-1Xq" kind="presentation" identifier="Reply To Issue" id="4Bf-UK-SWB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nPh-YF-z79" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4906.3999999999996" y="1047.5262368815593"/>
+            <point key="canvasLocation" x="4170" y="1013"/>
         </scene>
         <!--Title-->
         <scene sceneID="mHy-zS-d1W">
@@ -975,7 +897,7 @@
                                     <navigationItem title="Reply" id="tEI-cU-Dok">
                                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="fMX-7o-6WI"/>
                                         <rightBarButtonItems>
-                                            <barButtonItem style="done" systemItem="done" id="Kab-Rd-4tO"/>
+                                            <barButtonItem title="Done" id="Kab-Rd-4tO"/>
                                             <barButtonItem tag="10" title="Preview" id="phf-hG-QJZ"/>
                                         </rightBarButtonItems>
                                     </navigationItem>
@@ -1116,7 +1038,6 @@
         <image name="tab_detail.png" width="30" height="30"/>
         <image name="tab_detail_active.png" width="16" height="16"/>
         <image name="toolbar_labels.png" width="25" height="25"/>
-        <image name="toolbar_reply.png" width="25" height="25"/>
         <image name="toolbar_settings.png" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
