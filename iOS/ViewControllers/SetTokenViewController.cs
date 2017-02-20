@@ -53,7 +53,7 @@ namespace MyIssues2.iOS
 
 		partial void LearnMoreClick(NSObject sender)
 		{
-			UIApplication.SharedApplication.OpenUrl(new Uri("http://thatcsharpguy.com/apps/myissues#personal-access-token"));
+			UIApplication.SharedApplication.OpenUrl(new Uri("https://help.github.com/articles/creating-an-access-token-for-command-line-use/"));
 		}
 
 

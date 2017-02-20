@@ -42,6 +42,7 @@ namespace MyIssues.Droid
             _learnMoreButton = FindViewById<ImageButton>(Resource.Id.LearnMoreButton);
             _accessTokenEditText = FindViewById<EditText>(Resource.Id.AccessTokenEditText);
             _setAccessTokenButton = FindViewById<Button>(Resource.Id.SetAccessTokenButton);
+			_accessTokenEditText.Hint = "Write here your access token";
 
             string accessToken = await _storage.GetToken() ;
             _accessTokenEditText.Text = accessToken;
@@ -53,7 +54,7 @@ namespace MyIssues.Droid
 
 			_learnMoreButton.Click += (sender, e) =>
 			{
-				var browserIntent = new Intent(Intent.ActionView, Android.Net.Uri.Parse("http://thatcsharpguy.com/apps/myissues#personal-access-token"));
+				var browserIntent = new Intent(Intent.ActionView, Android.Net.Uri.Parse("https://help.github.com/articles/creating-an-access-token-for-command-line-use/"));
 				StartActivity(browserIntent);
 			};
         }
