@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6gU-V3-dLQ">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6gU-V3-dLQ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -102,15 +102,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Issue Cell" rowHeight="80" id="QOF-Bc-Gj1" customClass="IssueCellView">
-                                <rect key="frame" x="0.0" y="28" width="375" height="80"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Issue Cell" rowHeight="70" id="QOF-Bc-Gj1" customClass="IssueCellView">
+                                <rect key="frame" x="0.0" y="28" width="375" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QOF-Bc-Gj1" id="SAS-hi-Jv9">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="69"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Ssd-iM-sYu">
-                                            <rect key="frame" x="0.0" y="65" width="375" height="15"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Ssd-iM-sYu" userLabel="Tags stack">
+                                            <rect key="frame" x="0.0" y="54.5" width="375" height="15"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Ga-r0-rTw">
                                                     <rect key="frame" x="0.0" y="0.0" width="75" height="15"/>
@@ -137,20 +137,20 @@
                                                 <constraint firstAttribute="height" constant="15" id="F1X-p4-ICZ"/>
                                             </constraints>
                                         </stackView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rk9-u1-inO">
-                                            <rect key="frame" x="8" y="18" width="310" height="42"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rk9-u1-inO">
+                                            <rect key="frame" x="8" y="13" width="311.5" height="36.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cNl-A0-n95">
-                                            <rect key="frame" x="328" y="25" width="37" height="31"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cNl-A0-n95" userLabel="Calendar">
+                                            <rect key="frame" x="319.5" y="8" width="55.5" height="46.5"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zVw-xI-XEn">
-                                                    <rect key="frame" x="0.0" y="0.0" width="37" height="10.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="55.5" height="10.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b3T-zx-GpV">
-                                                            <rect key="frame" x="5" y="1" width="27" height="8.5"/>
+                                                            <rect key="frame" x="5" y="1" width="45.5" height="8.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="7"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -165,7 +165,7 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j8k-eG-CWO">
-                                                    <rect key="frame" x="8" y="10.5" width="21" height="20.5"/>
+                                                    <rect key="frame" x="17.5" y="18" width="21" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -185,17 +185,17 @@
                                     <constraints>
                                         <constraint firstAttribute="trailingMargin" secondItem="Ssd-iM-sYu" secondAttribute="trailing" constant="-8" id="0iq-Aj-EP6"/>
                                         <constraint firstItem="Ssd-iM-sYu" firstAttribute="top" secondItem="rk9-u1-inO" secondAttribute="bottom" constant="5" id="8ud-kJ-1Nn"/>
-                                        <constraint firstItem="cNl-A0-n95" firstAttribute="centerY" secondItem="SAS-hi-Jv9" secondAttribute="centerY" id="KnM-Vi-FWS"/>
-                                        <constraint firstItem="rk9-u1-inO" firstAttribute="top" secondItem="SAS-hi-Jv9" secondAttribute="topMargin" constant="10" id="agX-bO-Rwr"/>
+                                        <constraint firstItem="rk9-u1-inO" firstAttribute="top" secondItem="SAS-hi-Jv9" secondAttribute="topMargin" constant="5" id="agX-bO-Rwr"/>
                                         <constraint firstAttribute="leadingMargin" secondItem="rk9-u1-inO" secondAttribute="leading" id="hgq-z8-of9"/>
-                                        <constraint firstItem="cNl-A0-n95" firstAttribute="leading" secondItem="rk9-u1-inO" secondAttribute="trailing" constant="10" id="lmK-ml-jSc"/>
+                                        <constraint firstItem="cNl-A0-n95" firstAttribute="leading" secondItem="rk9-u1-inO" secondAttribute="trailing" id="lmK-ml-jSc"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="Ssd-iM-sYu" secondAttribute="bottom" constant="-8" id="mxD-Ra-Sie"/>
                                         <constraint firstItem="Ssd-iM-sYu" firstAttribute="leading" secondItem="SAS-hi-Jv9" secondAttribute="leadingMargin" constant="-8" id="suf-V5-EdK"/>
-                                        <constraint firstItem="cNl-A0-n95" firstAttribute="width" secondItem="Zfo-VQ-Xea" secondAttribute="width" multiplier="0.5" id="vDP-qk-uKH"/>
+                                        <constraint firstItem="Ssd-iM-sYu" firstAttribute="top" secondItem="cNl-A0-n95" secondAttribute="bottom" id="yPK-B6-UYP"/>
+                                        <constraint firstItem="cNl-A0-n95" firstAttribute="top" secondItem="SAS-hi-Jv9" secondAttribute="topMargin" id="ycF-9o-zHM"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="cNl-A0-n95" secondAttribute="trailing" constant="10" id="6zg-Ow-01L"/>
+                                    <constraint firstAttribute="trailing" secondItem="cNl-A0-n95" secondAttribute="trailing" id="6zg-Ow-01L"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="IssueTitleLabel" destination="rk9-u1-inO" id="LFs-tR-xEu"/>
@@ -209,7 +209,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Issue No Milestone Cell" rowHeight="47" id="Blo-Ie-RpS" customClass="IssueNoMilestoneCellView">
-                                <rect key="frame" x="0.0" y="108" width="375" height="47"/>
+                                <rect key="frame" x="0.0" y="98" width="375" height="47"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Blo-Ie-RpS" id="7Oo-PT-l1w">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="46"/>
@@ -245,7 +245,7 @@
                                         </stackView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQw-ed-0YD">
                                             <rect key="frame" x="8" y="10" width="359" height="17"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
