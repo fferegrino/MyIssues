@@ -263,6 +263,10 @@
     <Compile Include="ViewControllers\LabelsTableViewController.designer.cs">
       <DependentUpon>LabelsTableViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewControllers\CommentsViewController.cs" />
+    <Compile Include="ViewControllers\CommentsViewController.designer.cs">
+      <DependentUpon>CommentsViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Models\MyIssues.Models.csproj">
