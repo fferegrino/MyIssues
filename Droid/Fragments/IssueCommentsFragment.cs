@@ -50,6 +50,7 @@ namespace MyIssues.Droid.Fragments
             var view = inflater.Inflate(Resource.Layout.IssueComments, container, false);
 
             _replyButton = view.FindViewById<FloatingActionButton>(Resource.Id.ReplyButton);
+			//_replyButton.BackgroundTintList =   BackgroundTintList(ColorStateList.valueOf(Color .parseColor("#33691E")))
             _replyButton.Click += ReplyButton_Click;
 
             commentsView = view.FindViewById<RecyclerViewEmptySupport>(Resource.Id.IssueCommentsListView);

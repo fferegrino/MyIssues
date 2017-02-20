@@ -16,6 +16,7 @@
         android:layout_margin="16dp"
         android:clickable="true"
         android:src="@drawable/toolbar_reply"
+			app:backgroundTint="#ffffff"
         app:layout_behavior="myissues.droid.controls.ScrollAwareFabBehavior"
         app:layout_anchor="@id/IssueCommentsListView"
         app:layout_anchorGravity="bottom|right|end" />

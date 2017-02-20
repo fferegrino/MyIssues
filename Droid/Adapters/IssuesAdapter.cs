@@ -55,9 +55,9 @@ namespace MyIssues.Droid.Adapters
 			var milestone = issue.Milestone;
 			var title = issue.Title;
 			var labels = issue.Labels;
-			var milestoneDate = issue.MilestoneDueDate?.DateTime;
+			bool hasMilestone = issue.Milestone != null;
 
-			if (!milestoneDate.HasValue)
+			if (!hasMilestone)
 			{
 				var h = holder as IssueNoMilestoneViewHolder;
 
@@ -69,11 +69,20 @@ namespace MyIssues.Droid.Adapters
 			else
 			{
 				var h = holder as IssueViewHolder;
+				var milestoneDate = issue.MilestoneDueDate?.DateTime;
 
 				h.IssueListTitle.Text = issue.Title;
 				SetLabelColors(h, issue.Labels);
-				h.IssueMilestoneDay.Text = milestoneDate.Value.Day.ToString("00");
-				h.IssueMilestoneMonth.Text = milestoneDate.Value.ToString("MMMM");
+				if (milestoneDate.HasValue)
+				{
+					h.IssueMilestoneDay.Text = milestoneDate.Value.Day.ToString("00");
+					h.IssueMilestoneMonth.Text = milestoneDate.Value.ToString("MMMM");
+				}
+				else
+				{
+					h.IssueMilestoneDay.Text = "--";
+					h.IssueMilestoneMonth.Text = "--";
+				}
 
 				h.Bind(issue, OnIssueSelected);
 			}
@@ -124,7 +133,7 @@ namespace MyIssues.Droid.Adapters
 		{
 			var issue = _dataSource[position];
 
-			if (issue.MilestoneDueDate == null)
+			if (issue.Milestone == null)
 				return ViewTypes.WithoutMilestone;
 			return ViewTypes.WithMilestone;
 		}
@@ -143,7 +152,6 @@ namespace MyIssues.Droid.Adapters
 					return new IssueViewHolder(itemView);
 					break;
 				case ViewTypes.WithoutMilestone:
-
 					itemView = LayoutInflater.From(parent.Context).
 								Inflate(Resource.Layout.IssueCardNoMilestoneView, parent, false);
 					return new IssueNoMilestoneViewHolder(itemView);

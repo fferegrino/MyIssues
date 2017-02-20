@@ -38,13 +38,13 @@ namespace MyIssues.Droid
 
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.Main);
-
+			var view = FindViewById(Resource.Id.LearnMoreButton);
             _learnMoreButton = FindViewById<ImageButton>(Resource.Id.LearnMoreButton);
             _accessTokenEditText = FindViewById<EditText>(Resource.Id.AccessTokenEditText);
             _setAccessTokenButton = FindViewById<Button>(Resource.Id.SetAccessTokenButton);
 			_accessTokenEditText.Hint = "Write here your access token";
 
-            string accessToken = await _storage.GetToken() ;
+			string accessToken = "a08e83d5f7726d96e7c1732348f799790c1a61ee";//await _storage.GetToken() ;
             _accessTokenEditText.Text = accessToken;
             if (accessToken != null && await Authenticate(accessToken))
             {
@@ -69,6 +69,7 @@ namespace MyIssues.Droid
 
         async Task<bool> Authenticate(string accessToken)
         {
+			if (String.IsNullOrEmpty(accessToken)) return false;
             ProgressDialog progress;
 			progress = ProgressDialog.Show(this,Resources.GetString(Resource.String.Authenticating),
 			                               Resources.GetString(Resource.String.PleaseWait), true);

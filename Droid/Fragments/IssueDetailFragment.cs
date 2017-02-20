@@ -24,18 +24,15 @@ namespace MyIssues.Droid.Fragments
         Storage _storage;
         Octokit.Issue _issue;
         MarkdownView _issueBodyTextView;
-        TextView _issueTitleTextView,
-            _issueStatusTextView,
-            _issueCreatedAtTextView,
-            _issueMilestoneInfo;
+		TextView _issueTitleTextView,
+			_issueStatusTextView,
+			_issueCreatedAtTextView,
+			_issueMilestoneInfo,
+			_issueMilestoneDate;
         RecyclerView _labelsRecyclerView;
 
         int _issueNumber;
 
-        public IssueDetailFragment()
-        {
-            System.Diagnostics.Debug.WriteLine($"Fragment {_issueNumber}");
-        }
 
         public IssueDetailFragment(int issueNumber)
         {
@@ -54,6 +51,7 @@ namespace MyIssues.Droid.Fragments
             var view = inflater.Inflate(Resource.Layout.IssueDetailView, container, false);
 
             _issueBodyTextView = view.FindViewById<MarkdownView>(Resource.Id.IssueBodyTextView);
+			_issueMilestoneDate = view.FindViewById<TextView>(Resource.Id.IssueMilestoneDate);
             _issueTitleTextView = view.FindViewById<TextView>(Resource.Id.IssueTitle);
             _issueStatusTextView = view.FindViewById<TextView>(Resource.Id.IssueStatusTextView);
             _issueCreatedAtTextView = view.FindViewById<TextView>(Resource.Id.IssueCreatedAtTextView);
@@ -83,11 +81,21 @@ namespace MyIssues.Droid.Fragments
             _issueStatusTextView.Text = _issue.State.ToString();
             if (_issue.Milestone != null)
             {
+				if (_issue.Milestone.DueOn.HasValue)
+				{
+					_issueMilestoneDate.Text = $"{_issue.Milestone.DueOn.GetValueOrDefault().DateTime:dd MMM}";
+				}
+				else 
+				{
+					_issueMilestoneDate.Text = "--";
+				}
+				_issueMilestoneDate.Visibility = ViewStates.Visible;
                 _issueMilestoneInfo.Visibility = ViewStates.Visible;
-                _issueMilestoneInfo.Text = $"{_issue.Milestone.Title} | {_issue.Milestone.DueOn.GetValueOrDefault().DateTime:DD MMMM}";
+				_issueMilestoneInfo.Text = $"{_issue.Milestone.Title}";
             }
             else
             {
+				_issueMilestoneDate.Visibility = ViewStates.Gone;
                 _issueMilestoneInfo.Visibility = ViewStates.Gone;
             }
 
