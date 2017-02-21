@@ -11,7 +11,8 @@ namespace MyIssues2.iOS
 {
 	public partial class CommentsViewController : UIViewController, 
 							IUITableViewDelegate,
-							IUITableViewDataSource
+							IUITableViewDataSource,
+							IShouldUpdate
 	{
 		public CommentsViewController (IntPtr handle) : base (handle)
 		{
@@ -48,6 +49,14 @@ namespace MyIssues2.iOS
 		}
 
 		IReadOnlyList<IssueComment> _comments;
+
+		public void UpdateFeed()
+		{
+			var loadComments = _storage.GetIssueComments(_issueNumber);
+
+			loadComments.Subscribe(CargaComentarios);
+		}
+
 		void CargaComentarios(IReadOnlyList<IssueComment> comments)
 		{
 			_comments = comments;
@@ -87,6 +96,7 @@ namespace MyIssues2.iOS
 			if (segue.Identifier.Equals(StoryboardId.ReplyToIssueSegue))
 			{
 				var vc = segue.DestinationViewController as ReplyToIssueViewController;
+				vc.Delegate = this;
 				vc.SetIssueNumber(_issueNumber);
 			}
 			else 
@@ -95,6 +105,10 @@ namespace MyIssues2.iOS
 			}
 		}
 
+	}
 
+	internal interface IShouldUpdate
+	{
+		void UpdateFeed(); 
 	}
 }

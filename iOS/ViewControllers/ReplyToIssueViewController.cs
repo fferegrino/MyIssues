@@ -20,6 +20,8 @@ namespace MyIssues2.iOS
 		{
 		}
 
+
+		internal IShouldUpdate Delegate { get; set; }
 		int _issueNumber;
 		public void SetIssueNumber(int number)
 		{
@@ -57,6 +59,7 @@ namespace MyIssues2.iOS
 		async void ReplyButtonClicked (object sender, EventArgs e)
 		{
 			await Reply();
+			Delegate.UpdateFeed();
 			Cancel();
 		}
 
