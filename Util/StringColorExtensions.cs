@@ -7,7 +7,7 @@ namespace MyIssues.Util
 {
     public static class StringColorExtensions
     {
-        public  static int[] GetInts(this string hex)
+        public static int[] GetInts(this string hex)
         {
             var colors = new int[3];
             colors[0] = Int32.Parse(hex.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
