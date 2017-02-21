@@ -9,7 +9,7 @@ namespace MyIssues2.iOS
 		{ 
 			NSError error = null;
 			var htmlString = new NSAttributedString(CommonMark.CommonMarkConverter.Convert(markdown),
-								 new NSAttributedStringDocumentAttributes { DocumentType = NSDocumentType.HTML },
+			                                        new NSAttributedStringDocumentAttributes { DocumentType = NSDocumentType.HTML, StringEncoding= NSStringEncoding.UTF8 },
 								 ref error);
 
 			return htmlString;
