@@ -13,13 +13,10 @@ namespace MyIssues
             var productHeader = new Octokit.ProductHeaderValue("MyIssues", "0.1");
             var token = new Credentials(accessToken);
 
-          var   _client = new Octokit.GitHubClient(productHeader);
+            var _client = new Octokit.GitHubClient(productHeader);
             _client.Credentials = token;
 
             return _client;
         }
-
-
-
     }
 }
