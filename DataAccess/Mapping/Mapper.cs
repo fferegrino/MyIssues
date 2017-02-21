@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using MyIssues.Util;
 
 namespace MyIssues.DataAccess.Mapping
@@ -70,7 +69,6 @@ namespace MyIssues.DataAccess.Mapping
         }
 
 
-
         public static MyIssues.Models.IssueComment Map(this Octokit.IssueComment issue)
         {
             var i = new Models.IssueComment
@@ -86,7 +84,7 @@ namespace MyIssues.DataAccess.Mapping
 
         private static void FillReactions(this Models.IssueComment comment, Octokit.ReactionSummary reactions)
         {
-            if(reactions != null)
+            if (reactions != null)
             {
                 comment.TotalReactions = reactions.TotalCount;
                 comment.Plus1 = reactions.Plus1;
@@ -97,7 +95,5 @@ namespace MyIssues.DataAccess.Mapping
                 comment.Confused = reactions.Confused;
             }
         }
-
-
     }
 }

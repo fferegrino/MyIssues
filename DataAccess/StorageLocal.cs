@@ -16,19 +16,19 @@ namespace MyIssues.DataAccess
         {
             try
             {
-				var logins =  await BlobCache.Secure.GetLoginAsync(Token);
-				if (logins != null)
-					return logins.Password;
+                var logins = await BlobCache.Secure.GetLoginAsync(Token);
+                if (logins != null)
+                    return logins.Password;
             }
             catch
             {
             }
-			return null;
+            return null;
         }
 
         public async Task SaveToken(string token)
         {
-			await BlobCache.Secure.SaveLogin(Token, token, Token); 
+            await BlobCache.Secure.SaveLogin(Token, token, Token);
         }
 
         public async Task<string> GetCurrentLogin()
