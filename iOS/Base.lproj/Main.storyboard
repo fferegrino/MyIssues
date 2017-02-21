@@ -895,10 +895,10 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
                                     <navigationItem title="Reply" id="tEI-cU-Dok">
-                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="fMX-7o-6WI"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" style="plain" id="fMX-7o-6WI"/>
                                         <rightBarButtonItems>
-                                            <barButtonItem title="Done" id="Kab-Rd-4tO"/>
-                                            <barButtonItem tag="10" title="Preview" id="phf-hG-QJZ"/>
+                                            <barButtonItem systemItem="action" id="Kab-Rd-4tO"/>
+                                            <barButtonItem tag="10" title="Preview" style="plain" id="phf-hG-QJZ"/>
                                         </rightBarButtonItems>
                                     </navigationItem>
                                 </items>
