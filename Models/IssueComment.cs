@@ -11,29 +11,29 @@ namespace MyIssues.Models
         /// <summary>
         /// The Id for this issue
         /// </summary>
-        public int Id { get;  set; }
+        public int Id { get; set; }
 
         /// <summary>
         /// Details about the issue.
         /// </summary>
-        public string Body { get;  set; }
+        public string Body { get; set; }
 
         /// <summary>
         /// The user that created the issue.
         /// </summary>
-        public string Author { get;  set; }
+        public string Author { get; set; }
 
         /// <summary>
         /// The date the issue was created.
         /// </summary>
-        public DateTimeOffset CreatedAt { get;  set; }
+        public DateTimeOffset CreatedAt { get; set; }
 
-        public int TotalReactions { get;  set; }
-        public int Plus1 { get;  set; }
-        public int Minus1 { get;  set; }
-        public int Laugh { get;  set; }
-        public int Confused { get;  set; }
-        public int Heart { get;  set; }
-        public int Hooray { get;  set; }
+        public int TotalReactions { get; set; }
+        public int Plus1 { get; set; }
+        public int Minus1 { get; set; }
+        public int Laugh { get; set; }
+        public int Confused { get; set; }
+        public int Heart { get; set; }
+        public int Hooray { get; set; }
     }
 }
