@@ -2,7 +2,7 @@
 <resources>
   <!-- EN -->
   <string
-    name="app_name">MyIssues</string>
+    name="app_name">SimpleIssues</string>
   <string
     name="set_your_access_token">Set your access token</string>
   <string

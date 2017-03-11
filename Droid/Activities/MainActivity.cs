@@ -44,7 +44,7 @@ namespace MyIssues.Droid
             _setAccessTokenButton = FindViewById<Button>(Resource.Id.SetAccessTokenButton);
 			_accessTokenEditText.Hint = "Write here your access token";
 
-			string accessToken = "a08e83d5f7726d96e7c1732348f799790c1a61ee";//await _storage.GetToken() ;
+			string accessToken = await _storage.GetToken() ;
             _accessTokenEditText.Text = accessToken;
             if (accessToken != null && await Authenticate(accessToken))
             {
