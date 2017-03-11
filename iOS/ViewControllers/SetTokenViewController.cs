@@ -92,6 +92,7 @@ namespace MyIssues2.iOS
 
 		async Task<bool> Authenticate(string accessToken)
 		{
+			if (String.IsNullOrEmpty(accessToken)) return false;
 			ActivityIndicator?.StartAnimating();
 			//ProgressDialog progress;
 			//progress = ProgressDialog.Show(this, Resources.GetString(Resource.String.Authenticating),
