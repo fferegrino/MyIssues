@@ -25,7 +25,7 @@ namespace MyIssues2.iOS
 
 			//UIButton.Appearance.TintColor = UIColor.FromRGB(78, 139, 203);
 			UITabBar.Appearance.BarTintColor = UIColor.FromRGB(245, 245, 245);
-			UITabBar.Appearance.TintColor = UIColor.FromRGB(78, 139, 203);
+			UITabBar.Appearance.TintColor = UIColor.FromRGB(3, 102, 214);
 			UINavigationBar.Appearance.TintColor = UIColor.FromRGB(200, 201, 203);
 
 			return true;
