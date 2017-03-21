@@ -17,5 +17,9 @@
       <intent
         android:action=".ThanksActivity" />
     </Preference>
+    <Preference
+      android:key="support"
+      android:title="Support">
+    </Preference>
   </android.support.v7.preference.PreferenceCategory>
 </android.support.v7.preference.PreferenceScreen>

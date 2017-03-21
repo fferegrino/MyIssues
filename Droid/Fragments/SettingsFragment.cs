@@ -37,6 +37,16 @@ namespace MyIssues.Droid.Fragments
                 StartActivity(i);
             };
 
+            var supportPreference = FindPreference("support");
+            supportPreference.PreferenceClick += (sender, e) =>
+            {
+                Intent intent = new Intent(Intent.ActionSend);
+                intent.SetType("text/plain");
+                intent.PutExtra(Intent.ExtraEmail, new String[] { "apps@messier16.com" });
+                intent.PutExtra(Intent.ExtraSubject, "SimpleIssues support");
+                StartActivity(Intent.CreateChooser(intent, "Send Email"));
+            };
+
             var switchRepoPreference = FindPreference("switchRepo");
             switchRepoPreference.PreferenceClick += (sender, e) =>
             {
@@ -62,7 +72,7 @@ namespace MyIssues.Droid.Fragments
             await Storage.GetInstance().EraseAll();
             DidEraseData?.Invoke(this, new EventArgs());
         }
-        
+
 
         public override void OnActivityResult(int requestCode, int resultCode, Intent data)
         {
